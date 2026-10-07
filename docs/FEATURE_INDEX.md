@@ -27,7 +27,7 @@ See [Reading the code](READING_THE_CODE.md) for the request path and [Architectu
 | content               |           3 |                      8 | [Open feature](../src/modules/content/README.md)               |
 | conversation-analysis |           1 |                      3 | [Open feature](../src/modules/conversation-analysis/README.md) |
 | cx-scores             |           2 |                      2 | [Open feature](../src/modules/cx-scores/README.md)             |
-| dashboard             |           1 |                      1 | [Open feature](../src/modules/dashboard/README.md)             |
+| dashboard             |           2 |                      2 | [Open feature](../src/modules/dashboard/README.md)             |
 | flow-data             |           1 |                      6 | [Open feature](../src/modules/flow-data/README.md)             |
 | guide                 |           1 |                      1 | [Open feature](../src/modules/guide/README.md)                 |
 | handoffs              |           1 |                      3 | [Open feature](../src/modules/handoffs/README.md)              |

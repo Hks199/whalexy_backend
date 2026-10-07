@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-07T05:10:30.289093+00:00",
+  "generatedAt": "2026-10-07T05:19:26.309494+00:00",
   "originalProject": "D:\\mombius bloom\\whalexy",
   "fullyConverted": false,
   "sourceRouteDeclarations": 648,
@@ -484,7 +484,11 @@
       "nodeFiles": [
         "src/modules/dashboard/dashboard.controller.ts",
         "src/modules/dashboard/dashboard.routes.ts",
-        "src/modules/dashboard/dashboard.service.ts"
+        "src/modules/dashboard/dashboard.service.ts",
+        "src/modules/dashboard/legacy-search.controller.ts",
+        "src/modules/dashboard/legacy-search.routes.ts",
+        "src/modules/dashboard/legacy-search.validation.ts",
+        "src/modules/dashboard/services/legacy-search.service.ts"
       ],
       "status": "partial-native-implementation",
       "verifiedFullParity": false

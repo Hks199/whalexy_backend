@@ -44,6 +44,7 @@ Paths below are relative to the router’s mounted prefix. Templates containing 
 
 ## Behavior tests
 
+- [legacy-search.test.ts](../../../tests/legacy-search.test.ts)
 - [legacy-whatsapp-orders.test.ts](../../../tests/legacy-whatsapp-orders.test.ts)
 
 Run `npm run docs:structure` after moving feature files or changing route declarations to refresh this guide.

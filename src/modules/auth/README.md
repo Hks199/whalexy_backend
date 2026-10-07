@@ -110,6 +110,7 @@ Paths below are relative to the router’s mounted prefix. Templates containing 
 - [legacy-messaging.test.ts](../../../tests/legacy-messaging.test.ts)
 - [legacy-mobile.test.ts](../../../tests/legacy-mobile.test.ts)
 - [legacy-pages.test.ts](../../../tests/legacy-pages.test.ts)
+- [legacy-search.test.ts](../../../tests/legacy-search.test.ts)
 - [legacy-translations.test.ts](../../../tests/legacy-translations.test.ts)
 - [manual-billing.test.ts](../../../tests/manual-billing.test.ts)
 - [media-messaging.test.ts](../../../tests/media-messaging.test.ts)

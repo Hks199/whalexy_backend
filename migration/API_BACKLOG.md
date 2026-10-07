@@ -2,7 +2,7 @@
 
 Conservative static response hints, not an authoritative runtime API count. Page routes, redirects/files/streams and unresolved responses remain separate; indirect JSON helpers and closures require manual review. An adapter record does not establish behavior parity.
 
-Source declarations: **648**. API-capable declarations identified by static hints: **361**, with **114** partial adapter records and **247** without adapter records.
+Source declarations: **648**. API-capable declarations identified by static hints: **361**, with **116** partial adapter records and **245** without adapter records.
 
 | Response category | Declarations |
 |---|---:|
@@ -29,7 +29,6 @@ Source declarations: **648**. API-capable declarations identified by static hint
 | AuthController | 7 |
 | WhatsAppCommerceController | 6 |
 | ShopifyIntegrationController | 6 |
-| DashboardController | 5 |
 | VendorController | 5 |
 | SubscriptionController | 5 |
 | TranslationController | 4 |
@@ -38,6 +37,7 @@ Source declarations: **648**. API-capable declarations identified by static hint
 | WhatsAppOrderController | 4 |
 | WooCommerceIntegrationController | 4 |
 | ShopifyWebhookController | 4 |
+| DashboardController | 3 |
 | CatalogController | 3 |
 | BotFlowController | 3 |
 | InstagramWebhookController | 2 |

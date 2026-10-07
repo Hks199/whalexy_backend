@@ -1565,5 +1565,27 @@
       "CSV uses source headers and filters, phone/address privacy and formula escaping; exports over 10000 rows fail instead of truncating",
       "Original frontend/errors/localization, all financial/provider/PDF/callback/schema/import/runtime parity remains unverified"
     ]
+  },
+  "GET /central-console/global-search": {
+    "nodeEndpoint": "GET /central-console/global-search",
+    "testFile": "tests/legacy-search.test.ts",
+    "remaining": [
+      "Native bearer/current active site administrator or workspace/category permissions replace original session authorization",
+      "Source q and bare-array display fields are supported with literal bounded searches and safe projections; native REST/converted JSON destinations require frontend changes",
+      "Vendor search enforces assigned-contact visibility, phone-search privacy and owned order contact relationships; central excludes vendor pages and non-site page types",
+      "Central vendors/admins/plans/subscriptions/dynamic setting-field categories and complete source navigation/localization/error contracts remain pending",
+      "Original schema/import/runtime compatibility and all acceptance requirements remain unverified"
+    ]
+  },
+  "GET /vendor-console/global-search": {
+    "nodeEndpoint": "GET /vendor-console/global-search",
+    "testFile": "tests/legacy-search.test.ts",
+    "remaining": [
+      "Native bearer/current active site administrator or workspace/category permissions replace original session authorization",
+      "Source q and bare-array display fields are supported with literal bounded searches and safe projections; native REST/converted JSON destinations require frontend changes",
+      "Vendor search enforces assigned-contact visibility, phone-search privacy and owned order contact relationships; central excludes vendor pages and non-site page types",
+      "Central vendors/admins/plans/subscriptions/dynamic setting-field categories and complete source navigation/localization/error contracts remain pending",
+      "Original schema/import/runtime compatibility and all acceptance requirements remain unverified"
+    ]
   }
 }

@@ -9,8 +9,8 @@
     "mixed-api-page": 8
   },
   "apiCapableDeclarationsByStaticHints": 361,
-  "apiCapableWithoutAdapterRecords": 247,
-  "apiCapableWithPartialAdapterRecords": 114,
+  "apiCapableWithoutAdapterRecords": 245,
+  "apiCapableWithPartialAdapterRecords": 116,
   "note": "Conservative static response hints, not an authoritative runtime API count. Page routes, redirects/files/streams and unresolved responses remain separate; indirect JSON helpers and closures require manual review. An adapter record does not establish behavior parity.",
   "pendingApiByController": {
     "FacebookChatServiceController": 30,
@@ -27,7 +27,6 @@
     "AuthController": 7,
     "WhatsAppCommerceController": 6,
     "ShopifyIntegrationController": 6,
-    "DashboardController": 5,
     "VendorController": 5,
     "SubscriptionController": 5,
     "TranslationController": 4,
@@ -36,6 +35,7 @@
     "WhatsAppOrderController": 4,
     "WooCommerceIntegrationController": 4,
     "ShopifyWebhookController": 4,
+    "DashboardController": 3,
     "CatalogController": 3,
     "BotFlowController": 3,
     "InstagramWebhookController": 2,
@@ -914,7 +914,7 @@
       "controllerSource": "app/Yantrana/Components/Dashboard/Controllers/DashboardController.php",
       "routeSource": "routes/web.php",
       "line": 388,
-      "partialAdapterRecorded": false
+      "partialAdapterRecorded": true
     },
     {
       "id": "routes/web.php:393:GET:/blue-tick-requests",
@@ -2788,7 +2788,7 @@
       "controllerSource": "app/Yantrana/Components/Dashboard/Controllers/DashboardController.php",
       "routeSource": "routes/web.php",
       "line": 897,
-      "partialAdapterRecorded": false
+      "partialAdapterRecorded": true
     },
     {
       "id": "routes/web.php:903:GET:/",

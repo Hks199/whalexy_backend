@@ -52,6 +52,7 @@ Paths below are relative to the router’s mounted prefix. Templates containing 
 ## Behavior tests
 
 - [legacy-configuration.test.ts](../../../tests/legacy-configuration.test.ts)
+- [legacy-search.test.ts](../../../tests/legacy-search.test.ts)
 - [site-settings.test.ts](../../../tests/site-settings.test.ts)
 
 Run `npm run docs:structure` after moving feature files or changing route declarations to refresh this guide.

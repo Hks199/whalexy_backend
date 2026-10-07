@@ -107,6 +107,7 @@ Paths below are relative to the router’s mounted prefix. Templates containing 
 - [legacy-messaging.test.ts](../../../tests/legacy-messaging.test.ts)
 - [legacy-mobile.test.ts](../../../tests/legacy-mobile.test.ts)
 - [legacy-resolution.test.ts](../../../tests/legacy-resolution.test.ts)
+- [legacy-search.test.ts](../../../tests/legacy-search.test.ts)
 - [legacy-store-history.test.ts](../../../tests/legacy-store-history.test.ts)
 - [quoted-replies.test.ts](../../../tests/quoted-replies.test.ts)
 - [security.test.ts](../../../tests/security.test.ts)

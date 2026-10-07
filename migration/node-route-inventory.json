@@ -1,8 +1,8 @@
 {
-  "registeredMethodPathPairs": 431,
+  "registeredMethodPathPairs": 433,
   "methods": {
     "DELETE": 28,
-    "GET": 169,
+    "GET": 171,
     "HEAD": 1,
     "OPTIONS": 1,
     "PATCH": 13,
@@ -1273,6 +1273,10 @@
     },
     {
       "method": "GET",
+      "path": "/central-console/global-search"
+    },
+    {
+      "method": "GET",
       "path": "/central-console/pages"
     },
     {
@@ -1514,6 +1518,10 @@
     {
       "method": "POST",
       "path": "/vendor-console/cx-analytics/scores/:scoreId/retry"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/global-search"
     },
     {
       "method": "GET",

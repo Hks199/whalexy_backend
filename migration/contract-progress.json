@@ -1,6 +1,6 @@
 {
   "sourceRouteDeclarations": 648,
-  "partialUrlFieldAdapters": 150,
+  "partialUrlFieldAdapters": 152,
   "complete": false,
   "note": "Pending review does not imply native capabilities are absent. See parity-report.json for verified counts. Only reviewed evidence in verified-contracts.json can pass parity.",
   "contracts": [
@@ -1285,12 +1285,16 @@
         "GET"
       ],
       "sourceSha256": "8aaddd2326895b8c31f69da009bf4c1dd5fc67c17411ad36769ef18209712044",
-      "status": "pending-contract-review",
-      "nodeEndpoint": null,
+      "status": "partial-url-field-adapter",
+      "nodeEndpoint": "GET /central-console/global-search",
       "remaining": [
-        "Authorization, request, response and side-effect comparison against Node implementation"
+        "Native bearer/current active site administrator or workspace/category permissions replace original session authorization",
+        "Source q and bare-array display fields are supported with literal bounded searches and safe projections; native REST/converted JSON destinations require frontend changes",
+        "Vendor search enforces assigned-contact visibility, phone-search privacy and owned order contact relationships; central excludes vendor pages and non-site page types",
+        "Central vendors/admins/plans/subscriptions/dynamic setting-field categories and complete source navigation/localization/error contracts remain pending",
+        "Original schema/import/runtime compatibility and all acceptance requirements remain unverified"
       ],
-      "testFile": null
+      "testFile": "tests/legacy-search.test.ts"
     },
     {
       "id": "routes/web.php:393:GET:/blue-tick-requests",
@@ -3968,12 +3972,16 @@
         "GET"
       ],
       "sourceSha256": "8aaddd2326895b8c31f69da009bf4c1dd5fc67c17411ad36769ef18209712044",
-      "status": "pending-contract-review",
-      "nodeEndpoint": null,
+      "status": "partial-url-field-adapter",
+      "nodeEndpoint": "GET /vendor-console/global-search",
       "remaining": [
-        "Authorization, request, response and side-effect comparison against Node implementation"
+        "Native bearer/current active site administrator or workspace/category permissions replace original session authorization",
+        "Source q and bare-array display fields are supported with literal bounded searches and safe projections; native REST/converted JSON destinations require frontend changes",
+        "Vendor search enforces assigned-contact visibility, phone-search privacy and owned order contact relationships; central excludes vendor pages and non-site page types",
+        "Central vendors/admins/plans/subscriptions/dynamic setting-field categories and complete source navigation/localization/error contracts remain pending",
+        "Original schema/import/runtime compatibility and all acceptance requirements remain unverified"
       ],
-      "testFile": null
+      "testFile": "tests/legacy-search.test.ts"
     },
     {
       "id": "routes/web.php:903:GET:/",

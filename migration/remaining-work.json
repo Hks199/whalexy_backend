@@ -4,11 +4,11 @@
   "partiallyImplementedModules": 32,
   "modulesWithoutDedicatedPort": 1,
   "genericDataOnlyModules": 0,
-  "partialLegacyUrlFieldAdapters": 150,
+  "partialLegacyUrlFieldAdapters": 152,
   "originalApiFileDeclarations": 35,
   "originalApiFilePartialAdapters": 35,
   "originalApiFileWithoutRecordedAdapters": 0,
-  "contractsWithoutRecordedAdapter": 498,
+  "contractsWithoutRecordedAdapter": 496,
   "verifiedLegacyContracts": 0,
   "pendingLegacyContracts": 648,
   "unmetAcceptanceRequirements": [
