@@ -1,0 +1,9 @@
+{
+  "sourceHash": "3a2d5a493570eafd5195addf59e498bca310f79a72c5d0b8878d480f84baa725",
+  "sourcePreserved": true,
+  "sqliteTables": 124,
+  "rowsArchivedAndHashVerified": 1450,
+  "archiveSchema": "legacy_archive",
+  "nativeApplicationDataImported": false,
+  "credentialsAndTokensActivated": false
+}

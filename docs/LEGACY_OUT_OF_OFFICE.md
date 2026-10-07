@@ -1,0 +1,9 @@
+# Original out-of-office settings URL
+
+`POST /vendor-console/settings/out-of-office` now handles the original JSON setting fields: `enabled`, `message`, `timezone`, `mode`, `manual_until`, `whatsapp_phone_number_id`, and seven-day `schedule`. Source numeric/string 0/1 booleans are normalized before strict native validation. Split intervals must be ordered without overlap, close after opening and remain on one local calendar day. Native schedule interval bounds and ISO manual dates still apply.
+
+The source response shape is retained: `reaction_code`, `message`, `data.status`, `show_message`. The native and legacy services share current management authorization, owned sender checks, settings lock, schedule replacement and atomic audit. Legacy writes require `Idempotency-Key`; canonical validated inputs replay the original response without resetting the manual-period start or replacing schedules again. Conflicting keys and concurrent changes fail explicitly. Existing owned settings can be disabled after sender disconnection; enabling or configuring an unknown sender requires an owned connected credential.
+
+`GET` at the same original page URL exposes safe configuration JSON with source setting names, schedule and evaluated status. It checks current view permission and uses the business current-number/timezone defaults. Expired manual mode resets to business hours with atomic audit. Existing disconnected settings can be read to disable them. Raw credentials and provider data are excluded.
+
+Native durable delivery and schedule tests remain in place. Original Blade/session/roles/localization, non-ISO date inputs, source WhatsApp settings readiness/import and live source/provider comparisons remain unverified. Both records remain partial adapters. See [API backlog](../migration/API_BACKLOG.md).

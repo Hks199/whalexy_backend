@@ -1,0 +1,425 @@
+{
+  "renamedColumns": {
+    "activity_logs": {
+      "users__id": "user_id",
+      "vendors__id": "vendor_id"
+    },
+    "login_logs": {
+      "users__id": "user_id"
+    },
+    "subscriptions": {
+      "vendor_id": "vendor_model__id"
+    },
+    "users": {
+      "phone_number": "mobile_number"
+    },
+    "whatsapp_message_logs": {
+      "whatsapp_message_id": "wamid"
+    },
+    "whatsapp_templates": {
+      "language_code": "language"
+    }
+  },
+  "additions": [
+    {
+      "table": "activity_logs",
+      "column": "user_role_id",
+      "field": "userRoleId",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "bot_replies",
+      "column": "bot_replies__id",
+      "field": "botRepliesId",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "campaign_groups",
+      "column": "status",
+      "field": "status",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "campaigns",
+      "column": "users__id",
+      "field": "userId",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "campaigns",
+      "column": "template_name",
+      "field": "templateName",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "campaigns",
+      "column": "template_language",
+      "field": "templateLanguage",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "campaigns",
+      "column": "timezone",
+      "field": "timezone",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "catalog_activity_logs",
+      "column": "subject_type",
+      "field": "subjectType",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "catalog_activity_logs",
+      "column": "subject_id",
+      "field": "subjectId",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "catalog_sync_logs",
+      "column": "syncable_type",
+      "field": "syncableType",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "catalog_sync_logs",
+      "column": "syncable_id",
+      "field": "syncableId",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "configurations",
+      "column": "data_type",
+      "field": "dataType",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "contact_custom_field_values",
+      "column": "status",
+      "field": "status",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "contact_custom_fields",
+      "column": "status",
+      "field": "status",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "contact_labels",
+      "column": "status",
+      "field": "status",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "contacts",
+      "column": "phone_verified_at",
+      "field": "phoneVerifiedAt",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "contacts",
+      "column": "email_verified_at",
+      "field": "emailVerifiedAt",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "countries",
+      "column": "iso_code",
+      "field": "isoCode",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "countries",
+      "column": "name_capitalized",
+      "field": "nameCapitalized",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "countries",
+      "column": "iso3_code",
+      "field": "iso3Code",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "countries",
+      "column": "iso_num_code",
+      "field": "isoNumCode",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "group_contacts",
+      "column": "status",
+      "field": "status",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "login_logs",
+      "column": "email",
+      "field": "email",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "login_logs",
+      "column": "role",
+      "field": "role",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "manual_subscriptions",
+      "column": "plan_id",
+      "field": "planId",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "manual_subscriptions",
+      "column": "ends_at",
+      "field": "endsAt",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "manual_subscriptions",
+      "column": "remarks",
+      "field": "remarks",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "manual_subscriptions",
+      "column": "charges",
+      "field": "charges",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "manual_subscriptions",
+      "column": "charges_frequency",
+      "field": "chargesFrequency",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "pages",
+      "column": "show_in_menu",
+      "field": "showInMenu",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "pages",
+      "column": "type",
+      "field": "type",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "pages",
+      "column": "vendors__id",
+      "field": "vendorId",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "pages",
+      "column": "slug",
+      "field": "slug",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "pages",
+      "column": "image_name",
+      "field": "imageName",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "user_active_flows",
+      "column": "created_at",
+      "field": "createdAt",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "user_active_flows",
+      "column": "updated_at",
+      "field": "updatedAt",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "user_roles",
+      "column": "status",
+      "field": "status",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "users",
+      "column": "username",
+      "field": "username",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "users",
+      "column": "remember_token",
+      "field": "rememberToken",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "users",
+      "column": "first_name",
+      "field": "firstName",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "users",
+      "column": "last_name",
+      "field": "lastName",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "users",
+      "column": "timezone",
+      "field": "timezone",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "users",
+      "column": "registered_via",
+      "field": "registeredVia",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "users",
+      "column": "ban_reason",
+      "field": "banReason",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "users",
+      "column": "countries__id",
+      "field": "countriesId",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "users",
+      "column": "two_factor_secret",
+      "field": "twoFactorSecret",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "users",
+      "column": "two_factor_recovery_codes",
+      "field": "twoFactorRecoveryCodes",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "users",
+      "column": "profile_picture",
+      "field": "profilePicture",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "vendor_settings",
+      "column": "status",
+      "field": "status",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "vendors",
+      "column": "ban_reason",
+      "field": "banReason",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "vendors",
+      "column": "type",
+      "field": "type",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "vendors",
+      "column": "stripe_id",
+      "field": "stripeId",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "vendors",
+      "column": "pm_type",
+      "field": "pmType",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "vendors",
+      "column": "pm_last_four",
+      "field": "pmLastFour",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "vendors",
+      "column": "trial_ends_at",
+      "field": "trialEndsAt",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "vendors",
+      "column": "logo_image",
+      "field": "logoImage",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "vendors",
+      "column": "slug",
+      "field": "slug",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "vendors",
+      "column": "domain",
+      "field": "domain",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "vendors",
+      "column": "favicon",
+      "field": "favicon",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "whatsapp_message_logs",
+      "column": "is_forwarded",
+      "field": "isForwarded",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "whatsapp_message_logs",
+      "column": "messaged_by_users__id",
+      "field": "messagedByUsersId",
+      "operation": "add-nullable"
+    },
+    {
+      "table": "login_attempts",
+      "operation": "add-table"
+    },
+    {
+      "table": "message_labels",
+      "operation": "add-table"
+    },
+    {
+      "table": "migrations",
+      "operation": "add-table"
+    },
+    {
+      "table": "password_resets",
+      "operation": "add-table"
+    },
+    {
+      "table": "subscription_items",
+      "operation": "add-table"
+    },
+    {
+      "table": "tickets",
+      "operation": "add-table"
+    },
+    {
+      "table": "transactions",
+      "operation": "add-table"
+    },
+    {
+      "table": "user_settings",
+      "operation": "add-table"
+    }
+  ],
+  "sourceHash": "3a2d5a493570eafd5195addf59e498bca310f79a72c5d0b8878d480f84baa725",
+  "dataImported": false
+}

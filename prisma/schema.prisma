@@ -1,0 +1,3423 @@
+// PostgreSQL native schema supplemented with read-only SQLite snapshot metadata.
+// See migration/sqlite-schema-audit.json for remaining constraint/type/import differences.
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {
+  provider = "postgresql"
+  url = env("DATABASE_URL")
+}
+
+// LEGACY/REFERENCE ONLY: reconcile before importing data
+model ActivityLogs {
+  userId Int? @map("user_id")
+  vendorId Int? @map("vendor_id")
+  activity Json? 
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  @@map("activity_logs")
+
+  userRoleId Int? @map("user_role_id")
+}
+
+// Migration definitions available
+model AdAccounts {
+  id Int @id @default(autoincrement())
+  uuid String @unique @default(uuid())
+  metaAccountId String? @map("meta_account_id")
+  businessPortfolioId String? @map("business_portfolio_id")
+  businessPortfolioName String? @map("business_portfolio_name")
+  facebookPageId String? @map("facebook_page_id")
+  facebookPageName String? @map("facebook_page_name")
+  instagramAccountId String? @map("instagram_account_id")
+  instagramUsername String? @map("instagram_username")
+  whatsappPhoneNumberId String? @map("whatsapp_phone_number_id")
+  whatsappNumber String? @map("whatsapp_number")
+  name String 
+  currency String @default("USD")
+  timezone String @default("UTC")
+  status String @default("pending")
+  connectionHealth String @default("unknown") @map("connection_health")
+  accessToken String? @map("access_token")
+  tokenExpiresAt DateTime? @map("token_expires_at")
+  lastSyncedAt DateTime? @map("last_synced_at")
+  autoSync Boolean @default(true) @map("auto_sync")
+  meta Json? 
+  organizationId Int @map("organization_id")
+  vendorId Int @map("vendor_id")
+  createdBy Int? @map("created_by")
+  updatedBy Int? @map("updated_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  tokenDataAccessExpiresAt DateTime? @map("token_data_access_expires_at")
+  lastSyncAttemptAt DateTime? @map("last_sync_attempt_at")
+  consecutiveSyncFailures Int @default(0) @map("consecutive_sync_failures")
+  lastSyncError String? @map("last_sync_error")
+  reconnectRequiredAt DateTime? @map("reconnect_required_at")
+  @@index([vendorId])
+  childrenAdCampaignsAdAccountId AdCampaigns[] @relation("fk_ad_campaigns_ad_account_id")
+  refOrganizationId Vendors @relation("fk_ad_accounts_organization_id", fields: [organizationId], references: [id], onDelete: Cascade, map: "778a97b70c13529cce24a2ba")
+  refVendorId Vendors @relation("fk_ad_accounts_vendor_id", fields: [vendorId], references: [id], onDelete: Cascade, map: "76b19d356eb33fd5a446ce5c")
+  refCreatedBy Users? @relation("fk_ad_accounts_created_by", fields: [createdBy], references: [id], onDelete: SetNull, map: "0c2d35a4c3cb7e1b81381432")
+  refUpdatedBy Users? @relation("fk_ad_accounts_updated_by", fields: [updatedBy], references: [id], onDelete: SetNull, map: "4cb33548a55b88aae0b76cf8")
+  @@unique([vendorId, metaAccountId], map: "2870e78cd6ccfcf903a50c9c")
+  @@map("ad_accounts")
+
+
+}
+
+// Migration definitions available
+model AdCampaignLabel {
+  id Int @id @default(autoincrement())
+  adCampaignId Int @map("ad_campaign_id")
+  adLabelId Int @map("ad_label_id")
+  organizationId Int @map("organization_id")
+  vendorId Int @map("vendor_id")
+  createdBy Int? @map("created_by")
+  updatedBy Int? @map("updated_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  @@index([vendorId])
+  refAdCampaignId AdCampaigns @relation("fk_ad_campaign_label_ad_campaign_id", fields: [adCampaignId], references: [id], onDelete: Cascade, map: "ccb56e866bc82da3377d2aa6")
+  refAdLabelId AdLabels @relation("fk_ad_campaign_label_ad_label_id", fields: [adLabelId], references: [id], onDelete: Cascade, map: "e2c2902c2eb287145baa16d3")
+  refOrganizationId Vendors @relation("fk_ad_campaign_label_organization_id", fields: [organizationId], references: [id], onDelete: Cascade, map: "da44f11e84c39f2797b8a81b")
+  refVendorId Vendors @relation("fk_ad_campaign_label_vendor_id", fields: [vendorId], references: [id], onDelete: Cascade, map: "02483ca2de5fb6b918f877df")
+  refCreatedBy Users? @relation("fk_ad_campaign_label_created_by", fields: [createdBy], references: [id], onDelete: SetNull, map: "a02fd42825f2bfaab73224aa")
+  refUpdatedBy Users? @relation("fk_ad_campaign_label_updated_by", fields: [updatedBy], references: [id], onDelete: SetNull, map: "b8d56886097dffd22fac50ef")
+  @@unique([adCampaignId, adLabelId], map: "b14d00009334be42762bfb7b")
+  @@map("ad_campaign_label")
+
+
+}
+
+// Migration definitions available
+model AdCampaigns {
+  id Int @id @default(autoincrement())
+  uuid String @unique @default(uuid())
+  adAccountId Int @map("ad_account_id")
+  metaCampaignId String? @map("meta_campaign_id")
+  name String 
+  objective String @default("messages")
+  goal String @default("whatsapp_messages")
+  specialAdCategory String? @map("special_ad_category")
+  status String @default("draft")
+  effectiveStatus String @default("draft") @map("effective_status")
+  budgetType String @default("daily") @map("budget_type")
+  budgetAmount Decimal @default(0) @map("budget_amount") @db.Decimal(18, 4)
+  bidStrategy String @default("lowest_cost") @map("bid_strategy")
+  startsAt DateTime? @map("starts_at")
+  endsAt DateTime? @map("ends_at")
+  timezone String @default("UTC")
+  notes String? 
+  configuration Json? 
+  publishedAt DateTime? @map("published_at")
+  lastSyncedAt DateTime? @map("last_synced_at")
+  organizationId Int @map("organization_id")
+  vendorId Int @map("vendor_id")
+  createdBy Int? @map("created_by")
+  updatedBy Int? @map("updated_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  @@index([vendorId])
+  childrenAdConversationAttributionsAdCampaignId AdConversationAttributions[] @relation("fk_ad_conversation_attributions_ad_campaign_id")
+  childrenCampaignLogsAdCampaignId CampaignLogs[] @relation("fk_campaign_logs_ad_campaign_id")
+  refAdAccountId AdAccounts @relation("fk_ad_campaigns_ad_account_id", fields: [adAccountId], references: [id], onDelete: Cascade, map: "5d8d4c7559b7a4970481c71d")
+  refOrganizationId Vendors @relation("fk_ad_campaigns_organization_id", fields: [organizationId], references: [id], onDelete: Cascade, map: "7609ee64a0330d654df1db2b")
+  refVendorId Vendors @relation("fk_ad_campaigns_vendor_id", fields: [vendorId], references: [id], onDelete: Cascade, map: "d17275192aafc202c30fc1b4")
+  refCreatedBy Users? @relation("fk_ad_campaigns_created_by", fields: [createdBy], references: [id], onDelete: SetNull, map: "04dfc5f45bba50e54bb33db3")
+  refUpdatedBy Users? @relation("fk_ad_campaigns_updated_by", fields: [updatedBy], references: [id], onDelete: SetNull, map: "92b3e0c6b1551db4db5f36fb")
+  childrenAdSetsAdCampaignId AdSets[] @relation("fk_ad_sets_ad_campaign_id")
+  childrenCampaignMetricsAdCampaignId CampaignMetrics[] @relation("fk_campaign_metrics_ad_campaign_id")
+  childrenCampaignDailyMetricsAdCampaignId CampaignDailyMetrics[] @relation("fk_campaign_daily_metrics_ad_campaign_id")
+  childrenConversionsAdCampaignId Conversions[] @relation("fk_conversions_ad_campaign_id")
+  childrenBudgetsAdCampaignId Budgets[] @relation("fk_budgets_ad_campaign_id")
+  childrenAdCampaignLabelAdCampaignId AdCampaignLabel[] @relation("fk_ad_campaign_label_ad_campaign_id")
+  @@unique([vendorId, metaCampaignId], map: "ddb0918e3ab89b77f9a31c3c")
+  @@map("ad_campaigns")
+
+
+}
+
+// Migration definitions available
+model AdConversationAttributions {
+  id Int @id @default(autoincrement())
+  contactId Int @map("contact_id")
+  adCampaignId Int? @map("ad_campaign_id")
+  adSetId Int? @map("ad_set_id")
+  adId Int? @map("ad_id")
+  ctwaClickId String? @map("ctwa_click_id")
+  sourceId String? @map("source_id")
+  sourceType String? @map("source_type")
+  placement String? 
+  sourceUrl String? @map("source_url")
+  utmParameters Json? @map("utm_parameters")
+  conversationStartedAt DateTime @map("conversation_started_at")
+  assignedUserId Int? @map("assigned_user_id")
+  conversionStatus String @default("conversation") @map("conversion_status")
+  revenue Decimal @default(0) @db.Decimal(18, 4)
+  referral Json? 
+  organizationId Int @map("organization_id")
+  vendorId Int @map("vendor_id")
+  createdBy Int? @map("created_by")
+  updatedBy Int? @map("updated_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  @@index([vendorId])
+  refAdCampaignId AdCampaigns? @relation("fk_ad_conversation_attributions_ad_campaign_id", fields: [adCampaignId], references: [id], onDelete: SetNull, map: "5bd88eff21ddcdbc1eaf85bc")
+  refAdSetId AdSets? @relation("fk_ad_conversation_attributions_ad_set_id", fields: [adSetId], references: [id], onDelete: SetNull, map: "9cb7d20ac61aa8cf8d9cadf1")
+  refAdId Ads? @relation("fk_ad_conversation_attributions_ad_id", fields: [adId], references: [id], onDelete: SetNull, map: "5a6e8d33b96c53cea61748de")
+  refOrganizationId Vendors @relation("fk_ad_conversation_attributions_organization_id", fields: [organizationId], references: [id], onDelete: Cascade, map: "20a32c320bb6b2d7bb4c8c0a")
+  refVendorId Vendors @relation("fk_ad_conversation_attributions_vendor_id", fields: [vendorId], references: [id], onDelete: Cascade, map: "8142451c7c09ff46460c4d8b")
+  refCreatedBy Users? @relation("fk_ad_conversation_attributions_created_by", fields: [createdBy], references: [id], onDelete: SetNull, map: "700a59172d08dbf0254329d1")
+  refUpdatedBy Users? @relation("fk_ad_conversation_attributions_updated_by", fields: [updatedBy], references: [id], onDelete: SetNull, map: "8938e9644248226f584d9634")
+  @@unique([vendorId, contactId, ctwaClickId], map: "aff2483e96cc1200c54d10c4")
+  @@map("ad_conversation_attributions")
+
+
+}
+
+// Migration definitions available
+model AdCreatives {
+  id Int @id @default(autoincrement())
+  uuid String @unique @default(uuid())
+  metaCreativeId String? @map("meta_creative_id")
+  name String 
+  format String @default("single_image")
+  headline String? 
+  primaryText String? @map("primary_text")
+  description String? 
+  callToAction String @default("SEND_WHATSAPP_MESSAGE") @map("call_to_action")
+  landingPage String? @map("landing_page")
+  whatsappNumber String? @map("whatsapp_number")
+  status String @default("draft")
+  meta Json? 
+  organizationId Int @map("organization_id")
+  vendorId Int @map("vendor_id")
+  createdBy Int? @map("created_by")
+  updatedBy Int? @map("updated_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  @@index([vendorId])
+  refOrganizationId Vendors @relation("fk_ad_creatives_organization_id", fields: [organizationId], references: [id], onDelete: Cascade, map: "9d2b196f74f858c3b9b52c21")
+  refVendorId Vendors @relation("fk_ad_creatives_vendor_id", fields: [vendorId], references: [id], onDelete: Cascade, map: "f0ae22f658a63efaba239f6c")
+  refCreatedBy Users? @relation("fk_ad_creatives_created_by", fields: [createdBy], references: [id], onDelete: SetNull, map: "6f17724149576ae69eca4de5")
+  refUpdatedBy Users? @relation("fk_ad_creatives_updated_by", fields: [updatedBy], references: [id], onDelete: SetNull, map: "20d580cc2ac89524c7d5dbb7")
+  childrenAdsAdCreativeId Ads[] @relation("fk_ads_ad_creative_id")
+  childrenCreativeAssetsAdCreativeId CreativeAssets[] @relation("fk_creative_assets_ad_creative_id")
+  @@map("ad_creatives")
+
+
+}
+
+// Migration definitions available
+model AdLabels {
+  id Int @id @default(autoincrement())
+  name String 
+  color String @default("#0d9488")
+  organizationId Int @map("organization_id")
+  vendorId Int @map("vendor_id")
+  createdBy Int? @map("created_by")
+  updatedBy Int? @map("updated_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  @@index([vendorId])
+  refOrganizationId Vendors @relation("fk_ad_labels_organization_id", fields: [organizationId], references: [id], onDelete: Cascade, map: "25c93a9ca2e1c92ba770c93e")
+  refVendorId Vendors @relation("fk_ad_labels_vendor_id", fields: [vendorId], references: [id], onDelete: Cascade, map: "a7e6523badc7d1e737549c4a")
+  refCreatedBy Users? @relation("fk_ad_labels_created_by", fields: [createdBy], references: [id], onDelete: SetNull, map: "a3e3de667ed704d087eeaf21")
+  refUpdatedBy Users? @relation("fk_ad_labels_updated_by", fields: [updatedBy], references: [id], onDelete: SetNull, map: "634a086de675b7a14bcae22d")
+  childrenAdCampaignLabelAdLabelId AdCampaignLabel[] @relation("fk_ad_campaign_label_ad_label_id")
+  @@unique([vendorId, name], map: "11bea94cc80ff8c1170cf8e5")
+  @@map("ad_labels")
+
+
+}
+
+// Migration definitions available
+model AdNotifications {
+  id Int @id @default(autoincrement())
+  type String 
+  severity String @default("info")
+  title String 
+  message String 
+  notifiableType String? @map("notifiable_type")
+  notifiableId Int? @map("notifiable_id")
+  readAt DateTime? @map("read_at")
+  data Json? 
+  organizationId Int @map("organization_id")
+  vendorId Int @map("vendor_id")
+  createdBy Int? @map("created_by")
+  updatedBy Int? @map("updated_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  @@index([vendorId])
+  refOrganizationId Vendors @relation("fk_ad_notifications_organization_id", fields: [organizationId], references: [id], onDelete: Cascade, map: "faef6c2ddf3bce8c78cf4107")
+  refVendorId Vendors @relation("fk_ad_notifications_vendor_id", fields: [vendorId], references: [id], onDelete: Cascade, map: "dd3441fc9a42b2b632f584d4")
+  refCreatedBy Users? @relation("fk_ad_notifications_created_by", fields: [createdBy], references: [id], onDelete: SetNull, map: "a0e9bb9de4401985012e9a19")
+  refUpdatedBy Users? @relation("fk_ad_notifications_updated_by", fields: [updatedBy], references: [id], onDelete: SetNull, map: "fad7f3d964e595e783462db1")
+  @@map("ad_notifications")
+
+
+}
+
+// Migration definitions available
+model AdSets {
+  id Int @id @default(autoincrement())
+  uuid String @unique @default(uuid())
+  adCampaignId Int @map("ad_campaign_id")
+  metaAdSetId String? @map("meta_ad_set_id")
+  name String 
+  status String @default("draft")
+  dailyBudget Decimal? @map("daily_budget") @db.Decimal(18, 4)
+  lifetimeBudget Decimal? @map("lifetime_budget") @db.Decimal(18, 4)
+  audienceSnapshot Json? @map("audience_snapshot")
+  placements Json? 
+  startsAt DateTime? @map("starts_at")
+  endsAt DateTime? @map("ends_at")
+  organizationId Int @map("organization_id")
+  vendorId Int @map("vendor_id")
+  createdBy Int? @map("created_by")
+  updatedBy Int? @map("updated_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  @@index([vendorId])
+  childrenAdConversationAttributionsAdSetId AdConversationAttributions[] @relation("fk_ad_conversation_attributions_ad_set_id")
+  refAdCampaignId AdCampaigns @relation("fk_ad_sets_ad_campaign_id", fields: [adCampaignId], references: [id], onDelete: Cascade, map: "963b6d3ce27793300956ef8e")
+  refOrganizationId Vendors @relation("fk_ad_sets_organization_id", fields: [organizationId], references: [id], onDelete: Cascade, map: "0e3901a000a83834016dc31f")
+  refVendorId Vendors @relation("fk_ad_sets_vendor_id", fields: [vendorId], references: [id], onDelete: Cascade, map: "d302034a1e1a57f87f203d22")
+  refCreatedBy Users? @relation("fk_ad_sets_created_by", fields: [createdBy], references: [id], onDelete: SetNull, map: "532dc16378cece5bbd89e341")
+  refUpdatedBy Users? @relation("fk_ad_sets_updated_by", fields: [updatedBy], references: [id], onDelete: SetNull, map: "65b2f457436d2ea255d079f6")
+  childrenAdsAdSetId Ads[] @relation("fk_ads_ad_set_id")
+  @@map("ad_sets")
+
+
+}
+
+// Migration definitions available
+model Ads {
+  id Int @id @default(autoincrement())
+  uuid String @unique @default(uuid())
+  adSetId Int @map("ad_set_id")
+  adCreativeId Int? @map("ad_creative_id")
+  metaAdId String? @map("meta_ad_id")
+  name String 
+  status String @default("draft")
+  tracking Json? 
+  organizationId Int @map("organization_id")
+  vendorId Int @map("vendor_id")
+  createdBy Int? @map("created_by")
+  updatedBy Int? @map("updated_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  @@index([vendorId])
+  childrenAdConversationAttributionsAdId AdConversationAttributions[] @relation("fk_ad_conversation_attributions_ad_id")
+  refAdSetId AdSets @relation("fk_ads_ad_set_id", fields: [adSetId], references: [id], onDelete: Cascade, map: "13c631fe176e46ce7be62a81")
+  refAdCreativeId AdCreatives? @relation("fk_ads_ad_creative_id", fields: [adCreativeId], references: [id], onDelete: SetNull, map: "a0cce7fe4e9c025f2140aa29")
+  refOrganizationId Vendors @relation("fk_ads_organization_id", fields: [organizationId], references: [id], onDelete: Cascade, map: "14202160994b31a71f92920c")
+  refVendorId Vendors @relation("fk_ads_vendor_id", fields: [vendorId], references: [id], onDelete: Cascade, map: "2660a2303c952d4a478ecc0a")
+  refCreatedBy Users? @relation("fk_ads_created_by", fields: [createdBy], references: [id], onDelete: SetNull, map: "0ea123d705fd6fe39e33508e")
+  refUpdatedBy Users? @relation("fk_ads_updated_by", fields: [updatedBy], references: [id], onDelete: SetNull, map: "d4c5a957c1e909991b27b567")
+  childrenConversionsAdId Conversions[] @relation("fk_conversions_ad_id")
+  @@map("ads")
+
+
+}
+
+// Migration definitions available
+model AiConversationHandoffs {
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  vendorId Int @map("vendors__id")
+  contactId Int @map("contacts__id")
+  assignedUserId Int? @map("assigned_users__id")
+  acceptedByUsersId Int? @map("accepted_by_users__id")
+  openKey String? @unique @map("open_key")
+  status String @default("waiting")
+  reason String @default("human_handoff")
+  severity String @default("high")
+  requestedAt DateTime @map("requested_at")
+  assignedAt DateTime? @map("assigned_at")
+  acceptedAt DateTime? @map("accepted_at")
+  resolvedAt DateTime? @map("resolved_at")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  refVendorId Vendors @relation("fk_ai_conversation_handoffs_vendors__id", fields: [vendorId], references: [id], onDelete: Cascade, map: "336ffed637baa93f8a002cc7")
+  refContactId Contacts @relation("fk_ai_conversation_handoffs_contacts__id", fields: [contactId], references: [id], onDelete: Cascade, map: "d45490551ae2f009cfe49957")
+  refAssignedUserId Users? @relation("fk_ai_conversation_handoffs_assigned_users__id", fields: [assignedUserId], references: [id], onDelete: SetNull, map: "6e998dc8d8782a0b5f4c91a2")
+  refAcceptedByUsersId Users? @relation("fk_ai_conversation_handoffs_accepted_by_users__id", fields: [acceptedByUsersId], references: [id], onDelete: SetNull, map: "d55748a51f4e4baf80edc6f7")
+  @@map("ai_conversation_handoffs")
+
+
+}
+
+// Migration definitions available
+model AiOperationTraces {
+  id Int @id @default(autoincrement())
+  traceId String @unique @default(uuid()) @map("trace_id")
+  vendorId Int? @map("vendors__id")
+  operation String 
+  provider String? 
+  model String? 
+  status String @default("started")
+  errorType String? @map("error_type")
+  httpStatus Int? @map("http_status")
+  durationMs Int? @map("duration_ms")
+  promptTokens Int @default(0) @map("prompt_tokens")
+  completionTokens Int @default(0) @map("completion_tokens")
+  providerRequestId String? @map("provider_request_id")
+  referenceId String? @map("reference_id")
+  metadata Json? 
+  startedAt DateTime @map("started_at")
+  finishedAt DateTime? @map("finished_at")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  @@map("ai_operation_traces")
+
+
+}
+
+// Migration definitions available
+model AudienceRules {
+  id Int @id @default(autoincrement())
+  audienceId Int @map("audience_id")
+  field String 
+  operator String @default("in")
+  value Json 
+  exclude Boolean @default(false)
+  organizationId Int @map("organization_id")
+  vendorId Int @map("vendor_id")
+  createdBy Int? @map("created_by")
+  updatedBy Int? @map("updated_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  @@index([vendorId])
+  refAudienceId Audiences @relation("fk_audience_rules_audience_id", fields: [audienceId], references: [id], onDelete: Cascade, map: "b2fdf7f83523dbffe6a995f9")
+  refOrganizationId Vendors @relation("fk_audience_rules_organization_id", fields: [organizationId], references: [id], onDelete: Cascade, map: "65bb4f1d0ba07c51b15f2cdd")
+  refVendorId Vendors @relation("fk_audience_rules_vendor_id", fields: [vendorId], references: [id], onDelete: Cascade, map: "ab13b9cadb98e098ef848634")
+  refCreatedBy Users? @relation("fk_audience_rules_created_by", fields: [createdBy], references: [id], onDelete: SetNull, map: "684ebb66567eaf5a1fd6ffe7")
+  refUpdatedBy Users? @relation("fk_audience_rules_updated_by", fields: [updatedBy], references: [id], onDelete: SetNull, map: "c6307dd55124082f12c12fd3")
+  @@map("audience_rules")
+
+
+}
+
+// Migration definitions available
+model Audiences {
+  id Int @id @default(autoincrement())
+  uuid String @unique @default(uuid())
+  metaAudienceId String? @map("meta_audience_id")
+  name String 
+  type String @default("saved")
+  status String @default("ready")
+  estimatedSizeLower Int? @map("estimated_size_lower")
+  estimatedSizeUpper Int? @map("estimated_size_upper")
+  definition Json? 
+  organizationId Int @map("organization_id")
+  vendorId Int @map("vendor_id")
+  createdBy Int? @map("created_by")
+  updatedBy Int? @map("updated_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  @@index([vendorId])
+  refOrganizationId Vendors @relation("fk_audiences_organization_id", fields: [organizationId], references: [id], onDelete: Cascade, map: "5d42f3e7fb6da780e36b779a")
+  refVendorId Vendors @relation("fk_audiences_vendor_id", fields: [vendorId], references: [id], onDelete: Cascade, map: "9a118ea5fe85d5249bb0ae93")
+  refCreatedBy Users? @relation("fk_audiences_created_by", fields: [createdBy], references: [id], onDelete: SetNull, map: "018f512df22a68c1fab0dc30")
+  refUpdatedBy Users? @relation("fk_audiences_updated_by", fields: [updatedBy], references: [id], onDelete: SetNull, map: "7abe02384bafa52e4a0846c8")
+  childrenAudienceRulesAudienceId AudienceRules[] @relation("fk_audience_rules_audience_id")
+  @@map("audiences")
+
+
+}
+
+// Migration definitions available
+model BlogCategories {
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  name String 
+  slug String @unique
+  description String? 
+  status Boolean @default(true)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  childrenBlogPostsCategoryId BlogPosts[] @relation("fk_blog_posts_category_id")
+  @@map("blog_categories")
+
+
+}
+
+// Migration definitions available
+model BlogPostTag {
+  blogPostId Int @map("blog_post_id")
+  blogTagId Int @map("blog_tag_id")
+  id Int @id @default(autoincrement())
+  refBlogPostId BlogPosts @relation("fk_blog_post_tag_blog_post_id", fields: [blogPostId], references: [id], onDelete: Cascade, map: "75dc81d9d04147c96819a106")
+  refBlogTagId BlogTags @relation("fk_blog_post_tag_blog_tag_id", fields: [blogTagId], references: [id], onDelete: Cascade, map: "19f80adde5582b5d35fcd161")
+  @@map("blog_post_tag")
+
+
+}
+
+// Migration definitions available
+model BlogPosts {
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  authorId Int @map("author_id")
+  categoryId Int? @map("category_id")
+  locale String @default("en")
+  title String 
+  slug String @unique
+  excerpt String 
+  content String 
+  contentToc Json? @map("content_toc")
+  featuredImage String? @map("featured_image")
+  status String @default("draft")
+  publishedAt DateTime? @map("published_at")
+  scheduledAt DateTime? @map("scheduled_at")
+  readingTime Int @default(1) @map("reading_time")
+  viewsCount Int @default(0) @map("views_count")
+  seoTitle String? @map("seo_title")
+  metaDescription String? @map("meta_description")
+  metaKeywords String? @map("meta_keywords")
+  canonicalUrl String? @map("canonical_url")
+  ogTitle String? @map("og_title")
+  ogDescription String? @map("og_description")
+  ogImage String? @map("og_image")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  authorName String? @map("author_name")
+  refAuthorId Users @relation("fk_blog_posts_author_id", fields: [authorId], references: [id], onDelete: Restrict, map: "792bf761289b85ef5fbcaf9a")
+  refCategoryId BlogCategories? @relation("fk_blog_posts_category_id", fields: [categoryId], references: [id], onDelete: SetNull, map: "7f8477035975ab36b5dd260a")
+  childrenBlogPostTagBlogPostId BlogPostTag[] @relation("fk_blog_post_tag_blog_post_id")
+  @@map("blog_posts")
+
+
+}
+
+// Migration definitions available
+model BlogTags {
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  name String 
+  slug String @unique
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  childrenBlogPostTagBlogTagId BlogPostTag[] @relation("fk_blog_post_tag_blog_tag_id")
+  @@map("blog_tags")
+
+
+}
+
+// Migration definitions available
+model BotFlowMessageReceipts {
+  id Int @id @default(autoincrement())
+  vendorId Int @map("vendors__id")
+  channel String 
+  externalMessageId String @map("external_message_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  @@unique([vendorId, channel, externalMessageId], map: "2484dc0e3eb50fb2aa71e0cb")
+  @@map("bot_flow_message_receipts")
+
+
+}
+
+// Migration definitions available
+model BotFlows {
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  title String 
+  startTrigger String? @map("start_trigger")
+  vendorId Int @map("vendors__id")
+  status String @default("active")
+  data Json? @map("__data")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  whatsappFlowId String? @map("whatsapp_flow_id")
+  whatsappSyncStatus String @default("pending") @map("whatsapp_sync_status")
+  whatsappSyncAt DateTime? @map("whatsapp_sync_at")
+  whatsappMetaData Json? @map("whatsapp_meta_data")
+  triggerType String @default("is") @map("trigger_type")
+  channels Json? 
+  @@index([vendorId])
+  @@map("bot_flows")
+
+
+}
+
+// LEGACY/REFERENCE ONLY: reconcile before importing data
+model BotReplies {
+  name String?
+  vendorId Int @map("vendors__id")
+  botFlowsId Int? @map("bot_flows__id")
+  replyTrigger String? @map("reply_trigger")
+  replyText String? @map("reply_text")
+  triggerType String @map("trigger_type")
+  priorityIndex Int @map("priority_index")
+  status Int 
+  data Json? @map("__data")
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  @@index([vendorId, status, priorityIndex], map: "node_bot_reply_dispatch_idx")
+  @@map("bot_replies")
+
+  botRepliesId Int? @map("bot_replies__id")
+}
+
+// Migration definitions available
+model Brands {
+  id Int @id @default(autoincrement())
+  uuid String @unique @default(uuid())
+  catalogId Int @map("catalog_id")
+  name String 
+  slug String 
+  logoUrl String? @map("logo_url")
+  website String? 
+  description String? 
+  status String @default("active")
+  metaBrandId String? @map("meta_brand_id")
+  syncStatus String @default("pending") @map("sync_status")
+  lastSyncedAt DateTime? @map("last_synced_at")
+  vendorId Int @map("vendor_id")
+  createdBy Int? @map("created_by")
+  updatedBy Int? @map("updated_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  @@index([vendorId])
+  refCatalogId Catalogs @relation("fk_brands_catalog_id", fields: [catalogId], references: [id], onDelete: Cascade, map: "0eea43d8bee7f9f932e884bd")
+  refVendorId Vendors @relation("fk_brands_vendor_id", fields: [vendorId], references: [id], onDelete: Cascade, map: "952c6d796271318ef63e261b")
+  refCreatedBy Users? @relation("fk_brands_created_by", fields: [createdBy], references: [id], onDelete: SetNull, map: "99540ba925175afc76c83c07")
+  refUpdatedBy Users? @relation("fk_brands_updated_by", fields: [updatedBy], references: [id], onDelete: SetNull, map: "0ae8234494b5e16c5e198b75")
+  childrenProductsBrandId Products[] @relation("fk_products_brand_id")
+  @@unique([catalogId, slug], map: "4f6825728bf8a729ea289c1e")
+  @@map("brands")
+
+
+}
+
+// Migration definitions available
+model Budgets {
+  id Int @id @default(autoincrement())
+  adCampaignId Int? @map("ad_campaign_id")
+  type String @default("campaign")
+  amount Decimal @db.Decimal(18, 4)
+  spent Decimal @default(0) @db.Decimal(18, 4)
+  alertThreshold Decimal @default(80) @map("alert_threshold") @db.Decimal(18, 4)
+  periodStart DateTime? @map("period_start")
+  periodEnd DateTime? @map("period_end")
+  hardLimit Boolean @default(false) @map("hard_limit")
+  organizationId Int @map("organization_id")
+  vendorId Int @map("vendor_id")
+  createdBy Int? @map("created_by")
+  updatedBy Int? @map("updated_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  @@index([vendorId])
+  refAdCampaignId AdCampaigns? @relation("fk_budgets_ad_campaign_id", fields: [adCampaignId], references: [id], onDelete: Cascade, map: "e9bde015b41f1bfdd8f163ce")
+  refOrganizationId Vendors @relation("fk_budgets_organization_id", fields: [organizationId], references: [id], onDelete: Cascade, map: "3e339d46d892a4e178cf0c68")
+  refVendorId Vendors @relation("fk_budgets_vendor_id", fields: [vendorId], references: [id], onDelete: Cascade, map: "ebeef811bc1a2417d82e790e")
+  refCreatedBy Users? @relation("fk_budgets_created_by", fields: [createdBy], references: [id], onDelete: SetNull, map: "b3c8725d87516d6d333f84b0")
+  refUpdatedBy Users? @relation("fk_budgets_updated_by", fields: [updatedBy], references: [id], onDelete: SetNull, map: "73020a9071ec23f1fa5ddf9c")
+  @@map("budgets")
+
+
+}
+
+// Migration definitions available
+model CampaignDailyMetrics {
+  id Int @id @default(autoincrement())
+  adCampaignId Int @map("ad_campaign_id")
+  metricDate DateTime @map("metric_date")
+  spend Decimal @default(0) @db.Decimal(18, 4)
+  reach Int @default(0)
+  impressions Int @default(0)
+  clicks Int @default(0)
+  conversations Int @default(0)
+  leads Int @default(0)
+  purchases Int @default(0)
+  revenue Decimal @default(0) @db.Decimal(18, 4)
+  organizationId Int @map("organization_id")
+  vendorId Int @map("vendor_id")
+  createdBy Int? @map("created_by")
+  updatedBy Int? @map("updated_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  @@index([vendorId])
+  refAdCampaignId AdCampaigns @relation("fk_campaign_daily_metrics_ad_campaign_id", fields: [adCampaignId], references: [id], onDelete: Cascade, map: "85a673308ed5c0108753ce79")
+  refOrganizationId Vendors @relation("fk_campaign_daily_metrics_organization_id", fields: [organizationId], references: [id], onDelete: Cascade, map: "da00e02cdb891acd4bde69df")
+  refVendorId Vendors @relation("fk_campaign_daily_metrics_vendor_id", fields: [vendorId], references: [id], onDelete: Cascade, map: "c202b090d4d5b7b95291d92c")
+  refCreatedBy Users? @relation("fk_campaign_daily_metrics_created_by", fields: [createdBy], references: [id], onDelete: SetNull, map: "3f139a9c57f4e5b67e8a4c6f")
+  refUpdatedBy Users? @relation("fk_campaign_daily_metrics_updated_by", fields: [updatedBy], references: [id], onDelete: SetNull, map: "48da6e4cfacadd2d7dd5fc2d")
+  @@unique([adCampaignId, metricDate], map: "604f8633b0c83f20d367fa15")
+  @@map("campaign_daily_metrics")
+
+
+}
+
+// LEGACY/REFERENCE ONLY: reconcile before importing data
+model CampaignGroups {
+  campaignId Int? @map("campaigns__id")
+  groupId Int? @map("contact_groups__id")
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@map("campaign_groups")
+
+  status Int?
+}
+
+// Migration definitions available
+model CampaignLogs {
+  id Int @id @default(autoincrement())
+  adCampaignId Int? @map("ad_campaign_id")
+  action String 
+  ipAddress String? @map("ip_address")
+  userAgent String? @map("user_agent")
+  before Json? 
+  after Json? 
+  organizationId Int @map("organization_id")
+  vendorId Int @map("vendor_id")
+  createdBy Int? @map("created_by")
+  updatedBy Int? @map("updated_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  @@index([vendorId])
+  refAdCampaignId AdCampaigns? @relation("fk_campaign_logs_ad_campaign_id", fields: [adCampaignId], references: [id], onDelete: SetNull, map: "1919a9ebd62a7db77670a551")
+  refOrganizationId Vendors @relation("fk_campaign_logs_organization_id", fields: [organizationId], references: [id], onDelete: Cascade, map: "ec594cf5c5a33220a105d80f")
+  refVendorId Vendors @relation("fk_campaign_logs_vendor_id", fields: [vendorId], references: [id], onDelete: Cascade, map: "569c6dfa008329377ea39e86")
+  refCreatedBy Users? @relation("fk_campaign_logs_created_by", fields: [createdBy], references: [id], onDelete: SetNull, map: "4aae64090c1777f4d1b72477")
+  refUpdatedBy Users? @relation("fk_campaign_logs_updated_by", fields: [updatedBy], references: [id], onDelete: SetNull, map: "900192b0f46e922561d610b8")
+  @@map("campaign_logs")
+
+
+}
+
+// Migration definitions available
+model CampaignMetrics {
+  id Int @id @default(autoincrement())
+  adCampaignId Int @map("ad_campaign_id")
+  periodStart DateTime @map("period_start")
+  periodEnd DateTime @map("period_end")
+  spend Decimal @default(0) @db.Decimal(18, 4)
+  reach Int @default(0)
+  impressions Int @default(0)
+  clicks Int @default(0)
+  conversations Int @default(0)
+  leads Int @default(0)
+  purchases Int @default(0)
+  revenue Decimal @default(0) @db.Decimal(18, 4)
+  breakdown Json? 
+  organizationId Int @map("organization_id")
+  vendorId Int @map("vendor_id")
+  createdBy Int? @map("created_by")
+  updatedBy Int? @map("updated_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  @@index([vendorId])
+  refAdCampaignId AdCampaigns @relation("fk_campaign_metrics_ad_campaign_id", fields: [adCampaignId], references: [id], onDelete: Cascade, map: "33fff986d73de87443cb24fa")
+  refOrganizationId Vendors @relation("fk_campaign_metrics_organization_id", fields: [organizationId], references: [id], onDelete: Cascade, map: "7b88c82b77d5d0d1d48f16c6")
+  refVendorId Vendors @relation("fk_campaign_metrics_vendor_id", fields: [vendorId], references: [id], onDelete: Cascade, map: "ab743e6898e1c91e7762dfc5")
+  refCreatedBy Users? @relation("fk_campaign_metrics_created_by", fields: [createdBy], references: [id], onDelete: SetNull, map: "36bfab04ac2aa1f1634d2681")
+  refUpdatedBy Users? @relation("fk_campaign_metrics_updated_by", fields: [updatedBy], references: [id], onDelete: SetNull, map: "e4eceda39d3c5ea1a09394c2")
+  @@map("campaign_metrics")
+
+
+}
+
+// Migration definitions available
+model CampaignTemplates {
+  id Int @id @default(autoincrement())
+  uuid String @unique @default(uuid())
+  name String 
+  category String? 
+  description String? 
+  configuration Json 
+  isSystem Boolean @default(false) @map("is_system")
+  organizationId Int @map("organization_id")
+  vendorId Int @map("vendor_id")
+  createdBy Int? @map("created_by")
+  updatedBy Int? @map("updated_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  @@index([vendorId])
+  refOrganizationId Vendors @relation("fk_campaign_templates_organization_id", fields: [organizationId], references: [id], onDelete: Cascade, map: "515706f58d5ec7888f2c16dc")
+  refVendorId Vendors @relation("fk_campaign_templates_vendor_id", fields: [vendorId], references: [id], onDelete: Cascade, map: "66753851ee3e6466f4c66f4d")
+  refCreatedBy Users? @relation("fk_campaign_templates_created_by", fields: [createdBy], references: [id], onDelete: SetNull, map: "c00acf6204ca8b501f34b8fa")
+  refUpdatedBy Users? @relation("fk_campaign_templates_updated_by", fields: [updatedBy], references: [id], onDelete: SetNull, map: "c7280c3f784fe6495b750a26")
+  @@map("campaign_templates")
+
+
+}
+
+// LEGACY/REFERENCE ONLY: reconcile before importing data
+model Campaigns {
+  vendorId Int @map("vendors__id")
+  templateId Int @map("whatsapp_templates__id")
+  title String 
+  status String 
+  scheduledAt DateTime? @map("scheduled_at")
+  data Json? @map("__data")
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  childrenWhatsappMessageQueueCampaignId WhatsappMessageQueue[] @relation("fk_whatsapp_message_queue_campaigns__id")
+  childrenWhatsappMessageLogsCampaignId WhatsappMessageLogs[] @relation("fk_whatsapp_message_logs_campaigns__id")
+  refVendorId Vendors @relation("fk_campaigns_vendors__id", fields: [vendorId], references: [id], onDelete: Restrict, map: "29519777cf959944ecddc1b9")
+  refTemplateId WhatsappTemplates @relation("fk_campaigns_whatsapp_templates__id", fields: [templateId], references: [id], onDelete: Restrict, map: "e8c0ccda7bd01cce8e779028")
+  @@map("campaigns")
+
+  userId Int? @map("users__id")
+  templateName String? @map("template_name")
+  templateLanguage String? @map("template_language")
+  timezone String?
+}
+
+// Migration definitions available
+model CatalogActivityLogs {
+  id Int @id @default(autoincrement())
+  catalogId Int? @map("catalog_id")
+  event String 
+  description String 
+  properties Json? 
+  ipAddress String? @map("ip_address")
+  userAgent String? @map("user_agent")
+  vendorId Int @map("vendor_id")
+  createdBy Int? @map("created_by")
+  updatedBy Int? @map("updated_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  @@index([vendorId])
+  refCatalogId Catalogs? @relation("fk_catalog_activity_logs_catalog_id", fields: [catalogId], references: [id], onDelete: SetNull, map: "bc028f9b30867be1ae9b99ff")
+  refVendorId Vendors @relation("fk_catalog_activity_logs_vendor_id", fields: [vendorId], references: [id], onDelete: Cascade, map: "601c9ad6c502b3993f6a63dd")
+  refCreatedBy Users? @relation("fk_catalog_activity_logs_created_by", fields: [createdBy], references: [id], onDelete: SetNull, map: "b5d786eb11da0e833efef5d5")
+  refUpdatedBy Users? @relation("fk_catalog_activity_logs_updated_by", fields: [updatedBy], references: [id], onDelete: SetNull, map: "bd588b3feb2b31a9948ae189")
+  @@map("catalog_activity_logs")
+
+  subjectType String? @map("subject_type")
+  subjectId Int? @map("subject_id")
+}
+
+// Migration definitions available
+model CatalogConnections {
+  id Int @id @default(autoincrement())
+  catalogId Int @map("catalog_id")
+  provider String @default("meta")
+  businessId String @map("business_id")
+  catalogIdExternal String @map("catalog_id_external")
+  whatsappBusinessAccountId String? @map("whatsapp_business_account_id")
+  accessToken String @map("access_token")
+  tokenExpiresAt DateTime? @map("token_expires_at")
+  syncStatus String @default("connected") @map("sync_status")
+  connectionHealth String @default("healthy") @map("connection_health")
+  lastSyncedAt DateTime? @map("last_synced_at")
+  lastHealthCheckAt DateTime? @map("last_health_check_at")
+  lastError String? @map("last_error")
+  meta Json? 
+  vendorId Int @map("vendor_id")
+  createdBy Int? @map("created_by")
+  updatedBy Int? @map("updated_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  phoneNumberId String? @map("phone_number_id")
+  @@index([vendorId])
+  refCatalogId Catalogs @relation("fk_catalog_connections_catalog_id", fields: [catalogId], references: [id], onDelete: Cascade, map: "0933d86ec9cd47ab7702e82c")
+  refVendorId Vendors @relation("fk_catalog_connections_vendor_id", fields: [vendorId], references: [id], onDelete: Cascade, map: "1f3ad05559d17a7d0e77f2d4")
+  refCreatedBy Users? @relation("fk_catalog_connections_created_by", fields: [createdBy], references: [id], onDelete: SetNull, map: "77b3eda2bb13cdc302a0f5c9")
+  refUpdatedBy Users? @relation("fk_catalog_connections_updated_by", fields: [updatedBy], references: [id], onDelete: SetNull, map: "d77be010d8c9dd2b4fab635b")
+  @@unique([catalogId, provider], map: "9393f7f22af1fdf9e2cc7018")
+  @@unique([vendorId, provider, catalogIdExternal], map: "d06e4280afb1132113f7b5fc")
+  @@map("catalog_connections")
+
+
+}
+
+// Migration definitions available
+model CatalogExports {
+  id Int @id @default(autoincrement())
+  uuid String @unique @default(uuid())
+  catalogId Int @map("catalog_id")
+  format String 
+  status String @default("pending")
+  disk String @default("local")
+  path String? 
+  rowCount Int @default(0) @map("row_count")
+  filters Json? 
+  error String? 
+  expiresAt DateTime? @map("expires_at")
+  completedAt DateTime? @map("completed_at")
+  vendorId Int @map("vendor_id")
+  createdBy Int? @map("created_by")
+  updatedBy Int? @map("updated_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  @@index([vendorId])
+  refCatalogId Catalogs @relation("fk_catalog_exports_catalog_id", fields: [catalogId], references: [id], onDelete: Cascade, map: "c88f7cf4241c098b5e8d2b99")
+  refVendorId Vendors @relation("fk_catalog_exports_vendor_id", fields: [vendorId], references: [id], onDelete: Cascade, map: "f5fee2281f96dfbd1869efca")
+  refCreatedBy Users? @relation("fk_catalog_exports_created_by", fields: [createdBy], references: [id], onDelete: SetNull, map: "5843f3eedbf138dd14de37c8")
+  refUpdatedBy Users? @relation("fk_catalog_exports_updated_by", fields: [updatedBy], references: [id], onDelete: SetNull, map: "88fa134680ff52efa7195763")
+  @@map("catalog_exports")
+
+
+}
+
+// Migration definitions available
+model CatalogImports {
+  id Int @id @default(autoincrement())
+  uuid String @unique @default(uuid())
+  catalogId Int @map("catalog_id")
+  source String @default("upload")
+  format String 
+  originalName String @map("original_name")
+  disk String @default("local")
+  path String 
+  status String @default("uploaded")
+  totalRows Int @default(0) @map("total_rows")
+  processedRows Int @default(0) @map("processed_rows")
+  importedRows Int @default(0) @map("imported_rows")
+  failedRows Int @default(0) @map("failed_rows")
+  errorFilePath String? @map("error_file_path")
+  mapping Json? 
+  summary Json? 
+  startedAt DateTime? @map("started_at")
+  completedAt DateTime? @map("completed_at")
+  vendorId Int @map("vendor_id")
+  createdBy Int? @map("created_by")
+  updatedBy Int? @map("updated_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  @@index([vendorId])
+  refCatalogId Catalogs @relation("fk_catalog_imports_catalog_id", fields: [catalogId], references: [id], onDelete: Cascade, map: "be4dfdadc8021a23985ca54c")
+  refVendorId Vendors @relation("fk_catalog_imports_vendor_id", fields: [vendorId], references: [id], onDelete: Cascade, map: "57601b73ee8cecdf0df255fd")
+  refCreatedBy Users? @relation("fk_catalog_imports_created_by", fields: [createdBy], references: [id], onDelete: SetNull, map: "c8678bc32bb282eb8dfacf81")
+  refUpdatedBy Users? @relation("fk_catalog_imports_updated_by", fields: [updatedBy], references: [id], onDelete: SetNull, map: "f8f5333466a526f35309290c")
+  @@map("catalog_imports")
+
+
+}
+
+// Migration definitions available
+model CatalogSettings {
+  id Int @id @default(autoincrement())
+  catalogId Int @unique @map("catalog_id")
+  currency String @default("USD")
+  defaultTaxRate Decimal @default(0) @map("default_tax_rate") @db.Decimal(18, 4)
+  weightUnit String @default("kg") @map("weight_unit")
+  dimensionUnit String @default("cm") @map("dimension_unit")
+  defaultShippingCost Decimal @default(0) @map("default_shipping_cost") @db.Decimal(18, 4)
+  storageDisk String @default("public") @map("storage_disk")
+  imageQuality Int @default(82) @map("image_quality")
+  maxImageSizeKb Int @default(5120) @map("max_image_size_kb")
+  metaAutoSync Boolean @default(true) @map("meta_auto_sync")
+  autoRetry Boolean @default(true) @map("auto_retry")
+  maxSyncAttempts Int @default(4) @map("max_sync_attempts")
+  notifications Json? 
+  vendorId Int @map("vendor_id")
+  createdBy Int? @map("created_by")
+  updatedBy Int? @map("updated_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  @@index([vendorId])
+  refCatalogId Catalogs @relation("fk_catalog_settings_catalog_id", fields: [catalogId], references: [id], onDelete: Cascade, map: "8ca26d20bf6e5389e269e958")
+  refVendorId Vendors @relation("fk_catalog_settings_vendor_id", fields: [vendorId], references: [id], onDelete: Cascade, map: "a42ae07a873af8bdc3401202")
+  refCreatedBy Users? @relation("fk_catalog_settings_created_by", fields: [createdBy], references: [id], onDelete: SetNull, map: "9384b0a6b8322221aecd5571")
+  refUpdatedBy Users? @relation("fk_catalog_settings_updated_by", fields: [updatedBy], references: [id], onDelete: SetNull, map: "b7011243d596dcce90885180")
+  @@map("catalog_settings")
+
+
+}
+
+// Migration definitions available
+model CatalogSyncLogs {
+  id Int @id @default(autoincrement())
+  catalogId Int @map("catalog_id")
+  provider String @default("meta")
+  operation String 
+  status String @default("pending")
+  attempt Int @default(0)
+  externalId String? @map("external_id")
+  errorCode String? @map("error_code")
+  errorMessage String? @map("error_message")
+  requestPayload Json? @map("request_payload")
+  responsePayload Json? @map("response_payload")
+  startedAt DateTime? @map("started_at")
+  completedAt DateTime? @map("completed_at")
+  vendorId Int @map("vendor_id")
+  createdBy Int? @map("created_by")
+  updatedBy Int? @map("updated_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  @@index([vendorId])
+  refCatalogId Catalogs @relation("fk_catalog_sync_logs_catalog_id", fields: [catalogId], references: [id], onDelete: Cascade, map: "a722a9b7b08cb167b3b38c78")
+  refVendorId Vendors @relation("fk_catalog_sync_logs_vendor_id", fields: [vendorId], references: [id], onDelete: Cascade, map: "56175597605288f8a9810a5d")
+  refCreatedBy Users? @relation("fk_catalog_sync_logs_created_by", fields: [createdBy], references: [id], onDelete: SetNull, map: "404767591ca872acdd2726c1")
+  refUpdatedBy Users? @relation("fk_catalog_sync_logs_updated_by", fields: [updatedBy], references: [id], onDelete: SetNull, map: "9981c2012dc260847f1b560b")
+  @@map("catalog_sync_logs")
+
+  syncableType String? @map("syncable_type")
+  syncableId Int? @map("syncable_id")
+}
+
+// Migration definitions available
+model Catalogs {
+  id Int @id @default(autoincrement())
+  uuid String @unique @default(uuid())
+  name String 
+  slug String 
+  description String? 
+  currency String @default("USD")
+  status String @default("draft")
+  isDefault Boolean @default(false) @map("is_default")
+  metaCatalogId String? @map("meta_catalog_id")
+  syncStatus String @default("not_connected") @map("sync_status")
+  lastSyncedAt DateTime? @map("last_synced_at")
+  limits Json? 
+  vendorId Int @map("vendor_id")
+  createdBy Int? @map("created_by")
+  updatedBy Int? @map("updated_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  @@index([vendorId])
+  childrenCatalogActivityLogsCatalogId CatalogActivityLogs[] @relation("fk_catalog_activity_logs_catalog_id")
+  refVendorId Vendors @relation("fk_catalogs_vendor_id", fields: [vendorId], references: [id], onDelete: Cascade, map: "72be336e958f16c6ef9862b0")
+  refCreatedBy Users? @relation("fk_catalogs_created_by", fields: [createdBy], references: [id], onDelete: SetNull, map: "a3416a8abec4519e520c0946")
+  refUpdatedBy Users? @relation("fk_catalogs_updated_by", fields: [updatedBy], references: [id], onDelete: SetNull, map: "7aa5f640dc49b258729ccf06")
+  childrenCatalogConnectionsCatalogId CatalogConnections[] @relation("fk_catalog_connections_catalog_id")
+  childrenCategoriesCatalogId Categories[] @relation("fk_categories_catalog_id")
+  childrenBrandsCatalogId Brands[] @relation("fk_brands_catalog_id")
+  childrenCollectionsCatalogId Collections[] @relation("fk_collections_catalog_id")
+  childrenProductsCatalogId Products[] @relation("fk_products_catalog_id")
+  childrenCatalogImportsCatalogId CatalogImports[] @relation("fk_catalog_imports_catalog_id")
+  childrenCatalogExportsCatalogId CatalogExports[] @relation("fk_catalog_exports_catalog_id")
+  childrenCatalogSyncLogsCatalogId CatalogSyncLogs[] @relation("fk_catalog_sync_logs_catalog_id")
+  childrenCatalogSettingsCatalogId CatalogSettings[] @relation("fk_catalog_settings_catalog_id")
+  @@unique([vendorId, slug], map: "996eba0e8d1621618741bcb2")
+  @@unique([vendorId, metaCatalogId], map: "c3d993a52507d69629d8e058")
+  @@map("catalogs")
+
+
+}
+
+// Migration definitions available
+model Categories {
+  id Int @id @default(autoincrement())
+  uuid String @unique @default(uuid())
+  catalogId Int @map("catalog_id")
+  parentId Int? @map("parent_id")
+  name String 
+  slug String 
+  icon String? 
+  imageUrl String? @map("image_url")
+  description String? 
+  sortOrder Int @default(0) @map("sort_order")
+  status String @default("active")
+  metaCategoryId String? @map("meta_category_id")
+  syncStatus String @default("pending") @map("sync_status")
+  lastSyncedAt DateTime? @map("last_synced_at")
+  vendorId Int @map("vendor_id")
+  createdBy Int? @map("created_by")
+  updatedBy Int? @map("updated_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  @@index([vendorId])
+  refCatalogId Catalogs @relation("fk_categories_catalog_id", fields: [catalogId], references: [id], onDelete: Cascade, map: "24499a46c342eda6549018be")
+  refParentId Categories? @relation("fk_categories_parent_id", fields: [parentId], references: [id], onDelete: SetNull, map: "72870bae717c684ef4ecfcfa")
+  childrenCategoriesParentId Categories[] @relation("fk_categories_parent_id")
+  refVendorId Vendors @relation("fk_categories_vendor_id", fields: [vendorId], references: [id], onDelete: Cascade, map: "29e16de05bd24c145c477d5c")
+  refCreatedBy Users? @relation("fk_categories_created_by", fields: [createdBy], references: [id], onDelete: SetNull, map: "bbe44e80571ee26e58c0d35a")
+  refUpdatedBy Users? @relation("fk_categories_updated_by", fields: [updatedBy], references: [id], onDelete: SetNull, map: "0e8c074dccf667dab063f13e")
+  childrenProductsCategoryId Products[] @relation("fk_products_category_id")
+  @@unique([catalogId, slug], map: "5dbe1c84f86344e2d9a216b8")
+  @@map("categories")
+
+
+}
+
+// Migration definitions available
+model CollectionProducts {
+  id Int @id @default(autoincrement())
+  collectionId Int @map("collection_id")
+  productId Int @map("product_id")
+  sortOrder Int @default(0) @map("sort_order")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  refCollectionId Collections @relation("fk_collection_products_collection_id", fields: [collectionId], references: [id], onDelete: Cascade, map: "dc8cf2ab4f5fe5881b0ee78c")
+  refProductId Products @relation("fk_collection_products_product_id", fields: [productId], references: [id], onDelete: Cascade, map: "6faccd172866751498742ada")
+  @@unique([collectionId, productId], map: "b7d2b9171ea1c5eb3f17e631")
+  @@map("collection_products")
+
+
+}
+
+// Migration definitions available
+model Collections {
+  id Int @id @default(autoincrement())
+  uuid String @unique @default(uuid())
+  catalogId Int @map("catalog_id")
+  name String 
+  slug String 
+  description String? 
+  imageUrl String? @map("image_url")
+  status String @default("active")
+  sortOrder Int @default(0) @map("sort_order")
+  metaProductSetId String? @map("meta_product_set_id")
+  syncStatus String @default("pending") @map("sync_status")
+  lastSyncedAt DateTime? @map("last_synced_at")
+  vendorId Int @map("vendor_id")
+  createdBy Int? @map("created_by")
+  updatedBy Int? @map("updated_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  @@index([vendorId])
+  refCatalogId Catalogs @relation("fk_collections_catalog_id", fields: [catalogId], references: [id], onDelete: Cascade, map: "ff728fa0f924799b81f763f3")
+  refVendorId Vendors @relation("fk_collections_vendor_id", fields: [vendorId], references: [id], onDelete: Cascade, map: "52f8d14cb2c64b797d3b7773")
+  refCreatedBy Users? @relation("fk_collections_created_by", fields: [createdBy], references: [id], onDelete: SetNull, map: "a0080755dad821626d32de4a")
+  refUpdatedBy Users? @relation("fk_collections_updated_by", fields: [updatedBy], references: [id], onDelete: SetNull, map: "abe2581aeedb99169da4d744")
+  childrenCollectionProductsCollectionId CollectionProducts[] @relation("fk_collection_products_collection_id")
+  @@unique([catalogId, slug], map: "e094176a0181b0a85b364f60")
+  @@map("collections")
+
+
+}
+
+// Migration definitions available
+model CommentToDmAutomations {
+  id Int @id @default(autoincrement())
+  uuid String @unique @default(uuid())
+  vendorId Int @map("vendors__id")
+  createdBy Int? @map("created_by")
+  name String 
+  platform String 
+  status String @default("draft")
+  externalAccountId String @map("external_account_id")
+  contentScope String @default("all") @map("content_scope")
+  mediaId String? @map("media_id")
+  mediaLabel String? @map("media_label")
+  commentMatchType String @default("any") @map("comment_match_type")
+  matchOperator String @default("contains") @map("match_operator")
+  keywords Json? 
+  dmMessage String @map("dm_message")
+  publicReplyEnabled Boolean @default(false) @map("public_reply_enabled")
+  publicReplyMessage String? @map("public_reply_message")
+  lastTriggeredAt DateTime? @map("last_triggered_at")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  dmAttachmentType String? @map("dm_attachment_type")
+  dmAttachmentUrl String? @map("dm_attachment_url")
+  dmAttachmentPath String? @map("dm_attachment_path")
+  dmAttachmentName String? @map("dm_attachment_name")
+  followGateEnabled Boolean @default(false) @map("follow_gate_enabled")
+  followGateMessage String? @map("follow_gate_message")
+  followGateRetryMessage String? @map("follow_gate_retry_message")
+  @@index([vendorId])
+  refVendorId Vendors @relation("fk_comment_to_dm_automations_vendors__id", fields: [vendorId], references: [id], onDelete: Cascade, map: "3709c8143028841047b1fec9")
+  childrenCommentToDmExecutionsAutomationId CommentToDmExecutions[] @relation("fk_comment_to_dm_executions_automation_id")
+  @@map("comment_to_dm_automations")
+
+
+}
+
+// Migration definitions available
+model CommentToDmExecutions {
+  id Int @id @default(autoincrement())
+  automationId Int @map("automation_id")
+  vendorId Int @map("vendors__id")
+  platform String 
+  commentId String @map("comment_id")
+  mediaId String? @map("media_id")
+  commenterId String? @map("commenter_id")
+  matchedAt DateTime @map("matched_at")
+  dmStatus String @default("pending") @map("dm_status")
+  publicReplyStatus String @default("skipped") @map("public_reply_status")
+  status String @default("pending")
+  error String? 
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  followGateStatus String @default("disabled") @map("follow_gate_status")
+  followGateRecipientId String? @map("follow_gate_recipient_id")
+  followGateChecks Int @default(0) @map("follow_gate_checks")
+  followGateCheckedAt DateTime? @map("follow_gate_checked_at")
+  contentDeliveredAt DateTime? @map("content_delivered_at")
+  @@index([vendorId])
+  refAutomationId CommentToDmAutomations @relation("fk_comment_to_dm_executions_automation_id", fields: [automationId], references: [id], onDelete: Cascade, map: "1a5ce868eba949d06f43fc41")
+  refVendorId Vendors @relation("fk_comment_to_dm_executions_vendors__id", fields: [vendorId], references: [id], onDelete: Cascade, map: "16b8372ab863e3759e11b60d")
+  @@unique([automationId, commentId], map: "f7eb0345313c1f1ed2fd0980")
+  @@map("comment_to_dm_executions")
+
+
+}
+
+// LEGACY/REFERENCE ONLY: reconcile before importing data
+model Configurations {
+  name String 
+  value String? 
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@map("configurations")
+
+  dataType Int? @map("data_type")
+}
+
+// LEGACY/REFERENCE ONLY: reconcile before importing data
+model ContactCustomFieldValues {
+  contactId Int @map("contacts__id")
+  contactCustomFieldsId Int @map("contact_custom_fields__id")
+  fieldValue String? @map("field_value")
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  refContactId Contacts @relation("fk_contact_custom_field_values_contacts__id", fields: [contactId], references: [id], onDelete: Restrict, map: "04435e1804f06fce831cda69")
+  refContactCustomFieldsId ContactCustomFields @relation("fk_contact_custom_field_values_contact_custom_fields__id", fields: [contactCustomFieldsId], references: [id], onDelete: Restrict, map: "97bfb2f671da0660a7817e8d")
+  @@map("contact_custom_field_values")
+  @@unique([contactId, contactCustomFieldsId])
+
+  status Int?
+}
+
+// LEGACY/REFERENCE ONLY: reconcile before importing data
+model ContactCustomFields {
+  vendorId Int @map("vendors__id")
+  inputName String @map("input_name")
+  inputType String @map("input_type")
+  name String?
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  childrenContactCustomFieldValuesContactCustomFieldsId ContactCustomFieldValues[] @relation("fk_contact_custom_field_values_contact_custom_fields__id")
+  @@map("contact_custom_fields")
+
+  status Int?
+}
+
+// LEGACY/REFERENCE ONLY: reconcile before importing data
+model ContactGroups {
+  wabPhoneNumberId String? @map("wab_phone_number_id")
+  vendorId Int @map("vendors__id")
+  title String 
+  status Int @default(1)
+  description String? 
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  childrenGroupContactsGroupId GroupContacts[] @relation("fk_group_contacts_contact_groups__id")
+  refVendorId Vendors @relation("fk_contact_groups_vendors__id", fields: [vendorId], references: [id], onDelete: Restrict, map: "48f4a605a25a2bf37d6e7822")
+  @@map("contact_groups")
+
+
+}
+
+// LEGACY/REFERENCE ONLY: reconcile before importing data
+model ContactLabels {
+  contactId Int @map("contacts__id")
+  labelsId Int @map("labels__id")
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  refContactId Contacts @relation("fk_contact_labels_contacts__id", fields: [contactId], references: [id], onDelete: Restrict, map: "b2f91ddb52e636bf0b57a6e6")
+  refLabelsId Labels @relation("fk_contact_labels_labels__id", fields: [labelsId], references: [id], onDelete: Restrict, map: "843ab5c1bcf6094ed3902881")
+  @@map("contact_labels")
+  @@unique([contactId, labelsId])
+
+  status Int?
+}
+
+// LEGACY/REFERENCE ONLY: reconcile before importing data
+model Contacts {
+  whatsappOptOut Int? @map("whatsapp_opt_out")
+  languageCode String? @map("language_code")
+  platform String? 
+  instagramId String? @map("instagram_id")
+  instagramUsername String? @map("instagram_username")
+  conversationStatus String @default("open") @map("conversation_status")
+  conversationResolvedAt DateTime? @map("conversation_resolved_at")
+  conversationResolvedByUserId Int? @map("conversation_resolved_by_user_id")
+  conversationResolutionSequence Int @default(0) @map("conversation_resolution_sequence")
+  facebookId String? @map("facebook_id")
+  wabPhoneNumberId String? @map("wab_phone_number_id")
+  vendorId Int @map("vendors__id")
+  waId String? @map("wa_id")
+  firstName String? @map("first_name")
+  lastName String? @map("last_name")
+  email String? 
+  status Int @default(1)
+  assignedUserId Int? @map("assigned_users__id")
+  countryId Int? @map("countries__id")
+  messagedAt DateTime? @map("messaged_at")
+  unreadMessagesCount Int @default(0) @map("unread_messages_count")
+  disableAiBot Int @default(0) @map("disable_ai_bot")
+  data Json? @map("__data")
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  childrenInstagramMessageLogsContactId InstagramMessageLogs[] @relation("fk_instagram_message_logs_contacts__id")
+  childrenWhatsappMessageQueueContactId WhatsappMessageQueue[] @relation("fk_whatsapp_message_queue_contacts__id")
+  refVendorId Vendors @relation("fk_contacts_vendors__id", fields: [vendorId], references: [id], onDelete: Restrict, map: "2356c5f3285ca71b92653495")
+  refAssignedUserId Users? @relation("fk_contacts_assigned_users__id", fields: [assignedUserId], references: [id], onDelete: Restrict, map: "0bab1c8046f34c00c8247fc6")
+  childrenGroupContactsContactId GroupContacts[] @relation("fk_group_contacts_contacts__id")
+  childrenAiConversationHandoffsContactId AiConversationHandoffs[] @relation("fk_ai_conversation_handoffs_contacts__id")
+  childrenConversationAiAnalysisConversationId ConversationAiAnalysis[] @relation("fk_conversation_ai_analysis_conversation_id")
+  childrenWhatsappMessageLogsContactId WhatsappMessageLogs[] @relation("fk_whatsapp_message_logs_contacts__id")
+  childrenConversationClassificationsContactId ConversationClassifications[] @relation("fk_conversation_classifications_contacts__id")
+  childrenContactCustomFieldValuesContactId ContactCustomFieldValues[] @relation("fk_contact_custom_field_values_contacts__id")
+  childrenContactLabelsContactId ContactLabels[] @relation("fk_contact_labels_contacts__id")
+  childrenConversationClassificationLogsContactId ConversationClassificationLogs[] @relation("fk_conversation_classification_logs_contacts__id")
+  childrenConversationCxScoresConversationId ConversationCxScores[] @relation("fk_conversation_cx_scores_conversation_id")
+  childrenShopifyOrdersContactId ShopifyOrders[] @relation("fk_shopify_orders_contacts__id")
+  childrenShopifyOrderNotificationsContactId ShopifyOrderNotifications[] @relation("fk_shopify_order_notifications_contacts__id")
+  childrenWoocommerceOrdersContactId WoocommerceOrders[] @relation("fk_woocommerce_orders_contacts__id")
+  childrenWoocommerceOrderNotificationsContactId WoocommerceOrderNotifications[] @relation("fk_woocommerce_order_notifications_contacts__id")
+  @@map("contacts")
+
+  phoneVerifiedAt DateTime? @map("phone_verified_at")
+  emailVerifiedAt DateTime? @map("email_verified_at")
+}
+
+// Migration definitions available
+model ConversationAiAnalysis {
+  id Int @id @default(autoincrement())
+  conversationId Int @map("conversation_id")
+  vendorId Int @map("vendors__id")
+  intent String? 
+  intentConfidence Int? @map("intent_confidence")
+  sentiment String? 
+  sentimentConfidence Int? @map("sentiment_confidence")
+  urgency String? 
+  riskLevel String? @map("risk_level")
+  leadScore Int @default(0) @map("lead_score")
+  leadCategory String? @map("lead_category")
+  aiInsight String? @map("ai_insight")
+  conversationSummary String? @map("conversation_summary")
+  nextBestAction String? @map("next_best_action")
+  suggestedReplies Json? @map("suggested_replies")
+  messageCount Int @default(0) @map("message_count")
+  lastAnalyzedAt DateTime? @map("last_analyzed_at")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  refVendorId Vendors @relation("fk_conversation_ai_analysis_vendors__id", fields: [vendorId], references: [id], onDelete: Cascade, map: "f05837753da4cad692095823")
+  refConversationId Contacts @relation("fk_conversation_ai_analysis_conversation_id", fields: [conversationId], references: [id], onDelete: Cascade, map: "53c1133437c965006062a5dc")
+  @@unique([vendorId, conversationId], map: "3bf46fdd5ba0e1ca4bd42bbc")
+  @@map("conversation_ai_analysis")
+
+
+}
+
+// Migration definitions available
+model ConversationClassificationLogs {
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  vendorId Int @map("vendors__id")
+  contactId Int @map("contacts__id")
+  type String 
+  oldValue String? @map("old_value")
+  newValue String? @map("new_value")
+  changedByUsersId Int? @map("changed_by_users__id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  refVendorId Vendors @relation("fk_conversation_classification_logs_vendors__id", fields: [vendorId], references: [id], onDelete: Cascade, map: "8b507017e8fd12551e99cb17")
+  refContactId Contacts @relation("fk_conversation_classification_logs_contacts__id", fields: [contactId], references: [id], onDelete: Cascade, map: "e901035bd7ff2a8a931a018d")
+  @@map("conversation_classification_logs")
+
+
+}
+
+// Migration definitions available
+model ConversationClassificationTags {
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  vendorId Int @map("vendors__id")
+  type String 
+  name String 
+  color String @default("#64748b")
+  icon String? 
+  category String? 
+  createdByUsersId Int? @map("created_by_users__id")
+  data Json? @map("__data")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  refVendorId Vendors @relation("fk_conversation_classification_tags_vendors__id", fields: [vendorId], references: [id], onDelete: Cascade, map: "78689423cdf9fdde1c0df2aa")
+  @@unique([vendorId, type, name], map: "0ccd62b47c106b611abe9e1b")
+  @@map("conversation_classification_tags")
+
+
+}
+
+// Migration definitions available
+model ConversationClassifications {
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  vendorId Int @map("vendors__id")
+  contactId Int @map("contacts__id")
+  intent String? 
+  sentiment String? 
+  urgency String? 
+  riskLevel String? @map("risk_level")
+  updatedByUsersId Int? @map("updated_by_users__id")
+  data Json? @map("__data")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  refVendorId Vendors @relation("fk_conversation_classifications_vendors__id", fields: [vendorId], references: [id], onDelete: Cascade, map: "3191be2487dfd1db968b0468")
+  refContactId Contacts @relation("fk_conversation_classifications_contacts__id", fields: [contactId], references: [id], onDelete: Cascade, map: "2e88124d2abab210c174fbe8")
+  @@unique([vendorId, contactId], map: "62489c023bd0f32bd65d79d7")
+  @@map("conversation_classifications")
+
+
+}
+
+// Migration definitions available
+model ConversationCxScores {
+  id Int @id @default(autoincrement())
+  conversationId Int @map("conversation_id")
+  vendorId Int @map("vendors__id")
+  agentId Int? @map("agent_id")
+  resolutionSequence Int @default(1) @map("resolution_sequence")
+  cxScore Decimal? @map("cx_score") @db.Decimal(18, 4)
+  rating String? 
+  summary String? 
+  reasonJson Json? @map("reason_json")
+  recommendedAction String? @map("recommended_action")
+  followUpRequired Boolean @default(false) @map("follow_up_required")
+  status String @default("pending")
+  failureMessage String? @map("failure_message")
+  generatedAt DateTime? @map("generated_at")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  refVendorId Vendors @relation("fk_conversation_cx_scores_vendors__id", fields: [vendorId], references: [id], onDelete: Cascade, map: "c19ea9900501be24c465a83a")
+  refConversationId Contacts @relation("fk_conversation_cx_scores_conversation_id", fields: [conversationId], references: [id], onDelete: Cascade, map: "4b18e671d6339638bf7c2d44")
+  refAgentId Users? @relation("fk_conversation_cx_scores_agent_id", fields: [agentId], references: [id], onDelete: SetNull, map: "511b1ba0d197501c2824b45d")
+  @@unique([vendorId, conversationId, resolutionSequence], map: "631072ab7afa60efb49103c5")
+  @@map("conversation_cx_scores")
+
+
+}
+
+// Migration definitions available
+model ConversionEvents {
+  id Int @id @default(autoincrement())
+  conversionId Int @map("conversion_id")
+  eventName String @map("event_name")
+  source String @default("manual")
+  payload Json? 
+  occurredAt DateTime @map("occurred_at")
+  organizationId Int @map("organization_id")
+  vendorId Int @map("vendor_id")
+  createdBy Int? @map("created_by")
+  updatedBy Int? @map("updated_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  @@index([vendorId])
+  refConversionId Conversions @relation("fk_conversion_events_conversion_id", fields: [conversionId], references: [id], onDelete: Cascade, map: "b3ae72b439c1897397765513")
+  refOrganizationId Vendors @relation("fk_conversion_events_organization_id", fields: [organizationId], references: [id], onDelete: Cascade, map: "0879693c9efb7909c1641a70")
+  refVendorId Vendors @relation("fk_conversion_events_vendor_id", fields: [vendorId], references: [id], onDelete: Cascade, map: "673c6c10ec702b3e9369eec8")
+  refCreatedBy Users? @relation("fk_conversion_events_created_by", fields: [createdBy], references: [id], onDelete: SetNull, map: "5829c4ae228a4ead2301db6e")
+  refUpdatedBy Users? @relation("fk_conversion_events_updated_by", fields: [updatedBy], references: [id], onDelete: SetNull, map: "82da4ab87f0afe2c4c84eff3")
+  @@map("conversion_events")
+
+
+}
+
+// Migration definitions available
+model Conversions {
+  id Int @id @default(autoincrement())
+  uuid String @unique @default(uuid())
+  adCampaignId Int? @map("ad_campaign_id")
+  adId Int? @map("ad_id")
+  externalId String? @map("external_id")
+  type String 
+  status String @default("confirmed")
+  value Decimal @default(0) @db.Decimal(18, 4)
+  currency String @default("USD")
+  contactWaId String? @map("contact_wa_id")
+  occurredAt DateTime @map("occurred_at")
+  attribution Json? 
+  meta Json? 
+  organizationId Int @map("organization_id")
+  vendorId Int @map("vendor_id")
+  createdBy Int? @map("created_by")
+  updatedBy Int? @map("updated_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  @@index([vendorId])
+  childrenConversionEventsConversionId ConversionEvents[] @relation("fk_conversion_events_conversion_id")
+  refAdCampaignId AdCampaigns? @relation("fk_conversions_ad_campaign_id", fields: [adCampaignId], references: [id], onDelete: SetNull, map: "65b4799b653d219ce0dfbee0")
+  refAdId Ads? @relation("fk_conversions_ad_id", fields: [adId], references: [id], onDelete: SetNull, map: "f31a4c8c30e1847df4eb68d5")
+  refOrganizationId Vendors @relation("fk_conversions_organization_id", fields: [organizationId], references: [id], onDelete: Cascade, map: "5cb90528d4036cf99e62f032")
+  refVendorId Vendors @relation("fk_conversions_vendor_id", fields: [vendorId], references: [id], onDelete: Cascade, map: "601b7e96c695cc33a72367d1")
+  refCreatedBy Users? @relation("fk_conversions_created_by", fields: [createdBy], references: [id], onDelete: SetNull, map: "c260c33034d0ba92a9075c4b")
+  refUpdatedBy Users? @relation("fk_conversions_updated_by", fields: [updatedBy], references: [id], onDelete: SetNull, map: "b56161d126d14c1374762b0f")
+  @@map("conversions")
+
+
+}
+
+// LEGACY/REFERENCE ONLY: reconcile before importing data
+model Countries {
+  name String 
+  phoneCode String? @map("phone_code")
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@map("countries")
+
+  isoCode String? @map("iso_code")
+  nameCapitalized String? @map("name_capitalized")
+  iso3Code String? @map("iso3_code")
+  isoNumCode Int? @map("iso_num_code")
+}
+
+// Migration definitions available
+model CreativeAssets {
+  id Int @id @default(autoincrement())
+  adCreativeId Int? @map("ad_creative_id")
+  type String 
+  disk String @default("public")
+  path String 
+  originalName String @map("original_name")
+  mimeType String @map("mime_type")
+  size Int 
+  width Int? 
+  height Int? 
+  checksum String 
+  tags Json? 
+  organizationId Int @map("organization_id")
+  vendorId Int @map("vendor_id")
+  createdBy Int? @map("created_by")
+  updatedBy Int? @map("updated_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  @@index([vendorId])
+  refAdCreativeId AdCreatives? @relation("fk_creative_assets_ad_creative_id", fields: [adCreativeId], references: [id], onDelete: Cascade, map: "27e9d17c9921f18536643650")
+  refOrganizationId Vendors @relation("fk_creative_assets_organization_id", fields: [organizationId], references: [id], onDelete: Cascade, map: "6e5153bec14d69d5215b4e54")
+  refVendorId Vendors @relation("fk_creative_assets_vendor_id", fields: [vendorId], references: [id], onDelete: Cascade, map: "2be675a3ad7749bbaa38983e")
+  refCreatedBy Users? @relation("fk_creative_assets_created_by", fields: [createdBy], references: [id], onDelete: SetNull, map: "535e465630bae4e59d4edf61")
+  refUpdatedBy Users? @relation("fk_creative_assets_updated_by", fields: [updatedBy], references: [id], onDelete: SetNull, map: "4e24b361f7f641198ed6cde8")
+  @@map("creative_assets")
+
+
+}
+
+// Migration definitions available
+model FailedJobs {
+  id Int @id @default(autoincrement())
+  uuid String @unique @default(uuid())
+  connection String 
+  queue String 
+  payload String 
+  exception String 
+  failedAt DateTime @map("failed_at")
+  @@map("failed_jobs")
+
+
+}
+
+// Migration definitions available
+model GoogleSheetAutomations {
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  vendorId Int @map("vendors__id")
+  title String 
+  triggerType String @default("new_row") @map("trigger_type")
+  status Int @default(1)
+  config Json? 
+  generatedScript String? @map("generated_script")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  refVendorId Vendors @relation("fk_google_sheet_automations_vendors__id", fields: [vendorId], references: [id], onDelete: Cascade, map: "d3e28e26c4e2342367fc472e")
+  @@map("google_sheet_automations")
+
+
+}
+
+// LEGACY/REFERENCE ONLY: reconcile before importing data
+model GroupContacts {
+  contactId Int @map("contacts__id")
+  groupId Int @map("contact_groups__id")
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  refContactId Contacts @relation("fk_group_contacts_contacts__id", fields: [contactId], references: [id], onDelete: Restrict, map: "801bbc205530e272421c323f")
+  refGroupId ContactGroups @relation("fk_group_contacts_contact_groups__id", fields: [groupId], references: [id], onDelete: Restrict, map: "ff006018677535c78d7b0973")
+  @@map("group_contacts")
+  @@unique([contactId, groupId])
+
+  status Int?
+}
+
+// Migration definitions available
+model InstagramMessageLogs {
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  vendorId Int @map("vendors__id")
+  contactId Int? @map("contacts__id")
+  instagramPageId String? @map("instagram_page_id")
+  contactInstagramId String? @map("contact_instagram_id")
+  messageId String @map("message_id")
+  message String? 
+  status String? 
+  type String? 
+  isIncomingMessage Boolean @default(false) @map("is_incoming_message")
+  messageType String @default("text") @map("message_type")
+  messagedAt DateTime? @map("messaged_at")
+  deliveredAt DateTime? @map("delivered_at")
+  readAt DateTime? @map("read_at")
+  repliedToInstagramMessageLogsUid String? @map("replied_to_instagram_message_logs__uid")
+  isForwarded Boolean @default(false) @map("is_forwarded")
+  botReply Boolean @default(false) @map("bot_reply")
+  disableAiBot Boolean @default(false) @map("disable_ai_bot")
+  data Json? @map("__data")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  refVendorId Vendors @relation("fk_instagram_message_logs_vendors__id", fields: [vendorId], references: [id], onDelete: Cascade, map: "f93c36461f9d470edab63e05")
+  refContactId Contacts? @relation("fk_instagram_message_logs_contacts__id", fields: [contactId], references: [id], onDelete: SetNull, map: "61bffb8d8b3b2ddb31ead528")
+  @@unique([vendorId, messageId], map: "5994824fa070f19326987053")
+  @@map("instagram_message_logs")
+
+
+}
+
+// Migration definitions available
+model Jobs {
+  id Int @id @default(autoincrement())
+  queue String 
+  payload String 
+  attempts Int 
+  reservedAt Int? @map("reserved_at")
+  availableAt Int @map("available_at")
+  createdAt Int @map("created_at")
+  @@map("jobs")
+
+
+}
+
+// LEGACY/REFERENCE ONLY: reconcile before importing data
+model Labels {
+  textColor String? @map("text_color")
+  bgColor String? @map("bg_color")
+  status Int @default(1)
+  vendorId Int @map("vendors__id")
+  title String 
+  color String? 
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  childrenContactLabelsLabelsId ContactLabels[] @relation("fk_contact_labels_labels__id")
+  @@map("labels")
+
+
+}
+
+// LEGACY/REFERENCE ONLY: reconcile before importing data
+model LoginLogs {
+  userId Int @map("user_id")
+  ipAddress String? @map("ip_address")
+  data Json? @map("__data")
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@map("login_logs")
+
+  email String?
+  role Int?
+}
+
+// LEGACY/REFERENCE ONLY: reconcile before importing data
+model ManualSubscriptions {
+  vendorId Int @map("vendors__id")
+  status String 
+  data Json? @map("__data")
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  @@map("manual_subscriptions")
+
+  planId String? @map("plan_id")
+  endsAt DateTime? @map("ends_at")
+  remarks String?
+  charges Decimal? @db.Decimal(13, 4)
+  chargesFrequency String? @map("charges_frequency")
+}
+
+// Migration definitions available
+model OutOfOfficeDeliveries {
+  id Int @id @default(autoincrement()) @map("_id")
+  outOfOfficeSettingsId Int @map("out_of_office_settings__id")
+  contactId Int? @map("contacts__id")
+  customerIdentifier String @map("customer_identifier")
+  oooPeriodKey String @map("ooo_period_key")
+  inboundMessageId String? @map("inbound_message_id")
+  outboundMessageId String? @map("outbound_message_id")
+  status String @default("processing")
+  failureReason String? @map("failure_reason")
+  sentAt DateTime? @map("sent_at")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  refOutOfOfficeSettingsId OutOfOfficeSettings @relation("fk_out_of_office_deliveries_out_of_office_settings__id", fields: [outOfOfficeSettingsId], references: [id], onDelete: Cascade, map: "d0c072bc47f86502835862e9")
+  @@unique([outOfOfficeSettingsId, customerIdentifier, oooPeriodKey], map: "0b1e2bed40520e86c12ef69c")
+  @@map("out_of_office_deliveries")
+
+
+}
+
+// Migration definitions available
+model OutOfOfficeSchedules {
+  id Int @id @default(autoincrement()) @map("_id")
+  outOfOfficeSettingsId Int @map("out_of_office_settings__id")
+  dayOfWeek Int @map("day_of_week")
+  enabled Boolean @default(true)
+  startTime String? @map("start_time")
+  endTime String? @map("end_time")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  refOutOfOfficeSettingsId OutOfOfficeSettings @relation("fk_out_of_office_schedules_out_of_office_settings__id", fields: [outOfOfficeSettingsId], references: [id], onDelete: Cascade, map: "f90f232dcfc036ca9ae3661c")
+  @@map("out_of_office_schedules")
+
+
+}
+
+// Migration definitions available
+model OutOfOfficeSettings {
+  id Int @id @default(autoincrement()) @map("_id")
+  vendorId Int @map("vendors__id")
+  whatsappPhoneNumberId String @map("whatsapp_phone_number_id")
+  enabled Boolean @default(false)
+  message String 
+  timezone String @default("UTC")
+  mode String @default("business_hours")
+  manualUntil DateTime? @map("manual_until")
+  manualStartedAt DateTime? @map("manual_started_at")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  childrenOutOfOfficeDeliveriesOutOfOfficeSettingsId OutOfOfficeDeliveries[] @relation("fk_out_of_office_deliveries_out_of_office_settings__id")
+  childrenOutOfOfficeSchedulesOutOfOfficeSettingsId OutOfOfficeSchedules[] @relation("fk_out_of_office_schedules_out_of_office_settings__id")
+  @@unique([vendorId, whatsappPhoneNumberId], map: "c04a563859767508c62686de")
+  @@map("out_of_office_settings")
+
+
+}
+
+// LEGACY/REFERENCE ONLY: reconcile before importing data
+model Pages {
+  title String 
+  content String? 
+  status Int 
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@map("pages")
+
+  showInMenu Int? @map("show_in_menu")
+  type Int?
+  vendorId Int? @map("vendors__id")
+  slug String?
+  imageName String? @map("image_name")
+}
+
+// Migration definitions available
+model PendingRegistrations {
+  id Int @id @default(autoincrement())
+  token String @unique
+  email String 
+  payload String 
+  otpHash String @map("otp_hash")
+  attempts Int @default(0)
+  expiresAt DateTime @map("expires_at")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@map("pending_registrations")
+
+
+}
+
+// Migration definitions available
+model ProductImages {
+  id Int @id @default(autoincrement())
+  productId Int @map("product_id")
+  productVariantId Int? @map("product_variant_id")
+  type String @default("image")
+  disk String @default("public")
+  path String 
+  url String 
+  thumbnailUrl String? @map("thumbnail_url")
+  originalName String @map("original_name")
+  mimeType String @map("mime_type")
+  size Int @default(0)
+  width Int? 
+  height Int? 
+  isPrimary Boolean @default(false) @map("is_primary")
+  sortOrder Int @default(0) @map("sort_order")
+  checksum String? 
+  vendorId Int @map("vendor_id")
+  createdBy Int? @map("created_by")
+  updatedBy Int? @map("updated_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  @@index([vendorId])
+  refProductId Products @relation("fk_product_images_product_id", fields: [productId], references: [id], onDelete: Cascade, map: "bce08ab7834fc37545a76682")
+  refVendorId Vendors @relation("fk_product_images_vendor_id", fields: [vendorId], references: [id], onDelete: Cascade, map: "5532d2ecd07896111d89e595")
+  refCreatedBy Users? @relation("fk_product_images_created_by", fields: [createdBy], references: [id], onDelete: SetNull, map: "c293d3cb6a1707c67919f199")
+  refUpdatedBy Users? @relation("fk_product_images_updated_by", fields: [updatedBy], references: [id], onDelete: SetNull, map: "29b25739451fe8ba391316de")
+  @@map("product_images")
+
+
+}
+
+// Migration definitions available
+model ProductTags {
+  id Int @id @default(autoincrement())
+  productId Int @map("product_id")
+  tag String 
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  refProductId Products @relation("fk_product_tags_product_id", fields: [productId], references: [id], onDelete: Cascade, map: "e5efa2c6c96dae466fda6ca9")
+  @@unique([productId, tag], map: "0d9c83b93aa891819f34af79")
+  @@map("product_tags")
+
+
+}
+
+// Migration definitions available
+model ProductVariants {
+  id Int @id @default(autoincrement())
+  uuid String @unique @default(uuid())
+  productId Int @map("product_id")
+  name String 
+  sku String 
+  price Decimal? @db.Decimal(18, 4)
+  salePrice Decimal? @map("sale_price") @db.Decimal(18, 4)
+  stockQuantity Int @default(0) @map("stock_quantity")
+  availability String @default("in_stock")
+  options Json 
+  metaProductId String? @map("meta_product_id")
+  syncStatus String @default("pending") @map("sync_status")
+  lastSyncedAt DateTime? @map("last_synced_at")
+  lastSyncError String? @map("last_sync_error")
+  vendorId Int @map("vendor_id")
+  createdBy Int? @map("created_by")
+  updatedBy Int? @map("updated_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  @@index([vendorId])
+  refProductId Products @relation("fk_product_variants_product_id", fields: [productId], references: [id], onDelete: Cascade, map: "1745d8b6ca6c4cfd0bceae81")
+  refVendorId Vendors @relation("fk_product_variants_vendor_id", fields: [vendorId], references: [id], onDelete: Cascade, map: "11ec777a761883aabf0d7b97")
+  refCreatedBy Users? @relation("fk_product_variants_created_by", fields: [createdBy], references: [id], onDelete: SetNull, map: "4d3908b97d6036ad3d3ef9e7")
+  refUpdatedBy Users? @relation("fk_product_variants_updated_by", fields: [updatedBy], references: [id], onDelete: SetNull, map: "db15540b315727aaea0cc3c0")
+  @@unique([productId, sku], map: "644fc66031040a7a8e8f1aeb")
+  @@map("product_variants")
+
+
+}
+
+// Migration definitions available
+model Products {
+  id Int @id @default(autoincrement())
+  uuid String @unique @default(uuid())
+  catalogId Int @map("catalog_id")
+  categoryId Int? @map("category_id")
+  brandId Int? @map("brand_id")
+  name String 
+  sku String 
+  slug String 
+  shortDescription String? @map("short_description")
+  description String? 
+  price Decimal @db.Decimal(18, 4)
+  salePrice Decimal? @map("sale_price") @db.Decimal(18, 4)
+  currency String @default("USD")
+  taxRate Decimal @default(0) @map("tax_rate") @db.Decimal(18, 4)
+  stockQuantity Int @default(0) @map("stock_quantity")
+  availability String @default("in_stock")
+  barcode String? 
+  weight Decimal? @db.Decimal(18, 4)
+  length Decimal? @db.Decimal(18, 4)
+  width Decimal? @db.Decimal(18, 4)
+  height Decimal? @db.Decimal(18, 4)
+  requiresShipping Boolean @default(true) @map("requires_shipping")
+  shippingCost Decimal? @map("shipping_cost") @db.Decimal(18, 4)
+  deliveryTime String? @map("delivery_time")
+  returnPolicy String? @map("return_policy")
+  status String @default("draft")
+  visibility String @default("visible")
+  condition String @default("new")
+  metaTitle String? @map("meta_title")
+  metaDescription String? @map("meta_description")
+  customUrl String? @map("custom_url")
+  metaProductId String? @map("meta_product_id")
+  syncStatus String @default("pending") @map("sync_status")
+  lastSyncedAt DateTime? @map("last_synced_at")
+  lastSyncError String? @map("last_sync_error")
+  attributes Json? 
+  publishedAt DateTime? @map("published_at")
+  vendorId Int @map("vendor_id")
+  createdBy Int? @map("created_by")
+  updatedBy Int? @map("updated_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  primaryImageUrl String? @map("primary_image_url")
+  @@index([vendorId])
+  refCatalogId Catalogs @relation("fk_products_catalog_id", fields: [catalogId], references: [id], onDelete: Cascade, map: "c589aa4690b0588e073a3304")
+  refCategoryId Categories? @relation("fk_products_category_id", fields: [categoryId], references: [id], onDelete: SetNull, map: "c861b9ed52a145065e147ecf")
+  refBrandId Brands? @relation("fk_products_brand_id", fields: [brandId], references: [id], onDelete: SetNull, map: "93c2ffc4608c57a9facd67bf")
+  refVendorId Vendors @relation("fk_products_vendor_id", fields: [vendorId], references: [id], onDelete: Cascade, map: "f697d0d1ebfba073f837422d")
+  refCreatedBy Users? @relation("fk_products_created_by", fields: [createdBy], references: [id], onDelete: SetNull, map: "bac63b74b804981d7a3a3ff9")
+  refUpdatedBy Users? @relation("fk_products_updated_by", fields: [updatedBy], references: [id], onDelete: SetNull, map: "6a62051e3f47cdbd12defa12")
+  childrenProductImagesProductId ProductImages[] @relation("fk_product_images_product_id")
+  childrenProductVariantsProductId ProductVariants[] @relation("fk_product_variants_product_id")
+  childrenCollectionProductsProductId CollectionProducts[] @relation("fk_collection_products_product_id")
+  childrenProductTagsProductId ProductTags[] @relation("fk_product_tags_product_id")
+  @@unique([catalogId, sku], map: "a3b8975ab03e0b498bcfddae")
+  @@unique([catalogId, slug], map: "11bf169700cbdea7500b3c7b")
+  @@unique([vendorId, metaProductId], map: "b503e8bd518fa278ea6bb3cd")
+  @@map("products")
+
+
+}
+
+// Migration definitions available
+model Reports {
+  id Int @id @default(autoincrement())
+  uuid String @unique @default(uuid())
+  name String 
+  type String 
+  format String @default("pdf")
+  status String @default("pending")
+  filters Json? 
+  schedule String? 
+  filePath String? @map("file_path")
+  generatedAt DateTime? @map("generated_at")
+  organizationId Int @map("organization_id")
+  vendorId Int @map("vendor_id")
+  createdBy Int? @map("created_by")
+  updatedBy Int? @map("updated_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  @@index([vendorId])
+  refOrganizationId Vendors @relation("fk_reports_organization_id", fields: [organizationId], references: [id], onDelete: Cascade, map: "b806507b9de11b02e7538edd")
+  refVendorId Vendors @relation("fk_reports_vendor_id", fields: [vendorId], references: [id], onDelete: Cascade, map: "ecd774606869ead5937d47c2")
+  refCreatedBy Users? @relation("fk_reports_created_by", fields: [createdBy], references: [id], onDelete: SetNull, map: "30b71e08a0063a93277fd937")
+  refUpdatedBy Users? @relation("fk_reports_updated_by", fields: [updatedBy], references: [id], onDelete: SetNull, map: "ea05939ac66658c15f07fb4d")
+  @@map("reports")
+
+
+}
+
+// Migration definitions available
+model ShopifyIntegrations {
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  vendorId Int @map("vendors__id")
+  shopDomain String @unique @map("shop_domain")
+  accessToken String @map("access_token")
+  webhookId String? @map("webhook_id")
+  isActive Boolean @default(false) @map("is_active")
+  notificationTypes String? @map("notification_types")
+  webhookUrl String? @map("webhook_url")
+  connectedAt DateTime? @map("connected_at")
+  lastSyncAt DateTime? @map("last_sync_at")
+  data Json? @map("__data")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  refVendorId Vendors @relation("fk_shopify_integrations_vendors__id", fields: [vendorId], references: [id], onDelete: Cascade, map: "0e2eb7f5b200d28d24a8b3d3")
+  childrenShopifyOrdersShopifyIntegrationsId ShopifyOrders[] @relation("fk_shopify_orders_shopify_integrations__id")
+  @@map("shopify_integrations")
+
+
+}
+
+// Migration definitions available
+model ShopifyOrderNotifications {
+  id Int @id @default(autoincrement()) @map("_id")
+  shopifyOrdersId Int @map("shopify_orders__id")
+  vendorId Int @map("vendors__id")
+  contactId Int? @map("contacts__id")
+  notificationType String @map("notification_type")
+  status String @default("pending")
+  messageId String? @map("message_id")
+  whatsappMessageId String? @map("whatsapp_message_id")
+  sentAt DateTime? @map("sent_at")
+  deliveredAt DateTime? @map("delivered_at")
+  readAt DateTime? @map("read_at")
+  errorMessage String? @map("error_message")
+  data Json? @map("__data")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  uid String @unique @default(uuid()) @map("_uid")
+  @@index([vendorId])
+  refShopifyOrdersId ShopifyOrders @relation("fk_shopify_order_notifications_shopify_orders__id", fields: [shopifyOrdersId], references: [id], onDelete: Cascade, map: "5ce853f8828542ebf1b6c4ad")
+  refVendorId Vendors @relation("fk_shopify_order_notifications_vendors__id", fields: [vendorId], references: [id], onDelete: Cascade, map: "73b1009f0bb869ee5e4ada2c")
+  refContactId Contacts? @relation("fk_shopify_order_notifications_contacts__id", fields: [contactId], references: [id], onDelete: SetNull, map: "afe48e2c34744802348db85e")
+  @@map("shopify_order_notifications")
+
+
+}
+
+// Migration definitions available
+model ShopifyOrders {
+  id Int @id @default(autoincrement()) @map("_id")
+  shopifyIntegrationsId Int @map("shopify_integrations__id")
+  vendorId Int @map("vendors__id")
+  contactId Int? @map("contacts__id")
+  shopifyOrderId String @map("shopify_order_id")
+  orderNumber String @map("order_number")
+  name String 
+  email String? 
+  phone String? 
+  currency String @default("USD")
+  financialStatus String @default("pending") @map("financial_status")
+  fulfillmentStatus String @default("unfulfilled") @map("fulfillment_status")
+  totalPrice Decimal @default(0) @map("total_price") @db.Decimal(18, 4)
+  subtotalPrice Decimal @default(0) @map("subtotal_price") @db.Decimal(18, 4)
+  totalTax Decimal @default(0) @map("total_tax") @db.Decimal(18, 4)
+  totalDiscounts Decimal @default(0) @map("total_discounts") @db.Decimal(18, 4)
+  totalWeight Decimal @default(0) @map("total_weight") @db.Decimal(18, 4)
+  totalItems Int @default(0) @map("total_items")
+  tags String? 
+  note String? 
+  status String @default("open")
+  processedAt DateTime? @map("processed_at")
+  cancelledAt DateTime? @map("cancelled_at")
+  closedAt DateTime? @map("closed_at")
+  createdAtShopify DateTime? @map("created_at_shopify")
+  updatedAtShopify DateTime? @map("updated_at_shopify")
+  processedAtShopify DateTime? @map("processed_at_shopify")
+  cancelledAtShopify DateTime? @map("cancelled_at_shopify")
+  closedAtShopify DateTime? @map("closed_at_shopify")
+  data Json? @map("__data")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  uid String @unique @default(uuid()) @map("_uid")
+  @@index([vendorId])
+  refShopifyIntegrationsId ShopifyIntegrations @relation("fk_shopify_orders_shopify_integrations__id", fields: [shopifyIntegrationsId], references: [id], onDelete: Cascade, map: "6b788164796ba5448ad483f3")
+  refVendorId Vendors @relation("fk_shopify_orders_vendors__id", fields: [vendorId], references: [id], onDelete: Cascade, map: "8da4745353b092549735d6bb")
+  refContactId Contacts? @relation("fk_shopify_orders_contacts__id", fields: [contactId], references: [id], onDelete: SetNull, map: "bd5f038bcf0e9457f10512d4")
+  childrenShopifyOrderNotificationsShopifyOrdersId ShopifyOrderNotifications[] @relation("fk_shopify_order_notifications_shopify_orders__id")
+  @@unique([shopifyIntegrationsId, shopifyOrderId], map: "node_shopify_store_order_key")
+  @@map("shopify_orders")
+
+
+}
+
+// Migration definitions available
+model SubscriptionAddons {
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  vendorId Int @map("vendors__id")
+  addonCode String @map("addon_code")
+  status String @default("pending")
+  price Int 
+  currency String @default("INR")
+  source String @default("paid")
+  startedAt DateTime? @map("started_at")
+  expiresAt DateTime? @map("expires_at")
+  paymentProvider String? @map("payment_provider")
+  paymentReference String? @map("payment_reference")
+  providerSubscriptionReference String? @map("provider_subscription_reference")
+  enabledBy Int? @map("enabled_by")
+  enabledAt DateTime? @map("enabled_at")
+  disabledAt DateTime? @map("disabled_at")
+  data Json? @map("__data")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  @@map("subscription_addons")
+
+
+}
+
+// LEGACY/REFERENCE ONLY: reconcile before importing data
+model Subscriptions {
+  vendorId Int @map("vendor_model__id")
+  type String 
+  stripeId String @map("stripe_id")
+  stripeStatus String @map("stripe_status")
+  stripePrice String? @map("stripe_price")
+  quantity Int? 
+  trialEndsAt DateTime? @map("trial_ends_at")
+  endsAt DateTime? @map("ends_at")
+  id Int @id @default(autoincrement())
+  uid String @unique @default(uuid()) @map("_uid")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  @@map("subscriptions")
+
+
+}
+
+// LEGACY/REFERENCE ONLY: reconcile before importing data
+model TokenRegistry {
+  jwtToken String? @map("jwt_token")
+  userAuthoritiesId Int? @map("user_authorities__id")
+  expiryAt DateTime? @map("expiry_at")
+  status Int 
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@map("token_registry")
+}
+
+// Migration definitions available
+model UserActiveFlows {
+  userId Int? @map("user_id")
+  flowId Int? @map("flow_id")
+  phoneNumber String? @map("phone_number")
+  activatedAt DateTime? @map("activated_at")
+  data Json? @map("__data")
+  currentNodeUid String? @map("current_node_uid")
+  nextNodeUid String? @map("next_node_uid")
+  id Int @id @default(autoincrement())
+  @@index([phoneNumber, flowId], map: "node_active_flow_participant_idx")
+  @@map("user_active_flows")
+
+  createdAt DateTime? @map("created_at")
+  updatedAt DateTime? @map("updated_at")
+}
+
+// LEGACY/REFERENCE ONLY: reconcile before importing data
+model UserRoles {
+  title String 
+  data Json? @map("__data")
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  childrenUsersUserRolesId Users[] @relation("fk_users_user_roles__id")
+  @@map("user_roles")
+
+  status Int?
+}
+
+// LEGACY/REFERENCE ONLY: reconcile before importing data
+model Users {
+  phoneVerifiedAt DateTime? @map("phone_verified_at")
+  currentVendorId Int? @map("current_vendor_id")
+  activeSessionId String? @map("active_session_id")
+  activeSessionLastActivity DateTime? @map("active_session_last_activity")
+  name String 
+  email String @unique
+  password String 
+  phoneNumber String? @map("mobile_number")
+  status Int @default(1)
+  vendorId Int? @map("vendors__id")
+  userRolesId Int? @map("user_roles__id")
+  emailVerifiedAt DateTime? @map("email_verified_at")
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  childrenContactsAssignedUserId Contacts[] @relation("fk_contacts_assigned_users__id")
+  childrenAiConversationHandoffsAssignedUserId AiConversationHandoffs[] @relation("fk_ai_conversation_handoffs_assigned_users__id")
+  childrenAiConversationHandoffsAcceptedByUsersId AiConversationHandoffs[] @relation("fk_ai_conversation_handoffs_accepted_by_users__id")
+  childrenAdNotificationsCreatedBy AdNotifications[] @relation("fk_ad_notifications_created_by")
+  childrenAdNotificationsUpdatedBy AdNotifications[] @relation("fk_ad_notifications_updated_by")
+  childrenAdConversationAttributionsCreatedBy AdConversationAttributions[] @relation("fk_ad_conversation_attributions_created_by")
+  childrenAdConversationAttributionsUpdatedBy AdConversationAttributions[] @relation("fk_ad_conversation_attributions_updated_by")
+  childrenConversionEventsCreatedBy ConversionEvents[] @relation("fk_conversion_events_created_by")
+  childrenConversionEventsUpdatedBy ConversionEvents[] @relation("fk_conversion_events_updated_by")
+  childrenCampaignLogsCreatedBy CampaignLogs[] @relation("fk_campaign_logs_created_by")
+  childrenCampaignLogsUpdatedBy CampaignLogs[] @relation("fk_campaign_logs_updated_by")
+  childrenAdCampaignsCreatedBy AdCampaigns[] @relation("fk_ad_campaigns_created_by")
+  childrenAdCampaignsUpdatedBy AdCampaigns[] @relation("fk_ad_campaigns_updated_by")
+  childrenReportsCreatedBy Reports[] @relation("fk_reports_created_by")
+  childrenReportsUpdatedBy Reports[] @relation("fk_reports_updated_by")
+  childrenVendorUsersUserId VendorUsers[] @relation("fk_vendor_users_users__id")
+  refVendorId Vendors? @relation("fk_users_vendors__id", fields: [vendorId], references: [id], onDelete: Restrict, map: "960e829619af9e3c55c0b848")
+  refUserRolesId UserRoles? @relation("fk_users_user_roles__id", fields: [userRolesId], references: [id], onDelete: Restrict, map: "eaedc6702fe9ff5b91875546")
+  childrenBlogPostsAuthorId BlogPosts[] @relation("fk_blog_posts_author_id")
+  childrenCatalogActivityLogsCreatedBy CatalogActivityLogs[] @relation("fk_catalog_activity_logs_created_by")
+  childrenCatalogActivityLogsUpdatedBy CatalogActivityLogs[] @relation("fk_catalog_activity_logs_updated_by")
+  childrenConversationCxScoresAgentId ConversationCxScores[] @relation("fk_conversation_cx_scores_agent_id")
+  childrenAdAccountsCreatedBy AdAccounts[] @relation("fk_ad_accounts_created_by")
+  childrenAdAccountsUpdatedBy AdAccounts[] @relation("fk_ad_accounts_updated_by")
+  childrenAdSetsCreatedBy AdSets[] @relation("fk_ad_sets_created_by")
+  childrenAdSetsUpdatedBy AdSets[] @relation("fk_ad_sets_updated_by")
+  childrenAdCreativesCreatedBy AdCreatives[] @relation("fk_ad_creatives_created_by")
+  childrenAdCreativesUpdatedBy AdCreatives[] @relation("fk_ad_creatives_updated_by")
+  childrenAdsCreatedBy Ads[] @relation("fk_ads_created_by")
+  childrenAdsUpdatedBy Ads[] @relation("fk_ads_updated_by")
+  childrenCreativeAssetsCreatedBy CreativeAssets[] @relation("fk_creative_assets_created_by")
+  childrenCreativeAssetsUpdatedBy CreativeAssets[] @relation("fk_creative_assets_updated_by")
+  childrenAudiencesCreatedBy Audiences[] @relation("fk_audiences_created_by")
+  childrenAudiencesUpdatedBy Audiences[] @relation("fk_audiences_updated_by")
+  childrenAudienceRulesCreatedBy AudienceRules[] @relation("fk_audience_rules_created_by")
+  childrenAudienceRulesUpdatedBy AudienceRules[] @relation("fk_audience_rules_updated_by")
+  childrenCampaignMetricsCreatedBy CampaignMetrics[] @relation("fk_campaign_metrics_created_by")
+  childrenCampaignMetricsUpdatedBy CampaignMetrics[] @relation("fk_campaign_metrics_updated_by")
+  childrenCampaignDailyMetricsCreatedBy CampaignDailyMetrics[] @relation("fk_campaign_daily_metrics_created_by")
+  childrenCampaignDailyMetricsUpdatedBy CampaignDailyMetrics[] @relation("fk_campaign_daily_metrics_updated_by")
+  childrenConversionsCreatedBy Conversions[] @relation("fk_conversions_created_by")
+  childrenConversionsUpdatedBy Conversions[] @relation("fk_conversions_updated_by")
+  childrenBudgetsCreatedBy Budgets[] @relation("fk_budgets_created_by")
+  childrenBudgetsUpdatedBy Budgets[] @relation("fk_budgets_updated_by")
+  childrenCampaignTemplatesCreatedBy CampaignTemplates[] @relation("fk_campaign_templates_created_by")
+  childrenCampaignTemplatesUpdatedBy CampaignTemplates[] @relation("fk_campaign_templates_updated_by")
+  childrenAdLabelsCreatedBy AdLabels[] @relation("fk_ad_labels_created_by")
+  childrenAdLabelsUpdatedBy AdLabels[] @relation("fk_ad_labels_updated_by")
+  childrenAdCampaignLabelCreatedBy AdCampaignLabel[] @relation("fk_ad_campaign_label_created_by")
+  childrenAdCampaignLabelUpdatedBy AdCampaignLabel[] @relation("fk_ad_campaign_label_updated_by")
+  childrenCatalogsCreatedBy Catalogs[] @relation("fk_catalogs_created_by")
+  childrenCatalogsUpdatedBy Catalogs[] @relation("fk_catalogs_updated_by")
+  childrenCatalogConnectionsCreatedBy CatalogConnections[] @relation("fk_catalog_connections_created_by")
+  childrenCatalogConnectionsUpdatedBy CatalogConnections[] @relation("fk_catalog_connections_updated_by")
+  childrenCategoriesCreatedBy Categories[] @relation("fk_categories_created_by")
+  childrenCategoriesUpdatedBy Categories[] @relation("fk_categories_updated_by")
+  childrenBrandsCreatedBy Brands[] @relation("fk_brands_created_by")
+  childrenBrandsUpdatedBy Brands[] @relation("fk_brands_updated_by")
+  childrenCollectionsCreatedBy Collections[] @relation("fk_collections_created_by")
+  childrenCollectionsUpdatedBy Collections[] @relation("fk_collections_updated_by")
+  childrenProductsCreatedBy Products[] @relation("fk_products_created_by")
+  childrenProductsUpdatedBy Products[] @relation("fk_products_updated_by")
+  childrenProductImagesCreatedBy ProductImages[] @relation("fk_product_images_created_by")
+  childrenProductImagesUpdatedBy ProductImages[] @relation("fk_product_images_updated_by")
+  childrenProductVariantsCreatedBy ProductVariants[] @relation("fk_product_variants_created_by")
+  childrenProductVariantsUpdatedBy ProductVariants[] @relation("fk_product_variants_updated_by")
+  childrenCatalogImportsCreatedBy CatalogImports[] @relation("fk_catalog_imports_created_by")
+  childrenCatalogImportsUpdatedBy CatalogImports[] @relation("fk_catalog_imports_updated_by")
+  childrenCatalogExportsCreatedBy CatalogExports[] @relation("fk_catalog_exports_created_by")
+  childrenCatalogExportsUpdatedBy CatalogExports[] @relation("fk_catalog_exports_updated_by")
+  childrenCatalogSyncLogsCreatedBy CatalogSyncLogs[] @relation("fk_catalog_sync_logs_created_by")
+  childrenCatalogSyncLogsUpdatedBy CatalogSyncLogs[] @relation("fk_catalog_sync_logs_updated_by")
+  childrenCatalogSettingsCreatedBy CatalogSettings[] @relation("fk_catalog_settings_created_by")
+  childrenCatalogSettingsUpdatedBy CatalogSettings[] @relation("fk_catalog_settings_updated_by")
+  @@map("users")
+
+  username String?
+  rememberToken String? @map("remember_token")
+  firstName String? @map("first_name")
+  lastName String? @map("last_name")
+  timezone String?
+  registeredVia String? @map("registered_via")
+  banReason String? @map("ban_reason")
+  countriesId Int? @map("countries__id")
+  twoFactorSecret String? @map("two_factor_secret")
+  twoFactorRecoveryCodes String? @map("two_factor_recovery_codes")
+  profilePicture String? @map("profile_picture")
+}
+
+// Migration definitions available
+model VendorAiMonthlyInvoices {
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  vendorId Int @map("vendors__id")
+  billingPeriod String @map("billing_period")
+  invoiceNumber String @unique @map("invoice_number")
+  totalCalls Int @default(0) @map("total_calls")
+  totalTokens Int @default(0) @map("total_tokens")
+  rawCost Decimal @default(0) @map("raw_cost") @db.Decimal(18, 4)
+  totalAmount Decimal @default(0) @map("total_amount") @db.Decimal(18, 4)
+  currency String @default("USD")
+  status String @default("pending")
+  usageBreakdown Json? @map("usage_breakdown")
+  dueDate DateTime? @map("due_date")
+  paidAt DateTime? @map("paid_at")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  @@unique([vendorId, billingPeriod], map: "dec70e8e79206b4f57ec0a1c")
+  @@map("vendor_ai_monthly_invoices")
+
+
+}
+
+// Migration definitions available
+model VendorAiUsages {
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  vendorId Int @map("vendors__id")
+  feature String 
+  provider String @default("groq")
+  model String 
+  promptTokens Int @default(0) @map("prompt_tokens")
+  completionTokens Int @default(0) @map("completion_tokens")
+  totalTokens Int @default(0) @map("total_tokens")
+  rawCost Decimal @default(0) @map("raw_cost") @db.Decimal(18, 4)
+  billedAmount Decimal @default(0) @map("billed_amount") @db.Decimal(18, 4)
+  currency String @default("USD")
+  referenceId String? @map("reference_id")
+  metadata Json? 
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  @@map("vendor_ai_usages")
+
+
+}
+
+// LEGACY/REFERENCE ONLY: reconcile before importing data
+model VendorSettings {
+  vendorId Int @map("vendors__id")
+  name String 
+  value String? 
+  dataType Int? @map("data_type")
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  refVendorId Vendors @relation("fk_vendor_settings_vendors__id", fields: [vendorId], references: [id], onDelete: Restrict, map: "1ac852b914503caea9833a5f")
+  @@map("vendor_settings")
+
+  status Int?
+}
+
+// LEGACY/REFERENCE ONLY: reconcile before importing data
+model VendorUsers {
+  userId Int @map("users__id")
+  vendorId Int @map("vendors__id")
+  status Int @default(1)
+  data Json? @map("__data")
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  refVendorId Vendors @relation("fk_vendor_users_vendors__id", fields: [vendorId], references: [id], onDelete: Restrict, map: "1c30074bf60964ae6344cf4a")
+  refUserId Users @relation("fk_vendor_users_users__id", fields: [userId], references: [id], onDelete: Restrict, map: "85639474478545fc9b4d1dc4")
+  @@map("vendor_users")
+
+
+}
+
+// LEGACY/REFERENCE ONLY: reconcile before importing data
+model Vendors {
+  nativeMetaFlows NativeMetaFlows[]
+  accountType String @default("customer") @map("account_type")
+  isDemo Boolean @default(false) @map("is_demo")
+  industry String? 
+  websiteUrl String? @map("website_url")
+  businessDescription String? @map("business_description")
+  companySize String? @map("company_size")
+  targetAudience String? @map("target_audience")
+  primaryGoal String? @map("primary_goal")
+  monthlyVolume String? @map("monthly_volume")
+  ecommercePlatform String? @map("ecommerce_platform")
+  whatsappExperience String? @map("whatsapp_experience")
+  title String 
+  status Int @default(1)
+  data Json? @map("__data")
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  childrenInstagramMessageLogsVendorId InstagramMessageLogs[] @relation("fk_instagram_message_logs_vendors__id")
+  childrenWhatsappMessageQueueVendorId WhatsappMessageQueue[] @relation("fk_whatsapp_message_queue_vendors__id")
+  childrenContactsVendorId Contacts[] @relation("fk_contacts_vendors__id")
+  childrenAiConversationHandoffsVendorId AiConversationHandoffs[] @relation("fk_ai_conversation_handoffs_vendors__id")
+  childrenAdNotificationsOrganizationId AdNotifications[] @relation("fk_ad_notifications_organization_id")
+  childrenAdNotificationsVendorId AdNotifications[] @relation("fk_ad_notifications_vendor_id")
+  childrenAdConversationAttributionsOrganizationId AdConversationAttributions[] @relation("fk_ad_conversation_attributions_organization_id")
+  childrenAdConversationAttributionsVendorId AdConversationAttributions[] @relation("fk_ad_conversation_attributions_vendor_id")
+  childrenConversionEventsOrganizationId ConversionEvents[] @relation("fk_conversion_events_organization_id")
+  childrenConversionEventsVendorId ConversionEvents[] @relation("fk_conversion_events_vendor_id")
+  childrenCampaignLogsOrganizationId CampaignLogs[] @relation("fk_campaign_logs_organization_id")
+  childrenCampaignLogsVendorId CampaignLogs[] @relation("fk_campaign_logs_vendor_id")
+  childrenAdCampaignsOrganizationId AdCampaigns[] @relation("fk_ad_campaigns_organization_id")
+  childrenAdCampaignsVendorId AdCampaigns[] @relation("fk_ad_campaigns_vendor_id")
+  childrenReportsOrganizationId Reports[] @relation("fk_reports_organization_id")
+  childrenReportsVendorId Reports[] @relation("fk_reports_vendor_id")
+  childrenConversationAiAnalysisVendorId ConversationAiAnalysis[] @relation("fk_conversation_ai_analysis_vendors__id")
+  childrenWhatsappMessageLogsVendorId WhatsappMessageLogs[] @relation("fk_whatsapp_message_logs_vendors__id")
+  childrenConversationClassificationsVendorId ConversationClassifications[] @relation("fk_conversation_classifications_vendors__id")
+  childrenVendorUsersVendorId VendorUsers[] @relation("fk_vendor_users_vendors__id")
+  childrenUsersVendorId Users[] @relation("fk_users_vendors__id")
+  childrenWhatsappTemplatesVendorId WhatsappTemplates[] @relation("fk_whatsapp_templates_vendors__id")
+  childrenCampaignsVendorId Campaigns[] @relation("fk_campaigns_vendors__id")
+  childrenCatalogActivityLogsVendorId CatalogActivityLogs[] @relation("fk_catalog_activity_logs_vendor_id")
+  childrenContactGroupsVendorId ContactGroups[] @relation("fk_contact_groups_vendors__id")
+  childrenConversationClassificationLogsVendorId ConversationClassificationLogs[] @relation("fk_conversation_classification_logs_vendors__id")
+  childrenConversationClassificationTagsVendorId ConversationClassificationTags[] @relation("fk_conversation_classification_tags_vendors__id")
+  childrenConversationCxScoresVendorId ConversationCxScores[] @relation("fk_conversation_cx_scores_vendors__id")
+  childrenShopifyIntegrationsVendorId ShopifyIntegrations[] @relation("fk_shopify_integrations_vendors__id")
+  childrenShopifyOrdersVendorId ShopifyOrders[] @relation("fk_shopify_orders_vendors__id")
+  childrenShopifyOrderNotificationsVendorId ShopifyOrderNotifications[] @relation("fk_shopify_order_notifications_vendors__id")
+  childrenWoocommerceIntegrationsVendorId WoocommerceIntegrations[] @relation("fk_woocommerce_integrations_vendors__id")
+  childrenWoocommerceOrdersVendorId WoocommerceOrders[] @relation("fk_woocommerce_orders_vendors__id")
+  childrenWoocommerceOrderNotificationsVendorId WoocommerceOrderNotifications[] @relation("fk_woocommerce_order_notifications_vendors__id")
+  childrenGoogleSheetAutomationsVendorId GoogleSheetAutomations[] @relation("fk_google_sheet_automations_vendors__id")
+  childrenVendorSettingsVendorId VendorSettings[] @relation("fk_vendor_settings_vendors__id")
+  childrenWhatsappBlueTickApplicationsVendorId WhatsappBlueTickApplications[] @relation("fk_whatsapp_blue_tick_applications_vendors__id")
+  childrenWhatsappOnboardingConnectionsVendorId WhatsappOnboardingConnections[] @relation("fk_whatsapp_onboarding_connections_vendors__id")
+  childrenAdAccountsOrganizationId AdAccounts[] @relation("fk_ad_accounts_organization_id")
+  childrenAdAccountsVendorId AdAccounts[] @relation("fk_ad_accounts_vendor_id")
+  childrenAdSetsOrganizationId AdSets[] @relation("fk_ad_sets_organization_id")
+  childrenAdSetsVendorId AdSets[] @relation("fk_ad_sets_vendor_id")
+  childrenAdCreativesOrganizationId AdCreatives[] @relation("fk_ad_creatives_organization_id")
+  childrenAdCreativesVendorId AdCreatives[] @relation("fk_ad_creatives_vendor_id")
+  childrenAdsOrganizationId Ads[] @relation("fk_ads_organization_id")
+  childrenAdsVendorId Ads[] @relation("fk_ads_vendor_id")
+  childrenCreativeAssetsOrganizationId CreativeAssets[] @relation("fk_creative_assets_organization_id")
+  childrenCreativeAssetsVendorId CreativeAssets[] @relation("fk_creative_assets_vendor_id")
+  childrenAudiencesOrganizationId Audiences[] @relation("fk_audiences_organization_id")
+  childrenAudiencesVendorId Audiences[] @relation("fk_audiences_vendor_id")
+  childrenAudienceRulesOrganizationId AudienceRules[] @relation("fk_audience_rules_organization_id")
+  childrenAudienceRulesVendorId AudienceRules[] @relation("fk_audience_rules_vendor_id")
+  childrenCampaignMetricsOrganizationId CampaignMetrics[] @relation("fk_campaign_metrics_organization_id")
+  childrenCampaignMetricsVendorId CampaignMetrics[] @relation("fk_campaign_metrics_vendor_id")
+  childrenCampaignDailyMetricsOrganizationId CampaignDailyMetrics[] @relation("fk_campaign_daily_metrics_organization_id")
+  childrenCampaignDailyMetricsVendorId CampaignDailyMetrics[] @relation("fk_campaign_daily_metrics_vendor_id")
+  childrenConversionsOrganizationId Conversions[] @relation("fk_conversions_organization_id")
+  childrenConversionsVendorId Conversions[] @relation("fk_conversions_vendor_id")
+  childrenBudgetsOrganizationId Budgets[] @relation("fk_budgets_organization_id")
+  childrenBudgetsVendorId Budgets[] @relation("fk_budgets_vendor_id")
+  childrenCampaignTemplatesOrganizationId CampaignTemplates[] @relation("fk_campaign_templates_organization_id")
+  childrenCampaignTemplatesVendorId CampaignTemplates[] @relation("fk_campaign_templates_vendor_id")
+  childrenAdLabelsOrganizationId AdLabels[] @relation("fk_ad_labels_organization_id")
+  childrenAdLabelsVendorId AdLabels[] @relation("fk_ad_labels_vendor_id")
+  childrenAdCampaignLabelOrganizationId AdCampaignLabel[] @relation("fk_ad_campaign_label_organization_id")
+  childrenAdCampaignLabelVendorId AdCampaignLabel[] @relation("fk_ad_campaign_label_vendor_id")
+  childrenCatalogsVendorId Catalogs[] @relation("fk_catalogs_vendor_id")
+  childrenCatalogConnectionsVendorId CatalogConnections[] @relation("fk_catalog_connections_vendor_id")
+  childrenCategoriesVendorId Categories[] @relation("fk_categories_vendor_id")
+  childrenBrandsVendorId Brands[] @relation("fk_brands_vendor_id")
+  childrenCollectionsVendorId Collections[] @relation("fk_collections_vendor_id")
+  childrenProductsVendorId Products[] @relation("fk_products_vendor_id")
+  childrenProductImagesVendorId ProductImages[] @relation("fk_product_images_vendor_id")
+  childrenProductVariantsVendorId ProductVariants[] @relation("fk_product_variants_vendor_id")
+  childrenCatalogImportsVendorId CatalogImports[] @relation("fk_catalog_imports_vendor_id")
+  childrenCatalogExportsVendorId CatalogExports[] @relation("fk_catalog_exports_vendor_id")
+  childrenCatalogSyncLogsVendorId CatalogSyncLogs[] @relation("fk_catalog_sync_logs_vendor_id")
+  childrenCatalogSettingsVendorId CatalogSettings[] @relation("fk_catalog_settings_vendor_id")
+  childrenCommentToDmAutomationsVendorId CommentToDmAutomations[] @relation("fk_comment_to_dm_automations_vendors__id")
+  childrenCommentToDmExecutionsVendorId CommentToDmExecutions[] @relation("fk_comment_to_dm_executions_vendors__id")
+  @@map("vendors")
+
+  banReason String? @map("ban_reason")
+  type Int?
+  stripeId String? @map("stripe_id")
+  pmType String? @map("pm_type")
+  pmLastFour String? @map("pm_last_four")
+  trialEndsAt DateTime? @map("trial_ends_at")
+  logoImage String? @map("logo_image")
+  slug String?
+  domain String?
+  favicon String?
+}
+
+model NativeMetaFlows {
+  id String @id
+  vendorId Int @map("vendor_id")
+  wabaId String @map("waba_id")
+  name String
+  status String
+  categories Json
+  flowJson Json? @map("flow_json")
+  validationErrors Json? @map("validation_errors")
+  endpointUri String? @map("endpoint_uri")
+  revision Int @default(1)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  vendor Vendors @relation(fields: [vendorId], references: [id], onDelete: Restrict)
+  @@index([vendorId, wabaId])
+  @@map("node_meta_flows")
+}
+
+// Migration definitions available
+model Verifications {
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  userId Int? @map("users__id")
+  type String @default("email")
+  destination String 
+  codeHash String? @map("code_hash")
+  attempts Int @default(0)
+  expiresAt DateTime? @map("expires_at")
+  verifiedAt DateTime? @map("verified_at")
+  lastSentAt DateTime? @map("last_sent_at")
+  @@unique([userId, type], map: "9dbac474fe82778ae20932e8")
+  @@map("verifications")
+
+
+}
+
+// Migration definitions available
+model WhalexyAppointmentAutomationSettings {
+  id Int @id @default(autoincrement()) @map("_id")
+  vendorId Int @unique @map("vendors__id")
+  enabled Boolean @default(false)
+  triggerKeywords Json? @map("trigger_keywords")
+  reminderOffsetsMinutes Json? @map("reminder_offsets_minutes")
+  reminderTemplateName String? @map("reminder_template_name")
+  reminderTemplateLanguage String @default("en_US") @map("reminder_template_language")
+  confirmationMessage String? @map("confirmation_message")
+  reminderMessage String? @map("reminder_message")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  systemEnabled Boolean @default(true) @map("system_enabled")
+  messageTemplates Json? @map("message_templates")
+  @@index([vendorId])
+  @@map("whalexy_appointment_automation_settings")
+
+
+}
+
+// Migration definitions available
+model WhalexyAppointmentConversationStates {
+  id Int @id @default(autoincrement()) @map("_id")
+  vendorId Int @map("vendors__id")
+  contactId Int @map("contacts__id")
+  step String 
+  context Json? 
+  lastMessageWamid String? @map("last_message_wamid")
+  expiresAt DateTime @map("expires_at")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  @@unique([vendorId, contactId], map: "3e5f405a1f28d7e1ae756381")
+  @@map("whalexy_appointment_conversation_states")
+
+
+}
+
+// Migration definitions available
+model WhalexyAppointmentHolds {
+  id Int @id @default(autoincrement()) @map("_id")
+  token String @unique @default(uuid())
+  vendorId Int @map("vendors__id")
+  contactId Int? @map("contacts__id")
+  appointmentServiceId Int @map("appointment_service_id")
+  appointmentResourceId Int @map("appointment_resource_id")
+  startsAtUtc DateTime @map("starts_at_utc")
+  endsAtUtc DateTime @map("ends_at_utc")
+  expiresAt DateTime @map("expires_at")
+  convertedAt DateTime? @map("converted_at")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  @@map("whalexy_appointment_holds")
+
+
+}
+
+// Migration definitions available
+model WhalexyAppointmentReminderDeliveries {
+  id Int @id @default(autoincrement()) @map("_id")
+  vendorId Int @map("vendors__id")
+  appointmentId Int @map("appointment_id")
+  offsetMinutes Int @map("offset_minutes")
+  scheduledFor DateTime @map("scheduled_for")
+  status String @default("pending")
+  attempts Int @default(0)
+  sentAt DateTime? @map("sent_at")
+  lastError String? @map("last_error")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  @@unique([appointmentId, offsetMinutes], map: "8283871e229a117ca116a579")
+  @@map("whalexy_appointment_reminder_deliveries")
+
+
+}
+
+// Migration definitions available
+model WhalexyAppointmentResources {
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  vendorId Int @map("vendors__id")
+  type String @default("staff")
+  name String 
+  timezone String @default("UTC")
+  status String @default("active")
+  metadata Json? 
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  userId Int? @map("users__id")
+  autoAssignChat Boolean @default(true) @map("auto_assign_chat")
+  @@index([vendorId])
+  @@map("whalexy_appointment_resources")
+
+
+}
+
+// Migration definitions available
+model WhalexyAppointmentScheduleExceptions {
+  id Int @id @default(autoincrement()) @map("_id")
+  vendorId Int @map("vendors__id")
+  appointmentResourceId Int @map("appointment_resource_id")
+  type String @default("unavailable")
+  startsAtUtc DateTime @map("starts_at_utc")
+  endsAtUtc DateTime @map("ends_at_utc")
+  reason String? 
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  @@map("whalexy_appointment_schedule_exceptions")
+
+
+}
+
+// Migration definitions available
+model WhalexyAppointmentSchedules {
+  id Int @id @default(autoincrement()) @map("_id")
+  vendorId Int @map("vendors__id")
+  appointmentResourceId Int @map("appointment_resource_id")
+  weekday Int 
+  startLocalTime String @map("start_local_time")
+  endLocalTime String @map("end_local_time")
+  timezone String @default("UTC")
+  effectiveFrom DateTime? @map("effective_from")
+  effectiveUntil DateTime? @map("effective_until")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  @@map("whalexy_appointment_schedules")
+
+
+}
+
+// Migration definitions available
+model WhalexyAppointmentServiceResources {
+  id Int @id @default(autoincrement())
+  vendorId Int @map("vendors__id")
+  appointmentServiceId Int @map("appointment_service_id")
+  appointmentResourceId Int @map("appointment_resource_id")
+  capacity Int @default(1)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  @@unique([appointmentServiceId, appointmentResourceId], map: "935dcc637b3ae10c4e59acd1")
+  @@map("whalexy_appointment_service_resources")
+
+
+}
+
+// Migration definitions available
+model WhalexyAppointmentServices {
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  vendorId Int @map("vendors__id")
+  name String 
+  description String? 
+  durationMinutes Int @map("duration_minutes")
+  bufferBeforeMinutes Int @default(0) @map("buffer_before_minutes")
+  bufferAfterMinutes Int @default(0) @map("buffer_after_minutes")
+  price Decimal? @db.Decimal(18, 4)
+  currency String? 
+  timezone String @default("UTC")
+  status String @default("active")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  @@map("whalexy_appointment_services")
+
+
+}
+
+// Migration definitions available
+model WhalexyAppointmentSlotClaims {
+  id Int @id @default(autoincrement()) @map("_id")
+  vendorId Int @map("vendors__id")
+  appointmentId Int @map("appointment_id")
+  appointmentResourceId Int @map("appointment_resource_id")
+  slotStartUtc DateTime @map("slot_start_utc")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  @@unique([vendorId, appointmentResourceId, slotStartUtc], map: "43f4636decbb0f563dc2a13c")
+  @@map("whalexy_appointment_slot_claims")
+
+
+}
+
+// Migration definitions available
+model WhalexyAppointments {
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  vendorId Int @map("vendors__id")
+  contactId Int? @map("contacts__id")
+  appointmentServiceId Int @map("appointment_service_id")
+  appointmentResourceId Int @map("appointment_resource_id")
+  startsAtUtc DateTime @map("starts_at_utc")
+  endsAtUtc DateTime @map("ends_at_utc")
+  timezone String @default("UTC")
+  status String @default("confirmed")
+  source String @default("api")
+  customerName String? @map("customer_name")
+  customerPhone String? @map("customer_phone")
+  customerEmail String? @map("customer_email")
+  notes String? 
+  externalReference String? @map("external_reference")
+  idempotencyKey String @map("idempotency_key")
+  confirmedAt DateTime? @map("confirmed_at")
+  cancelledAt DateTime? @map("cancelled_at")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  @@unique([vendorId, idempotencyKey], map: "b2e0f215868f553ef7681472")
+  @@map("whalexy_appointments")
+
+
+}
+
+// Migration definitions available
+model WhatsappBlueTickApplications {
+  id Int @id @default(autoincrement())
+  vendorId Int @map("vendors__id")
+  wabaId String @map("waba_id")
+  phoneNumberId String @map("phone_number_id")
+  legalBusinessName String @map("legal_business_name")
+  websiteUrl String @map("website_url")
+  businessCategory String? @map("business_category")
+  newsUrls Json? @map("news_urls")
+  status String @default("DRAFT")
+  submittedAt DateTime? @map("submitted_at")
+  metaCheckedAt DateTime? @map("meta_checked_at")
+  metaSnapshot Json? @map("meta_snapshot")
+  metaNote String? @map("meta_note")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  metaCaseId String? @map("meta_case_id")
+  metaSubmissionUrl String? @map("meta_submission_url")
+  reviewerNotes String? @map("reviewer_notes")
+  reviewedBy Int? @map("reviewed_by")
+  reviewedAt DateTime? @map("reviewed_at")
+  metaSubmittedAt DateTime? @map("meta_submitted_at")
+  decidedAt DateTime? @map("decided_at")
+  @@index([vendorId])
+  refVendorId Vendors @relation("fk_whatsapp_blue_tick_applications_vendors__id", fields: [vendorId], references: [id], onDelete: Cascade, map: "3f007087216a11f8fb5e51d0")
+  @@unique([vendorId, wabaId, phoneNumberId], map: "a9d9f1ea94a91f8c27045b1e")
+  @@map("whatsapp_blue_tick_applications")
+
+
+}
+
+// Migration definitions available
+model WhatsappCallArtifacts {
+  id String @id @default(uuid())
+  callId String @map("call_id")
+  vendorId Int @map("vendors__id")
+  kind String 
+  status String @default("pending")
+  metaMediaId String @map("meta_media_id")
+  sha256 String? 
+  mimeType String? @map("mime_type")
+  disk String? 
+  path String? 
+  failureReason String? @map("failure_reason")
+  availableAt DateTime? @map("available_at")
+  retainedUntil DateTime? @map("retained_until")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  @@unique([callId, kind], map: "d03eada5dc1309de031e6511")
+  @@map("whatsapp_call_artifacts")
+
+
+}
+
+// Migration definitions available
+model WhatsappCallEvents {
+  id Int @id @default(autoincrement())
+  callId String @map("call_id")
+  eventKey String @unique @map("event_key")
+  event String 
+  createdAt DateTime @map("created_at")
+  @@map("whatsapp_call_events")
+
+
+}
+
+// Migration definitions available
+model WhatsappCallingSettings {
+  id Int @id @default(autoincrement())
+  vendorId Int @map("vendors__id")
+  phoneNumberId String @map("phone_number_id")
+  enabled Boolean @default(false)
+  outboundEnabled Boolean @default(false) @map("outbound_enabled")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  recordingEnabled Boolean @default(false) @map("recording_enabled")
+  transcriptionEnabled Boolean @default(false) @map("transcription_enabled")
+  artifactPurpose String? @map("artifact_purpose")
+  announcementLanguage String @default("en_IN") @map("announcement_language")
+  @@index([vendorId])
+  @@unique([vendorId, phoneNumberId], map: "97e31c2a6c3ce2a3b54a2d67")
+  @@map("whatsapp_calling_settings")
+
+
+}
+
+// Migration definitions available
+model WhatsappCalls {
+  id String @id @default(uuid())
+  vendorId Int @map("vendors__id")
+  phoneNumberId String @map("phone_number_id")
+  metaCallId String? @unique @map("meta_call_id")
+  requestId String? @map("request_id")
+  contactUid String? @map("contact_uid")
+  peer String 
+  direction String 
+  status String 
+  agentId Int? @map("agent_id")
+  roomName String @map("room_name")
+  session String? 
+  heartbeatAt DateTime? @map("heartbeat_at")
+  startedAt DateTime? @map("started_at")
+  endedAt DateTime? @map("ended_at")
+  duration Int? 
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  recordingRequested Boolean @default(false) @map("recording_requested")
+  transcriptionRequested Boolean @default(false) @map("transcription_requested")
+  @@index([vendorId])
+  @@unique([vendorId, requestId], map: "751f62d7644787be004bfeb4")
+  @@map("whatsapp_calls")
+
+
+}
+
+// Migration definitions available
+model WhatsappFlowLaunchSettings {
+  id Int @id @default(autoincrement()) @map("_id")
+  vendorId Int @map("vendors__id")
+  flowId String @map("flow_id")
+  launchType String @default("template") @map("launch_type")
+  launchReference String? @map("launch_reference")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  triggerKeywords String? @map("trigger_keywords")
+  automationEnabled Boolean @default(true) @map("automation_enabled")
+  @@index([vendorId])
+  @@unique([vendorId, flowId], map: "da82fc1c0a67c5c9051ad7dc")
+  @@map("whatsapp_flow_launch_settings")
+
+
+}
+
+// Migration definitions available
+model WhatsappFlowResponses {
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  vendorId Int @map("vendors__id")
+  contactId Int? @map("contacts__id")
+  flowId String @map("flow_id")
+  flowName String? @map("flow_name")
+  wamid String? 
+  responseData Json @map("response_data")
+  submittedAt DateTime? @map("submitted_at")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  @@map("whatsapp_flow_responses")
+
+
+}
+
+// LEGACY/REFERENCE ONLY: reconcile before importing data
+model WhatsappMessageLogs {
+  contactWaId String? @map("contact_wa_id")
+  type String? 
+  vendorId Int @map("vendors__id")
+  contactId Int @map("contacts__id")
+  campaignId Int? @map("campaigns__id")
+  whatsappMessageId String? @map("wamid")
+  wabPhoneNumberId String? @map("wab_phone_number_id")
+  message String? 
+  status String? 
+  isIncomingMessage Boolean @map("is_incoming_message")
+  messagedAt DateTime @map("messaged_at")
+  repliedToWhatsappMessageLogsUid String? @map("replied_to_whatsapp_message_logs__uid")
+  data Json? @map("__data")
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  refVendorId Vendors @relation("fk_whatsapp_message_logs_vendors__id", fields: [vendorId], references: [id], onDelete: Restrict, map: "0b27bc408976e2be47831654")
+  refContactId Contacts @relation("fk_whatsapp_message_logs_contacts__id", fields: [contactId], references: [id], onDelete: Restrict, map: "e14e0688c21c14202008d785")
+  refCampaignId Campaigns? @relation("fk_whatsapp_message_logs_campaigns__id", fields: [campaignId], references: [id], onDelete: Restrict, map: "7f43d48e48679d9c2fb7c07d")
+  @@map("whatsapp_message_logs")
+  @@index([vendorId, contactId, wabPhoneNumberId, contactWaId, isIncomingMessage, messagedAt], map: "node_whatsapp_customer_window_idx")
+
+  isForwarded Int? @map("is_forwarded")
+  messagedByUsersId Int? @map("messaged_by_users__id")
+}
+
+// LEGACY/REFERENCE ONLY: reconcile before importing data
+model WhatsappMessageQueue {
+  vendorId Int @map("vendors__id")
+  contactId Int? @map("contacts__id")
+  campaignId Int @map("campaigns__id")
+  phoneWithCountryCode String @map("phone_with_country_code")
+  status Int @default(1)
+  retries Int @default(0)
+  scheduledAt DateTime @map("scheduled_at")
+  data Json? @map("__data")
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  @@index([campaignId, status, id], map: "node_campaign_dispatch_idx")
+  refVendorId Vendors @relation("fk_whatsapp_message_queue_vendors__id", fields: [vendorId], references: [id], onDelete: Restrict, map: "51fccde36eb84f9849e4210c")
+  refContactId Contacts? @relation("fk_whatsapp_message_queue_contacts__id", fields: [contactId], references: [id], onDelete: Restrict, map: "342008aed3391f5771f427c8")
+  refCampaignId Campaigns @relation("fk_whatsapp_message_queue_campaigns__id", fields: [campaignId], references: [id], onDelete: Restrict, map: "dbf930932edd394b439e08e3")
+  @@map("whatsapp_message_queue")
+
+
+}
+
+// Migration definitions available
+model WhatsappOnboardingConnections {
+  id Int @id @default(autoincrement())
+  onboardingId String @unique @default(uuid()) @map("onboarding_id")
+  vendorId Int @map("vendors__id")
+  businessId String? @map("business_id")
+  wabaId String @map("waba_id")
+  phoneNumberId String @unique @map("phone_number_id")
+  displayPhoneNumber String? @map("display_phone_number")
+  verifiedName String? @map("verified_name")
+  status String @default("PENDING")
+  currentStep String @default("RECEIVED") @map("current_step")
+  phoneState String @default("NEW") @map("phone_state")
+  registrationStatus String @default("UNKNOWN") @map("registration_status")
+  webhookStatus String @default("UNKNOWN") @map("webhook_status")
+  tokenType String? @map("token_type")
+  accountMode String? @map("account_mode")
+  lastError Json? @map("last_error")
+  meta Json? 
+  lastSyncedAt DateTime? @map("last_synced_at")
+  connectedAt DateTime? @map("connected_at")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  connectionMode String @default("cloud_api") @map("connection_mode")
+  contactsSyncStatus String @default("NOT_REQUESTED") @map("contacts_sync_status")
+  historySyncStatus String @default("NOT_REQUESTED") @map("history_sync_status")
+  contactsSyncRequestId String? @map("contacts_sync_request_id")
+  historySyncRequestId String? @map("history_sync_request_id")
+  historySyncProgress Int @default(0) @map("history_sync_progress")
+  syncRequestedAt DateTime? @map("sync_requested_at")
+  syncCompletedAt DateTime? @map("sync_completed_at")
+  @@index([vendorId])
+  refVendorId Vendors @relation("fk_whatsapp_onboarding_connections_vendors__id", fields: [vendorId], references: [id], onDelete: Cascade, map: "011590df33b3e1965fa6233a")
+  @@unique([vendorId, wabaId, phoneNumberId], map: "c6d9158d75b4266befe45329")
+  @@map("whatsapp_onboarding_connections")
+
+
+}
+
+// Migration definitions available
+model WhatsappOrders {
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  orderId String @unique @map("order_id")
+  vendorId Int @map("vendors__id")
+  contactId Int? @map("contacts__id")
+  customerPhone String @map("customer_phone")
+  customerName String? @map("customer_name")
+  items Json 
+  totalAmount Decimal @map("total_amount") @db.Decimal(18, 4)
+  taxAmount Decimal @default(0) @map("tax_amount") @db.Decimal(18, 4)
+  shippingAmount Decimal @default(0) @map("shipping_amount") @db.Decimal(18, 4)
+  discountAmount Decimal @default(0) @map("discount_amount") @db.Decimal(18, 4)
+  deliveryAddress String? @map("delivery_address")
+  status String @default("pending")
+  paymentId String? @map("payment_id")
+  paymentStatus String? @map("payment_status")
+  currency String @default("INR")
+  data Json? @map("__data")
+  orderedAt DateTime? @map("ordered_at")
+  paymentCompletedAt DateTime? @map("payment_completed_at")
+  shippedAt DateTime? @map("shipped_at")
+  deliveredAt DateTime? @map("delivered_at")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  @@map("whatsapp_orders")
+
+
+}
+
+// Migration definitions available
+model WhatsappPayments {
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  paymentId String @unique @map("payment_id")
+  vendorId Int @map("vendors__id")
+  orderId String @map("order_id")
+  amount Decimal @db.Decimal(18, 4)
+  currency String @default("INR")
+  status String @default("pending")
+  paymentMethod String? @map("payment_method")
+  transactionId String? @map("transaction_id")
+  paymentLinkId String? @map("payment_link_id")
+  paymentLinkUrl String? @map("payment_link_url")
+  gateway String @default("razorpay")
+  gatewayResponse Json? @map("gateway_response")
+  data Json? @map("__data")
+  paymentInitiatedAt DateTime? @map("payment_initiated_at")
+  paymentCompletedAt DateTime? @map("payment_completed_at")
+  paymentFailedAt DateTime? @map("payment_failed_at")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  @@map("whatsapp_payments")
+
+
+}
+
+// LEGACY/REFERENCE ONLY: reconcile before importing data
+model WhatsappTemplates {
+  metaTemplateId String? @map("meta_template_id")
+  version Int @default(1)
+  qualityRating String @default("UNKNOWN") @map("quality_rating")
+  complianceScore Int? @map("compliance_score")
+  complianceDetails Json? @map("compliance_details")
+  versionHistory Json? @map("version_history")
+  analyticsSummary Json? @map("analytics_summary")
+  presetKey String? @map("preset_key")
+  vendorId Int @map("vendors__id")
+  templateName String @map("template_name")
+  templateId String? @map("template_id")
+  languageCode String @map("language")
+  status String 
+  category String? 
+  data Json? @map("__data")
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  refVendorId Vendors @relation("fk_whatsapp_templates_vendors__id", fields: [vendorId], references: [id], onDelete: Restrict, map: "21c81dac5e404cc64a93d1d8")
+  childrenCampaignsTemplateId Campaigns[] @relation("fk_campaigns_whatsapp_templates__id")
+  childrenWoocommerceOrderNotificationsTemplateId WoocommerceOrderNotifications[] @relation("fk_woocommerce_order_notifications_whatsapp_templates__id")
+  @@map("whatsapp_templates")
+
+
+}
+
+// Migration definitions available
+model WhatsappUserStates {
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  vendorId Int @map("vendors__id")
+  contactId Int? @map("contacts__id")
+  phone String 
+  state String 
+  orderId String? @map("order_id")
+  context String? 
+  data Json? @map("__data")
+  expiresAt DateTime? @map("expires_at")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  @@unique([vendorId, phone], map: "66a227e73c216a1c9e836ba6")
+  @@map("whatsapp_user_states")
+
+
+}
+
+// Migration definitions available
+model WoocommerceIntegrations {
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  vendorId Int @map("vendors__id")
+  siteUrl String @unique @map("site_url")
+  consumerKey String @map("consumer_key")
+  consumerSecret String @map("consumer_secret")
+  webhookIds Json? @map("webhook_ids")
+  isActive Boolean @default(false) @map("is_active")
+  notificationTypes String? @map("notification_types")
+  webhookUrl String? @map("webhook_url")
+  connectedAt DateTime? @map("connected_at")
+  disconnectedAt DateTime? @map("disconnected_at")
+  lastSyncAt DateTime? @map("last_sync_at")
+  settings Json? 
+  data Json? @map("__data")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  refVendorId Vendors @relation("fk_woocommerce_integrations_vendors__id", fields: [vendorId], references: [id], onDelete: Cascade, map: "173a1895e46a0db779352f68")
+  childrenWoocommerceOrdersWoocommerceIntegrationsId WoocommerceOrders[] @relation("fk_woocommerce_orders_woocommerce_integrations__id")
+  @@map("woocommerce_integrations")
+
+
+}
+
+// Migration definitions available
+model WoocommerceOrderNotifications {
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  woocommerceOrdersId Int @map("woocommerce_orders__id")
+  vendorId Int @map("vendors__id")
+  contactId Int? @map("contacts__id")
+  templateId Int? @map("whatsapp_templates__id")
+  notificationType String @map("notification_type")
+  status String @default("pending")
+  messageId String? @map("message_id")
+  whatsappMessageId String? @map("whatsapp_message_id")
+  variables Json? 
+  response Json? 
+  retryCount Int @default(0) @map("retry_count")
+  sentAt DateTime? @map("sent_at")
+  deliveredAt DateTime? @map("delivered_at")
+  readAt DateTime? @map("read_at")
+  errorMessage String? @map("error_message")
+  data Json? @map("__data")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  refWoocommerceOrdersId WoocommerceOrders @relation("fk_woocommerce_order_notifications_woocommerce_orders__id", fields: [woocommerceOrdersId], references: [id], onDelete: Cascade, map: "f57fbc2ca5577e99840dd349")
+  refVendorId Vendors @relation("fk_woocommerce_order_notifications_vendors__id", fields: [vendorId], references: [id], onDelete: Cascade, map: "430c430a5342dd38730c10b0")
+  refContactId Contacts? @relation("fk_woocommerce_order_notifications_contacts__id", fields: [contactId], references: [id], onDelete: SetNull, map: "a84eab23cba0b1061ea4224b")
+  refTemplateId WhatsappTemplates? @relation("fk_woocommerce_order_notifications_whatsapp_templates__id", fields: [templateId], references: [id], onDelete: SetNull, map: "d7fb4b049923db1013793f9f")
+  @@map("woocommerce_order_notifications")
+
+
+}
+
+// Migration definitions available
+model WoocommerceOrders {
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @unique @default(uuid()) @map("_uid")
+  woocommerceIntegrationsId Int @map("woocommerce_integrations__id")
+  vendorId Int @map("vendors__id")
+  contactId Int? @map("contacts__id")
+  woocommerceOrderId Int @map("woocommerce_order_id")
+  orderNumber String @map("order_number")
+  status String @default("pending")
+  total Decimal @default(0) @db.Decimal(18, 4)
+  currency String @default("USD")
+  paymentMethod String? @map("payment_method")
+  paymentMethodTitle String? @map("payment_method_title")
+  shippingMethod String? @map("shipping_method")
+  shippingMethodTitle String? @map("shipping_method_title")
+  totalTax Decimal @default(0) @map("total_tax") @db.Decimal(18, 4)
+  totalShipping Decimal @default(0) @map("total_shipping") @db.Decimal(18, 4)
+  totalDiscount Decimal @default(0) @map("total_discount") @db.Decimal(18, 4)
+  totalItems Int @default(0) @map("total_items")
+  customerNote String? @map("customer_note")
+  orderNotes String? @map("order_notes")
+  dateCreated DateTime? @map("date_created")
+  dateModified DateTime? @map("date_modified")
+  dateCompleted DateTime? @map("date_completed")
+  datePaid DateTime? @map("date_paid")
+  dateProcessing DateTime? @map("date_processing")
+  dateOnHold DateTime? @map("date_on_hold")
+  dateCancelled DateTime? @map("date_cancelled")
+  dateRefunded DateTime? @map("date_refunded")
+  customerData Json? @map("customer_data")
+  orderData Json? @map("order_data")
+  data Json? @map("__data")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  @@index([vendorId])
+  refWoocommerceIntegrationsId WoocommerceIntegrations @relation("fk_woocommerce_orders_woocommerce_integrations__id", fields: [woocommerceIntegrationsId], references: [id], onDelete: Cascade, map: "fdb05eba6ad218205d548386")
+  refVendorId Vendors @relation("fk_woocommerce_orders_vendors__id", fields: [vendorId], references: [id], onDelete: Cascade, map: "115ac26c50ae373a97ef57b4")
+  refContactId Contacts? @relation("fk_woocommerce_orders_contacts__id", fields: [contactId], references: [id], onDelete: SetNull, map: "17522354278f3d5745748ccd")
+  childrenWoocommerceOrderNotificationsWoocommerceOrdersId WoocommerceOrderNotifications[] @relation("fk_woocommerce_order_notifications_woocommerce_orders__id")
+  @@map("woocommerce_orders")
+  @@unique([woocommerceIntegrationsId, woocommerceOrderId], map: "node_woocommerce_store_order_key")
+
+
+}
+
+model AuthSessions {
+  id String @id @default(uuid())
+  userId Int
+  tokenHash String @unique
+  familyId String
+  expiresAt DateTime
+  revokedAt DateTime?
+  createdAt DateTime @default(now())
+  @@index([userId])
+  @@map("node_auth_sessions")
+}
+model VerificationChallenges {
+  id String @id @default(uuid())
+  userId Int
+  kind String
+  codeHash String
+  attempts Int @default(0)
+  expiresAt DateTime
+  consumedAt DateTime?
+  createdAt DateTime @default(now())
+  @@index([userId, kind])
+  @@map("node_verification_challenges")
+}
+model OutboxJobs {
+  id String @id @default(uuid())
+  vendorId Int?
+  kind String
+  payload Json
+  status String @default("pending")
+  attempts Int @default(0)
+  availableAt DateTime @default(now())
+  lockedAt DateTime?
+  lastError String?
+  dedupeKey String? @unique
+  createdAt DateTime @default(now())
+  @@index([status, availableAt])
+  @@map("node_outbox_jobs")
+}
+model WebhookReceipts {
+  id String @id @default(uuid())
+  provider String
+  eventKey String @unique
+  payload Json
+  processedAt DateTime?
+  createdAt DateTime @default(now())
+  @@map("node_webhook_receipts")
+}
+model IntegrationCredentials {
+  id String @id @default(uuid())
+  vendorId Int
+  provider String
+  externalId String
+  secret String
+  metadata Json?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@unique([vendorId, provider, externalId])
+  @@unique([provider, externalId])
+  @@map("node_integration_credentials")
+}
+model AuditEvents {
+  id String @id @default(uuid())
+  vendorId Int?
+  actorId Int?
+  action String
+  resource String
+  resourceId String?
+  metadata Json?
+  createdAt DateTime @default(now())
+  @@index([vendorId, createdAt])
+  @@map("node_audit_events")
+}
+model ApiKeys {
+  id String @id @default(uuid())
+  vendorId Int
+  userId Int
+  keyHash String @unique
+  permissions Json
+  expiresAt DateTime?
+  revokedAt DateTime?
+  createdAt DateTime @default(now())
+  @@index([vendorId])
+  @@map("node_api_keys")
+}
+model NativeMemberships {
+  id String @id @default(uuid())
+  vendorId Int
+  userId Int
+  role String
+  permissions Json
+  active Boolean @default(true)
+  @@unique([vendorId, userId])
+  @@map("node_memberships")
+}
+model NativeBookingClaims {
+  id String @id @default(uuid())
+  vendorId Int
+  resourceId Int
+  appointmentId Int
+  slot DateTime
+  @@unique([vendorId, resourceId, slot])
+  @@map("node_booking_claims")
+}
+model NativeIdempotency {
+  id String @id @default(uuid())
+  vendorId Int
+  key String
+  requestHash String
+  response Json?
+  createdAt DateTime @default(now())
+  @@unique([vendorId, key])
+  @@map("node_idempotency")
+}
+model NativeMedia {
+  id String @id @default(uuid())
+  vendorId Int
+  ownerId Int
+  path String
+  mimeType String
+  size Int
+  originalName String
+  createdAt DateTime @default(now())
+  @@index([vendorId])
+  @@map("node_media")
+}
+model NativeChannelMessages {
+  id String @id @default(uuid())
+  vendorId Int
+  contactId Int
+  provider String
+  externalAccountId String
+  externalMessageId String? @unique
+  text String?
+  incoming Boolean
+  status String
+  createdAt DateTime @default(now())
+  @@index([vendorId, contactId, createdAt])
+  @@map("node_channel_messages")
+}
+
+// SQLite snapshot table; source constraints require import preflight.
+model LoginAttempts {
+  id Int @id @default(autoincrement()) @map("_id")
+  createdAt DateTime @map("created_at")
+  updatedAt DateTime @map("updated_at")
+  ipAddress String @map("ip_address")
+  attempts Int
+  @@map("login_attempts")
+}
+
+// SQLite snapshot table; source constraints require import preflight.
+model MessageLabels {
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @map("_uid")
+  status Int?
+  updatedAt DateTime? @map("updated_at")
+  createdAt DateTime @map("created_at")
+  labelsId Int @map("labels__id")
+  whatsappMessageLogsId Int @map("whatsapp_message_logs__id")
+  @@map("message_labels")
+}
+
+// SQLite snapshot table; source constraints require import preflight.
+model LegacyMigrations {
+  id Int @id @default(autoincrement())
+  migration String
+  batch Int
+  @@map("migrations")
+}
+
+// SQLite snapshot table; source constraints require import preflight.
+model PasswordResets {
+  id Int @id @default(autoincrement()) @map("_id")
+  createdAt DateTime @map("created_at")
+  email String
+  token String
+  @@map("password_resets")
+}
+
+// SQLite snapshot table; source constraints require import preflight.
+model SubscriptionItems {
+  id Int @id @default(autoincrement())
+  stripeId String @map("stripe_id")
+  stripeProduct String? @map("stripe_product")
+  stripePrice String @map("stripe_price")
+  quantity Int?
+  createdAt DateTime? @map("created_at")
+  updatedAt DateTime? @map("updated_at")
+  subscriptionId Int @map("subscription_id")
+  @@map("subscription_items")
+}
+
+// SQLite snapshot table; source constraints require import preflight.
+model Tickets {
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @map("_uid")
+  status Int?
+  updatedAt DateTime? @map("updated_at")
+  createdAt DateTime @map("created_at")
+  contactsId Int @map("contacts__id")
+  vendorId Int @map("vendors__id")
+  subject String?
+  description String?
+  priority String?
+  vendorUsersId Int? @map("vendor_users__id")
+  data String? @map("__data")
+  assignedUsersId Int? @map("assigned_users__id")
+  @@map("tickets")
+}
+
+// SQLite snapshot table; source constraints require import preflight.
+model Transactions {
+  id Int @id @default(autoincrement()) @map("_id")
+  uid String @map("_uid")
+  status Int?
+  updatedAt DateTime? @map("updated_at")
+  createdAt DateTime @map("created_at")
+  amount Decimal? @db.Decimal(13, 4)
+  referenceId String @map("reference_id")
+  notes String?
+  data String? @map("__data")
+  vendorId Int? @map("vendors__id")
+  subscriptionsId Int? @map("subscriptions_id")
+  type String?
+  manualSubscriptionsId Int? @map("manual_subscriptions__id")
+  @@map("transactions")
+}
+
+// SQLite snapshot table; source constraints require import preflight.
+model UserSettings {
+  id Int @id @default(autoincrement()) @map("_id")
+  createdAt DateTime @map("created_at")
+  updatedAt DateTime @map("updated_at")
+  keyName String @map("key_name")
+  value String?
+  dataType Int? @map("data_type")
+  userId Int @map("users__id")
+  @@map("user_settings")
+}

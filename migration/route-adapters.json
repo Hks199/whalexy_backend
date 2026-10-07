@@ -1,0 +1,1569 @@
+{
+  "GET /api/{vendorUid}/appointments/services": {
+    "nodeEndpoint": "GET /api/:vendorUid/appointments/services",
+    "remaining": [
+      "Original Laravel credentials/session contract",
+      "Runtime Laravel/provider/frontend verification"
+    ],
+    "testFile": "tests/appointment-management.test.ts"
+  },
+  "POST /api/{vendorUid}/appointments/services": {
+    "nodeEndpoint": "POST /api/:vendorUid/appointments/services",
+    "remaining": [
+      "Original Laravel credentials/session contract",
+      "Runtime Laravel/provider/frontend verification"
+    ],
+    "testFile": "tests/appointment-management.test.ts"
+  },
+  "GET /api/{vendorUid}/appointments/resources": {
+    "nodeEndpoint": "GET /api/:vendorUid/appointments/resources",
+    "remaining": [
+      "Original Laravel credentials/session contract",
+      "Runtime Laravel/provider/frontend verification"
+    ],
+    "testFile": "tests/appointment-management.test.ts"
+  },
+  "POST /api/{vendorUid}/appointments/resources": {
+    "nodeEndpoint": "POST /api/:vendorUid/appointments/resources",
+    "remaining": [
+      "Original Laravel credentials/session contract",
+      "Runtime Laravel/provider/frontend verification"
+    ],
+    "testFile": "tests/appointment-management.test.ts"
+  },
+  "PUT /api/{vendorUid}/appointments/resources/{resourceUid}/schedule": {
+    "nodeEndpoint": "PUT /api/:vendorUid/appointments/resources/:resourceUid/schedule",
+    "remaining": [
+      "Original Laravel credentials/session contract",
+      "Runtime Laravel/provider/frontend verification"
+    ],
+    "testFile": "tests/appointment-management.test.ts"
+  },
+  "GET /api/{vendorUid}/appointments/availability": {
+    "nodeEndpoint": "GET /api/:vendorUid/appointments/availability",
+    "remaining": [
+      "Original Laravel credentials/session contract",
+      "Native privacy, strict idempotency and validation policies differ",
+      "Runtime Laravel/provider/frontend verification"
+    ],
+    "testFile": "tests/legacy-appointment-bookings.test.ts"
+  },
+  "POST /api/{vendorUid}/appointments/holds": {
+    "nodeEndpoint": "POST /api/:vendorUid/appointments/holds",
+    "remaining": [
+      "Original Laravel credentials/session contract",
+      "Native privacy, strict idempotency and validation policies differ",
+      "Runtime Laravel/provider/frontend verification"
+    ],
+    "testFile": "tests/legacy-appointment-bookings.test.ts"
+  },
+  "POST /api/{vendorUid}/appointments": {
+    "nodeEndpoint": "POST /api/:vendorUid/appointments",
+    "remaining": [
+      "Original Laravel credentials/session contract",
+      "Native privacy, strict idempotency and validation policies differ",
+      "Runtime Laravel/provider/frontend verification"
+    ],
+    "testFile": "tests/legacy-appointment-bookings.test.ts"
+  },
+  "GET /api/{vendorUid}/appointments/{appointmentUid}": {
+    "nodeEndpoint": "GET /api/:vendorUid/appointments/:appointmentUid",
+    "remaining": [
+      "Original Laravel credentials/session contract",
+      "Native privacy, strict idempotency and validation policies differ",
+      "Runtime Laravel/provider/frontend verification"
+    ],
+    "testFile": "tests/legacy-appointment-bookings.test.ts"
+  },
+  "POST /api/{vendorUid}/appointments/{appointmentUid}/cancel": {
+    "nodeEndpoint": "POST /api/:vendorUid/appointments/:appointmentUid/cancel",
+    "remaining": [
+      "Original Laravel credentials/session contract",
+      "Native privacy, strict idempotency and validation policies differ",
+      "Runtime Laravel/provider/frontend verification"
+    ],
+    "testFile": "tests/legacy-appointment-bookings.test.ts"
+  },
+  "POST /api/v1/vendor/knowledge/upload": {
+    "nodeEndpoint": "POST /api/v1/vendor/knowledge/upload",
+    "remaining": [
+      "Original Laravel cookies/session contract; native workspace selection differs",
+      "Native idempotency header, website/file checks and error contracts differ",
+      "Live AI indexing/crawling and provider reconciliation verification"
+    ],
+    "testFile": "tests/knowledge.test.ts"
+  },
+  "POST /api/v1/vendor/knowledge/website": {
+    "nodeEndpoint": "POST /api/v1/vendor/knowledge/website",
+    "remaining": [
+      "Original Laravel cookies/session contract; native workspace selection differs",
+      "Native idempotency header, website/file checks and error contracts differ",
+      "Live AI indexing/crawling and provider reconciliation verification"
+    ],
+    "testFile": "tests/knowledge.test.ts"
+  },
+  "GET /api/v1/vendor/knowledge/list": {
+    "nodeEndpoint": "GET /api/v1/vendor/knowledge/list",
+    "remaining": [
+      "Original Laravel cookies/session contract; native workspace selection differs",
+      "Native idempotency header, website/file checks and error contracts differ",
+      "Live AI indexing/crawling and provider reconciliation verification"
+    ],
+    "testFile": "tests/knowledge.test.ts"
+  },
+  "DELETE /api/v1/vendor/knowledge/{documentId}": {
+    "nodeEndpoint": "DELETE /api/v1/vendor/knowledge/:documentId",
+    "remaining": [
+      "Original Laravel cookies/session contract; native workspace selection differs",
+      "Native idempotency header, website/file checks and error contracts differ",
+      "Live AI indexing/crawling and provider reconciliation verification"
+    ],
+    "testFile": "tests/knowledge.test.ts"
+  },
+  "POST /api/{vendorUid}/contact/create": {
+    "nodeEndpoint": "POST /api/:vendorUid/contact/create",
+    "remaining": [
+      "Original Laravel credentials/session and error contract",
+      "Runtime Laravel/frontend/provider verification",
+      "Contact quotas, auto-create recipients and rich template components",
+      "Synchronous acknowledgement and documented behavior differences; see docs/LEGACY_CONTACT_MESSAGING.md"
+    ],
+    "testFile": "tests/legacy-contacts.test.ts"
+  },
+  "POST /api/{vendorUid}/contact/update/{phoneNumber}": {
+    "nodeEndpoint": "POST /api/:vendorUid/contact/update/:phoneNumber",
+    "remaining": [
+      "Original Laravel credentials/session and error contract",
+      "Runtime Laravel/frontend/provider verification",
+      "Contact quotas, auto-create recipients and rich template components",
+      "Synchronous acknowledgement and documented behavior differences; see docs/LEGACY_CONTACT_MESSAGING.md"
+    ],
+    "testFile": "tests/legacy-contacts.test.ts"
+  },
+  "POST /api/{vendorUid}/contact/send-message": {
+    "nodeEndpoint": "POST /api/:vendorUid/contact/send-message",
+    "remaining": [
+      "Original Laravel credentials/session and error contract",
+      "Runtime Laravel/frontend/provider verification",
+      "Contact quotas, auto-create recipients and rich template components",
+      "Synchronous acknowledgement and documented behavior differences; see docs/LEGACY_CONTACT_MESSAGING.md"
+    ],
+    "testFile": "tests/legacy-messaging.test.ts"
+  },
+  "POST /api/{vendorUid}/contact/send-media-message": {
+    "nodeEndpoint": "POST /api/:vendorUid/contact/send-media-message",
+    "remaining": [
+      "Original Laravel credentials/session and error contract",
+      "Runtime Laravel/frontend/provider verification",
+      "Contact quotas, auto-create recipients and rich template components",
+      "Synchronous acknowledgement and documented behavior differences; see docs/LEGACY_CONTACT_MESSAGING.md"
+    ],
+    "testFile": "tests/legacy-messaging.test.ts"
+  },
+  "POST /api/{vendorUid}/contact/send-template-message": {
+    "nodeEndpoint": "POST /api/:vendorUid/contact/send-template-message",
+    "remaining": [
+      "Original Laravel credentials/session and error contract",
+      "Runtime Laravel/frontend/provider verification",
+      "Contact quotas, auto-create recipients and rich template components",
+      "Synchronous acknowledgement and documented behavior differences; see docs/LEGACY_CONTACT_MESSAGING.md"
+    ],
+    "testFile": "tests/legacy-messaging.test.ts"
+  },
+  "GET /api/user": {
+    "nodeEndpoint": "GET /api/user",
+    "remaining": [
+      "Original Laravel credential/session, frontend and error contracts",
+      "Runtime Laravel and live provider verification",
+      "Native JWT and verification policies instead of legacy cookies and secured form payloads"
+    ],
+    "testFile": "tests/legacy-mobile.test.ts"
+  },
+  "POST /api/ai/analyze-conversation": {
+    "nodeEndpoint": "POST /api/ai/analyze-conversation",
+    "remaining": [
+      "Original Laravel credential/session, frontend and error contracts",
+      "Runtime Laravel and live provider verification",
+      "Automatic incoming/outgoing triggers, source cooldown/cache and complete original response behavior",
+      "Bounded transcript, native entitlement/idempotency and unchanged manual classification policies",
+      "Uncertain provider result reconciliation, usage pricing and billing"
+    ],
+    "testFile": "tests/conversation-analysis.test.ts"
+  },
+  "GET /api/ai/conversation-analysis/{conversationId}": {
+    "nodeEndpoint": "GET /api/ai/conversation-analysis/:conversationId",
+    "remaining": [
+      "Original Laravel credential/session, frontend and error contracts",
+      "Runtime Laravel and live provider verification",
+      "Automatic incoming/outgoing triggers, source cooldown/cache and complete original response behavior",
+      "Bounded transcript, native entitlement/idempotency and unchanged manual classification policies",
+      "Uncertain provider result reconciliation, usage pricing and billing"
+    ],
+    "testFile": "tests/conversation-analysis.test.ts"
+  },
+  "ANY /api": {
+    "nodeEndpoint": "GET /api",
+    "remaining": [
+      "Original Laravel credential/session, frontend and error contracts",
+      "Runtime Laravel and live provider verification",
+      "Native JWT and verification policies instead of legacy cookies and secured form payloads"
+    ],
+    "testFile": "tests/legacy-mobile.test.ts"
+  },
+  "GET /api/{vendorUid}/ads-manager/dashboard": {
+    "nodeEndpoint": "GET /api/:vendorUid/ads-manager/dashboard",
+    "remaining": [
+      "Original Laravel credential/session, frontend and error contracts",
+      "Runtime Laravel and live provider verification",
+      "Remote campaign/ad-set/creative publishing and asset upload; remote archive/delete",
+      "Dashboard currency-separated exact amounts and missing original campaign/account notification envelope",
+      "Strict external conversion identity, supported contact UUID input and attribution/notes adapters",
+      "Owner-only draft writes, required idempotency and original budget/targeting/frontend reconciliation"
+    ],
+    "testFile": "tests/legacy-ads.test.ts"
+  },
+  "GET /api/{vendorUid}/ads-manager/campaigns": {
+    "nodeEndpoint": "GET /api/:vendorUid/ads-manager/campaigns",
+    "remaining": [
+      "Original Laravel credential/session, frontend and error contracts",
+      "Runtime Laravel and live provider verification",
+      "Remote campaign/ad-set/creative publishing and asset upload; remote archive/delete",
+      "Dashboard currency-separated exact amounts and missing original campaign/account notification envelope",
+      "Strict external conversion identity, supported contact UUID input and attribution/notes adapters",
+      "Owner-only draft writes, required idempotency and original budget/targeting/frontend reconciliation"
+    ],
+    "testFile": "tests/legacy-ads.test.ts"
+  },
+  "POST /api/{vendorUid}/ads-manager/campaigns": {
+    "nodeEndpoint": "POST /api/:vendorUid/ads-manager/campaigns",
+    "remaining": [
+      "Original Laravel credential/session, frontend and error contracts",
+      "Runtime Laravel and live provider verification",
+      "Remote campaign/ad-set/creative publishing and asset upload; remote archive/delete",
+      "Dashboard currency-separated exact amounts and missing original campaign/account notification envelope",
+      "Strict external conversion identity, supported contact UUID input and attribution/notes adapters",
+      "Owner-only draft writes, required idempotency and original budget/targeting/frontend reconciliation"
+    ],
+    "testFile": "tests/legacy-ads.test.ts"
+  },
+  "POST /api/{vendorUid}/ads-manager/campaigns/{campaign}/action": {
+    "nodeEndpoint": "POST /api/:vendorUid/ads-manager/campaigns/:campaign/action",
+    "remaining": [
+      "Original Laravel credential/session, frontend and error contracts",
+      "Runtime Laravel and live provider verification",
+      "Remote campaign/ad-set/creative publishing and asset upload; remote archive/delete",
+      "Dashboard currency-separated exact amounts and missing original campaign/account notification envelope",
+      "Strict external conversion identity, supported contact UUID input and attribution/notes adapters",
+      "Owner-only draft writes, required idempotency and original budget/targeting/frontend reconciliation"
+    ],
+    "testFile": "tests/legacy-ads.test.ts"
+  },
+  "POST /api/{vendorUid}/ads-manager/conversions": {
+    "nodeEndpoint": "POST /api/:vendorUid/ads-manager/conversions",
+    "remaining": [
+      "Original Laravel credential/session, frontend and error contracts",
+      "Runtime Laravel and live provider verification",
+      "Remote campaign/ad-set/creative publishing and asset upload; remote archive/delete",
+      "Dashboard currency-separated exact amounts and missing original campaign/account notification envelope",
+      "Strict external conversion identity, supported contact UUID input and attribution/notes adapters",
+      "Owner-only draft writes, required idempotency and original budget/targeting/frontend reconciliation"
+    ],
+    "testFile": "tests/legacy-ads.test.ts"
+  },
+  "POST /api/{vendorUid}/tally/send-invoice": {
+    "nodeEndpoint": "POST /api/:vendorUid/tally/send-invoice",
+    "remaining": [
+      "Original Laravel credential/session, frontend and error contracts",
+      "Runtime Laravel and live provider verification",
+      "Private/base64/multipart invoice PDF upload and automatic recipient creation",
+      "Source fallback templates/text, invoice identifier and synchronous response policies"
+    ],
+    "testFile": "tests/tally.test.ts"
+  },
+  "GET /api/{vendorUid}/tally/ping": {
+    "nodeEndpoint": "GET /api/:vendorUid/tally/ping",
+    "remaining": [
+      "Original Laravel credential/session, frontend and error contracts",
+      "Runtime Laravel and live provider verification",
+      "Private/base64/multipart invoice PDF upload and automatic recipient creation",
+      "Source fallback templates/text, invoice identifier and synchronous response policies"
+    ],
+    "testFile": "tests/tally.test.ts"
+  },
+  "POST /api/user/login-process": {
+    "nodeEndpoint": "POST /api/user/login-process",
+    "remaining": [
+      "Original Laravel credential/session, frontend and error contracts",
+      "Runtime Laravel and live provider verification",
+      "Native JWT and verification policies instead of legacy cookies and secured form payloads"
+    ],
+    "testFile": "tests/legacy-mobile.test.ts"
+  },
+  "GET /api/user/prepare-sign-up": {
+    "nodeEndpoint": "GET /api/user/prepare-sign-up",
+    "remaining": [
+      "Original Laravel credential/session, frontend and error contracts",
+      "Runtime Laravel and live provider verification",
+      "Native JWT and verification policies instead of legacy cookies and secured form payloads",
+      "Source signup methods are empty; Node provides a functional verification-based extension"
+    ],
+    "testFile": "tests/legacy-mobile.test.ts"
+  },
+  "POST /api/user/process-sign-up": {
+    "nodeEndpoint": "POST /api/user/process-sign-up",
+    "remaining": [
+      "Original Laravel credential/session, frontend and error contracts",
+      "Runtime Laravel and live provider verification",
+      "Native JWT and verification policies instead of legacy cookies and secured form payloads",
+      "Source signup methods are empty; Node provides a functional verification-based extension"
+    ],
+    "testFile": "tests/legacy-mobile.test.ts"
+  },
+  "GET /api/vendor/contact/contacts-data/{contactUid?}": {
+    "nodeEndpoint": "GET /api/vendor/contact/contacts-data/:contactUid",
+    "remaining": [
+      "Original Laravel credential/session, frontend and error contracts",
+      "Runtime Laravel and live provider verification",
+      "Native JWT and verification policies instead of legacy cookies and secured form payloads",
+      "Complete handoff/Flow/latest-message projections, source filters and realtime client-model events"
+    ],
+    "testFile": "tests/legacy-mobile.test.ts"
+  },
+  "POST /api/user/logout": {
+    "nodeEndpoint": "POST /api/user/logout",
+    "remaining": [
+      "Original Laravel credential/session, frontend and error contracts",
+      "Runtime Laravel and live provider verification",
+      "Native JWT and verification policies instead of legacy cookies and secured form payloads"
+    ],
+    "testFile": "tests/legacy-mobile.test.ts"
+  },
+  "POST /vendor-console/whatsapp/chat/classification/update": {
+    "nodeEndpoint": "POST /vendor-console/whatsapp/chat/classification/update",
+    "testFile": "tests/legacy-classifications-cx.test.ts",
+    "remaining": [
+      "Native authentication/workspace/permission/error contracts differ from Laravel cookies, CSRF and secured responses",
+      "Original frontend and live Laravel/provider comparison",
+      "Owned-preset/tag validation, UTC/English audit formatting and safe actor/tag projection differ from source"
+    ]
+  },
+  "POST /vendor-console/whatsapp/chat/classification/tag/create": {
+    "nodeEndpoint": "POST /vendor-console/whatsapp/chat/classification/tag/create",
+    "testFile": "tests/legacy-classifications-cx.test.ts",
+    "remaining": [
+      "Native authentication/workspace/permission/error contracts differ from Laravel cookies, CSRF and secured responses",
+      "Original frontend and live Laravel/provider comparison",
+      "Owned-preset/tag validation, UTC/English audit formatting and safe actor/tag projection differ from source"
+    ]
+  },
+  "GET /vendor-console/whatsapp/chat/classification/logs/{contactUid}": {
+    "nodeEndpoint": "GET /vendor-console/whatsapp/chat/classification/logs/:contactUid",
+    "testFile": "tests/legacy-classifications-cx.test.ts",
+    "remaining": [
+      "Native authentication/workspace/permission/error contracts differ from Laravel cookies, CSRF and secured responses",
+      "Original frontend and live Laravel/provider comparison",
+      "Owned-preset/tag validation, UTC/English audit formatting and safe actor/tag projection differ from source"
+    ]
+  },
+  "GET /vendor-console/cx-analytics/conversations/{conversationId}": {
+    "nodeEndpoint": "GET /vendor-console/cx-analytics/conversations/:conversationId",
+    "testFile": "tests/legacy-classifications-cx.test.ts",
+    "remaining": [
+      "Native authentication/workspace/permission/error contracts differ from Laravel",
+      "Original HTML review and analytics frontend remain unimplemented by this JSON adapter",
+      "Provider failure redaction, strict retry state policy, historical transcripts and live provider/billing reconciliation"
+    ]
+  },
+  "POST /vendor-console/cx-analytics/scores/{scoreId}/retry": {
+    "nodeEndpoint": "POST /vendor-console/cx-analytics/scores/:scoreId/retry",
+    "testFile": "tests/legacy-classifications-cx.test.ts",
+    "remaining": [
+      "Native authentication/workspace/permission/error contracts differ from Laravel",
+      "Original HTML review and analytics frontend remain unimplemented by this JSON adapter",
+      "Provider failure redaction, strict retry state policy, historical transcripts and live provider/billing reconciliation"
+    ]
+  },
+  "POST /vendor-console/conversations/{conversationId}/reopen": {
+    "nodeEndpoint": "POST /vendor-console/conversations/:conversationId/reopen",
+    "testFile": "tests/legacy-conversations.test.ts",
+    "remaining": [
+      "Native JWT/workspace/permission/error contracts differ from original Laravel cookies/CSRF and responses",
+      "Safe contact/handoff projection and current visibility/permission policies differ from source",
+      "Original frontend, translations and live Laravel/provider verification",
+      "External AI handoff automation synchronization and imported-record reconciliation remain pending"
+    ]
+  },
+  "POST /vendor-console/conversations/{conversationId}/handoff/accept": {
+    "nodeEndpoint": "POST /vendor-console/conversations/:conversationId/handoff/accept",
+    "testFile": "tests/legacy-conversations.test.ts",
+    "remaining": [
+      "Native JWT/workspace/permission/error contracts differ from original Laravel cookies/CSRF and responses",
+      "Safe contact/handoff projection and current visibility/permission policies differ from source",
+      "Original frontend, translations and live Laravel/provider verification",
+      "External AI handoff automation synchronization and imported-record reconciliation remain pending"
+    ]
+  },
+  "POST /vendor-console/conversations/{conversationId}/resolve": {
+    "nodeEndpoint": "POST /vendor-console/conversations/:conversationId/resolve",
+    "testFile": "tests/legacy-resolution.test.ts",
+    "remaining": [
+      "Native JWT/workspace/permission/error contracts differ from original Laravel cookies/CSRF and responses",
+      "Idempotency-Key and AI-management permission are required; JSON provider acknowledgement is stricter than original HTTP-success handling",
+      "Original frontend, translations and live Laravel/AI-provider contract verification",
+      "Uncertain AI resume requires manual provider reconciliation; automated recovery and complete billing rules remain pending"
+    ]
+  },
+  "GET /vendor-console/contacts/custom-fields/list-data": {
+    "nodeEndpoint": "GET /vendor-console/contacts/custom-fields/list-data",
+    "testFile": "tests/legacy-contact-fields.test.ts",
+    "remaining": [
+      "Native JWT/workspace/permission/error and JSON response contracts differ from Laravel cookies/CSRF/secured responses",
+      "Original Blade/frontend and translated response/reload behavior are not verified",
+      "Revision is mandatory for edits/deletes; reserved-name/type/reference/value guards and fixed 100-field cap differ from original validation and subscription limits",
+      "Bounded DataTables search/pagination supports one sort and rejects regex, per-column filters and unbounded export; full original query behavior remains pending"
+    ]
+  },
+  "POST /vendor-console/contacts/custom-fields/add-process": {
+    "nodeEndpoint": "POST /vendor-console/contacts/custom-fields/add-process",
+    "testFile": "tests/legacy-contact-fields.test.ts",
+    "remaining": [
+      "Native JWT/workspace/permission/error and JSON response contracts differ from Laravel cookies/CSRF/secured responses",
+      "Original Blade/frontend and translated response/reload behavior are not verified",
+      "Revision is mandatory for edits/deletes; reserved-name/type/reference/value guards and fixed 100-field cap differ from original validation and subscription limits",
+      "Bounded DataTables search/pagination supports one sort and rejects regex, per-column filters and unbounded export; full original query behavior remains pending"
+    ]
+  },
+  "POST /vendor-console/contacts/custom-fields/update-process": {
+    "nodeEndpoint": "POST /vendor-console/contacts/custom-fields/update-process",
+    "testFile": "tests/legacy-contact-fields.test.ts",
+    "remaining": [
+      "Native JWT/workspace/permission/error and JSON response contracts differ from Laravel cookies/CSRF/secured responses",
+      "Original Blade/frontend and translated response/reload behavior are not verified",
+      "Revision is mandatory for edits/deletes; reserved-name/type/reference/value guards and fixed 100-field cap differ from original validation and subscription limits",
+      "Bounded DataTables search/pagination supports one sort and rejects regex, per-column filters and unbounded export; full original query behavior remains pending"
+    ]
+  },
+  "GET /vendor-console/contacts/custom-fields/{contactCustomFieldIdOrUid}/get-update-data": {
+    "nodeEndpoint": "GET /vendor-console/contacts/custom-fields/:contactCustomFieldIdOrUid/get-update-data",
+    "testFile": "tests/legacy-contact-fields.test.ts",
+    "remaining": [
+      "Native JWT/workspace/permission/error and JSON response contracts differ from Laravel cookies/CSRF/secured responses",
+      "Original Blade/frontend and translated response/reload behavior are not verified",
+      "Revision is mandatory for edits/deletes; reserved-name/type/reference/value guards and fixed 100-field cap differ from original validation and subscription limits",
+      "Bounded DataTables search/pagination supports one sort and rejects regex, per-column filters and unbounded export; full original query behavior remains pending"
+    ]
+  },
+  "POST /vendor-console/contacts/custom-fields/{contactCustomFieldIdOrUid}/delete-process": {
+    "nodeEndpoint": "POST /vendor-console/contacts/custom-fields/:contactCustomFieldIdOrUid/delete-process",
+    "testFile": "tests/legacy-contact-fields.test.ts",
+    "remaining": [
+      "Native JWT/workspace/permission/error and JSON response contracts differ from Laravel cookies/CSRF/secured responses",
+      "Original Blade/frontend and translated response/reload behavior are not verified",
+      "Revision is mandatory for edits/deletes; reserved-name/type/reference/value guards and fixed 100-field cap differ from original validation and subscription limits",
+      "Bounded DataTables search/pagination supports one sort and rejects regex, per-column filters and unbounded export; full original query behavior remains pending"
+    ]
+  },
+  "POST /vendor-console/whatsapp/contact/chat/update-notes": {
+    "nodeEndpoint": "POST /vendor-console/whatsapp/contact/chat/update-notes",
+    "testFile": "tests/legacy-contact-profile.test.ts",
+    "remaining": [
+      "Native JWT/workspace/contact-view/edit permissions, assignment visibility and JSON/error contracts differ from original messaging permission and cookies/CSRF/secured responses",
+      "Original frontend/realtime models, translations and live Laravel comparison remain pending",
+      "Label catalogs are safely paginated; foreign/inactive/duplicate assignments reject atomically rather than being skipped; repeated assignment returns success instead of source no-change code",
+      "Source group assignment workflows still lack adapters; label lifecycle now has partial JSON adapters"
+    ]
+  },
+  "POST /vendor-console/whatsapp/contact/chat/assign-labels": {
+    "nodeEndpoint": "POST /vendor-console/whatsapp/contact/chat/assign-labels",
+    "testFile": "tests/legacy-contact-profile.test.ts",
+    "remaining": [
+      "Native JWT/workspace/contact-view/edit permissions, assignment visibility and JSON/error contracts differ from original messaging permission and cookies/CSRF/secured responses",
+      "Original frontend/realtime models, translations and live Laravel comparison remain pending",
+      "Label catalogs are safely paginated; foreign/inactive/duplicate assignments reject atomically rather than being skipped; repeated assignment returns success instead of source no-change code",
+      "Source group assignment workflows still lack adapters; label lifecycle now has partial JSON adapters"
+    ]
+  },
+  "GET /vendor-console/whatsapp/contact/labels/{contactUid}": {
+    "nodeEndpoint": "GET /vendor-console/whatsapp/contact/labels/:contactUid",
+    "testFile": "tests/legacy-contact-profile.test.ts",
+    "remaining": [
+      "Native JWT/workspace/contact-view/edit permissions, assignment visibility and JSON/error contracts differ from original messaging permission and cookies/CSRF/secured responses",
+      "Original frontend/realtime models, translations and live Laravel comparison remain pending",
+      "Label catalogs are safely paginated; foreign/inactive/duplicate assignments reject atomically rather than being skipped; repeated assignment returns success instead of source no-change code",
+      "Source group assignment workflows still lack adapters; label lifecycle now has partial JSON adapters"
+    ]
+  },
+  "POST /vendor-console/whatsapp/contact/create-label": {
+    "nodeEndpoint": "POST /vendor-console/whatsapp/contact/create-label",
+    "testFile": "tests/legacy-label-management.test.ts",
+    "remaining": [
+      "Native JWT/workspace/group-management/full-contact-visibility and JSON/error contracts differ from Laravel messaging permissions/cookies/CSRF/secured responses",
+      "Original frontend, realtime allLabels client-model reloads, translations and live Laravel comparison remain unverified",
+      "Titles are trimmed with case-sensitive business uniqueness; colors accept only bounded hex or empty/null values rather than arbitrary original CSS strings",
+      "Deletion checks imported cross-business assignments and atomically removes owned links and audits; source no-change/reaction responses differ"
+    ]
+  },
+  "POST /vendor-console/whatsapp/contact/chat/edit-label": {
+    "nodeEndpoint": "POST /vendor-console/whatsapp/contact/chat/edit-label",
+    "testFile": "tests/legacy-label-management.test.ts",
+    "remaining": [
+      "Native JWT/workspace/group-management/full-contact-visibility and JSON/error contracts differ from Laravel messaging permissions/cookies/CSRF/secured responses",
+      "Original frontend, realtime allLabels client-model reloads, translations and live Laravel comparison remain unverified",
+      "Titles are trimmed with case-sensitive business uniqueness; colors accept only bounded hex or empty/null values rather than arbitrary original CSS strings",
+      "Deletion checks imported cross-business assignments and atomically removes owned links and audits; source no-change/reaction responses differ"
+    ]
+  },
+  "POST /vendor-console/whatsapp/contact/chat/delete-label/{labelUid}": {
+    "nodeEndpoint": "POST /vendor-console/whatsapp/contact/chat/delete-label/:labelUid",
+    "testFile": "tests/legacy-label-management.test.ts",
+    "remaining": [
+      "Native JWT/workspace/group-management/full-contact-visibility and JSON/error contracts differ from Laravel messaging permissions/cookies/CSRF/secured responses",
+      "Original frontend, realtime allLabels client-model reloads, translations and live Laravel comparison remain unverified",
+      "Titles are trimmed with case-sensitive business uniqueness; colors accept only bounded hex or empty/null values rather than arbitrary original CSS strings",
+      "Deletion checks imported cross-business assignments and atomically removes owned links and audits; source no-change/reaction responses differ"
+    ]
+  },
+  "GET /vendor-console/contacts/groups/{status?}/list-data": {
+    "nodeEndpoint": "GET /vendor-console/contacts/groups/:status/list-data",
+    "testFile": "tests/legacy-contact-groups.test.ts",
+    "remaining": [
+      "Native JWT/workspace/group-management/full-contact-visibility and JSON/error contracts differ from Laravel manage_contacts/cookies/CSRF/secured responses",
+      "Original Blade/frontend/realtime/reaction codes/translations, demo restrictions and subscription-specific group limits remain unverified",
+      "Source current-phone selection is not available in native sessions: source creation uses unscoped groups and listing covers the selected workspace; original phone-scoped/null-status import behavior remains pending",
+      "Bulk selections are bounded, unique and all-or-nothing; imported cross-business links and referenced campaigns block deletion rather than silently skipping targets",
+      "Group agent assignment and merge have partial JSON adapters; original realtime/provider synchronization remain pending"
+    ]
+  },
+  "POST /vendor-console/contacts/groups/add-process": {
+    "nodeEndpoint": "POST /vendor-console/contacts/groups/add-process",
+    "testFile": "tests/legacy-contact-groups.test.ts",
+    "remaining": [
+      "Native JWT/workspace/group-management/full-contact-visibility and JSON/error contracts differ from Laravel manage_contacts/cookies/CSRF/secured responses",
+      "Original Blade/frontend/realtime/reaction codes/translations, demo restrictions and subscription-specific group limits remain unverified",
+      "Source current-phone selection is not available in native sessions: source creation uses unscoped groups and listing covers the selected workspace; original phone-scoped/null-status import behavior remains pending",
+      "Bulk selections are bounded, unique and all-or-nothing; imported cross-business links and referenced campaigns block deletion rather than silently skipping targets",
+      "Group agent assignment and merge have partial JSON adapters; original realtime/provider synchronization remain pending"
+    ]
+  },
+  "GET /vendor-console/contacts/groups/{contactGroupIdOrUid}/get-update-data": {
+    "nodeEndpoint": "GET /vendor-console/contacts/groups/:contactGroupIdOrUid/get-update-data",
+    "testFile": "tests/legacy-contact-groups.test.ts",
+    "remaining": [
+      "Native JWT/workspace/group-management/full-contact-visibility and JSON/error contracts differ from Laravel manage_contacts/cookies/CSRF/secured responses",
+      "Original Blade/frontend/realtime/reaction codes/translations, demo restrictions and subscription-specific group limits remain unverified",
+      "Source current-phone selection is not available in native sessions: source creation uses unscoped groups and listing covers the selected workspace; original phone-scoped/null-status import behavior remains pending",
+      "Bulk selections are bounded, unique and all-or-nothing; imported cross-business links and referenced campaigns block deletion rather than silently skipping targets",
+      "Group agent assignment and merge have partial JSON adapters; original realtime/provider synchronization remain pending"
+    ]
+  },
+  "POST /vendor-console/contacts/groups/update-process": {
+    "nodeEndpoint": "POST /vendor-console/contacts/groups/update-process",
+    "testFile": "tests/legacy-contact-groups.test.ts",
+    "remaining": [
+      "Native JWT/workspace/group-management/full-contact-visibility and JSON/error contracts differ from Laravel manage_contacts/cookies/CSRF/secured responses",
+      "Original Blade/frontend/realtime/reaction codes/translations, demo restrictions and subscription-specific group limits remain unverified",
+      "Source current-phone selection is not available in native sessions: source creation uses unscoped groups and listing covers the selected workspace; original phone-scoped/null-status import behavior remains pending",
+      "Bulk selections are bounded, unique and all-or-nothing; imported cross-business links and referenced campaigns block deletion rather than silently skipping targets",
+      "Group agent assignment and merge have partial JSON adapters; original realtime/provider synchronization remain pending"
+    ]
+  },
+  "POST /vendor-console/contacts/groups/{contactGroupIdOrUid}/delete-process": {
+    "nodeEndpoint": "POST /vendor-console/contacts/groups/:contactGroupIdOrUid/delete-process",
+    "testFile": "tests/legacy-contact-groups.test.ts",
+    "remaining": [
+      "Native JWT/workspace/group-management/full-contact-visibility and JSON/error contracts differ from Laravel manage_contacts/cookies/CSRF/secured responses",
+      "Original Blade/frontend/realtime/reaction codes/translations, demo restrictions and subscription-specific group limits remain unverified",
+      "Source current-phone selection is not available in native sessions: source creation uses unscoped groups and listing covers the selected workspace; original phone-scoped/null-status import behavior remains pending",
+      "Bulk selections are bounded, unique and all-or-nothing; imported cross-business links and referenced campaigns block deletion rather than silently skipping targets",
+      "Group agent assignment and merge have partial JSON adapters; original realtime/provider synchronization remain pending"
+    ]
+  },
+  "POST /vendor-console/contacts/groups/{contactGroupIdOrUid}/archive-process": {
+    "nodeEndpoint": "POST /vendor-console/contacts/groups/:contactGroupIdOrUid/archive-process",
+    "testFile": "tests/legacy-contact-groups.test.ts",
+    "remaining": [
+      "Native JWT/workspace/group-management/full-contact-visibility and JSON/error contracts differ from Laravel manage_contacts/cookies/CSRF/secured responses",
+      "Original Blade/frontend/realtime/reaction codes/translations, demo restrictions and subscription-specific group limits remain unverified",
+      "Source current-phone selection is not available in native sessions: source creation uses unscoped groups and listing covers the selected workspace; original phone-scoped/null-status import behavior remains pending",
+      "Bulk selections are bounded, unique and all-or-nothing; imported cross-business links and referenced campaigns block deletion rather than silently skipping targets",
+      "Group agent assignment and merge have partial JSON adapters; original realtime/provider synchronization remain pending"
+    ]
+  },
+  "POST /vendor-console/contacts/groups/{contactGroupIdOrUid}/unarchive-process": {
+    "nodeEndpoint": "POST /vendor-console/contacts/groups/:contactGroupIdOrUid/unarchive-process",
+    "testFile": "tests/legacy-contact-groups.test.ts",
+    "remaining": [
+      "Native JWT/workspace/group-management/full-contact-visibility and JSON/error contracts differ from Laravel manage_contacts/cookies/CSRF/secured responses",
+      "Original Blade/frontend/realtime/reaction codes/translations, demo restrictions and subscription-specific group limits remain unverified",
+      "Source current-phone selection is not available in native sessions: source creation uses unscoped groups and listing covers the selected workspace; original phone-scoped/null-status import behavior remains pending",
+      "Bulk selections are bounded, unique and all-or-nothing; imported cross-business links and referenced campaigns block deletion rather than silently skipping targets",
+      "Group agent assignment and merge have partial JSON adapters; original realtime/provider synchronization remain pending"
+    ]
+  },
+  "POST /vendor-console/contacts/groups/delete-selected-process": {
+    "nodeEndpoint": "POST /vendor-console/contacts/groups/delete-selected-process",
+    "testFile": "tests/legacy-contact-groups.test.ts",
+    "remaining": [
+      "Native JWT/workspace/group-management/full-contact-visibility and JSON/error contracts differ from Laravel manage_contacts/cookies/CSRF/secured responses",
+      "Original Blade/frontend/realtime/reaction codes/translations, demo restrictions and subscription-specific group limits remain unverified",
+      "Source current-phone selection is not available in native sessions: source creation uses unscoped groups and listing covers the selected workspace; original phone-scoped/null-status import behavior remains pending",
+      "Bulk selections are bounded, unique and all-or-nothing; imported cross-business links and referenced campaigns block deletion rather than silently skipping targets",
+      "Group agent assignment and merge have partial JSON adapters; original realtime/provider synchronization remain pending"
+    ]
+  },
+  "POST /vendor-console/contacts/groups/archive-selected-process": {
+    "nodeEndpoint": "POST /vendor-console/contacts/groups/archive-selected-process",
+    "testFile": "tests/legacy-contact-groups.test.ts",
+    "remaining": [
+      "Native JWT/workspace/group-management/full-contact-visibility and JSON/error contracts differ from Laravel manage_contacts/cookies/CSRF/secured responses",
+      "Original Blade/frontend/realtime/reaction codes/translations, demo restrictions and subscription-specific group limits remain unverified",
+      "Source current-phone selection is not available in native sessions: source creation uses unscoped groups and listing covers the selected workspace; original phone-scoped/null-status import behavior remains pending",
+      "Bulk selections are bounded, unique and all-or-nothing; imported cross-business links and referenced campaigns block deletion rather than silently skipping targets",
+      "Group agent assignment and merge have partial JSON adapters; original realtime/provider synchronization remain pending"
+    ]
+  },
+  "POST /vendor-console/contacts/groups/unarchive-selected-process": {
+    "nodeEndpoint": "POST /vendor-console/contacts/groups/unarchive-selected-process",
+    "testFile": "tests/legacy-contact-groups.test.ts",
+    "remaining": [
+      "Native JWT/workspace/group-management/full-contact-visibility and JSON/error contracts differ from Laravel manage_contacts/cookies/CSRF/secured responses",
+      "Original Blade/frontend/realtime/reaction codes/translations, demo restrictions and subscription-specific group limits remain unverified",
+      "Source current-phone selection is not available in native sessions: source creation uses unscoped groups and listing covers the selected workspace; original phone-scoped/null-status import behavior remains pending",
+      "Bulk selections are bounded, unique and all-or-nothing; imported cross-business links and referenced campaigns block deletion rather than silently skipping targets",
+      "Group agent assignment and merge have partial JSON adapters; original realtime/provider synchronization remain pending"
+    ]
+  },
+  "POST /vendor-console/contacts/groups/merge-process": {
+    "nodeEndpoint": "POST /vendor-console/contacts/groups/merge-process",
+    "testFile": "tests/legacy-contact-groups.test.ts",
+    "remaining": [
+      "Native JWT/workspace/group-management/full-contact-visibility and JSON/error contracts differ from Laravel manage_contacts/cookies/CSRF/secured responses",
+      "Original browser-selected phone filter, realtime/Blade/reaction/translation and live Laravel comparison remain pending",
+      "Native merge requires active groups with identical local phone scope; imported foreign links and campaign-referenced sources reject before membership movement",
+      "Agent assignment has a partial JSON adapter; original realtime/provider synchronization and full source-data reconciliation remain pending"
+    ]
+  },
+  "POST /vendor-console/contacts/groups/assign-agent-process": {
+    "nodeEndpoint": "POST /vendor-console/contacts/groups/assign-agent-process",
+    "testFile": "tests/legacy-contact-assignment.test.ts",
+    "remaining": [
+      "Native JWT/workspace/assignment permission, active reply-agent eligibility and JSON/error contracts differ from original cookies/CSRF/secured responses and role fallbacks",
+      "Group assignment also requires management/full-contact visibility and a bounded 500-contact snapshot; original current-phone selection, unbounded batches and imported scopes remain pending",
+      "Original WAITING_FOR_AGENT AI-provider best-effort synchronization and realtime frontend broadcasts are not implemented by this local adapter",
+      "Original translated/no-change/reload semantics and live Laravel/provider verification remain pending"
+    ]
+  },
+  "POST /vendor-console/whatsapp/contact/chat/assign-user": {
+    "nodeEndpoint": "POST /vendor-console/whatsapp/contact/chat/assign-user",
+    "testFile": "tests/legacy-contact-assignment.test.ts",
+    "remaining": [
+      "Native JWT/workspace/assignment permission, active reply-agent eligibility and JSON/error contracts differ from original cookies/CSRF/secured responses and role fallbacks",
+      "Group assignment also requires management/full-contact visibility and a bounded 500-contact snapshot; original current-phone selection, unbounded batches and imported scopes remain pending",
+      "Original WAITING_FOR_AGENT AI-provider best-effort synchronization and realtime frontend broadcasts are not implemented by this local adapter",
+      "Original translated/no-change/reload semantics and live Laravel/provider verification remain pending"
+    ]
+  },
+  "POST /vendor-console/contacts/assign-groups-selected-process": {
+    "nodeEndpoint": "POST /vendor-console/contacts/assign-groups-selected-process",
+    "remaining": [
+      "Native bearer/workspace and contacts.edit/groups.manage permissions replace source session/manage_contacts policies",
+      "Bounded unique selections, tenant ownership, active additions and stored phone-scope guards are stricter than source fetches",
+      "Original secured response/no-change errors, translations, browser phone selection and frontend reload/modal contracts",
+      "Live Laravel/frontend compatibility verification"
+    ],
+    "testFile": "tests/legacy-contact-memberships.test.ts"
+  },
+  "POST /vendor-console/contacts/{contactIdOrUid}/{groupUid}/remove-process": {
+    "nodeEndpoint": "POST /vendor-console/contacts/:contactIdOrUid/:groupUid/remove-process",
+    "remaining": [
+      "Native bearer/workspace and contacts.edit/groups.manage permissions replace source session/manage_contacts policies",
+      "Bounded unique selections, tenant ownership, active additions and stored phone-scope guards are stricter than source fetches",
+      "Original secured response/no-change errors, translations, browser phone selection and frontend reload/modal contracts",
+      "Live Laravel/frontend compatibility verification"
+    ],
+    "testFile": "tests/legacy-contact-memberships.test.ts"
+  },
+  "GET /vendor-console/contacts/{contactIdOrUid}/get-update-data": {
+    "nodeEndpoint": "GET /vendor-console/contacts/:contactIdOrUid/get-update-data",
+    "remaining": [
+      "Native bearer/workspace/permission/visibility policies replace source cookies/manage_contacts",
+      "Safe edit-data projection and 500-item profile bound differ from full source model serialization",
+      "Native booking/delivery/retained-reference deletion guards and error contracts are stricter than source",
+      "Original secured responses, frontend refresh, translations and live Laravel verification"
+    ],
+    "testFile": "tests/legacy-contact-records.test.ts"
+  },
+  "POST /vendor-console/contacts/{contactIdOrUid}/delete-process": {
+    "nodeEndpoint": "POST /vendor-console/contacts/:contactIdOrUid/delete-process",
+    "remaining": [
+      "Native bearer/workspace/permission/visibility policies replace source cookies/manage_contacts",
+      "Safe edit-data projection and 500-item profile bound differ from full source model serialization",
+      "Native booking/delivery/retained-reference deletion guards and error contracts are stricter than source",
+      "Original secured responses, frontend refresh, translations and live Laravel verification"
+    ],
+    "testFile": "tests/legacy-contact-records.test.ts"
+  },
+  "POST /vendor-console/contacts/add-process": {
+    "nodeEndpoint": "POST /vendor-console/contacts/add-process",
+    "remaining": [
+      "Native bearer/workspace/permissions replace source session/manage_contacts policies",
+      "Omitted groups/opt-out/AI preserved, explicit bounded selections and typed values are stricter than source",
+      "Source plan/demo limits and browser-selected phone scope remain pending",
+      "AI enablement requires entitlement; paused/open-handoff resume requires provider-aware resolution; disable synchronization remains pending",
+      "Original secured envelopes/no-change messages, frontend refresh, translations and live Laravel verification"
+    ],
+    "testFile": "tests/legacy-contact-write.test.ts"
+  },
+  "POST /vendor-console/contacts/update-process": {
+    "nodeEndpoint": "POST /vendor-console/contacts/update-process",
+    "remaining": [
+      "Native bearer/workspace/permissions replace source session/manage_contacts policies",
+      "Omitted groups/opt-out/AI preserved, explicit bounded selections and typed values are stricter than source",
+      "Source plan/demo limits and browser-selected phone scope remain pending",
+      "AI enablement requires entitlement; paused/open-handoff resume requires provider-aware resolution; disable synchronization remains pending",
+      "Original secured envelopes/no-change messages, frontend refresh, translations and live Laravel verification"
+    ],
+    "testFile": "tests/legacy-contact-write.test.ts"
+  },
+  "GET /vendor-console/contacts/list-data/{groupUid?}": {
+    "nodeEndpoint": "GET /vendor-console/contacts/list-data/:groupUid",
+    "remaining": [
+      "Native bearer/workspace/visibility policies replace source session/manage_contacts contracts",
+      "Stored social platform data only; source Meta contact synchronization remains pending",
+      "Explicit connected number replaces browser-selected phone scope; group lists retain all owned members",
+      "Bounded DataTables sorts/search, hidden-field protection and UTC/English projection differ from full source behavior",
+      "Original frontend/envelopes, translations and live Laravel compatibility verification"
+    ],
+    "testFile": "tests/legacy-contact-directory.test.ts"
+  },
+  "POST /vendor-console/contacts/delete-selected-process": {
+    "nodeEndpoint": "POST /vendor-console/contacts/delete-selected-process",
+    "remaining": [
+      "Native bearer/workspace/deletion and full filtered-visibility permissions replace source cookies/manage_contacts",
+      "Atomic bounded 100-contact batches and retained-history/booking/delivery guards are stricter than source unbounded deletes",
+      "Campaign test contacts block the whole batch rather than being skipped; unknown/empty groups never fall back to all contacts",
+      "Source demo/plan/browser phone/search/envelope/frontend/translation contracts and live Laravel verification",
+      "Matching snapshot and supported queued-effect cleanup do not establish complete provider/background reconciliation"
+    ],
+    "testFile": "tests/legacy-contact-bulk-delete.test.ts"
+  },
+  "POST /vendor-console/contacts/delete-all-process/{groupUid?}": {
+    "nodeEndpoint": "POST /vendor-console/contacts/delete-all-process/:groupUid",
+    "remaining": [
+      "Native bearer/workspace/deletion and full filtered-visibility permissions replace source cookies/manage_contacts",
+      "Atomic bounded 100-contact batches and retained-history/booking/delivery guards are stricter than source unbounded deletes",
+      "Campaign test contacts block the whole batch rather than being skipped; unknown/empty groups never fall back to all contacts",
+      "Source demo/plan/browser phone/search/envelope/frontend/translation contracts and live Laravel verification",
+      "Matching snapshot and supported queued-effect cleanup do not establish complete provider/background reconciliation"
+    ],
+    "testFile": "tests/legacy-contact-bulk-delete.test.ts"
+  },
+  "POST /vendor-console/whatsapp/contact/chat/send": {
+    "nodeEndpoint": "POST /vendor-console/whatsapp/contact/chat/send",
+    "remaining": [
+      "Native bearer/workspace/permissions and active plan guards replace source cookie/session/demo policies",
+      "Durable asynchronous 202 queued responses and mandatory Idempotency-Key replace synchronous source envelopes/provider acknowledgements",
+      "Browser-selected number scope, live provider proof, realtime/analysis callbacks and original frontend compatibility remain pending",
+      "Live location delivery remains pending; its unsupported mode fails explicitly",
+      "Native single-emoji and reaction ownership/age/window/pending-effect guards are stricter than source"
+    ],
+    "testFile": "tests/legacy-chat-message.test.ts"
+  },
+  "POST /vendor-console/whatsapp/contact/chat/send-location": {
+    "nodeEndpoint": "POST /vendor-console/whatsapp/contact/chat/send-location",
+    "remaining": [
+      "Native bearer/workspace/permissions and active plan guards replace source cookie/session/demo policies",
+      "Durable asynchronous 202 queued responses and mandatory Idempotency-Key replace synchronous source envelopes/provider acknowledgements",
+      "Browser-selected number scope, live provider proof, realtime/analysis callbacks and original frontend compatibility remain pending",
+      "Live location delivery remains pending; its unsupported mode fails explicitly",
+      "Native single-emoji and reaction ownership/age/window/pending-effect guards are stricter than source"
+    ],
+    "testFile": "tests/legacy-chat-message.test.ts"
+  },
+  "POST /vendor-console/whatsapp/contact/chat/message/{messageUid}/reaction": {
+    "nodeEndpoint": "POST /vendor-console/whatsapp/contact/chat/message/:messageUid/reaction",
+    "remaining": [
+      "Native bearer/workspace/permissions and active plan guards replace source cookie/session/demo policies",
+      "Durable asynchronous 202 queued responses and mandatory Idempotency-Key replace synchronous source envelopes/provider acknowledgements",
+      "Browser-selected number scope, live provider proof, realtime/analysis callbacks and original frontend compatibility remain pending",
+      "Live location delivery remains pending; its unsupported mode fails explicitly",
+      "Native single-emoji and reaction ownership/age/window/pending-effect guards are stricter than source"
+    ],
+    "testFile": "tests/legacy-chat-message.test.ts"
+  },
+  "GET /vendor-console/whatsapp/contact/chat-data/{contactUid}/{way?}": {
+    "nodeEndpoint": "GET /vendor-console/whatsapp/contact/chat-data/:contactUid/:way",
+    "remaining": [
+      "Native bearer/workspace/read or reply permissions replace Laravel session/messaging envelopes",
+      "Explicit owned connected-number scope and bounded stable pagination replace browser settings and source pagination",
+      "Safe plain-text message/contact projections exclude raw webhook data, media/Flow/calling/rendered template metadata and source HTML formatting",
+      "Inbox implements basic assignment/unread/search/group/label filters; source AI/classification/handoff filters, label previews and realtime remain pending",
+      "Original frontend/client model updates, translations and live Laravel/provider compatibility remain unverified"
+    ],
+    "testFile": "tests/legacy-chat-read.test.ts"
+  },
+  "GET /vendor-console/whatsapp/contact/contacts-data/{contactUid?}": {
+    "nodeEndpoint": "GET /vendor-console/whatsapp/contact/contacts-data/:contactUid",
+    "remaining": [
+      "Native bearer/workspace/read or reply permissions replace Laravel session/messaging envelopes",
+      "Explicit owned connected-number scope and bounded stable pagination replace browser settings and source pagination",
+      "Safe plain-text message/contact projections exclude raw webhook data, media/Flow/calling/rendered template metadata and source HTML formatting",
+      "Inbox implements basic assignment/unread/search/group/label filters; source AI/classification/handoff filters, label previews and realtime remain pending",
+      "Original frontend/client model updates, translations and live Laravel/provider compatibility remain unverified"
+    ],
+    "testFile": "tests/legacy-chat-read.test.ts"
+  },
+  "GET /vendor-console/whatsapp/contact/chat/prepare-send-media/{mediaType?}": {
+    "nodeEndpoint": "GET /vendor-console/whatsapp/contact/chat/prepare-send-media/:mediaType",
+    "remaining": [
+      "Native bearer/workspace/read or reply permissions replace Laravel session/messaging envelopes",
+      "Explicit owned connected-number scope and bounded stable pagination replace browser settings and source pagination",
+      "Safe plain-text message/contact projections exclude raw webhook data, media/Flow/calling/rendered template metadata and source HTML formatting",
+      "Inbox implements basic assignment/unread/search/group/label filters; source AI/classification/handoff filters, label previews and realtime remain pending",
+      "Original frontend/client model updates, translations and live Laravel/provider compatibility remain unverified"
+    ],
+    "testFile": "tests/legacy-chat-read.test.ts"
+  },
+  "GET /vendor-console/whatsapp/chat/unread-count": {
+    "nodeEndpoint": "GET /vendor-console/whatsapp/chat/unread-count",
+    "remaining": [
+      "Native bearer/workspace/read permissions and explicit connected sender scope replace source session/manage-campaign/messaging access",
+      "Scoped assignment/privacy counts exclude foreign imported links and social contacts; original client-model envelopes and realtime remain pending",
+      "Live Laravel/frontend/provider verification remains pending"
+    ],
+    "testFile": "tests/legacy-chat-read.test.ts"
+  },
+  "POST /vendor-console/contacts/{contactIdOrUid}/toggle-ai-bot": {
+    "nodeEndpoint": "POST /vendor-console/contacts/:contactIdOrUid/toggle-ai-bot",
+    "testFile": "tests/contact-automation.test.ts",
+    "remaining": [
+      "Native bearer/workspace/AI permission, UUID-only source identity and mandatory idempotency replace source session/messaging contracts",
+      "AI resume requires active native base/addon entitlement; safe pause remains available when entitlement expires",
+      "Pause commits locally before remote synchronization; provider acknowledgements and shared uncertainty claims are stricter than source best-effort disable",
+      "Original secured/client-model envelopes, frontend refresh, source billing/demo policy and live provider/Laravel verification",
+      "Uncertain provider effects or post-ack state changes require reconciliation; automatic recovery remains pending"
+    ]
+  },
+  "GET /vendor-console/integration/shopify/status": {
+    "nodeEndpoint": "GET /vendor-console/integration/shopify/status",
+    "remaining": [
+      "Native bearer/workspace/integration-management permission replaces original vendor-session aliases",
+      "Read-only stored metadata and aggregate counts do not prove live provider connectivity, delivery or data-import compatibility",
+      "Optional integration_id scope and ambiguous-status rejection are stricter than source first-integration selection",
+      "Imported foreign store/order/contact links are excluded; invalid credential-bearing store URLs require reconciliation",
+      "Original frontend/session/error/locale/provider verification remains pending"
+    ],
+    "testFile": "tests/legacy-store-reports.test.ts"
+  },
+  "GET /vendor-console/integration/shopify/statistics": {
+    "nodeEndpoint": "GET /vendor-console/integration/shopify/statistics",
+    "remaining": [
+      "Native bearer/workspace/integration-management permission replaces original vendor-session aliases",
+      "Read-only stored metadata and aggregate counts do not prove live provider connectivity, delivery or data-import compatibility",
+      "Optional integration_id scope and ambiguous-status rejection are stricter than source first-integration selection",
+      "Imported foreign store/order/contact links are excluded; invalid credential-bearing store URLs require reconciliation",
+      "Original frontend/session/error/locale/provider verification remains pending"
+    ],
+    "testFile": "tests/legacy-store-reports.test.ts"
+  },
+  "GET /vendor-console/integration/woocommerce/status": {
+    "nodeEndpoint": "GET /vendor-console/integration/woocommerce/status",
+    "remaining": [
+      "Native bearer/workspace/integration-management permission replaces original vendor-session aliases",
+      "Read-only stored metadata and aggregate counts do not prove live provider connectivity, delivery or data-import compatibility",
+      "Optional integration_id scope and ambiguous-status rejection are stricter than source first-integration selection",
+      "Imported foreign store/order/contact links are excluded; invalid credential-bearing store URLs require reconciliation",
+      "Original frontend/session/error/locale/provider verification remains pending"
+    ],
+    "testFile": "tests/legacy-store-reports.test.ts"
+  },
+  "GET /vendor-console/integration/woocommerce/statistics": {
+    "nodeEndpoint": "GET /vendor-console/integration/woocommerce/statistics",
+    "remaining": [
+      "Native bearer/workspace/integration-management permission replaces original vendor-session aliases",
+      "Read-only stored metadata and aggregate counts do not prove live provider connectivity, delivery or data-import compatibility",
+      "Optional integration_id scope and ambiguous-status rejection are stricter than source first-integration selection",
+      "Imported foreign store/order/contact links are excluded; invalid credential-bearing store URLs require reconciliation",
+      "Original frontend/session/error/locale/provider verification remains pending"
+    ],
+    "testFile": "tests/legacy-store-reports.test.ts"
+  },
+  "POST /vendor-console/integration/shopify/notifications/{notificationId}/resend": {
+    "nodeEndpoint": "POST /vendor-console/integration/shopify/notifications/:notificationId/resend",
+    "remaining": [
+      "Native bearer/workspace authorization and explicit Idempotency-Key replace original session/demo behavior",
+      "Only a reconciled native delivery job with a known unsent failure can retry; imported/missing/ambiguous jobs require reconciliation",
+      "Durable asynchronous delivery preserves history rather than source synchronous reset/resend; changed configuration requires reconciliation",
+      "Original frontend/envelopes/locales/full billing rules and live Laravel/provider compatibility remain unverified"
+    ],
+    "testFile": "tests/legacy-store-retry.test.ts"
+  },
+  "POST /vendor-console/integration/woocommerce/notifications/{notificationId}/resend": {
+    "nodeEndpoint": "POST /vendor-console/integration/woocommerce/notifications/:notificationId/resend",
+    "remaining": [
+      "Native bearer/workspace authorization and explicit Idempotency-Key replace original session/demo behavior",
+      "Only a reconciled native delivery job with a known unsent failure can retry; imported/missing/ambiguous jobs require reconciliation",
+      "Durable asynchronous delivery preserves history rather than source synchronous reset/resend; changed configuration requires reconciliation",
+      "Original frontend/envelopes/locales/full billing rules and live Laravel/provider compatibility remain unverified"
+    ],
+    "testFile": "tests/legacy-store-retry.test.ts"
+  },
+  "GET /vendor-console/integration/shopify/orders": {
+    "nodeEndpoint": "GET /vendor-console/integration/shopify/orders",
+    "testFile": "tests/legacy-store-history.test.ts",
+    "remaining": [
+      "Original routes render Laravel views; Node exposes JSON read models, so original page/session/CSRF/rendering compatibility remains pending",
+      "Native bearer/workspace integration-management permission and tenant-consistent relationships replace original vendor-only view queries",
+      "Bounded pagination, conjunctive filters, UTC inclusive date ranges, literal search and ambiguous external-ID selection are intentional native semantics",
+      "Safe scalar and line-item projections omit raw snapshots, customer/address metadata, provider responses/errors/IDs and relation serialization",
+      "WooCommerce search currently covers order numbers rather than arbitrary customer JSON; source locale/envelopes/import/provider behavior remain unverified"
+    ]
+  },
+  "GET /vendor-console/integration/shopify/orders/{orderId}": {
+    "nodeEndpoint": "GET /vendor-console/integration/shopify/orders/:orderId",
+    "testFile": "tests/legacy-store-history.test.ts",
+    "remaining": [
+      "Original routes render Laravel views; Node exposes JSON read models, so original page/session/CSRF/rendering compatibility remains pending",
+      "Native bearer/workspace integration-management permission and tenant-consistent relationships replace original vendor-only view queries",
+      "Bounded pagination, conjunctive filters, UTC inclusive date ranges, literal search and ambiguous external-ID selection are intentional native semantics",
+      "Safe scalar and line-item projections omit raw snapshots, customer/address metadata, provider responses/errors/IDs and relation serialization",
+      "WooCommerce search currently covers order numbers rather than arbitrary customer JSON; source locale/envelopes/import/provider behavior remain unverified"
+    ]
+  },
+  "GET /vendor-console/integration/shopify/notifications": {
+    "nodeEndpoint": "GET /vendor-console/integration/shopify/notifications",
+    "testFile": "tests/legacy-store-history.test.ts",
+    "remaining": [
+      "Original routes render Laravel views; Node exposes JSON read models, so original page/session/CSRF/rendering compatibility remains pending",
+      "Native bearer/workspace integration-management permission and tenant-consistent relationships replace original vendor-only view queries",
+      "Bounded pagination, conjunctive filters, UTC inclusive date ranges, literal search and ambiguous external-ID selection are intentional native semantics",
+      "Safe scalar and line-item projections omit raw snapshots, customer/address metadata, provider responses/errors/IDs and relation serialization",
+      "WooCommerce search currently covers order numbers rather than arbitrary customer JSON; source locale/envelopes/import/provider behavior remain unverified"
+    ]
+  },
+  "GET /vendor-console/integration/woocommerce/orders": {
+    "nodeEndpoint": "GET /vendor-console/integration/woocommerce/orders",
+    "testFile": "tests/legacy-store-history.test.ts",
+    "remaining": [
+      "Original routes render Laravel views; Node exposes JSON read models, so original page/session/CSRF/rendering compatibility remains pending",
+      "Native bearer/workspace integration-management permission and tenant-consistent relationships replace original vendor-only view queries",
+      "Bounded pagination, conjunctive filters, UTC inclusive date ranges, literal search and ambiguous external-ID selection are intentional native semantics",
+      "Safe scalar and line-item projections omit raw snapshots, customer/address metadata, provider responses/errors/IDs and relation serialization",
+      "WooCommerce search currently covers order numbers rather than arbitrary customer JSON; source locale/envelopes/import/provider behavior remain unverified"
+    ]
+  },
+  "GET /vendor-console/integration/woocommerce/orders/{orderId}": {
+    "nodeEndpoint": "GET /vendor-console/integration/woocommerce/orders/:orderId",
+    "testFile": "tests/legacy-store-history.test.ts",
+    "remaining": [
+      "Original routes render Laravel views; Node exposes JSON read models, so original page/session/CSRF/rendering compatibility remains pending",
+      "Native bearer/workspace integration-management permission and tenant-consistent relationships replace original vendor-only view queries",
+      "Bounded pagination, conjunctive filters, UTC inclusive date ranges, literal search and ambiguous external-ID selection are intentional native semantics",
+      "Safe scalar and line-item projections omit raw snapshots, customer/address metadata, provider responses/errors/IDs and relation serialization",
+      "WooCommerce search currently covers order numbers rather than arbitrary customer JSON; source locale/envelopes/import/provider behavior remain unverified"
+    ]
+  },
+  "GET /vendor-console/integration/woocommerce/notifications": {
+    "nodeEndpoint": "GET /vendor-console/integration/woocommerce/notifications",
+    "testFile": "tests/legacy-store-history.test.ts",
+    "remaining": [
+      "Original routes render Laravel views; Node exposes JSON read models, so original page/session/CSRF/rendering compatibility remains pending",
+      "Native bearer/workspace integration-management permission and tenant-consistent relationships replace original vendor-only view queries",
+      "Bounded pagination, conjunctive filters, UTC inclusive date ranges, literal search and ambiguous external-ID selection are intentional native semantics",
+      "Safe scalar and line-item projections omit raw snapshots, customer/address metadata, provider responses/errors/IDs and relation serialization",
+      "WooCommerce search currently covers order numbers rather than arbitrary customer JSON; source locale/envelopes/import/provider behavior remain unverified"
+    ]
+  },
+  "POST /vendor-console/integration/shopify/update-notification-settings": {
+    "nodeEndpoint": "POST /vendor-console/integration/shopify/update-notification-settings",
+    "testFile": "tests/legacy-store-settings.test.ts",
+    "remaining": [
+      "Native bearer/workspace authorization, explicit idempotency and owned store/sender selection replace original session/global-number assumptions",
+      "Numbered UUID-based text body/header mappings translate to native rules; provider event types without implemented triggers are explicitly rejected",
+      "Legacy media/dynamic URL/coupon templates, named mappings and extra address/date/payment/tracking fields require their delivery adapters; use native rich configuration where supported",
+      "Original frontend/form/session/envelopes/locales/full billing/import and live provider contracts remain unverified"
+    ]
+  },
+  "POST /vendor-console/integration/woocommerce/update-notification-settings": {
+    "nodeEndpoint": "POST /vendor-console/integration/woocommerce/update-notification-settings",
+    "testFile": "tests/legacy-store-settings.test.ts",
+    "remaining": [
+      "Native bearer/workspace authorization, explicit idempotency and owned store/sender selection replace original session/global-number assumptions",
+      "Numbered UUID-based text body/header mappings translate to native rules; provider event types without implemented triggers are explicitly rejected",
+      "Legacy media/dynamic URL/coupon templates, named mappings and extra address/date/payment/tracking fields require their delivery adapters; use native rich configuration where supported",
+      "Original frontend/form/session/envelopes/locales/full billing/import and live provider contracts remain unverified"
+    ]
+  },
+  "GET /vendor-console/whatsapp/campaign/status/{campaignUid}/data": {
+    "nodeEndpoint": "GET /vendor-console/whatsapp/campaign/status/:campaignUid/data",
+    "testFile": "tests/legacy-campaign.test.ts",
+    "remaining": [
+      "Native fresh action permissions and full contact visibility replace manage_campaigns session/demo aliases",
+      "Writes require Idempotency-Key; duplication requires a new test and copies only validated native configuration, not legacy recreate payloads or execution state",
+      "Archive/restore preserve native stopped state; deletion refuses active campaigns and any queue/message/test/provider-job history",
+      "Bounded DataTables projections and source fields omit private payloads, provider errors, rich HTML/client models and respect current phone visibility",
+      "Complete source numeric statuses/demo/broadcast/multicolumn filters, UI/errors/locales, schedule/billing/import and live provider compatibility remain unverified; original XLSX reports are separate pending work"
+    ]
+  },
+  "GET /vendor-console/whatsapp/campaign/{status}/list-data": {
+    "nodeEndpoint": "GET /vendor-console/whatsapp/campaign/:status/list-data",
+    "testFile": "tests/legacy-campaign.test.ts",
+    "remaining": [
+      "Native fresh action permissions and full contact visibility replace manage_campaigns session/demo aliases",
+      "Writes require Idempotency-Key; duplication requires a new test and copies only validated native configuration, not legacy recreate payloads or execution state",
+      "Archive/restore preserve native stopped state; deletion refuses active campaigns and any queue/message/test/provider-job history",
+      "Bounded DataTables projections and source fields omit private payloads, provider errors, rich HTML/client models and respect current phone visibility",
+      "Complete source numeric statuses/demo/broadcast/multicolumn filters, UI/errors/locales, schedule/billing/import and live provider compatibility remain unverified; original XLSX reports are separate pending work"
+    ]
+  },
+  "GET /vendor-console/whatsapp/campaign/queue/{campaignUid}": {
+    "nodeEndpoint": "GET /vendor-console/whatsapp/campaign/queue/:campaignUid",
+    "testFile": "tests/legacy-campaign.test.ts",
+    "remaining": [
+      "Native fresh action permissions and full contact visibility replace manage_campaigns session/demo aliases",
+      "Writes require Idempotency-Key; duplication requires a new test and copies only validated native configuration, not legacy recreate payloads or execution state",
+      "Archive/restore preserve native stopped state; deletion refuses active campaigns and any queue/message/test/provider-job history",
+      "Bounded DataTables projections and source fields omit private payloads, provider errors, rich HTML/client models and respect current phone visibility",
+      "Complete source numeric statuses/demo/broadcast/multicolumn filters, UI/errors/locales, schedule/billing/import and live provider compatibility remain unverified; original XLSX reports are separate pending work"
+    ]
+  },
+  "GET /vendor-console/whatsapp/campaign/executed/{campaignUid}": {
+    "nodeEndpoint": "GET /vendor-console/whatsapp/campaign/executed/:campaignUid",
+    "testFile": "tests/legacy-campaign.test.ts",
+    "remaining": [
+      "Native fresh action permissions and full contact visibility replace manage_campaigns session/demo aliases",
+      "Writes require Idempotency-Key; duplication requires a new test and copies only validated native configuration, not legacy recreate payloads or execution state",
+      "Archive/restore preserve native stopped state; deletion refuses active campaigns and any queue/message/test/provider-job history",
+      "Bounded DataTables projections and source fields omit private payloads, provider errors, rich HTML/client models and respect current phone visibility",
+      "Complete source numeric statuses/demo/broadcast/multicolumn filters, UI/errors/locales, schedule/billing/import and live provider compatibility remain unverified; original XLSX reports are separate pending work"
+    ]
+  },
+  "POST /vendor-console/whatsapp/campaign/{campaignIdOrUid}/duplicate": {
+    "nodeEndpoint": "POST /vendor-console/whatsapp/campaign/:campaignIdOrUid/duplicate",
+    "testFile": "tests/legacy-campaign.test.ts",
+    "remaining": [
+      "Native fresh action permissions and full contact visibility replace manage_campaigns session/demo aliases",
+      "Writes require Idempotency-Key; duplication requires a new test and copies only validated native configuration, not legacy recreate payloads or execution state",
+      "Archive/restore preserve native stopped state; deletion refuses active campaigns and any queue/message/test/provider-job history",
+      "Bounded DataTables projections and source fields omit private payloads, provider errors, rich HTML/client models and respect current phone visibility",
+      "Complete source numeric statuses/demo/broadcast/multicolumn filters, UI/errors/locales, schedule/billing/import and live provider compatibility remain unverified; original XLSX reports are separate pending work"
+    ]
+  },
+  "POST /vendor-console/whatsapp/campaign/{campaignIdOrUid}/delete-process": {
+    "nodeEndpoint": "POST /vendor-console/whatsapp/campaign/:campaignIdOrUid/delete-process",
+    "testFile": "tests/legacy-campaign.test.ts",
+    "remaining": [
+      "Native fresh action permissions and full contact visibility replace manage_campaigns session/demo aliases",
+      "Writes require Idempotency-Key; duplication requires a new test and copies only validated native configuration, not legacy recreate payloads or execution state",
+      "Archive/restore preserve native stopped state; deletion refuses active campaigns and any queue/message/test/provider-job history",
+      "Bounded DataTables projections and source fields omit private payloads, provider errors, rich HTML/client models and respect current phone visibility",
+      "Complete source numeric statuses/demo/broadcast/multicolumn filters, UI/errors/locales, schedule/billing/import and live provider compatibility remain unverified; original XLSX reports are separate pending work"
+    ]
+  },
+  "POST /vendor-console/whatsapp/campaign/{campaignIdOrUid}/archive-process": {
+    "nodeEndpoint": "POST /vendor-console/whatsapp/campaign/:campaignIdOrUid/archive-process",
+    "testFile": "tests/legacy-campaign.test.ts",
+    "remaining": [
+      "Native fresh action permissions and full contact visibility replace manage_campaigns session/demo aliases",
+      "Writes require Idempotency-Key; duplication requires a new test and copies only validated native configuration, not legacy recreate payloads or execution state",
+      "Archive/restore preserve native stopped state; deletion refuses active campaigns and any queue/message/test/provider-job history",
+      "Bounded DataTables projections and source fields omit private payloads, provider errors, rich HTML/client models and respect current phone visibility",
+      "Complete source numeric statuses/demo/broadcast/multicolumn filters, UI/errors/locales, schedule/billing/import and live provider compatibility remain unverified; original XLSX reports are separate pending work"
+    ]
+  },
+  "POST /vendor-console/whatsapp/campaign/{campaignIdOrUid}/unarchive-process": {
+    "nodeEndpoint": "POST /vendor-console/whatsapp/campaign/:campaignIdOrUid/unarchive-process",
+    "testFile": "tests/legacy-campaign.test.ts",
+    "remaining": [
+      "Native fresh action permissions and full contact visibility replace manage_campaigns session/demo aliases",
+      "Writes require Idempotency-Key; duplication requires a new test and copies only validated native configuration, not legacy recreate payloads or execution state",
+      "Archive/restore preserve native stopped state; deletion refuses active campaigns and any queue/message/test/provider-job history",
+      "Bounded DataTables projections and source fields omit private payloads, provider errors, rich HTML/client models and respect current phone visibility",
+      "Complete source numeric statuses/demo/broadcast/multicolumn filters, UI/errors/locales, schedule/billing/import and live provider compatibility remain unverified; original XLSX reports are separate pending work"
+    ]
+  },
+  "GET /vendor-console/bot-replies/list-data": {
+    "nodeEndpoint": "GET /vendor-console/bot-replies/list-data",
+    "testFile": "tests/legacy-bot-replies.test.ts",
+    "remaining": [
+      "Native workspace bearer authentication and fresh vendor.bot.manage replace original session/manage_bot_replies/demo semantics",
+      "Only standalone text replies are supported; rich media, flow nodes, context duplication, source send-test effects and imported metadata require their dedicated workflows",
+      "Writes require Idempotency-Key; duplicate is disabled, configuration is validated and audit/replay commit atomically",
+      "Bounded DataTables and edit JSON omit raw metadata; original labels, HTML/client models, column filters and selector lists are unverified",
+      "Legacy schema import, plan quotas, source frontend/error/localization and live dispatch parity remain unverified"
+    ]
+  },
+  "GET /vendor-console/bot-replies/{botReplyIdOrUid}/get-update-data": {
+    "nodeEndpoint": "GET /vendor-console/bot-replies/:botReplyIdOrUid/get-update-data",
+    "testFile": "tests/legacy-bot-replies.test.ts",
+    "remaining": [
+      "Native workspace bearer authentication and fresh vendor.bot.manage replace original session/manage_bot_replies/demo semantics",
+      "Only standalone text replies are supported; rich media, flow nodes, context duplication, source send-test effects and imported metadata require their dedicated workflows",
+      "Writes require Idempotency-Key; duplicate is disabled, configuration is validated and audit/replay commit atomically",
+      "Bounded DataTables and edit JSON omit raw metadata; original labels, HTML/client models, column filters and selector lists are unverified",
+      "Legacy schema import, plan quotas, source frontend/error/localization and live dispatch parity remain unverified"
+    ]
+  },
+  "POST /vendor-console/bot-replies/add-process": {
+    "nodeEndpoint": "POST /vendor-console/bot-replies/add-process",
+    "testFile": "tests/legacy-bot-replies.test.ts",
+    "remaining": [
+      "Native workspace bearer authentication and fresh vendor.bot.manage replace original session/manage_bot_replies/demo semantics",
+      "Only standalone text replies are supported; rich media, flow nodes, context duplication, source send-test effects and imported metadata require their dedicated workflows",
+      "Writes require Idempotency-Key; duplicate is disabled, configuration is validated and audit/replay commit atomically",
+      "Bounded DataTables and edit JSON omit raw metadata; original labels, HTML/client models, column filters and selector lists are unverified",
+      "Legacy schema import, plan quotas, source frontend/error/localization and live dispatch parity remain unverified"
+    ]
+  },
+  "POST /vendor-console/bot-replies/update-process": {
+    "nodeEndpoint": "POST /vendor-console/bot-replies/update-process",
+    "testFile": "tests/legacy-bot-replies.test.ts",
+    "remaining": [
+      "Native workspace bearer authentication and fresh vendor.bot.manage replace original session/manage_bot_replies/demo semantics",
+      "Only standalone text replies are supported; rich media, flow nodes, context duplication, source send-test effects and imported metadata require their dedicated workflows",
+      "Writes require Idempotency-Key; duplicate is disabled, configuration is validated and audit/replay commit atomically",
+      "Bounded DataTables and edit JSON omit raw metadata; original labels, HTML/client models, column filters and selector lists are unverified",
+      "Legacy schema import, plan quotas, source frontend/error/localization and live dispatch parity remain unverified"
+    ]
+  },
+  "POST /vendor-console/bot-replies/{botReplyIdOrUid}/duplicate-process": {
+    "nodeEndpoint": "POST /vendor-console/bot-replies/:botReplyIdOrUid/duplicate-process",
+    "testFile": "tests/legacy-bot-replies.test.ts",
+    "remaining": [
+      "Native workspace bearer authentication and fresh vendor.bot.manage replace original session/manage_bot_replies/demo semantics",
+      "Only standalone text replies are supported; rich media, flow nodes, context duplication, source send-test effects and imported metadata require their dedicated workflows",
+      "Writes require Idempotency-Key; duplicate is disabled, configuration is validated and audit/replay commit atomically",
+      "Bounded DataTables and edit JSON omit raw metadata; original labels, HTML/client models, column filters and selector lists are unverified",
+      "Legacy schema import, plan quotas, source frontend/error/localization and live dispatch parity remain unverified"
+    ]
+  },
+  "POST /vendor-console/bot-replies/{botReplyIdOrUid}/delete-process": {
+    "nodeEndpoint": "POST /vendor-console/bot-replies/:botReplyIdOrUid/delete-process",
+    "testFile": "tests/legacy-bot-replies.test.ts",
+    "remaining": [
+      "Native workspace bearer authentication and fresh vendor.bot.manage replace original session/manage_bot_replies/demo semantics",
+      "Only standalone text replies are supported; rich media, flow nodes, context duplication, source send-test effects and imported metadata require their dedicated workflows",
+      "Writes require Idempotency-Key; duplicate is disabled, configuration is validated and audit/replay commit atomically",
+      "Bounded DataTables and edit JSON omit raw metadata; original labels, HTML/client models, column filters and selector lists are unverified",
+      "Legacy schema import, plan quotas, source frontend/error/localization and live dispatch parity remain unverified"
+    ]
+  },
+  "GET /vendor-console/settings/out-of-office": {
+    "nodeEndpoint": "GET /vendor-console/settings/out-of-office",
+    "testFile": "tests/legacy-out-of-office.test.ts",
+    "remaining": [
+      "Native bearer/workspace and current view/manage permission replace source sessions and source phone settings readiness",
+      "POST accepts original numeric booleans, fields and JSON response, with a required Idempotency-Key and bounded validated schedules",
+      "Existing owned settings can be disabled after disconnection; enabling requires an owned connected credential",
+      "GET is safe configuration JSON at the original page URL, not the original Blade settings frontend",
+      "Original session/frontend/localization/date parsing, sender settings import and live source/provider delivery parity remain unverified"
+    ]
+  },
+  "POST /vendor-console/settings/out-of-office": {
+    "nodeEndpoint": "POST /vendor-console/settings/out-of-office",
+    "testFile": "tests/legacy-out-of-office.test.ts",
+    "remaining": [
+      "Native bearer/workspace and current view/manage permission replace source sessions and source phone settings readiness",
+      "POST accepts original numeric booleans, fields and JSON response, with a required Idempotency-Key and bounded validated schedules",
+      "Existing owned settings can be disabled after disconnection; enabling requires an owned connected credential",
+      "GET is safe configuration JSON at the original page URL, not the original Blade settings frontend",
+      "Original session/frontend/localization/date parsing, sender settings import and live source/provider delivery parity remain unverified"
+    ]
+  },
+  "GET /vendor-console/bot-replies/bot-flows/list-data": {
+    "nodeEndpoint": "GET /vendor-console/bot-replies/bot-flows/list-data",
+    "testFile": "tests/legacy-bot-flows.test.ts",
+    "remaining": [
+      "Native bearer/workspace and current vendor.bot.manage replace source session/manage_bot_flows/manage_bot_replies/demo aliases",
+      "List/edit project safe source fields; raw builder/provider data and localized status labels/client models are not exposed",
+      "Mutations require Idempotency-Key and operate only on reconciled native WhatsApp graphs; imported builder/linked reply/social/published provider records require reconciliation",
+      "Clone starts inactive with fresh graph identity; update translates source header fields and preserves validated native graph/sender; export downloads a disabled native definition, not original canvas/reply archive format",
+      "Original graph creation/import/builder updates, multichannel execution, billing quotas, title/trigger uniqueness and source/frontend/live provider parity remain pending"
+    ]
+  },
+  "GET /vendor-console/bot-replies/bot-flows/{botFlowIdOrUid}/get-update-data": {
+    "nodeEndpoint": "GET /vendor-console/bot-replies/bot-flows/:botFlowIdOrUid/get-update-data",
+    "testFile": "tests/legacy-bot-flows.test.ts",
+    "remaining": [
+      "Native bearer/workspace and current vendor.bot.manage replace source session/manage_bot_flows/manage_bot_replies/demo aliases",
+      "List/edit project safe source fields; raw builder/provider data and localized status labels/client models are not exposed",
+      "Mutations require Idempotency-Key and operate only on reconciled native WhatsApp graphs; imported builder/linked reply/social/published provider records require reconciliation",
+      "Clone starts inactive with fresh graph identity; update translates source header fields and preserves validated native graph/sender; export downloads a disabled native definition, not original canvas/reply archive format",
+      "Original graph creation/import/builder updates, multichannel execution, billing quotas, title/trigger uniqueness and source/frontend/live provider parity remain pending"
+    ]
+  },
+  "GET /vendor-console/bot-replies/bot-flows/{botFlowIdOrUid}/export": {
+    "nodeEndpoint": "GET /vendor-console/bot-replies/bot-flows/:botFlowIdOrUid/export",
+    "testFile": "tests/legacy-bot-flows.test.ts",
+    "remaining": [
+      "Native bearer/workspace and current vendor.bot.manage replace source session/manage_bot_flows/manage_bot_replies/demo aliases",
+      "List/edit project safe source fields; raw builder/provider data and localized status labels/client models are not exposed",
+      "Mutations require Idempotency-Key and operate only on reconciled native WhatsApp graphs; imported builder/linked reply/social/published provider records require reconciliation",
+      "Clone starts inactive with fresh graph identity; update translates source header fields and preserves validated native graph/sender; export downloads a disabled native definition, not original canvas/reply archive format",
+      "Original graph creation/import/builder updates, multichannel execution, billing quotas, title/trigger uniqueness and source/frontend/live provider parity remain pending"
+    ]
+  },
+  "POST /vendor-console/bot-replies/bot-flows/{botFlowIdOrUid}/clone-process": {
+    "nodeEndpoint": "POST /vendor-console/bot-replies/bot-flows/:botFlowIdOrUid/clone-process",
+    "testFile": "tests/legacy-bot-flows.test.ts",
+    "remaining": [
+      "Native bearer/workspace and current vendor.bot.manage replace source session/manage_bot_flows/manage_bot_replies/demo aliases",
+      "List/edit project safe source fields; raw builder/provider data and localized status labels/client models are not exposed",
+      "Mutations require Idempotency-Key and operate only on reconciled native WhatsApp graphs; imported builder/linked reply/social/published provider records require reconciliation",
+      "Clone starts inactive with fresh graph identity; update translates source header fields and preserves validated native graph/sender; export downloads a disabled native definition, not original canvas/reply archive format",
+      "Original graph creation/import/builder updates, multichannel execution, billing quotas, title/trigger uniqueness and source/frontend/live provider parity remain pending"
+    ]
+  },
+  "POST /vendor-console/bot-replies/bot-flows/{botFlowIdOrUid}/delete-process": {
+    "nodeEndpoint": "POST /vendor-console/bot-replies/bot-flows/:botFlowIdOrUid/delete-process",
+    "testFile": "tests/legacy-bot-flows.test.ts",
+    "remaining": [
+      "Native bearer/workspace and current vendor.bot.manage replace source session/manage_bot_flows/manage_bot_replies/demo aliases",
+      "List/edit project safe source fields; raw builder/provider data and localized status labels/client models are not exposed",
+      "Mutations require Idempotency-Key and operate only on reconciled native WhatsApp graphs; imported builder/linked reply/social/published provider records require reconciliation",
+      "Clone starts inactive with fresh graph identity; update translates source header fields and preserves validated native graph/sender; export downloads a disabled native definition, not original canvas/reply archive format",
+      "Original graph creation/import/builder updates, multichannel execution, billing quotas, title/trigger uniqueness and source/frontend/live provider parity remain pending"
+    ]
+  },
+  "POST /vendor-console/bot-replies/bot-flows/update-process": {
+    "nodeEndpoint": "POST /vendor-console/bot-replies/bot-flows/update-process",
+    "testFile": "tests/legacy-bot-flows.test.ts",
+    "remaining": [
+      "Native bearer/workspace and current vendor.bot.manage replace source session/manage_bot_flows/manage_bot_replies/demo aliases",
+      "List/edit project safe source fields; raw builder/provider data and localized status labels/client models are not exposed",
+      "Mutations require Idempotency-Key and operate only on reconciled native WhatsApp graphs; imported builder/linked reply/social/published provider records require reconciliation",
+      "Clone starts inactive with fresh graph identity; update translates source header fields and preserves validated native graph/sender; export downloads a disabled native definition, not original canvas/reply archive format",
+      "Original graph creation/import/builder updates, multichannel execution, billing quotas, title/trigger uniqueness and source/frontend/live provider parity remain pending"
+    ]
+  },
+  "GET /central-console/translations": {
+    "nodeEndpoint": "GET /central-console/translations",
+    "testFile": "tests/legacy-translations.test.ts",
+    "remaining": [
+      "Native bearer/site-administrator authorization replaces original central-console session middleware; current administrator role is rechecked in write transactions",
+      "Original language fields/dynamic form keys and singular message edits map to native configuration/catalog storage; writes require Idempotency-Key and update/delete/message revision",
+      "Original page URLs expose safe JSON registry/catalog data, not Blade views or client models",
+      "Source scanning, automatic provider translation, Excel import/export, plural/context catalog support and PO/MO filesystem side effects remain pending",
+      "Source locale/name/error/localization, original frontend/imported catalog and complete runtime parity remain unverified"
+    ]
+  },
+  "GET /central-console/translations/language/{languageId}": {
+    "nodeEndpoint": "GET /central-console/translations/language/:languageId",
+    "testFile": "tests/legacy-translations.test.ts",
+    "remaining": [
+      "Native bearer/site-administrator authorization replaces original central-console session middleware; current administrator role is rechecked in write transactions",
+      "Original language fields/dynamic form keys and singular message edits map to native configuration/catalog storage; writes require Idempotency-Key and update/delete/message revision",
+      "Original page URLs expose safe JSON registry/catalog data, not Blade views or client models",
+      "Source scanning, automatic provider translation, Excel import/export, plural/context catalog support and PO/MO filesystem side effects remain pending",
+      "Source locale/name/error/localization, original frontend/imported catalog and complete runtime parity remain unverified"
+    ]
+  },
+  "POST /central-console/translations/process-language-store": {
+    "nodeEndpoint": "POST /central-console/translations/process-language-store",
+    "testFile": "tests/legacy-translations.test.ts",
+    "remaining": [
+      "Native bearer/site-administrator authorization replaces original central-console session middleware; current administrator role is rechecked in write transactions",
+      "Original language fields/dynamic form keys and singular message edits map to native configuration/catalog storage; writes require Idempotency-Key and update/delete/message revision",
+      "Original page URLs expose safe JSON registry/catalog data, not Blade views or client models",
+      "Source scanning, automatic provider translation, Excel import/export, plural/context catalog support and PO/MO filesystem side effects remain pending",
+      "Source locale/name/error/localization, original frontend/imported catalog and complete runtime parity remain unverified"
+    ]
+  },
+  "POST /central-console/translations/process-language-update": {
+    "nodeEndpoint": "POST /central-console/translations/process-language-update",
+    "testFile": "tests/legacy-translations.test.ts",
+    "remaining": [
+      "Native bearer/site-administrator authorization replaces original central-console session middleware; current administrator role is rechecked in write transactions",
+      "Original language fields/dynamic form keys and singular message edits map to native configuration/catalog storage; writes require Idempotency-Key and update/delete/message revision",
+      "Original page URLs expose safe JSON registry/catalog data, not Blade views or client models",
+      "Source scanning, automatic provider translation, Excel import/export, plural/context catalog support and PO/MO filesystem side effects remain pending",
+      "Source locale/name/error/localization, original frontend/imported catalog and complete runtime parity remain unverified"
+    ]
+  },
+  "POST /central-console/translations/{languageId}/process-language-delete": {
+    "nodeEndpoint": "POST /central-console/translations/:languageId/process-language-delete",
+    "testFile": "tests/legacy-translations.test.ts",
+    "remaining": [
+      "Native bearer/site-administrator authorization replaces original central-console session middleware; current administrator role is rechecked in write transactions",
+      "Original language fields/dynamic form keys and singular message edits map to native configuration/catalog storage; writes require Idempotency-Key and update/delete/message revision",
+      "Original page URLs expose safe JSON registry/catalog data, not Blade views or client models",
+      "Source scanning, automatic provider translation, Excel import/export, plural/context catalog support and PO/MO filesystem side effects remain pending",
+      "Source locale/name/error/localization, original frontend/imported catalog and complete runtime parity remain unverified"
+    ]
+  },
+  "POST /central-console/translations/update": {
+    "nodeEndpoint": "POST /central-console/translations/update",
+    "testFile": "tests/legacy-translations.test.ts",
+    "remaining": [
+      "Native bearer/site-administrator authorization replaces original central-console session middleware; current administrator role is rechecked in write transactions",
+      "Original language fields/dynamic form keys and singular message edits map to native configuration/catalog storage; writes require Idempotency-Key and update/delete/message revision",
+      "Original page URLs expose safe JSON registry/catalog data, not Blade views or client models",
+      "Source scanning, automatic provider translation, Excel import/export, plural/context catalog support and PO/MO filesystem side effects remain pending",
+      "Source locale/name/error/localization, original frontend/imported catalog and complete runtime parity remain unverified"
+    ]
+  },
+  "GET /central-console/pages": {
+    "nodeEndpoint": "GET /central-console/pages",
+    "testFile": "tests/legacy-pages.test.ts",
+    "remaining": [
+      "Native bearer/site administrator authorization replaces central-console sessions; current role and site ownership are checked inside transactions",
+      "Original description/checkbox/ID fields map to sanitized native page content; writes require Idempotency-Key and update/delete require projected revision",
+      "Global site-page scope excludes vendor-owned pages; imported non-site types require reconciliation; shared native writes/deletes now audit atomically",
+      "Bounded DataTables and original page-list URL expose safe JSON, without original views, localized labels, preview/client models or advanced filters",
+      "Original frontend/error/localization, Unicode slug validation, schema import and complete source runtime compatibility remain unverified"
+    ]
+  },
+  "GET /central-console/pages/list-data": {
+    "nodeEndpoint": "GET /central-console/pages/list-data",
+    "testFile": "tests/legacy-pages.test.ts",
+    "remaining": [
+      "Native bearer/site administrator authorization replaces central-console sessions; current role and site ownership are checked inside transactions",
+      "Original description/checkbox/ID fields map to sanitized native page content; writes require Idempotency-Key and update/delete require projected revision",
+      "Global site-page scope excludes vendor-owned pages; imported non-site types require reconciliation; shared native writes/deletes now audit atomically",
+      "Bounded DataTables and original page-list URL expose safe JSON, without original views, localized labels, preview/client models or advanced filters",
+      "Original frontend/error/localization, Unicode slug validation, schema import and complete source runtime compatibility remain unverified"
+    ]
+  },
+  "GET /central-console/pages/{pageIdOrUid}/get-update-data": {
+    "nodeEndpoint": "GET /central-console/pages/:pageIdOrUid/get-update-data",
+    "testFile": "tests/legacy-pages.test.ts",
+    "remaining": [
+      "Native bearer/site administrator authorization replaces central-console sessions; current role and site ownership are checked inside transactions",
+      "Original description/checkbox/ID fields map to sanitized native page content; writes require Idempotency-Key and update/delete require projected revision",
+      "Global site-page scope excludes vendor-owned pages; imported non-site types require reconciliation; shared native writes/deletes now audit atomically",
+      "Bounded DataTables and original page-list URL expose safe JSON, without original views, localized labels, preview/client models or advanced filters",
+      "Original frontend/error/localization, Unicode slug validation, schema import and complete source runtime compatibility remain unverified"
+    ]
+  },
+  "POST /central-console/pages/add-process": {
+    "nodeEndpoint": "POST /central-console/pages/add-process",
+    "testFile": "tests/legacy-pages.test.ts",
+    "remaining": [
+      "Native bearer/site administrator authorization replaces central-console sessions; current role and site ownership are checked inside transactions",
+      "Original description/checkbox/ID fields map to sanitized native page content; writes require Idempotency-Key and update/delete require projected revision",
+      "Global site-page scope excludes vendor-owned pages; imported non-site types require reconciliation; shared native writes/deletes now audit atomically",
+      "Bounded DataTables and original page-list URL expose safe JSON, without original views, localized labels, preview/client models or advanced filters",
+      "Original frontend/error/localization, Unicode slug validation, schema import and complete source runtime compatibility remain unverified"
+    ]
+  },
+  "POST /central-console/pages/update-process": {
+    "nodeEndpoint": "POST /central-console/pages/update-process",
+    "testFile": "tests/legacy-pages.test.ts",
+    "remaining": [
+      "Native bearer/site administrator authorization replaces central-console sessions; current role and site ownership are checked inside transactions",
+      "Original description/checkbox/ID fields map to sanitized native page content; writes require Idempotency-Key and update/delete require projected revision",
+      "Global site-page scope excludes vendor-owned pages; imported non-site types require reconciliation; shared native writes/deletes now audit atomically",
+      "Bounded DataTables and original page-list URL expose safe JSON, without original views, localized labels, preview/client models or advanced filters",
+      "Original frontend/error/localization, Unicode slug validation, schema import and complete source runtime compatibility remain unverified"
+    ]
+  },
+  "POST /central-console/pages/{pageIdOrUid}/delete-process": {
+    "nodeEndpoint": "POST /central-console/pages/:pageIdOrUid/delete-process",
+    "testFile": "tests/legacy-pages.test.ts",
+    "remaining": [
+      "Native bearer/site administrator authorization replaces central-console sessions; current role and site ownership are checked inside transactions",
+      "Original description/checkbox/ID fields map to sanitized native page content; writes require Idempotency-Key and update/delete require projected revision",
+      "Global site-page scope excludes vendor-owned pages; imported non-site types require reconciliation; shared native writes/deletes now audit atomically",
+      "Bounded DataTables and original page-list URL expose safe JSON, without original views, localized labels, preview/client models or advanced filters",
+      "Original frontend/error/localization, Unicode slug validation, schema import and complete source runtime compatibility remain unverified"
+    ]
+  },
+  "GET /central-console/configuration/{pageType}": {
+    "nodeEndpoint": "GET /central-console/configuration/:pageType",
+    "testFile": "tests/legacy-configuration.test.ts",
+    "remaining": [
+      "Only native-supported general, user and misc_settings fields are ported; original full forms and activation/photo rules remain pending",
+      "Native bearer/current active site administrator authorization replaces original sessions; reads expose safe JSON instead of Blade views",
+      "Source flattened fields and checkbox values map to shared native validation and atomic audited settings writes; revision and Idempotency-Key are required",
+      "Payment, licensing, billing, provider credentials and operational configuration groups remain unsupported",
+      "Original frontend/errors/localization, imported data reconciliation and complete source runtime compatibility remain unverified"
+    ]
+  },
+  "POST /central-console/configuration/{pageType}/process-configuration-store": {
+    "nodeEndpoint": "POST /central-console/configuration/:pageType/process-configuration-store",
+    "testFile": "tests/legacy-configuration.test.ts",
+    "remaining": [
+      "Only native-supported general, user and misc_settings fields are ported; original full forms and activation/photo rules remain pending",
+      "Native bearer/current active site administrator authorization replaces original sessions; reads expose safe JSON instead of Blade views",
+      "Source flattened fields and checkbox values map to shared native validation and atomic audited settings writes; revision and Idempotency-Key are required",
+      "Payment, licensing, billing, provider credentials and operational configuration groups remain unsupported",
+      "Original frontend/errors/localization, imported data reconciliation and complete source runtime compatibility remain unverified"
+    ]
+  },
+  "GET /central-console/blogs": {
+    "nodeEndpoint": "GET /central-console/blogs",
+    "testFile": "tests/legacy-blogs.test.ts",
+    "remaining": [
+      "Native bearer/current site administrator checks replace source sessions; original Blade views/redirects/localization/client contracts remain pending",
+      "Supported JSON source field names use shared native audited transactions; writes require Idempotency-Key and existing-post mutations require projected revision",
+      "Source multipart editor/image uploads, image deletion, inline new_tags and SEO fallback defaults remain unsupported; existing image references are preserved",
+      "Native soft deletion, bounded literal search, safe preview projections and draft duplication differ from some source UI/runtime semantics",
+      "Schema/import/live source compatibility and all acceptance requirements remain unverified"
+    ]
+  },
+  "GET /central-console/blogs/create": {
+    "nodeEndpoint": "GET /central-console/blogs/create",
+    "testFile": "tests/legacy-blogs.test.ts",
+    "remaining": [
+      "Native bearer/current site administrator checks replace source sessions; original Blade views/redirects/localization/client contracts remain pending",
+      "Supported JSON source field names use shared native audited transactions; writes require Idempotency-Key and existing-post mutations require projected revision",
+      "Source multipart editor/image uploads, image deletion, inline new_tags and SEO fallback defaults remain unsupported; existing image references are preserved",
+      "Native soft deletion, bounded literal search, safe preview projections and draft duplication differ from some source UI/runtime semantics",
+      "Schema/import/live source compatibility and all acceptance requirements remain unverified"
+    ]
+  },
+  "POST /central-console/blogs": {
+    "nodeEndpoint": "POST /central-console/blogs",
+    "testFile": "tests/legacy-blogs.test.ts",
+    "remaining": [
+      "Native bearer/current site administrator checks replace source sessions; original Blade views/redirects/localization/client contracts remain pending",
+      "Supported JSON source field names use shared native audited transactions; writes require Idempotency-Key and existing-post mutations require projected revision",
+      "Source multipart editor/image uploads, image deletion, inline new_tags and SEO fallback defaults remain unsupported; existing image references are preserved",
+      "Native soft deletion, bounded literal search, safe preview projections and draft duplication differ from some source UI/runtime semantics",
+      "Schema/import/live source compatibility and all acceptance requirements remain unverified"
+    ]
+  },
+  "GET /central-console/blogs/{blog}/edit": {
+    "nodeEndpoint": "GET /central-console/blogs/:blog/edit",
+    "testFile": "tests/legacy-blogs.test.ts",
+    "remaining": [
+      "Native bearer/current site administrator checks replace source sessions; original Blade views/redirects/localization/client contracts remain pending",
+      "Supported JSON source field names use shared native audited transactions; writes require Idempotency-Key and existing-post mutations require projected revision",
+      "Source multipart editor/image uploads, image deletion, inline new_tags and SEO fallback defaults remain unsupported; existing image references are preserved",
+      "Native soft deletion, bounded literal search, safe preview projections and draft duplication differ from some source UI/runtime semantics",
+      "Schema/import/live source compatibility and all acceptance requirements remain unverified"
+    ]
+  },
+  "PUT /central-console/blogs/{blog}": {
+    "nodeEndpoint": "PUT /central-console/blogs/:blog",
+    "testFile": "tests/legacy-blogs.test.ts",
+    "remaining": [
+      "Native bearer/current site administrator checks replace source sessions; original Blade views/redirects/localization/client contracts remain pending",
+      "Supported JSON source field names use shared native audited transactions; writes require Idempotency-Key and existing-post mutations require projected revision",
+      "Source multipart editor/image uploads, image deletion, inline new_tags and SEO fallback defaults remain unsupported; existing image references are preserved",
+      "Native soft deletion, bounded literal search, safe preview projections and draft duplication differ from some source UI/runtime semantics",
+      "Schema/import/live source compatibility and all acceptance requirements remain unverified"
+    ]
+  },
+  "DELETE /central-console/blogs/{blog}": {
+    "nodeEndpoint": "DELETE /central-console/blogs/:blog",
+    "testFile": "tests/legacy-blogs.test.ts",
+    "remaining": [
+      "Native bearer/current site administrator checks replace source sessions; original Blade views/redirects/localization/client contracts remain pending",
+      "Supported JSON source field names use shared native audited transactions; writes require Idempotency-Key and existing-post mutations require projected revision",
+      "Source multipart editor/image uploads, image deletion, inline new_tags and SEO fallback defaults remain unsupported; existing image references are preserved",
+      "Native soft deletion, bounded literal search, safe preview projections and draft duplication differ from some source UI/runtime semantics",
+      "Schema/import/live source compatibility and all acceptance requirements remain unverified"
+    ]
+  },
+  "POST /central-console/blogs/{blog}/duplicate": {
+    "nodeEndpoint": "POST /central-console/blogs/:blog/duplicate",
+    "testFile": "tests/legacy-blogs.test.ts",
+    "remaining": [
+      "Native bearer/current site administrator checks replace source sessions; original Blade views/redirects/localization/client contracts remain pending",
+      "Supported JSON source field names use shared native audited transactions; writes require Idempotency-Key and existing-post mutations require projected revision",
+      "Source multipart editor/image uploads, image deletion, inline new_tags and SEO fallback defaults remain unsupported; existing image references are preserved",
+      "Native soft deletion, bounded literal search, safe preview projections and draft duplication differ from some source UI/runtime semantics",
+      "Schema/import/live source compatibility and all acceptance requirements remain unverified"
+    ]
+  },
+  "POST /central-console/blogs/{blog}/publish": {
+    "nodeEndpoint": "POST /central-console/blogs/:blog/publish",
+    "testFile": "tests/legacy-blogs.test.ts",
+    "remaining": [
+      "Native bearer/current site administrator checks replace source sessions; original Blade views/redirects/localization/client contracts remain pending",
+      "Supported JSON source field names use shared native audited transactions; writes require Idempotency-Key and existing-post mutations require projected revision",
+      "Source multipart editor/image uploads, image deletion, inline new_tags and SEO fallback defaults remain unsupported; existing image references are preserved",
+      "Native soft deletion, bounded literal search, safe preview projections and draft duplication differ from some source UI/runtime semantics",
+      "Schema/import/live source compatibility and all acceptance requirements remain unverified"
+    ]
+  },
+  "POST /central-console/blogs/{blog}/unpublish": {
+    "nodeEndpoint": "POST /central-console/blogs/:blog/unpublish",
+    "testFile": "tests/legacy-blogs.test.ts",
+    "remaining": [
+      "Native bearer/current site administrator checks replace source sessions; original Blade views/redirects/localization/client contracts remain pending",
+      "Supported JSON source field names use shared native audited transactions; writes require Idempotency-Key and existing-post mutations require projected revision",
+      "Source multipart editor/image uploads, image deletion, inline new_tags and SEO fallback defaults remain unsupported; existing image references are preserved",
+      "Native soft deletion, bounded literal search, safe preview projections and draft duplication differ from some source UI/runtime semantics",
+      "Schema/import/live source compatibility and all acceptance requirements remain unverified"
+    ]
+  },
+  "GET /central-console/blogs/{blog}/preview": {
+    "nodeEndpoint": "GET /central-console/blogs/:blog/preview",
+    "testFile": "tests/legacy-blogs.test.ts",
+    "remaining": [
+      "Native bearer/current site administrator checks replace source sessions; original Blade views/redirects/localization/client contracts remain pending",
+      "Supported JSON source field names use shared native audited transactions; writes require Idempotency-Key and existing-post mutations require projected revision",
+      "Source multipart editor/image uploads, image deletion, inline new_tags and SEO fallback defaults remain unsupported; existing image references are preserved",
+      "Native soft deletion, bounded literal search, safe preview projections and draft duplication differ from some source UI/runtime semantics",
+      "Schema/import/live source compatibility and all acceptance requirements remain unverified"
+    ]
+  },
+  "GET /vendor-console/whatsapp-orders": {
+    "nodeEndpoint": "GET /vendor-console/whatsapp-orders",
+    "testFile": "tests/legacy-whatsapp-orders.test.ts",
+    "remaining": [
+      "Native bearer/workspace permissions replace source sessions; current active order management and full contact visibility required",
+      "Safe source-name JSON supports bounded literal filters, UTC dates, phone masking and owned order/payment projections; foreign and orphan imported relationships are excluded",
+      "Statistics preserve exact decimal strings and separate currencies instead of original mixed-currency sums; frontend/model-accessor/pagination contracts remain partial",
+      "Source Blade pages, full payment/contact relations, PDF/CSV exports, status mutations, payment tests and webhook contracts remain pending",
+      "Original timezone/schema/import/live-provider/runtime parity and acceptance requirements remain unverified"
+    ]
+  },
+  "GET /vendor-console/whatsapp-orders/data": {
+    "nodeEndpoint": "GET /vendor-console/whatsapp-orders/data",
+    "testFile": "tests/legacy-whatsapp-orders.test.ts",
+    "remaining": [
+      "Native bearer/workspace permissions replace source sessions; current active order management and full contact visibility required",
+      "Safe source-name JSON supports bounded literal filters, UTC dates, phone masking and owned order/payment projections; foreign and orphan imported relationships are excluded",
+      "Statistics preserve exact decimal strings and separate currencies instead of original mixed-currency sums; frontend/model-accessor/pagination contracts remain partial",
+      "Source Blade pages, full payment/contact relations, PDF/CSV exports, status mutations, payment tests and webhook contracts remain pending",
+      "Original timezone/schema/import/live-provider/runtime parity and acceptance requirements remain unverified"
+    ]
+  },
+  "GET /vendor-console/whatsapp-orders/{orderUid}": {
+    "nodeEndpoint": "GET /vendor-console/whatsapp-orders/:orderUid",
+    "testFile": "tests/legacy-whatsapp-orders.test.ts",
+    "remaining": [
+      "Native bearer/workspace permissions replace source sessions; current active order management and full contact visibility required",
+      "Safe source-name JSON supports bounded literal filters, UTC dates, phone masking and owned order/payment projections; foreign and orphan imported relationships are excluded",
+      "Statistics preserve exact decimal strings and separate currencies instead of original mixed-currency sums; frontend/model-accessor/pagination contracts remain partial",
+      "Source Blade pages, full payment/contact relations, PDF/CSV exports, status mutations, payment tests and webhook contracts remain pending",
+      "Original timezone/schema/import/live-provider/runtime parity and acceptance requirements remain unverified"
+    ]
+  },
+  "GET /vendor-console/whatsapp-orders/statistics": {
+    "nodeEndpoint": "GET /vendor-console/whatsapp-orders/statistics",
+    "testFile": "tests/legacy-whatsapp-orders.test.ts",
+    "remaining": [
+      "Native bearer/workspace permissions replace source sessions; current active order management and full contact visibility required",
+      "Safe source-name JSON supports bounded literal filters, UTC dates, phone masking and owned order/payment projections; foreign and orphan imported relationships are excluded",
+      "Statistics preserve exact decimal strings and separate currencies instead of original mixed-currency sums; frontend/model-accessor/pagination contracts remain partial",
+      "Source Blade pages, full payment/contact relations, PDF/CSV exports, status mutations, payment tests and webhook contracts remain pending",
+      "Original timezone/schema/import/live-provider/runtime parity and acceptance requirements remain unverified"
+    ]
+  },
+  "PATCH /vendor-console/whatsapp-orders/{orderUid}/status": {
+    "nodeEndpoint": "PATCH /vendor-console/whatsapp-orders/:orderUid/status",
+    "testFile": "tests/legacy-whatsapp-orders.test.ts",
+    "remaining": [
+      "Native bearer/workspace authorization and current order management/full visibility replace original sessions",
+      "Original status inputs require projected revision and Idempotency-Key; guarded transitions/audit/replay are atomic, paid/refunded require separate reconciliation",
+      "Fulfillment requires one matching completed Razorpay payment and processed native capture receipt; imported or other-provider payment reconciliation remains pending",
+      "CSV uses source headers and filters, phone/address privacy and formula escaping; exports over 10000 rows fail instead of truncating",
+      "Original frontend/errors/localization, all financial/provider/PDF/callback/schema/import/runtime parity remains unverified"
+    ]
+  },
+  "GET /vendor-console/whatsapp-orders/export": {
+    "nodeEndpoint": "GET /vendor-console/whatsapp-orders/export",
+    "testFile": "tests/legacy-whatsapp-orders.test.ts",
+    "remaining": [
+      "Native bearer/workspace authorization and current order management/full visibility replace original sessions",
+      "Original status inputs require projected revision and Idempotency-Key; guarded transitions/audit/replay are atomic, paid/refunded require separate reconciliation",
+      "Fulfillment requires one matching completed Razorpay payment and processed native capture receipt; imported or other-provider payment reconciliation remains pending",
+      "CSV uses source headers and filters, phone/address privacy and formula escaping; exports over 10000 rows fail instead of truncating",
+      "Original frontend/errors/localization, all financial/provider/PDF/callback/schema/import/runtime parity remains unverified"
+    ]
+  }
+}

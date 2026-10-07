@@ -1,0 +1,572 @@
+[
+  {
+    "feature": "ads-manager",
+    "file": "src/modules/ads-manager/services/ads-manager-support.service.ts",
+    "exports": [
+      "accountSelect",
+      "campaignSelect",
+      "requireAdAccountOwner",
+      "getActiveAdAccountAccess",
+      "requestAdsGraphApi",
+      "fetchAdsGraphPages",
+      "getConnectedAdAccount",
+      "buildAdReport"
+    ]
+  },
+  {
+    "feature": "ads-manager",
+    "file": "src/modules/ads-manager/services/ad-accounts.service.ts",
+    "exports": [
+      "listAdAccounts",
+      "connectAdAccount",
+      "disconnectAdAccount"
+    ]
+  },
+  {
+    "feature": "ads-manager",
+    "file": "src/modules/ads-manager/services/ad-synchronization.service.ts",
+    "exports": [
+      "syncAdStructure",
+      "syncAdInsights"
+    ]
+  },
+  {
+    "feature": "ads-manager",
+    "file": "src/modules/ads-manager/services/ad-reporting.service.ts",
+    "exports": [
+      "listAdCampaigns",
+      "updateAdCampaignStatus",
+      "getAdDashboard",
+      "exportAdReport",
+      "recordAdConversion",
+      "getContactAdAttributions"
+    ]
+  },
+  {
+    "feature": "appointments",
+    "file": "src/modules/appointments/services/appointments-support.service.ts",
+    "exports": [
+      "toLocalAppointmentTime",
+      "getAppointmentResource",
+      "isWithinWorkingHours",
+      "validateAppointmentSlot"
+    ]
+  },
+  {
+    "feature": "appointments",
+    "file": "src/modules/appointments/services/appointment-availability.service.ts",
+    "exports": [
+      "getAppointmentAvailability",
+      "createAppointmentResource",
+      "holdAppointmentSlot"
+    ]
+  },
+  {
+    "feature": "appointments",
+    "file": "src/modules/appointments/services/appointment-bookings.service.ts",
+    "exports": [
+      "bookAppointment",
+      "getAppointment",
+      "cancelAppointment",
+      "rescheduleAppointment",
+      "markAppointmentNoShow"
+    ]
+  },
+  {
+    "feature": "billing",
+    "file": "src/modules/billing/services/billing-support.service.ts",
+    "exports": [
+      "baseSubscriptionActive",
+      "supportedBillingProviders",
+      "subscriptionStatusMap",
+      "throwSubscriptionResponseError",
+      "parseStripeId",
+      "parseProviderTimestamp"
+    ]
+  },
+  {
+    "feature": "billing",
+    "file": "src/modules/billing/services/stripe-subscriptions.service.ts",
+    "exports": [
+      "ingestStripeSubscription"
+    ]
+  },
+  {
+    "feature": "billing",
+    "file": "src/modules/billing/services/billing-administration.service.ts",
+    "exports": [
+      "reviewManualSubscription",
+      "overrideAiReplyAllowance",
+      "removeAiReplyOverride"
+    ]
+  },
+  {
+    "feature": "billing",
+    "file": "src/modules/billing/services/billing-summary.service.ts",
+    "exports": [
+      "getBillingSummary"
+    ]
+  },
+  {
+    "feature": "bot-replies",
+    "file": "src/modules/bot-replies/services/bot-replies-support.service.ts",
+    "exports": [
+      "save",
+      "timingNames"
+    ]
+  },
+  {
+    "feature": "bot-replies",
+    "file": "src/modules/bot-replies/services/reply-runtime.service.ts",
+    "exports": [
+      "wildcard",
+      "triggerMatches",
+      "render",
+      "queueText",
+      "queueBotReplies"
+    ]
+  },
+  {
+    "feature": "bot-replies",
+    "file": "src/modules/bot-replies/services/reply-management.service.ts",
+    "exports": [
+      "listBotReplies",
+      "createBotReply",
+      "updateBotReply",
+      "deleteBotReply",
+      "updateBotTiming"
+    ]
+  },
+  {
+    "feature": "campaigns",
+    "file": "src/modules/campaigns/services/campaigns-support.service.ts",
+    "exports": [
+      "CAMPAIGN_BATCH_SIZE",
+      "CampaignOptions",
+      "activeCampaignStatuses",
+      "lockCampaign",
+      "validateCampaignOptions",
+      "finishCampaign",
+      "parseCampaignConfiguration",
+      "campaignTestHash",
+      "terminalCampaignStatuses"
+    ]
+  },
+  {
+    "feature": "campaigns",
+    "file": "src/modules/campaigns/services/campaign-delivery.service.ts",
+    "exports": [
+      "dispatchDueCampaigns",
+      "sendCampaignTest"
+    ]
+  },
+  {
+    "feature": "campaigns",
+    "file": "src/modules/campaigns/services/campaign-management.service.ts",
+    "exports": [
+      "listCampaigns",
+      "createCampaign",
+      "duplicateCampaign"
+    ]
+  },
+  {
+    "feature": "campaigns",
+    "file": "src/modules/campaigns/services/campaign-lifecycle.service.ts",
+    "exports": [
+      "cancelCampaign",
+      "pauseCampaign",
+      "resumeCampaign",
+      "archiveCampaign",
+      "restoreCampaign"
+    ]
+  },
+  {
+    "feature": "campaigns",
+    "file": "src/modules/campaigns/services/campaign-reporting.service.ts",
+    "exports": [
+      "getCampaignStatus",
+      "getCampaignReport",
+      "listCampaignRecipients"
+    ]
+  },
+  {
+    "feature": "catalogs",
+    "file": "src/modules/catalogs/services/catalogs-support.service.ts",
+    "exports": [
+      "catalogProviderFields",
+      "throwCatalogResponseError",
+      "requireCatalogOwner",
+      "requestCatalogGraphApi",
+      "fetchCatalogGraphPages",
+      "getCatalogMembership",
+      "getConnectedCatalog",
+      "parseCatalogPrice",
+      "parseCatalogProduct",
+      "buildCatalogProductData"
+    ]
+  },
+  {
+    "feature": "catalogs",
+    "file": "src/modules/catalogs/services/catalog-messaging.service.ts",
+    "exports": [
+      "catalogMessage",
+      "catalogSendAllowed"
+    ]
+  },
+  {
+    "feature": "catalogs",
+    "file": "src/modules/catalogs/services/catalog-connections.service.ts",
+    "exports": [
+      "listCatalogs",
+      "connectCatalog",
+      "syncCatalog",
+      "disconnectCatalog"
+    ]
+  },
+  {
+    "feature": "catalogs",
+    "file": "src/modules/catalogs/services/catalog-products.service.ts",
+    "exports": [
+      "listCatalogProducts",
+      "createCatalogProduct",
+      "updateCatalogProduct",
+      "publishCatalogProduct"
+    ]
+  },
+  {
+    "feature": "comment-automations",
+    "file": "src/modules/comment-automations/services/comment-automations-support.service.ts",
+    "exports": [
+      "safeExecutionErrors",
+      "presentRule",
+      "buildAutomationData",
+      "validateAccount",
+      "lockCommentAutomation",
+      "retainAutomationProof",
+      "requireSignedCommentReceipt",
+      "buildCommentReplyContent",
+      "executionState",
+      "validJob",
+      "recordCommentEffect",
+      "getRecordedCommentEffect"
+    ]
+  },
+  {
+    "feature": "comment-automations",
+    "file": "src/modules/comment-automations/services/comment-ingestion.service.ts",
+    "exports": [
+      "ingestCommentChange"
+    ]
+  },
+  {
+    "feature": "comment-automations",
+    "file": "src/modules/comment-automations/services/comment-delivery.service.ts",
+    "exports": [
+      "dispatchCommentAction"
+    ]
+  },
+  {
+    "feature": "comment-automations",
+    "file": "src/modules/comment-automations/services/follow-checks.service.ts",
+    "exports": [
+      "queueFollowCheck",
+      "ingestFollowReply",
+      "dispatchFollowCheck"
+    ]
+  },
+  {
+    "feature": "comment-automations",
+    "file": "src/modules/comment-automations/services/automation-recovery.service.ts",
+    "exports": [
+      "recoverCommentJob",
+      "commentJobRetryAllowed"
+    ]
+  },
+  {
+    "feature": "comment-automations",
+    "file": "src/modules/comment-automations/services/automation-management.service.ts",
+    "exports": [
+      "listCommentAutomations",
+      "listAutomationExecutions",
+      "createCommentAutomation",
+      "getCommentAutomation",
+      "updateCommentAutomation",
+      "deleteCommentAutomation"
+    ]
+  },
+  {
+    "feature": "contact-workflows",
+    "file": "src/modules/contact-workflows/services/contact-workflows-support.service.ts",
+    "exports": [
+      "serializableTransactionOptions",
+      "parseContactIdentifier",
+      "lockedContact",
+      "getOwnedContactGroup"
+    ]
+  },
+  {
+    "feature": "contact-workflows",
+    "file": "src/modules/contact-workflows/services/contact-profile.service.ts",
+    "exports": [
+      "getContactNotes",
+      "updateContactNotes",
+      "getContactLabels",
+      "updateContactLabels",
+      "getContactCustomValues",
+      "updateContactCustomValues"
+    ]
+  },
+  {
+    "feature": "contact-workflows",
+    "file": "src/modules/contact-workflows/services/contact-lifecycle.service.ts",
+    "exports": [
+      "deleteContact",
+      "removeContactFromGroup",
+      "assignContact",
+      "mergeContacts",
+      "archiveContact"
+    ]
+  },
+  {
+    "feature": "contact-workflows",
+    "file": "src/modules/contact-workflows/services/contact-import.service.ts",
+    "exports": [
+      "importContacts"
+    ]
+  },
+  {
+    "feature": "contact-workflows",
+    "file": "src/modules/contact-workflows/services/contact-export.service.ts",
+    "exports": [
+      "prepareContactExport"
+    ]
+  },
+  {
+    "feature": "content",
+    "file": "src/modules/content/services/content-support.service.ts",
+    "exports": [
+      "published",
+      "summary",
+      "articleDto",
+      "adminSelect",
+      "contentTransaction",
+      "uniqueSlug",
+      "existingPost",
+      "savePost",
+      "savePage"
+    ]
+  },
+  {
+    "feature": "content",
+    "file": "src/modules/content/services/blog-posts.service.ts",
+    "exports": [
+      "publishScheduledPosts",
+      "listPublicBlogCategories",
+      "listPublicBlogPosts",
+      "getPublicBlogPost",
+      "listAdminBlogPosts",
+      "createBlogPost",
+      "updateBlogPost",
+      "getAdminBlogPost",
+      "deleteBlogPost",
+      "changeBlogPostState"
+    ]
+  },
+  {
+    "feature": "content",
+    "file": "src/modules/content/services/blog-taxonomy.service.ts",
+    "exports": [
+      "listBlogTaxonomy",
+      "createBlogTaxonomy",
+      "updateBlogTaxonomy",
+      "deleteBlogTaxonomy"
+    ]
+  },
+  {
+    "feature": "content",
+    "file": "src/modules/content/services/site-pages.service.ts",
+    "exports": [
+      "listPublicPages",
+      "getPublicPage",
+      "listAdminPages",
+      "createPage",
+      "updatePage",
+      "deletePage"
+    ]
+  },
+  {
+    "feature": "flow-data",
+    "file": "src/modules/flow-data/services/flow-data-support.service.ts",
+    "exports": [
+      "generateFlowKeyPair",
+      "requireFlowConfigurationOwner",
+      "getFlowEndpointUrl",
+      "flowConfigReceiptKey",
+      "publicKeyFingerprint",
+      "presentFlowKeyState",
+      "throwFlowSessionError",
+      "isScalarFlowValue",
+      "canonicalizeFlowData"
+    ]
+  },
+  {
+    "feature": "flow-data",
+    "file": "src/modules/flow-data/services/flow-sessions.service.ts",
+    "exports": [
+      "routeFlowData"
+    ]
+  },
+  {
+    "feature": "flow-data",
+    "file": "src/modules/flow-data/services/flow-encryption-keys.service.ts",
+    "exports": [
+      "registerFlowEncryptionKey",
+      "getFlowEncryptionKey"
+    ]
+  },
+  {
+    "feature": "flow-data",
+    "file": "src/modules/flow-data/services/flow-endpoint-settings.service.ts",
+    "exports": [
+      "configureFlowDataEndpoint",
+      "getFlowDataEndpoint"
+    ]
+  },
+  {
+    "feature": "flow-data",
+    "file": "src/modules/flow-data/services/flow-data-exchange.service.ts",
+    "exports": [
+      "handleEncryptedFlowRequest"
+    ]
+  },
+  {
+    "feature": "manual-billing",
+    "file": "src/modules/manual-billing/services/manual-billing-support.service.ts",
+    "exports": [
+      "Quote",
+      "subscriptionPeriods",
+      "manualPeriod",
+      "getPlanPrice",
+      "presentManualSubscription",
+      "lockVendorBilling",
+      "assertNoStripeConflict",
+      "calculateSubscriptionCredit",
+      "reviewNativeManual"
+    ]
+  },
+  {
+    "feature": "manual-billing",
+    "file": "src/modules/manual-billing/services/manual-invoices.service.ts",
+    "exports": [
+      "buildManualInvoice",
+      "getManualInvoice",
+      "prepareReceiptDownload"
+    ]
+  },
+  {
+    "feature": "manual-billing",
+    "file": "src/modules/manual-billing/services/manual-subscriptions.service.ts",
+    "exports": [
+      "listManualSubscriptions",
+      "quoteManualSubscription",
+      "getManualSubscription",
+      "submitManualPayment",
+      "cancelManualPayment"
+    ]
+  },
+  {
+    "feature": "meta-flows",
+    "file": "src/modules/meta-flows/services/meta-flows-support.service.ts",
+    "exports": [
+      "flowDetailFields",
+      "throwMetaFlowResponseError",
+      "requireMetaId",
+      "validateMetaInputId",
+      "parseMetaFlowSnapshot",
+      "getFlowAccountContext",
+      "validateFlowCursor",
+      "getOwnedMetaFlow",
+      "validateFlowJson"
+    ]
+  },
+  {
+    "feature": "meta-flows",
+    "file": "src/modules/meta-flows/services/flow-management.service.ts",
+    "exports": [
+      "listMetaFlows",
+      "createMetaFlow",
+      "getMetaFlow",
+      "updateMetaFlow",
+      "changeMetaFlowState"
+    ]
+  },
+  {
+    "feature": "meta-flows",
+    "file": "src/modules/meta-flows/services/flow-definitions.service.ts",
+    "exports": [
+      "updateMetaFlowDefinition",
+      "previewMetaFlow",
+      "getMetaFlowDefinition"
+    ]
+  },
+  {
+    "feature": "sheets",
+    "file": "src/modules/sheets/services/sheets-support.service.ts",
+    "exports": [
+      "Rule",
+      "Settings",
+      "readNativeSheetSettings",
+      "presentSheetIntegration",
+      "lockSheetIntegration",
+      "getConfiguredSheetIntegration",
+      "getSheetCredential",
+      "sheetSendAllowed"
+    ]
+  },
+  {
+    "feature": "sheets",
+    "file": "src/modules/sheets/services/sheet-integrations.service.ts",
+    "exports": [
+      "listSheetIntegrations",
+      "listSheetTemplates",
+      "createSheetIntegration",
+      "getSheetIntegration",
+      "getSheetScript",
+      "updateSheetStatus",
+      "deleteSheetIntegration"
+    ]
+  },
+  {
+    "feature": "sheets",
+    "file": "src/modules/sheets/services/sheet-ingestion.service.ts",
+    "exports": [
+      "ingestSheetRows"
+    ]
+  },
+  {
+    "feature": "store-notifications",
+    "file": "src/modules/store-notifications/services/store-notifications-support.service.ts",
+    "exports": [
+      "StoreNotificationSettings",
+      "getStoreIntegration"
+    ]
+  },
+  {
+    "feature": "store-notifications",
+    "file": "src/modules/store-notifications/services/notification-delivery.service.ts",
+    "exports": [
+      "scheduleStoreNotifications",
+      "queueStoreNotification",
+      "storeSendAllowed",
+      "recordStoreDelivery"
+    ]
+  },
+  {
+    "feature": "store-notifications",
+    "file": "src/modules/store-notifications/services/notification-settings.service.ts",
+    "exports": [
+      "getStoreNotificationSettings",
+      "updateStoreNotificationSettings"
+    ]
+  }
+]

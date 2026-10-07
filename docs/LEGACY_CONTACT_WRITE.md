@@ -1,0 +1,20 @@
+# Original contact create/update form APIs
+
+| Method | Path                                      | Behavior                                                                                                     |
+| ------ | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| POST   | `/vendor-console/contacts/add-process`    | Creates a WhatsApp contact, optional selected group links and typed custom values; HTTP 201                  |
+| POST   | `/vendor-console/contacts/update-process` | UUID `contactIdOrUid`, partial contact fields, explicit group replacement and custom-value upserts; HTTP 200 |
+
+Supported source fields: `phone_number` (9–15 digits, country code, no leading zero/plus), `first_name`, `last_name`, `email`, `language_code`, numeric/null `country`, connected `wab_phone_number_id`, numeric-ID `contact_groups`, UUID-keyed `custom_input_fields`, `whatsapp_opt_out` and `enable_ai_bot`. Phone is required on creation. Groups are unique and capped at 50; custom values are capped at 100 and validate against owned, current field types. UUID identity and server-owned field rejection apply. Success exposes `contactIdOrUid`, status and a neutral message without private contact metadata.
+
+Native bearer authentication and active workspace membership replace Laravel sessions. Creation requires `vendor.contacts.create`; update and custom-value writes require `vendor.contacts.edit`. Assignment visibility applies and creators without full visibility own their new contact. Group replacement requires group management and full contact visibility. AI flags require `vendor.ai.manage`; enabling AI requires an active native AI entitlement. An explicit phone update is ignored without phone-view permission, as in the source update controller. Country IDs and connected phone ownership validate before commit. Existing contacts cannot move phone scopes.
+
+Explicit `contact_groups` replaces the selected contact's owned memberships; an empty array clears them. Omission preserves groups. Only supplied custom values are upserted, and null clears a value. Ordinary omitted contact fields, opt-out and AI state remain unchanged. This differs from the source engine, which clears omitted group selection and resets omitted opt-out/AI flags. Imported foreign memberships, inactive selected groups/contacts and incompatible phone scopes reject the entire write.
+
+One transaction serializes converted legacy writes and CSV imports, locks selected/existing groups in order, locks the contact and handoff workflow, rereads current authorization/contact visibility and locks custom-field rows for typed validation. Contact, memberships, values and audit commit together. Audit failure rolls back every local write. Duplicate phone numbers are rejected across the business by these form adapters; concurrent duplicate form creation has one winner. This does not prove identical uniqueness behavior for every native/integration writer.
+
+New contacts use the source-named vendor default AI setting (otherwise paused). A paused contact or open handoff cannot be resumed through an edit form: HTTP 409 `AI_RESUME_REQUIRED` directs it to the existing provider-aware resolution workflow. The form does not acknowledge provider synchronization or close handoffs. Disabling AI is local; original remote synchronization/recovery remains pending.
+
+These are partial adapters. Source contact plan quotas, demo limits, browser-selected phone scope, full source form/envelope/no-change-error behavior, cookies/CSRF, permission aliases, translations, client refresh and live Laravel comparison remain pending. Native create/update routes and original external API routes retain their existing services; this batch does not establish one shared mutation contract for all writers.
+
+Tests: [contact form writes](../tests/legacy-contact-write.test.ts). Evidence: [contact-write-test-results.json](../migration/contact-write-test-results.json). Related [edit-data/deletion](LEGACY_CONTACT_RECORDS.md) and [membership](LEGACY_CONTACT_MEMBERSHIPS.md) adapters.

@@ -1,0 +1,3251 @@
+[
+  {
+    "file": "src/modules/ads-manager/ads-manager.controller.ts",
+    "from": "getAccounts",
+    "to": "listAdAccounts"
+  },
+  {
+    "file": "src/modules/ads-manager/services/ad-accounts.service.ts",
+    "from": "getAccountsService",
+    "to": "listAdAccounts",
+    "originalFile": "src/modules/ads-manager/ads-manager.service.ts"
+  },
+  {
+    "file": "src/modules/ads-manager/ads-manager.controller.ts",
+    "from": "postAccountsConnect",
+    "to": "connectAdAccount"
+  },
+  {
+    "file": "src/modules/ads-manager/services/ad-accounts.service.ts",
+    "from": "postAccountsConnectService",
+    "to": "connectAdAccount",
+    "originalFile": "src/modules/ads-manager/ads-manager.service.ts"
+  },
+  {
+    "file": "src/modules/ads-manager/ads-manager.controller.ts",
+    "from": "postAccountsIdStructureSync",
+    "to": "syncAdStructure"
+  },
+  {
+    "file": "src/modules/ads-manager/services/ad-synchronization.service.ts",
+    "from": "postAccountsIdStructureSyncService",
+    "to": "syncAdStructure",
+    "originalFile": "src/modules/ads-manager/ads-manager.service.ts"
+  },
+  {
+    "file": "src/modules/ads-manager/ads-manager.controller.ts",
+    "from": "postAccountsIdSync",
+    "to": "syncAdInsights"
+  },
+  {
+    "file": "src/modules/ads-manager/services/ad-synchronization.service.ts",
+    "from": "postAccountsIdSyncService",
+    "to": "syncAdInsights",
+    "originalFile": "src/modules/ads-manager/ads-manager.service.ts"
+  },
+  {
+    "file": "src/modules/ads-manager/ads-manager.controller.ts",
+    "from": "deleteAccountsId",
+    "to": "disconnectAdAccount"
+  },
+  {
+    "file": "src/modules/ads-manager/services/ad-accounts.service.ts",
+    "from": "deleteAccountsIdService",
+    "to": "disconnectAdAccount",
+    "originalFile": "src/modules/ads-manager/ads-manager.service.ts"
+  },
+  {
+    "file": "src/modules/ads-manager/ads-manager.controller.ts",
+    "from": "getCampaigns",
+    "to": "listAdCampaigns"
+  },
+  {
+    "file": "src/modules/ads-manager/services/ad-reporting.service.ts",
+    "from": "getCampaignsService",
+    "to": "listAdCampaigns",
+    "originalFile": "src/modules/ads-manager/ads-manager.service.ts"
+  },
+  {
+    "file": "src/modules/ads-manager/ads-manager.controller.ts",
+    "from": "postCampaignsIdStatus",
+    "to": "updateAdCampaignStatus"
+  },
+  {
+    "file": "src/modules/ads-manager/services/ad-reporting.service.ts",
+    "from": "postCampaignsIdStatusService",
+    "to": "updateAdCampaignStatus",
+    "originalFile": "src/modules/ads-manager/ads-manager.service.ts"
+  },
+  {
+    "file": "src/modules/ads-manager/ads-manager.controller.ts",
+    "from": "getDashboard",
+    "to": "getAdDashboard"
+  },
+  {
+    "file": "src/modules/ads-manager/services/ad-reporting.service.ts",
+    "from": "getDashboardService",
+    "to": "getAdDashboard",
+    "originalFile": "src/modules/ads-manager/ads-manager.service.ts"
+  },
+  {
+    "file": "src/modules/ads-manager/ads-manager.controller.ts",
+    "from": "getReportsExportCsv",
+    "to": "exportAdReport"
+  },
+  {
+    "file": "src/modules/ads-manager/services/ad-reporting.service.ts",
+    "from": "getReportsExportCsvService",
+    "to": "exportAdReport",
+    "originalFile": "src/modules/ads-manager/ads-manager.service.ts"
+  },
+  {
+    "file": "src/modules/ads-manager/ads-manager.controller.ts",
+    "from": "postConversions",
+    "to": "recordAdConversion"
+  },
+  {
+    "file": "src/modules/ads-manager/services/ad-reporting.service.ts",
+    "from": "postConversionsService",
+    "to": "recordAdConversion",
+    "originalFile": "src/modules/ads-manager/ads-manager.service.ts"
+  },
+  {
+    "file": "src/modules/ads-manager/ads-manager.controller.ts",
+    "from": "getContactsIdAttributions",
+    "to": "getContactAdAttributions"
+  },
+  {
+    "file": "src/modules/ads-manager/services/ad-reporting.service.ts",
+    "from": "getContactsIdAttributionsService",
+    "to": "getContactAdAttributions",
+    "originalFile": "src/modules/ads-manager/ads-manager.service.ts"
+  },
+  {
+    "file": "src/modules/ads-manager/ads-manager.validation.ts",
+    "from": "postAccountsConnectBodySchema",
+    "to": "connectAdAccountBodySchema"
+  },
+  {
+    "file": "src/modules/ads-manager/ads-manager.validation.ts",
+    "from": "postAccountsIdStructureSyncBodySchema",
+    "to": "syncAdStructureBodySchema"
+  },
+  {
+    "file": "src/modules/ads-manager/ads-manager.validation.ts",
+    "from": "postAccountsIdSyncBodySchema",
+    "to": "syncAdInsightsBodySchema"
+  },
+  {
+    "file": "src/modules/ads-manager/ads-manager.validation.ts",
+    "from": "getCampaignsQuerySchema",
+    "to": "listAdCampaignsQuerySchema"
+  },
+  {
+    "file": "src/modules/ads-manager/ads-manager.validation.ts",
+    "from": "postCampaignsIdStatusBodySchema",
+    "to": "updateAdCampaignStatusBodySchema"
+  },
+  {
+    "file": "src/modules/ads-manager/ads-manager.validation.ts",
+    "from": "getDashboardQuerySchema",
+    "to": "getAdDashboardQuerySchema"
+  },
+  {
+    "file": "src/modules/ads-manager/ads-manager.validation.ts",
+    "from": "getReportsExportCsvQuerySchema",
+    "to": "exportAdReportQuerySchema"
+  },
+  {
+    "file": "src/modules/ads-manager/ads-manager.validation.ts",
+    "from": "postConversionsBodySchema",
+    "to": "recordAdConversionBodySchema"
+  },
+  {
+    "file": "src/modules/ads-manager/ads-manager.validation.ts",
+    "from": "getContactsIdAttributionsQuerySchema",
+    "to": "getContactAdAttributionsQuerySchema"
+  },
+  {
+    "file": "src/modules/ai/ai.controller.ts",
+    "from": "postReply",
+    "to": "generateAiReply"
+  },
+  {
+    "file": "src/modules/ai/ai.service.ts",
+    "from": "postReplyService",
+    "to": "generateAiReply"
+  },
+  {
+    "file": "src/modules/ai/ai.controller.ts",
+    "from": "getKnowledge",
+    "to": "listKnowledgeDocuments"
+  },
+  {
+    "file": "src/modules/ai/ai.service.ts",
+    "from": "getKnowledgeService",
+    "to": "listKnowledgeDocuments"
+  },
+  {
+    "file": "src/modules/ai/ai.controller.ts",
+    "from": "deleteKnowledgeId",
+    "to": "deleteKnowledgeDocument"
+  },
+  {
+    "file": "src/modules/ai/ai.service.ts",
+    "from": "deleteKnowledgeIdService",
+    "to": "deleteKnowledgeDocument"
+  },
+  {
+    "file": "src/modules/ai/ai.controller.ts",
+    "from": "postSupport",
+    "to": "requestAiSupport"
+  },
+  {
+    "file": "src/modules/ai/ai.service.ts",
+    "from": "postSupportService",
+    "to": "requestAiSupport"
+  },
+  {
+    "file": "src/modules/ai/ai.validation.ts",
+    "from": "postReplyBodySchema",
+    "to": "generateAiReplyBodySchema"
+  },
+  {
+    "file": "src/modules/ai/ai.validation.ts",
+    "from": "deleteKnowledgeIdParamsSchema",
+    "to": "deleteKnowledgeDocumentParamsSchema"
+  },
+  {
+    "file": "src/modules/ai/ai.validation.ts",
+    "from": "postSupportBodySchema",
+    "to": "requestAiSupportBodySchema"
+  },
+  {
+    "file": "src/modules/appointment-reminders/appointment-reminders.controller.ts",
+    "from": "get",
+    "to": "getReminderSettings"
+  },
+  {
+    "file": "src/modules/appointment-reminders/appointment-reminders.service.ts",
+    "from": "getService",
+    "to": "getReminderSettings"
+  },
+  {
+    "file": "src/modules/appointment-reminders/appointment-reminders.controller.ts",
+    "from": "put",
+    "to": "updateReminderSettings"
+  },
+  {
+    "file": "src/modules/appointment-reminders/appointment-reminders.service.ts",
+    "from": "putService",
+    "to": "updateReminderSettings"
+  },
+  {
+    "file": "src/modules/appointment-reminders/appointment-reminders.validation.ts",
+    "from": "putBodySchema",
+    "to": "updateReminderSettingsBodySchema"
+  },
+  {
+    "file": "src/modules/appointments/appointments.controller.ts",
+    "from": "getAvailability",
+    "to": "getAppointmentAvailability"
+  },
+  {
+    "file": "src/modules/appointments/services/appointment-availability.service.ts",
+    "from": "getAvailabilityService",
+    "to": "getAppointmentAvailability",
+    "originalFile": "src/modules/appointments/appointments.service.ts"
+  },
+  {
+    "file": "src/modules/appointments/appointments.controller.ts",
+    "from": "postServiceResources",
+    "to": "createAppointmentResource"
+  },
+  {
+    "file": "src/modules/appointments/services/appointment-availability.service.ts",
+    "from": "postServiceResourcesService",
+    "to": "createAppointmentResource",
+    "originalFile": "src/modules/appointments/appointments.service.ts"
+  },
+  {
+    "file": "src/modules/appointments/appointments.controller.ts",
+    "from": "postHolds",
+    "to": "holdAppointmentSlot"
+  },
+  {
+    "file": "src/modules/appointments/services/appointment-availability.service.ts",
+    "from": "postHoldsService",
+    "to": "holdAppointmentSlot",
+    "originalFile": "src/modules/appointments/appointments.service.ts"
+  },
+  {
+    "file": "src/modules/appointments/appointments.controller.ts",
+    "from": "post",
+    "to": "bookAppointment"
+  },
+  {
+    "file": "src/modules/appointments/services/appointment-bookings.service.ts",
+    "from": "postService",
+    "to": "bookAppointment",
+    "originalFile": "src/modules/appointments/appointments.service.ts"
+  },
+  {
+    "file": "src/modules/appointments/appointments.controller.ts",
+    "from": "getId",
+    "to": "getAppointment"
+  },
+  {
+    "file": "src/modules/appointments/services/appointment-bookings.service.ts",
+    "from": "getIdService",
+    "to": "getAppointment",
+    "originalFile": "src/modules/appointments/appointments.service.ts"
+  },
+  {
+    "file": "src/modules/appointments/appointments.controller.ts",
+    "from": "postIdCancel",
+    "to": "cancelAppointment"
+  },
+  {
+    "file": "src/modules/appointments/services/appointment-bookings.service.ts",
+    "from": "postIdCancelService",
+    "to": "cancelAppointment",
+    "originalFile": "src/modules/appointments/appointments.service.ts"
+  },
+  {
+    "file": "src/modules/appointments/appointments.controller.ts",
+    "from": "postIdReschedule",
+    "to": "rescheduleAppointment"
+  },
+  {
+    "file": "src/modules/appointments/services/appointment-bookings.service.ts",
+    "from": "postIdRescheduleService",
+    "to": "rescheduleAppointment",
+    "originalFile": "src/modules/appointments/appointments.service.ts"
+  },
+  {
+    "file": "src/modules/appointments/appointments.controller.ts",
+    "from": "postIdNoShow",
+    "to": "markAppointmentNoShow"
+  },
+  {
+    "file": "src/modules/appointments/services/appointment-bookings.service.ts",
+    "from": "postIdNoShowService",
+    "to": "markAppointmentNoShow",
+    "originalFile": "src/modules/appointments/appointments.service.ts"
+  },
+  {
+    "file": "src/modules/appointments/appointments.validation.ts",
+    "from": "getAvailabilityQuerySchema",
+    "to": "getAppointmentAvailabilityQuerySchema"
+  },
+  {
+    "file": "src/modules/appointments/appointments.validation.ts",
+    "from": "postServiceResourcesBodySchema",
+    "to": "createAppointmentResourceBodySchema"
+  },
+  {
+    "file": "src/modules/appointments/appointments.validation.ts",
+    "from": "postHoldsBodySchema",
+    "to": "holdAppointmentSlotBodySchema"
+  },
+  {
+    "file": "src/modules/appointments/appointments.validation.ts",
+    "from": "postBodySchema",
+    "to": "bookAppointmentBodySchema"
+  },
+  {
+    "file": "src/modules/appointments/appointments.validation.ts",
+    "from": "postIdRescheduleBodySchema",
+    "to": "rescheduleAppointmentBodySchema"
+  },
+  {
+    "file": "src/modules/auth/auth.controller.ts",
+    "from": "postRegister",
+    "to": "register"
+  },
+  {
+    "file": "src/modules/auth/auth.service.ts",
+    "from": "postRegisterService",
+    "to": "register"
+  },
+  {
+    "file": "src/modules/auth/auth.controller.ts",
+    "from": "postResendVerification",
+    "to": "resendVerification"
+  },
+  {
+    "file": "src/modules/auth/auth.service.ts",
+    "from": "postResendVerificationService",
+    "to": "resendVerification"
+  },
+  {
+    "file": "src/modules/auth/auth.controller.ts",
+    "from": "postLogin",
+    "to": "login"
+  },
+  {
+    "file": "src/modules/auth/auth.service.ts",
+    "from": "postLoginService",
+    "to": "login"
+  },
+  {
+    "file": "src/modules/auth/auth.controller.ts",
+    "from": "postRefresh",
+    "to": "refreshSession"
+  },
+  {
+    "file": "src/modules/auth/auth.service.ts",
+    "from": "postRefreshService",
+    "to": "refreshSession"
+  },
+  {
+    "file": "src/modules/auth/auth.controller.ts",
+    "from": "postLogout",
+    "to": "logout"
+  },
+  {
+    "file": "src/modules/auth/auth.service.ts",
+    "from": "postLogoutService",
+    "to": "logout"
+  },
+  {
+    "file": "src/modules/auth/auth.controller.ts",
+    "from": "getMe",
+    "to": "getCurrentUser"
+  },
+  {
+    "file": "src/modules/auth/auth.service.ts",
+    "from": "getMeService",
+    "to": "getCurrentUser"
+  },
+  {
+    "file": "src/modules/auth/auth.controller.ts",
+    "from": "postVerifyEmail",
+    "to": "verifyEmail"
+  },
+  {
+    "file": "src/modules/auth/auth.service.ts",
+    "from": "postVerifyEmailService",
+    "to": "verifyEmail"
+  },
+  {
+    "file": "src/modules/auth/auth.controller.ts",
+    "from": "postForgotPassword",
+    "to": "requestPasswordReset"
+  },
+  {
+    "file": "src/modules/auth/auth.service.ts",
+    "from": "postForgotPasswordService",
+    "to": "requestPasswordReset"
+  },
+  {
+    "file": "src/modules/auth/auth.controller.ts",
+    "from": "postPhoneStart",
+    "to": "startPhoneVerification"
+  },
+  {
+    "file": "src/modules/auth/auth.service.ts",
+    "from": "postPhoneStartService",
+    "to": "startPhoneVerification"
+  },
+  {
+    "file": "src/modules/auth/auth.controller.ts",
+    "from": "postPhoneVerify",
+    "to": "verifyPhone"
+  },
+  {
+    "file": "src/modules/auth/auth.service.ts",
+    "from": "postPhoneVerifyService",
+    "to": "verifyPhone"
+  },
+  {
+    "file": "src/modules/auth/auth.controller.ts",
+    "from": "postResetPassword",
+    "to": "resetPassword"
+  },
+  {
+    "file": "src/modules/auth/auth.service.ts",
+    "from": "postResetPasswordService",
+    "to": "resetPassword"
+  },
+  {
+    "file": "src/modules/auth/auth.validation.ts",
+    "from": "postRegisterBodySchema",
+    "to": "registerBodySchema"
+  },
+  {
+    "file": "src/modules/auth/auth.validation.ts",
+    "from": "postResendVerificationBodySchema",
+    "to": "resendVerificationBodySchema"
+  },
+  {
+    "file": "src/modules/auth/auth.validation.ts",
+    "from": "postLoginBodySchema",
+    "to": "loginBodySchema"
+  },
+  {
+    "file": "src/modules/auth/auth.validation.ts",
+    "from": "postRefreshBodySchema",
+    "to": "refreshSessionBodySchema"
+  },
+  {
+    "file": "src/modules/auth/auth.validation.ts",
+    "from": "postVerifyEmailBodySchema",
+    "to": "verifyEmailBodySchema"
+  },
+  {
+    "file": "src/modules/auth/auth.validation.ts",
+    "from": "postForgotPasswordBodySchema",
+    "to": "requestPasswordResetBodySchema"
+  },
+  {
+    "file": "src/modules/auth/auth.validation.ts",
+    "from": "postPhoneStartBodySchema",
+    "to": "startPhoneVerificationBodySchema"
+  },
+  {
+    "file": "src/modules/auth/auth.validation.ts",
+    "from": "postPhoneVerifyBodySchema",
+    "to": "verifyPhoneBodySchema"
+  },
+  {
+    "file": "src/modules/auth/auth.validation.ts",
+    "from": "postResetPasswordBodySchema",
+    "to": "resetPasswordBodySchema"
+  },
+  {
+    "file": "src/modules/billing/billing.controller.ts",
+    "from": "postManualIdAction",
+    "to": "reviewManualSubscription"
+  },
+  {
+    "file": "src/modules/billing/services/billing-administration.service.ts",
+    "from": "postManualIdActionService",
+    "to": "reviewManualSubscription",
+    "originalFile": "src/modules/billing/billing.service.ts"
+  },
+  {
+    "file": "src/modules/billing/billing.controller.ts",
+    "from": "postAddonsAiRepliesOverride",
+    "to": "overrideAiReplyAllowance"
+  },
+  {
+    "file": "src/modules/billing/services/billing-administration.service.ts",
+    "from": "postAddonsAiRepliesOverrideService",
+    "to": "overrideAiReplyAllowance",
+    "originalFile": "src/modules/billing/billing.service.ts"
+  },
+  {
+    "file": "src/modules/billing/billing.controller.ts",
+    "from": "deleteAddonsAiRepliesOverride",
+    "to": "removeAiReplyOverride"
+  },
+  {
+    "file": "src/modules/billing/services/billing-administration.service.ts",
+    "from": "deleteAddonsAiRepliesOverrideService",
+    "to": "removeAiReplyOverride",
+    "originalFile": "src/modules/billing/billing.service.ts"
+  },
+  {
+    "file": "src/modules/billing/billing.controller.ts",
+    "from": "get",
+    "to": "getBillingSummary"
+  },
+  {
+    "file": "src/modules/billing/services/billing-summary.service.ts",
+    "from": "getService",
+    "to": "getBillingSummary",
+    "originalFile": "src/modules/billing/billing.service.ts"
+  },
+  {
+    "file": "src/modules/billing/billing.validation.ts",
+    "from": "postManualIdActionParamsSchema",
+    "to": "reviewManualSubscriptionParamsSchema"
+  },
+  {
+    "file": "src/modules/billing/billing.validation.ts",
+    "from": "postManualIdActionBodySchema",
+    "to": "reviewManualSubscriptionBodySchema"
+  },
+  {
+    "file": "src/modules/billing/billing.validation.ts",
+    "from": "postAddonsAiRepliesOverrideBodySchema",
+    "to": "overrideAiReplyAllowanceBodySchema"
+  },
+  {
+    "file": "src/modules/billing-checkout/billing-checkout.controller.ts",
+    "from": "getPlans",
+    "to": "listBillingPlans"
+  },
+  {
+    "file": "src/modules/billing-checkout/billing-checkout.service.ts",
+    "from": "getPlansService",
+    "to": "listBillingPlans"
+  },
+  {
+    "file": "src/modules/billing-checkout/billing-checkout.controller.ts",
+    "from": "postCheckout",
+    "to": "createCheckoutSession"
+  },
+  {
+    "file": "src/modules/billing-checkout/billing-checkout.service.ts",
+    "from": "postCheckoutService",
+    "to": "createCheckoutSession"
+  },
+  {
+    "file": "src/modules/billing-checkout/billing-checkout.controller.ts",
+    "from": "postPortal",
+    "to": "createBillingPortalSession"
+  },
+  {
+    "file": "src/modules/billing-checkout/billing-checkout.service.ts",
+    "from": "postPortalService",
+    "to": "createBillingPortalSession"
+  },
+  {
+    "file": "src/modules/billing-checkout/billing-checkout.controller.ts",
+    "from": "getInvoices",
+    "to": "listBillingInvoices"
+  },
+  {
+    "file": "src/modules/billing-checkout/billing-checkout.service.ts",
+    "from": "getInvoicesService",
+    "to": "listBillingInvoices"
+  },
+  {
+    "file": "src/modules/billing-checkout/billing-checkout.validation.ts",
+    "from": "postCheckoutBodySchema",
+    "to": "createCheckoutSessionBodySchema"
+  },
+  {
+    "file": "src/modules/billing-checkout/billing-checkout.validation.ts",
+    "from": "postPortalBodySchema",
+    "to": "createBillingPortalSessionBodySchema"
+  },
+  {
+    "file": "src/modules/billing-checkout/billing-checkout.validation.ts",
+    "from": "getInvoicesQuerySchema",
+    "to": "listBillingInvoicesQuerySchema"
+  },
+  {
+    "file": "src/modules/bot-flows/bot-flows.controller.ts",
+    "from": "get",
+    "to": "listBotFlows"
+  },
+  {
+    "file": "src/modules/bot-flows/bot-flows.service.ts",
+    "from": "getService",
+    "to": "listBotFlows"
+  },
+  {
+    "file": "src/modules/bot-flows/bot-flows.controller.ts",
+    "from": "postPath",
+    "to": "createBotFlow"
+  },
+  {
+    "file": "src/modules/bot-flows/bot-flows.service.ts",
+    "from": "postPathService",
+    "to": "createBotFlow"
+  },
+  {
+    "file": "src/modules/bot-flows/bot-flows.controller.ts",
+    "from": "getId",
+    "to": "getBotFlow"
+  },
+  {
+    "file": "src/modules/bot-flows/bot-flows.service.ts",
+    "from": "getIdService",
+    "to": "getBotFlow"
+  },
+  {
+    "file": "src/modules/bot-flows/bot-flows.controller.ts",
+    "from": "putId",
+    "to": "updateBotFlow"
+  },
+  {
+    "file": "src/modules/bot-flows/bot-flows.service.ts",
+    "from": "putIdService",
+    "to": "updateBotFlow"
+  },
+  {
+    "file": "src/modules/bot-flows/bot-flows.controller.ts",
+    "from": "getIdExport",
+    "to": "exportBotFlow"
+  },
+  {
+    "file": "src/modules/bot-flows/bot-flows.service.ts",
+    "from": "getIdExportService",
+    "to": "exportBotFlow"
+  },
+  {
+    "file": "src/modules/bot-flows/bot-flows.controller.ts",
+    "from": "postIdClone",
+    "to": "cloneBotFlow"
+  },
+  {
+    "file": "src/modules/bot-flows/bot-flows.service.ts",
+    "from": "postIdCloneService",
+    "to": "cloneBotFlow"
+  },
+  {
+    "file": "src/modules/bot-flows/bot-flows.controller.ts",
+    "from": "postIdPreview",
+    "to": "previewBotFlow"
+  },
+  {
+    "file": "src/modules/bot-flows/bot-flows.service.ts",
+    "from": "postIdPreviewService",
+    "to": "previewBotFlow"
+  },
+  {
+    "file": "src/modules/bot-flows/bot-flows.controller.ts",
+    "from": "deleteId",
+    "to": "deleteBotFlow"
+  },
+  {
+    "file": "src/modules/bot-flows/bot-flows.service.ts",
+    "from": "deleteIdService",
+    "to": "deleteBotFlow"
+  },
+  {
+    "file": "src/modules/bot-flows/bot-flows.validation.ts",
+    "from": "getQuerySchema",
+    "to": "listBotFlowsQuerySchema"
+  },
+  {
+    "file": "src/modules/bot-flows/bot-flows.validation.ts",
+    "from": "postPathBodySchema",
+    "to": "createBotFlowBodySchema"
+  },
+  {
+    "file": "src/modules/bot-flows/bot-flows.validation.ts",
+    "from": "putIdBodySchema",
+    "to": "updateBotFlowBodySchema"
+  },
+  {
+    "file": "src/modules/bot-flows/bot-flows.validation.ts",
+    "from": "postIdCloneBodySchema",
+    "to": "cloneBotFlowBodySchema"
+  },
+  {
+    "file": "src/modules/bot-flows/bot-flows.validation.ts",
+    "from": "postIdPreviewBodySchema",
+    "to": "previewBotFlowBodySchema"
+  },
+  {
+    "file": "src/modules/bot-replies/bot-replies.controller.ts",
+    "from": "get",
+    "to": "listBotReplies"
+  },
+  {
+    "file": "src/modules/bot-replies/services/reply-management.service.ts",
+    "from": "getService",
+    "to": "listBotReplies",
+    "originalFile": "src/modules/bot-replies/bot-replies.service.ts"
+  },
+  {
+    "file": "src/modules/bot-replies/bot-replies.controller.ts",
+    "from": "post",
+    "to": "createBotReply"
+  },
+  {
+    "file": "src/modules/bot-replies/services/reply-management.service.ts",
+    "from": "postService",
+    "to": "createBotReply",
+    "originalFile": "src/modules/bot-replies/bot-replies.service.ts"
+  },
+  {
+    "file": "src/modules/bot-replies/bot-replies.controller.ts",
+    "from": "putId",
+    "to": "updateBotReply"
+  },
+  {
+    "file": "src/modules/bot-replies/services/reply-management.service.ts",
+    "from": "putIdService",
+    "to": "updateBotReply",
+    "originalFile": "src/modules/bot-replies/bot-replies.service.ts"
+  },
+  {
+    "file": "src/modules/bot-replies/bot-replies.controller.ts",
+    "from": "deleteId",
+    "to": "deleteBotReply"
+  },
+  {
+    "file": "src/modules/bot-replies/services/reply-management.service.ts",
+    "from": "deleteIdService",
+    "to": "deleteBotReply",
+    "originalFile": "src/modules/bot-replies/bot-replies.service.ts"
+  },
+  {
+    "file": "src/modules/bot-replies/bot-replies.controller.ts",
+    "from": "putSettingsTiming",
+    "to": "updateBotTiming"
+  },
+  {
+    "file": "src/modules/bot-replies/services/reply-management.service.ts",
+    "from": "putSettingsTimingService",
+    "to": "updateBotTiming",
+    "originalFile": "src/modules/bot-replies/bot-replies.service.ts"
+  },
+  {
+    "file": "src/modules/bot-replies/bot-replies.validation.ts",
+    "from": "getQuerySchema",
+    "to": "listBotRepliesQuerySchema"
+  },
+  {
+    "file": "src/modules/bot-replies/bot-replies.validation.ts",
+    "from": "postBodySchema",
+    "to": "createBotReplyBodySchema"
+  },
+  {
+    "file": "src/modules/bot-replies/bot-replies.validation.ts",
+    "from": "putIdBodySchema",
+    "to": "updateBotReplyBodySchema"
+  },
+  {
+    "file": "src/modules/bot-replies/bot-replies.validation.ts",
+    "from": "putSettingsTimingBodySchema",
+    "to": "updateBotTimingBodySchema"
+  },
+  {
+    "file": "src/modules/campaigns/campaigns.controller.ts",
+    "from": "get",
+    "to": "listCampaigns"
+  },
+  {
+    "file": "src/modules/campaigns/services/campaign-management.service.ts",
+    "from": "getService",
+    "to": "listCampaigns",
+    "originalFile": "src/modules/campaigns/campaigns.service.ts"
+  },
+  {
+    "file": "src/modules/campaigns/campaigns.controller.ts",
+    "from": "post",
+    "to": "createCampaign"
+  },
+  {
+    "file": "src/modules/campaigns/services/campaign-management.service.ts",
+    "from": "postService",
+    "to": "createCampaign",
+    "originalFile": "src/modules/campaigns/campaigns.service.ts"
+  },
+  {
+    "file": "src/modules/campaigns/campaigns.controller.ts",
+    "from": "postIdCancel",
+    "to": "cancelCampaign"
+  },
+  {
+    "file": "src/modules/campaigns/services/campaign-lifecycle.service.ts",
+    "from": "postIdCancelService",
+    "to": "cancelCampaign",
+    "originalFile": "src/modules/campaigns/campaigns.service.ts"
+  },
+  {
+    "file": "src/modules/campaigns/campaigns.controller.ts",
+    "from": "postIdPause",
+    "to": "pauseCampaign"
+  },
+  {
+    "file": "src/modules/campaigns/services/campaign-lifecycle.service.ts",
+    "from": "postIdPauseService",
+    "to": "pauseCampaign",
+    "originalFile": "src/modules/campaigns/campaigns.service.ts"
+  },
+  {
+    "file": "src/modules/campaigns/campaigns.controller.ts",
+    "from": "postIdResume",
+    "to": "resumeCampaign"
+  },
+  {
+    "file": "src/modules/campaigns/services/campaign-lifecycle.service.ts",
+    "from": "postIdResumeService",
+    "to": "resumeCampaign",
+    "originalFile": "src/modules/campaigns/campaigns.service.ts"
+  },
+  {
+    "file": "src/modules/campaigns/campaigns.controller.ts",
+    "from": "postIdDuplicate",
+    "to": "duplicateCampaign"
+  },
+  {
+    "file": "src/modules/campaigns/services/campaign-management.service.ts",
+    "from": "postIdDuplicateService",
+    "to": "duplicateCampaign",
+    "originalFile": "src/modules/campaigns/campaigns.service.ts"
+  },
+  {
+    "file": "src/modules/campaigns/campaigns.controller.ts",
+    "from": "getIdStatus",
+    "to": "getCampaignStatus"
+  },
+  {
+    "file": "src/modules/campaigns/services/campaign-reporting.service.ts",
+    "from": "getIdStatusService",
+    "to": "getCampaignStatus",
+    "originalFile": "src/modules/campaigns/campaigns.service.ts"
+  },
+  {
+    "file": "src/modules/campaigns/campaigns.controller.ts",
+    "from": "postIdTest",
+    "to": "sendCampaignTest"
+  },
+  {
+    "file": "src/modules/campaigns/services/campaign-delivery.service.ts",
+    "from": "postIdTestService",
+    "to": "sendCampaignTest",
+    "originalFile": "src/modules/campaigns/campaigns.service.ts"
+  },
+  {
+    "file": "src/modules/campaigns/campaigns.controller.ts",
+    "from": "postIdArchive",
+    "to": "archiveCampaign"
+  },
+  {
+    "file": "src/modules/campaigns/services/campaign-lifecycle.service.ts",
+    "from": "postIdArchiveService",
+    "to": "archiveCampaign",
+    "originalFile": "src/modules/campaigns/campaigns.service.ts"
+  },
+  {
+    "file": "src/modules/campaigns/campaigns.controller.ts",
+    "from": "postIdUnarchive",
+    "to": "restoreCampaign"
+  },
+  {
+    "file": "src/modules/campaigns/services/campaign-lifecycle.service.ts",
+    "from": "postIdUnarchiveService",
+    "to": "restoreCampaign",
+    "originalFile": "src/modules/campaigns/campaigns.service.ts"
+  },
+  {
+    "file": "src/modules/campaigns/campaigns.controller.ts",
+    "from": "getIdReport",
+    "to": "getCampaignReport"
+  },
+  {
+    "file": "src/modules/campaigns/services/campaign-reporting.service.ts",
+    "from": "getIdReportService",
+    "to": "getCampaignReport",
+    "originalFile": "src/modules/campaigns/campaigns.service.ts"
+  },
+  {
+    "file": "src/modules/campaigns/campaigns.controller.ts",
+    "from": "getIdRecipients",
+    "to": "listCampaignRecipients"
+  },
+  {
+    "file": "src/modules/campaigns/services/campaign-reporting.service.ts",
+    "from": "getIdRecipientsService",
+    "to": "listCampaignRecipients",
+    "originalFile": "src/modules/campaigns/campaigns.service.ts"
+  },
+  {
+    "file": "src/modules/campaigns/campaigns.validation.ts",
+    "from": "getQuerySchema",
+    "to": "listCampaignsQuerySchema"
+  },
+  {
+    "file": "src/modules/campaigns/campaigns.validation.ts",
+    "from": "postBodySchema",
+    "to": "createCampaignBodySchema"
+  },
+  {
+    "file": "src/modules/campaigns/campaigns.validation.ts",
+    "from": "postIdDuplicateBodySchema",
+    "to": "duplicateCampaignBodySchema"
+  },
+  {
+    "file": "src/modules/campaigns/campaigns.validation.ts",
+    "from": "postIdTestBodySchema",
+    "to": "sendCampaignTestBodySchema"
+  },
+  {
+    "file": "src/modules/campaigns/campaigns.validation.ts",
+    "from": "getIdRecipientsQuerySchema",
+    "to": "listCampaignRecipientsQuerySchema"
+  },
+  {
+    "file": "src/modules/capabilities/capabilities.controller.ts",
+    "from": "capabilities",
+    "to": "getCapabilities"
+  },
+  {
+    "file": "src/modules/catalogs/catalogs.controller.ts",
+    "from": "get",
+    "to": "listCatalogs"
+  },
+  {
+    "file": "src/modules/catalogs/services/catalog-connections.service.ts",
+    "from": "getService",
+    "to": "listCatalogs",
+    "originalFile": "src/modules/catalogs/catalogs.service.ts"
+  },
+  {
+    "file": "src/modules/catalogs/catalogs.controller.ts",
+    "from": "postConnect",
+    "to": "connectCatalog"
+  },
+  {
+    "file": "src/modules/catalogs/services/catalog-connections.service.ts",
+    "from": "postConnectService",
+    "to": "connectCatalog",
+    "originalFile": "src/modules/catalogs/catalogs.service.ts"
+  },
+  {
+    "file": "src/modules/catalogs/catalogs.controller.ts",
+    "from": "postCatalogIdSync",
+    "to": "syncCatalog"
+  },
+  {
+    "file": "src/modules/catalogs/services/catalog-connections.service.ts",
+    "from": "postCatalogIdSyncService",
+    "to": "syncCatalog",
+    "originalFile": "src/modules/catalogs/catalogs.service.ts"
+  },
+  {
+    "file": "src/modules/catalogs/catalogs.controller.ts",
+    "from": "getCatalogIdProducts",
+    "to": "listCatalogProducts"
+  },
+  {
+    "file": "src/modules/catalogs/services/catalog-products.service.ts",
+    "from": "getCatalogIdProductsService",
+    "to": "listCatalogProducts",
+    "originalFile": "src/modules/catalogs/catalogs.service.ts"
+  },
+  {
+    "file": "src/modules/catalogs/catalogs.controller.ts",
+    "from": "postCatalogIdProducts",
+    "to": "createCatalogProduct"
+  },
+  {
+    "file": "src/modules/catalogs/services/catalog-products.service.ts",
+    "from": "postCatalogIdProductsService",
+    "to": "createCatalogProduct",
+    "originalFile": "src/modules/catalogs/catalogs.service.ts"
+  },
+  {
+    "file": "src/modules/catalogs/catalogs.controller.ts",
+    "from": "putCatalogIdProductsProductId",
+    "to": "updateCatalogProduct"
+  },
+  {
+    "file": "src/modules/catalogs/services/catalog-products.service.ts",
+    "from": "putCatalogIdProductsProductIdService",
+    "to": "updateCatalogProduct",
+    "originalFile": "src/modules/catalogs/catalogs.service.ts"
+  },
+  {
+    "file": "src/modules/catalogs/catalogs.controller.ts",
+    "from": "postCatalogIdProductsProductIdPublish",
+    "to": "publishCatalogProduct"
+  },
+  {
+    "file": "src/modules/catalogs/services/catalog-products.service.ts",
+    "from": "postCatalogIdProductsProductIdPublishService",
+    "to": "publishCatalogProduct",
+    "originalFile": "src/modules/catalogs/catalogs.service.ts"
+  },
+  {
+    "file": "src/modules/catalogs/catalogs.controller.ts",
+    "from": "deleteCatalogIdConnection",
+    "to": "disconnectCatalog"
+  },
+  {
+    "file": "src/modules/catalogs/services/catalog-connections.service.ts",
+    "from": "deleteCatalogIdConnectionService",
+    "to": "disconnectCatalog",
+    "originalFile": "src/modules/catalogs/catalogs.service.ts"
+  },
+  {
+    "file": "src/modules/catalogs/catalogs.validation.ts",
+    "from": "postConnectBodySchema",
+    "to": "connectCatalogBodySchema"
+  },
+  {
+    "file": "src/modules/catalogs/catalogs.validation.ts",
+    "from": "postCatalogIdSyncBodySchema",
+    "to": "syncCatalogBodySchema"
+  },
+  {
+    "file": "src/modules/catalogs/catalogs.validation.ts",
+    "from": "getCatalogIdProductsQuerySchema",
+    "to": "listCatalogProductsQuerySchema"
+  },
+  {
+    "file": "src/modules/catalogs/catalogs.validation.ts",
+    "from": "postCatalogIdProductsBodySchema",
+    "to": "createCatalogProductBodySchema"
+  },
+  {
+    "file": "src/modules/catalogs/catalogs.validation.ts",
+    "from": "putCatalogIdProductsProductIdBodySchema",
+    "to": "updateCatalogProductBodySchema"
+  },
+  {
+    "file": "src/modules/catalogs/catalogs.validation.ts",
+    "from": "postCatalogIdProductsProductIdPublishBodySchema",
+    "to": "publishCatalogProductBodySchema"
+  },
+  {
+    "file": "src/modules/classifications/classifications.controller.ts",
+    "from": "getPresets",
+    "to": "listClassificationPresets"
+  },
+  {
+    "file": "src/modules/classifications/classifications.service.ts",
+    "from": "getPresetsService",
+    "to": "listClassificationPresets"
+  },
+  {
+    "file": "src/modules/classifications/classifications.controller.ts",
+    "from": "getContactsId",
+    "to": "getContactClassification"
+  },
+  {
+    "file": "src/modules/classifications/classifications.service.ts",
+    "from": "getContactsIdService",
+    "to": "getContactClassification"
+  },
+  {
+    "file": "src/modules/classifications/classifications.controller.ts",
+    "from": "patchContactsId",
+    "to": "updateContactClassification"
+  },
+  {
+    "file": "src/modules/classifications/classifications.service.ts",
+    "from": "patchContactsIdService",
+    "to": "updateContactClassification"
+  },
+  {
+    "file": "src/modules/classifications/classifications.controller.ts",
+    "from": "postTags",
+    "to": "createClassificationTag"
+  },
+  {
+    "file": "src/modules/classifications/classifications.service.ts",
+    "from": "postTagsService",
+    "to": "createClassificationTag"
+  },
+  {
+    "file": "src/modules/classifications/classifications.controller.ts",
+    "from": "deleteTagsId",
+    "to": "deleteClassificationTag"
+  },
+  {
+    "file": "src/modules/classifications/classifications.service.ts",
+    "from": "deleteTagsIdService",
+    "to": "deleteClassificationTag"
+  },
+  {
+    "file": "src/modules/classifications/classifications.validation.ts",
+    "from": "getContactsIdParamsSchema",
+    "to": "getContactClassificationParamsSchema"
+  },
+  {
+    "file": "src/modules/classifications/classifications.validation.ts",
+    "from": "getContactsIdQuerySchema",
+    "to": "getContactClassificationQuerySchema"
+  },
+  {
+    "file": "src/modules/classifications/classifications.validation.ts",
+    "from": "patchContactsIdParamsSchema",
+    "to": "updateContactClassificationParamsSchema"
+  },
+  {
+    "file": "src/modules/classifications/classifications.validation.ts",
+    "from": "patchContactsIdBodySchema",
+    "to": "updateContactClassificationBodySchema"
+  },
+  {
+    "file": "src/modules/classifications/classifications.validation.ts",
+    "from": "postTagsBodySchema",
+    "to": "createClassificationTagBodySchema"
+  },
+  {
+    "file": "src/modules/classifications/classifications.validation.ts",
+    "from": "deleteTagsIdParamsSchema",
+    "to": "deleteClassificationTagParamsSchema"
+  },
+  {
+    "file": "src/modules/comment-automations/comment-automations.controller.ts",
+    "from": "get",
+    "to": "listCommentAutomations"
+  },
+  {
+    "file": "src/modules/comment-automations/services/automation-management.service.ts",
+    "from": "getService",
+    "to": "listCommentAutomations",
+    "originalFile": "src/modules/comment-automations/comment-automations.service.ts"
+  },
+  {
+    "file": "src/modules/comment-automations/comment-automations.controller.ts",
+    "from": "getExecutions",
+    "to": "listAutomationExecutions"
+  },
+  {
+    "file": "src/modules/comment-automations/services/automation-management.service.ts",
+    "from": "getExecutionsService",
+    "to": "listAutomationExecutions",
+    "originalFile": "src/modules/comment-automations/comment-automations.service.ts"
+  },
+  {
+    "file": "src/modules/comment-automations/comment-automations.controller.ts",
+    "from": "post",
+    "to": "createCommentAutomation"
+  },
+  {
+    "file": "src/modules/comment-automations/services/automation-management.service.ts",
+    "from": "postService",
+    "to": "createCommentAutomation",
+    "originalFile": "src/modules/comment-automations/comment-automations.service.ts"
+  },
+  {
+    "file": "src/modules/comment-automations/comment-automations.controller.ts",
+    "from": "getId",
+    "to": "getCommentAutomation"
+  },
+  {
+    "file": "src/modules/comment-automations/services/automation-management.service.ts",
+    "from": "getIdService",
+    "to": "getCommentAutomation",
+    "originalFile": "src/modules/comment-automations/comment-automations.service.ts"
+  },
+  {
+    "file": "src/modules/comment-automations/comment-automations.controller.ts",
+    "from": "putId",
+    "to": "updateCommentAutomation"
+  },
+  {
+    "file": "src/modules/comment-automations/services/automation-management.service.ts",
+    "from": "putIdService",
+    "to": "updateCommentAutomation",
+    "originalFile": "src/modules/comment-automations/comment-automations.service.ts"
+  },
+  {
+    "file": "src/modules/comment-automations/comment-automations.controller.ts",
+    "from": "deleteId",
+    "to": "deleteCommentAutomation"
+  },
+  {
+    "file": "src/modules/comment-automations/services/automation-management.service.ts",
+    "from": "deleteIdService",
+    "to": "deleteCommentAutomation",
+    "originalFile": "src/modules/comment-automations/comment-automations.service.ts"
+  },
+  {
+    "file": "src/modules/comment-automations/comment-automations.validation.ts",
+    "from": "getQuerySchema",
+    "to": "listCommentAutomationsQuerySchema"
+  },
+  {
+    "file": "src/modules/comment-automations/comment-automations.validation.ts",
+    "from": "getExecutionsQuerySchema",
+    "to": "listAutomationExecutionsQuerySchema"
+  },
+  {
+    "file": "src/modules/comment-automations/comment-automations.validation.ts",
+    "from": "postBodySchema",
+    "to": "createCommentAutomationBodySchema"
+  },
+  {
+    "file": "src/modules/comment-automations/comment-automations.validation.ts",
+    "from": "putIdBodySchema",
+    "to": "updateCommentAutomationBodySchema"
+  },
+  {
+    "file": "src/modules/configuration/configuration.controller.ts",
+    "from": "get",
+    "to": "listSettingGroups"
+  },
+  {
+    "file": "src/modules/configuration/configuration.service.ts",
+    "from": "getService",
+    "to": "listSettingGroups"
+  },
+  {
+    "file": "src/modules/configuration/configuration.controller.ts",
+    "from": "getGroup",
+    "to": "getSettingGroup"
+  },
+  {
+    "file": "src/modules/configuration/configuration.service.ts",
+    "from": "getGroupService",
+    "to": "getSettingGroup"
+  },
+  {
+    "file": "src/modules/configuration/configuration.controller.ts",
+    "from": "patchGroup",
+    "to": "updateSettingGroup"
+  },
+  {
+    "file": "src/modules/configuration/configuration.service.ts",
+    "from": "patchGroupService",
+    "to": "updateSettingGroup"
+  },
+  {
+    "file": "src/modules/configuration/configuration.validation.ts",
+    "from": "patchGroupBodySchema",
+    "to": "updateSettingGroupBodySchema"
+  },
+  {
+    "file": "src/modules/contact-fields/contact-fields.controller.ts",
+    "from": "get",
+    "to": "listContactFields"
+  },
+  {
+    "file": "src/modules/contact-fields/contact-fields.service.ts",
+    "from": "getService",
+    "to": "listContactFields"
+  },
+  {
+    "file": "src/modules/contact-fields/contact-fields.controller.ts",
+    "from": "getId",
+    "to": "getContactField"
+  },
+  {
+    "file": "src/modules/contact-fields/contact-fields.service.ts",
+    "from": "getIdService",
+    "to": "getContactField"
+  },
+  {
+    "file": "src/modules/contact-fields/contact-fields.controller.ts",
+    "from": "post",
+    "to": "createContactField"
+  },
+  {
+    "file": "src/modules/contact-fields/contact-fields.service.ts",
+    "from": "postService",
+    "to": "createContactField"
+  },
+  {
+    "file": "src/modules/contact-fields/contact-fields.controller.ts",
+    "from": "patchId",
+    "to": "updateContactField"
+  },
+  {
+    "file": "src/modules/contact-fields/contact-fields.service.ts",
+    "from": "patchIdService",
+    "to": "updateContactField"
+  },
+  {
+    "file": "src/modules/contact-fields/contact-fields.controller.ts",
+    "from": "deleteId",
+    "to": "deleteContactField"
+  },
+  {
+    "file": "src/modules/contact-fields/contact-fields.service.ts",
+    "from": "deleteIdService",
+    "to": "deleteContactField"
+  },
+  {
+    "file": "src/modules/contact-fields/contact-fields.validation.ts",
+    "from": "getQuerySchema",
+    "to": "listContactFieldsQuerySchema"
+  },
+  {
+    "file": "src/modules/contact-fields/contact-fields.validation.ts",
+    "from": "postBodySchema",
+    "to": "createContactFieldBodySchema"
+  },
+  {
+    "file": "src/modules/contact-fields/contact-fields.validation.ts",
+    "from": "patchIdBodySchema",
+    "to": "updateContactFieldBodySchema"
+  },
+  {
+    "file": "src/modules/contact-fields/contact-fields.validation.ts",
+    "from": "deleteIdBodySchema",
+    "to": "deleteContactFieldBodySchema"
+  },
+  {
+    "file": "src/modules/contact-workflows/contact-workflows.controller.ts",
+    "from": "getIdNotes",
+    "to": "getContactNotes"
+  },
+  {
+    "file": "src/modules/contact-workflows/services/contact-profile.service.ts",
+    "from": "getIdNotesService",
+    "to": "getContactNotes",
+    "originalFile": "src/modules/contact-workflows/contact-workflows.service.ts"
+  },
+  {
+    "file": "src/modules/contact-workflows/contact-workflows.controller.ts",
+    "from": "putIdNotes",
+    "to": "updateContactNotes"
+  },
+  {
+    "file": "src/modules/contact-workflows/services/contact-profile.service.ts",
+    "from": "putIdNotesService",
+    "to": "updateContactNotes",
+    "originalFile": "src/modules/contact-workflows/contact-workflows.service.ts"
+  },
+  {
+    "file": "src/modules/contact-workflows/contact-workflows.controller.ts",
+    "from": "deleteId",
+    "to": "deleteContact"
+  },
+  {
+    "file": "src/modules/contact-workflows/services/contact-lifecycle.service.ts",
+    "from": "deleteIdService",
+    "to": "deleteContact",
+    "originalFile": "src/modules/contact-workflows/contact-workflows.service.ts"
+  },
+  {
+    "file": "src/modules/contact-workflows/contact-workflows.controller.ts",
+    "from": "getIdLabels",
+    "to": "getContactLabels"
+  },
+  {
+    "file": "src/modules/contact-workflows/services/contact-profile.service.ts",
+    "from": "getIdLabelsService",
+    "to": "getContactLabels",
+    "originalFile": "src/modules/contact-workflows/contact-workflows.service.ts"
+  },
+  {
+    "file": "src/modules/contact-workflows/contact-workflows.controller.ts",
+    "from": "putIdLabels",
+    "to": "updateContactLabels"
+  },
+  {
+    "file": "src/modules/contact-workflows/services/contact-profile.service.ts",
+    "from": "putIdLabelsService",
+    "to": "updateContactLabels",
+    "originalFile": "src/modules/contact-workflows/contact-workflows.service.ts"
+  },
+  {
+    "file": "src/modules/contact-workflows/contact-workflows.controller.ts",
+    "from": "getIdCustomValues",
+    "to": "getContactCustomValues"
+  },
+  {
+    "file": "src/modules/contact-workflows/services/contact-profile.service.ts",
+    "from": "getIdCustomValuesService",
+    "to": "getContactCustomValues",
+    "originalFile": "src/modules/contact-workflows/contact-workflows.service.ts"
+  },
+  {
+    "file": "src/modules/contact-workflows/contact-workflows.controller.ts",
+    "from": "putIdCustomValues",
+    "to": "updateContactCustomValues"
+  },
+  {
+    "file": "src/modules/contact-workflows/services/contact-profile.service.ts",
+    "from": "putIdCustomValuesService",
+    "to": "updateContactCustomValues",
+    "originalFile": "src/modules/contact-workflows/contact-workflows.service.ts"
+  },
+  {
+    "file": "src/modules/contact-workflows/contact-workflows.controller.ts",
+    "from": "deleteIdGroupsGroupId",
+    "to": "removeContactFromGroup"
+  },
+  {
+    "file": "src/modules/contact-workflows/services/contact-lifecycle.service.ts",
+    "from": "deleteIdGroupsGroupIdService",
+    "to": "removeContactFromGroup",
+    "originalFile": "src/modules/contact-workflows/contact-workflows.service.ts"
+  },
+  {
+    "file": "src/modules/contact-workflows/contact-workflows.controller.ts",
+    "from": "postIdAssign",
+    "to": "assignContact"
+  },
+  {
+    "file": "src/modules/contact-workflows/services/contact-lifecycle.service.ts",
+    "from": "postIdAssignService",
+    "to": "assignContact",
+    "originalFile": "src/modules/contact-workflows/contact-workflows.service.ts"
+  },
+  {
+    "file": "src/modules/contact-workflows/contact-workflows.controller.ts",
+    "from": "postIdMerge",
+    "to": "mergeContacts"
+  },
+  {
+    "file": "src/modules/contact-workflows/services/contact-lifecycle.service.ts",
+    "from": "postIdMergeService",
+    "to": "mergeContacts",
+    "originalFile": "src/modules/contact-workflows/contact-workflows.service.ts"
+  },
+  {
+    "file": "src/modules/contact-workflows/contact-workflows.controller.ts",
+    "from": "postIdArchive",
+    "to": "archiveContact"
+  },
+  {
+    "file": "src/modules/contact-workflows/services/contact-lifecycle.service.ts",
+    "from": "postIdArchiveService",
+    "to": "archiveContact",
+    "originalFile": "src/modules/contact-workflows/contact-workflows.service.ts"
+  },
+  {
+    "file": "src/modules/contact-workflows/contact-workflows.controller.ts",
+    "from": "postImport",
+    "to": "importContacts"
+  },
+  {
+    "file": "src/modules/contact-workflows/services/contact-import.service.ts",
+    "from": "postImportService",
+    "to": "importContacts",
+    "originalFile": "src/modules/contact-workflows/contact-workflows.service.ts"
+  },
+  {
+    "file": "src/modules/contact-workflows/contact-workflows.controller.ts",
+    "from": "getExport",
+    "to": "exportContacts"
+  },
+  {
+    "file": "src/modules/contact-workflows/contact-workflows.validation.ts",
+    "from": "putIdNotesBodySchema",
+    "to": "updateContactNotesBodySchema"
+  },
+  {
+    "file": "src/modules/contact-workflows/contact-workflows.validation.ts",
+    "from": "putIdLabelsBodySchema",
+    "to": "updateContactLabelsBodySchema"
+  },
+  {
+    "file": "src/modules/contact-workflows/contact-workflows.validation.ts",
+    "from": "putIdCustomValuesBodySchema",
+    "to": "updateContactCustomValuesBodySchema"
+  },
+  {
+    "file": "src/modules/contact-workflows/contact-workflows.validation.ts",
+    "from": "postIdAssignBodySchema",
+    "to": "assignContactBodySchema"
+  },
+  {
+    "file": "src/modules/contact-workflows/contact-workflows.validation.ts",
+    "from": "postIdMergeBodySchema",
+    "to": "mergeContactsBodySchema"
+  },
+  {
+    "file": "src/modules/contact-workflows/contact-workflows.validation.ts",
+    "from": "postIdArchiveBodySchema",
+    "to": "archiveContactBodySchema"
+  },
+  {
+    "file": "src/modules/contact-workflows/contact-workflows.validation.ts",
+    "from": "postImportBodySchema",
+    "to": "importContactsBodySchema"
+  },
+  {
+    "file": "src/modules/contact-workflows/contact-workflows.validation.ts",
+    "from": "getExportQuerySchema",
+    "to": "exportContactsQuerySchema"
+  },
+  {
+    "file": "src/modules/contacts/contacts.controller.ts",
+    "from": "get",
+    "to": "listContacts"
+  },
+  {
+    "file": "src/modules/contacts/contacts.service.ts",
+    "from": "getService",
+    "to": "listContacts"
+  },
+  {
+    "file": "src/modules/contacts/contacts.controller.ts",
+    "from": "post",
+    "to": "createContact"
+  },
+  {
+    "file": "src/modules/contacts/contacts.service.ts",
+    "from": "postService",
+    "to": "createContact"
+  },
+  {
+    "file": "src/modules/contacts/contacts.controller.ts",
+    "from": "getId",
+    "to": "getContact"
+  },
+  {
+    "file": "src/modules/contacts/contacts.service.ts",
+    "from": "getIdService",
+    "to": "getContact"
+  },
+  {
+    "file": "src/modules/contacts/contacts.controller.ts",
+    "from": "patchId",
+    "to": "updateContact"
+  },
+  {
+    "file": "src/modules/contacts/contacts.service.ts",
+    "from": "patchIdService",
+    "to": "updateContact"
+  },
+  {
+    "file": "src/modules/contacts/contacts.controller.ts",
+    "from": "postIdAssign",
+    "to": "assignContact"
+  },
+  {
+    "file": "src/modules/contacts/contacts.service.ts",
+    "from": "postIdAssignService",
+    "to": "assignContact"
+  },
+  {
+    "file": "src/modules/contacts/contacts.controller.ts",
+    "from": "postIdResolve",
+    "to": "resolveContactConversation"
+  },
+  {
+    "file": "src/modules/contacts/contacts.service.ts",
+    "from": "postIdResolveService",
+    "to": "resolveContactConversation"
+  },
+  {
+    "file": "src/modules/contacts/contacts.controller.ts",
+    "from": "postIdAi",
+    "to": "updateContactAiSettings"
+  },
+  {
+    "file": "src/modules/contacts/contacts.service.ts",
+    "from": "postIdAiService",
+    "to": "updateContactAiSettings"
+  },
+  {
+    "file": "src/modules/contacts/contacts.controller.ts",
+    "from": "postIdMarketingConsent",
+    "to": "updateContactMarketingConsent"
+  },
+  {
+    "file": "src/modules/contacts/contacts.service.ts",
+    "from": "postIdMarketingConsentService",
+    "to": "updateContactMarketingConsent"
+  },
+  {
+    "file": "src/modules/contacts/contacts.controller.ts",
+    "from": "getIdMessages",
+    "to": "listContactMessages"
+  },
+  {
+    "file": "src/modules/contacts/contacts.service.ts",
+    "from": "getIdMessagesService",
+    "to": "listContactMessages"
+  },
+  {
+    "file": "src/modules/contacts/contacts.controller.ts",
+    "from": "postIdGroups",
+    "to": "addContactToGroups"
+  },
+  {
+    "file": "src/modules/contacts/contacts.service.ts",
+    "from": "postIdGroupsService",
+    "to": "addContactToGroups"
+  },
+  {
+    "file": "src/modules/contacts/contacts.validation.ts",
+    "from": "getQuerySchema",
+    "to": "listContactsQuerySchema"
+  },
+  {
+    "file": "src/modules/contacts/contacts.validation.ts",
+    "from": "postBodySchema",
+    "to": "createContactBodySchema"
+  },
+  {
+    "file": "src/modules/contacts/contacts.validation.ts",
+    "from": "getIdParamsSchema",
+    "to": "getContactParamsSchema"
+  },
+  {
+    "file": "src/modules/contacts/contacts.validation.ts",
+    "from": "patchIdParamsSchema",
+    "to": "updateContactParamsSchema"
+  },
+  {
+    "file": "src/modules/contacts/contacts.validation.ts",
+    "from": "patchIdBodySchema",
+    "to": "updateContactBodySchema"
+  },
+  {
+    "file": "src/modules/contacts/contacts.validation.ts",
+    "from": "postIdAssignParamsSchema",
+    "to": "assignContactParamsSchema"
+  },
+  {
+    "file": "src/modules/contacts/contacts.validation.ts",
+    "from": "postIdAssignBodySchema",
+    "to": "assignContactBodySchema"
+  },
+  {
+    "file": "src/modules/contacts/contacts.validation.ts",
+    "from": "postIdResolveBodySchema",
+    "to": "resolveContactConversationBodySchema"
+  },
+  {
+    "file": "src/modules/contacts/contacts.validation.ts",
+    "from": "postIdAiBodySchema",
+    "to": "updateContactAiSettingsBodySchema"
+  },
+  {
+    "file": "src/modules/contacts/contacts.validation.ts",
+    "from": "postIdMarketingConsentBodySchema",
+    "to": "updateContactMarketingConsentBodySchema"
+  },
+  {
+    "file": "src/modules/contacts/contacts.validation.ts",
+    "from": "getIdMessagesQuerySchema",
+    "to": "listContactMessagesQuerySchema"
+  },
+  {
+    "file": "src/modules/contacts/contacts.validation.ts",
+    "from": "postIdGroupsBodySchema",
+    "to": "addContactToGroupsBodySchema"
+  },
+  {
+    "file": "src/modules/content/content.controller.ts",
+    "from": "getBlogCategories",
+    "to": "listPublicBlogCategories"
+  },
+  {
+    "file": "src/modules/content/services/blog-posts.service.ts",
+    "from": "getBlogCategoriesService",
+    "to": "listPublicBlogCategories",
+    "originalFile": "src/modules/content/content.service.ts"
+  },
+  {
+    "file": "src/modules/content/content.controller.ts",
+    "from": "getBlog",
+    "to": "listPublicBlogPosts"
+  },
+  {
+    "file": "src/modules/content/services/blog-posts.service.ts",
+    "from": "getBlogService",
+    "to": "listPublicBlogPosts",
+    "originalFile": "src/modules/content/content.service.ts"
+  },
+  {
+    "file": "src/modules/content/content.controller.ts",
+    "from": "getBlogSlug",
+    "to": "getPublicBlogPost"
+  },
+  {
+    "file": "src/modules/content/services/blog-posts.service.ts",
+    "from": "getBlogSlugService",
+    "to": "getPublicBlogPost",
+    "originalFile": "src/modules/content/content.service.ts"
+  },
+  {
+    "file": "src/modules/content/content.controller.ts",
+    "from": "getBlog2",
+    "to": "listAdminBlogPosts"
+  },
+  {
+    "file": "src/modules/content/services/blog-posts.service.ts",
+    "from": "getBlog2Service",
+    "to": "listAdminBlogPosts",
+    "originalFile": "src/modules/content/content.service.ts"
+  },
+  {
+    "file": "src/modules/content/content.controller.ts",
+    "from": "postBlog",
+    "to": "createBlogPost"
+  },
+  {
+    "file": "src/modules/content/services/blog-posts.service.ts",
+    "from": "postBlogService",
+    "to": "createBlogPost",
+    "originalFile": "src/modules/content/content.service.ts"
+  },
+  {
+    "file": "src/modules/content/content.controller.ts",
+    "from": "putBlogId",
+    "to": "updateBlogPost"
+  },
+  {
+    "file": "src/modules/content/services/blog-posts.service.ts",
+    "from": "putBlogIdService",
+    "to": "updateBlogPost",
+    "originalFile": "src/modules/content/content.service.ts"
+  },
+  {
+    "file": "src/modules/content/content.controller.ts",
+    "from": "getBlogId",
+    "to": "getAdminBlogPost"
+  },
+  {
+    "file": "src/modules/content/services/blog-posts.service.ts",
+    "from": "getBlogIdService",
+    "to": "getAdminBlogPost",
+    "originalFile": "src/modules/content/content.service.ts"
+  },
+  {
+    "file": "src/modules/content/content.controller.ts",
+    "from": "deleteBlogId",
+    "to": "deleteBlogPost"
+  },
+  {
+    "file": "src/modules/content/services/blog-posts.service.ts",
+    "from": "deleteBlogIdService",
+    "to": "deleteBlogPost",
+    "originalFile": "src/modules/content/content.service.ts"
+  },
+  {
+    "file": "src/modules/content/content.controller.ts",
+    "from": "postBlogIdAction",
+    "to": "changeBlogPostState"
+  },
+  {
+    "file": "src/modules/content/services/blog-posts.service.ts",
+    "from": "postBlogIdActionService",
+    "to": "changeBlogPostState",
+    "originalFile": "src/modules/content/content.service.ts"
+  },
+  {
+    "file": "src/modules/content/content.controller.ts",
+    "from": "getBlogTaxonomyPath",
+    "to": "listBlogTaxonomy"
+  },
+  {
+    "file": "src/modules/content/services/blog-taxonomy.service.ts",
+    "from": "getBlogTaxonomyPathService",
+    "to": "listBlogTaxonomy",
+    "originalFile": "src/modules/content/content.service.ts"
+  },
+  {
+    "file": "src/modules/content/content.controller.ts",
+    "from": "postBlogTaxonomyPath",
+    "to": "createBlogTaxonomy"
+  },
+  {
+    "file": "src/modules/content/services/blog-taxonomy.service.ts",
+    "from": "postBlogTaxonomyPathService",
+    "to": "createBlogTaxonomy",
+    "originalFile": "src/modules/content/content.service.ts"
+  },
+  {
+    "file": "src/modules/content/content.controller.ts",
+    "from": "putBlogTaxonomyPathId",
+    "to": "updateBlogTaxonomy"
+  },
+  {
+    "file": "src/modules/content/services/blog-taxonomy.service.ts",
+    "from": "putBlogTaxonomyPathIdService",
+    "to": "updateBlogTaxonomy",
+    "originalFile": "src/modules/content/content.service.ts"
+  },
+  {
+    "file": "src/modules/content/content.controller.ts",
+    "from": "deleteBlogTaxonomyPathId",
+    "to": "deleteBlogTaxonomy"
+  },
+  {
+    "file": "src/modules/content/services/blog-taxonomy.service.ts",
+    "from": "deleteBlogTaxonomyPathIdService",
+    "to": "deleteBlogTaxonomy",
+    "originalFile": "src/modules/content/content.service.ts"
+  },
+  {
+    "file": "src/modules/content/content.controller.ts",
+    "from": "getPages",
+    "to": "listPublicPages"
+  },
+  {
+    "file": "src/modules/content/services/site-pages.service.ts",
+    "from": "getPagesService",
+    "to": "listPublicPages",
+    "originalFile": "src/modules/content/content.service.ts"
+  },
+  {
+    "file": "src/modules/content/content.controller.ts",
+    "from": "getPagesSlug",
+    "to": "getPublicPage"
+  },
+  {
+    "file": "src/modules/content/services/site-pages.service.ts",
+    "from": "getPagesSlugService",
+    "to": "getPublicPage",
+    "originalFile": "src/modules/content/content.service.ts"
+  },
+  {
+    "file": "src/modules/content/content.controller.ts",
+    "from": "getPages2",
+    "to": "listAdminPages"
+  },
+  {
+    "file": "src/modules/content/services/site-pages.service.ts",
+    "from": "getPages2Service",
+    "to": "listAdminPages",
+    "originalFile": "src/modules/content/content.service.ts"
+  },
+  {
+    "file": "src/modules/content/content.controller.ts",
+    "from": "postPages",
+    "to": "createPage"
+  },
+  {
+    "file": "src/modules/content/services/site-pages.service.ts",
+    "from": "postPagesService",
+    "to": "createPage",
+    "originalFile": "src/modules/content/content.service.ts"
+  },
+  {
+    "file": "src/modules/content/content.controller.ts",
+    "from": "putPagesId",
+    "to": "updatePage"
+  },
+  {
+    "file": "src/modules/content/services/site-pages.service.ts",
+    "from": "putPagesIdService",
+    "to": "updatePage",
+    "originalFile": "src/modules/content/content.service.ts"
+  },
+  {
+    "file": "src/modules/content/content.controller.ts",
+    "from": "deletePagesId",
+    "to": "deletePage"
+  },
+  {
+    "file": "src/modules/content/services/site-pages.service.ts",
+    "from": "deletePagesIdService",
+    "to": "deletePage",
+    "originalFile": "src/modules/content/content.service.ts"
+  },
+  {
+    "file": "src/modules/content/content.validation.ts",
+    "from": "getBlogQuerySchema",
+    "to": "listPublicBlogPostsQuerySchema"
+  },
+  {
+    "file": "src/modules/content/content.validation.ts",
+    "from": "getBlogSlugParamsSchema",
+    "to": "getPublicBlogPostParamsSchema"
+  },
+  {
+    "file": "src/modules/content/content.validation.ts",
+    "from": "getBlogQuerySchema2",
+    "to": "listAdminBlogPostsQuerySchema"
+  },
+  {
+    "file": "src/modules/content/content.validation.ts",
+    "from": "postBlogBodySchema",
+    "to": "createBlogPostBodySchema"
+  },
+  {
+    "file": "src/modules/content/content.validation.ts",
+    "from": "putBlogIdBodySchema",
+    "to": "updateBlogPostBodySchema"
+  },
+  {
+    "file": "src/modules/content/content.validation.ts",
+    "from": "postBlogIdActionBodySchema",
+    "to": "changeBlogPostStateBodySchema"
+  },
+  {
+    "file": "src/modules/content/content.validation.ts",
+    "from": "postBlogTaxonomyPathBodySchema",
+    "to": "createBlogTaxonomyBodySchema"
+  },
+  {
+    "file": "src/modules/content/content.validation.ts",
+    "from": "putBlogTaxonomyPathIdBodySchema",
+    "to": "updateBlogTaxonomyBodySchema"
+  },
+  {
+    "file": "src/modules/content/content.validation.ts",
+    "from": "getPagesSlugParamsSchema",
+    "to": "getPublicPageParamsSchema"
+  },
+  {
+    "file": "src/modules/content/content.validation.ts",
+    "from": "getPagesQuerySchema",
+    "to": "listPublicPagesQuerySchema"
+  },
+  {
+    "file": "src/modules/content/content.validation.ts",
+    "from": "postPagesBodySchema",
+    "to": "createPageBodySchema"
+  },
+  {
+    "file": "src/modules/content/content.validation.ts",
+    "from": "putPagesIdBodySchema",
+    "to": "updatePageBodySchema"
+  },
+  {
+    "file": "src/modules/cx-scores/cx-scores.controller.ts",
+    "from": "get",
+    "to": "listCustomerExperienceScores"
+  },
+  {
+    "file": "src/modules/cx-scores/cx-scores.service.ts",
+    "from": "getService",
+    "to": "listCustomerExperienceScores"
+  },
+  {
+    "file": "src/modules/cx-scores/cx-scores.controller.ts",
+    "from": "getId",
+    "to": "getCustomerExperienceScore"
+  },
+  {
+    "file": "src/modules/cx-scores/cx-scores.service.ts",
+    "from": "getIdService",
+    "to": "getCustomerExperienceScore"
+  },
+  {
+    "file": "src/modules/cx-scores/cx-scores.controller.ts",
+    "from": "postIdRetry",
+    "to": "retryCustomerExperienceScore"
+  },
+  {
+    "file": "src/modules/cx-scores/cx-scores.service.ts",
+    "from": "postIdRetryService",
+    "to": "retryCustomerExperienceScore"
+  },
+  {
+    "file": "src/modules/cx-scores/cx-scores.validation.ts",
+    "from": "getQuerySchema",
+    "to": "listCustomerExperienceScoresQuerySchema"
+  },
+  {
+    "file": "src/modules/cx-scores/cx-scores.validation.ts",
+    "from": "getIdParamsSchema",
+    "to": "getCustomerExperienceScoreParamsSchema"
+  },
+  {
+    "file": "src/modules/cx-scores/cx-scores.validation.ts",
+    "from": "postIdRetryParamsSchema",
+    "to": "retryCustomerExperienceScoreParamsSchema"
+  },
+  {
+    "file": "src/modules/cx-scores/cx-scores.validation.ts",
+    "from": "postIdRetryBodySchema",
+    "to": "retryCustomerExperienceScoreBodySchema"
+  },
+  {
+    "file": "src/modules/dashboard/dashboard.controller.ts",
+    "from": "get",
+    "to": "getDashboardSummary"
+  },
+  {
+    "file": "src/modules/dashboard/dashboard.service.ts",
+    "from": "getService",
+    "to": "getDashboardSummary"
+  },
+  {
+    "file": "src/modules/flow-data/flow-data.controller.ts",
+    "from": "postEncryptionKey",
+    "to": "registerFlowEncryptionKey"
+  },
+  {
+    "file": "src/modules/flow-data/services/flow-encryption-keys.service.ts",
+    "from": "postEncryptionKeyService",
+    "to": "registerFlowEncryptionKey",
+    "originalFile": "src/modules/flow-data/flow-data.service.ts"
+  },
+  {
+    "file": "src/modules/flow-data/flow-data.controller.ts",
+    "from": "getEncryptionKey",
+    "to": "getFlowEncryptionKey"
+  },
+  {
+    "file": "src/modules/flow-data/services/flow-encryption-keys.service.ts",
+    "from": "getEncryptionKeyService",
+    "to": "getFlowEncryptionKey",
+    "originalFile": "src/modules/flow-data/flow-data.service.ts"
+  },
+  {
+    "file": "src/modules/flow-data/flow-data.controller.ts",
+    "from": "putFlowIdDataEndpoint",
+    "to": "configureFlowDataEndpoint"
+  },
+  {
+    "file": "src/modules/flow-data/services/flow-endpoint-settings.service.ts",
+    "from": "putFlowIdDataEndpointService",
+    "to": "configureFlowDataEndpoint",
+    "originalFile": "src/modules/flow-data/flow-data.service.ts"
+  },
+  {
+    "file": "src/modules/flow-data/flow-data.controller.ts",
+    "from": "getFlowIdDataEndpoint",
+    "to": "getFlowDataEndpoint"
+  },
+  {
+    "file": "src/modules/flow-data/services/flow-endpoint-settings.service.ts",
+    "from": "getFlowIdDataEndpointService",
+    "to": "getFlowDataEndpoint",
+    "originalFile": "src/modules/flow-data/flow-data.service.ts"
+  },
+  {
+    "file": "src/modules/flow-data/flow-data.controller.ts",
+    "from": "postCredentialId",
+    "to": "handleEncryptedFlowRequest"
+  },
+  {
+    "file": "src/modules/flow-data/services/flow-data-exchange.service.ts",
+    "from": "postCredentialIdService",
+    "to": "handleEncryptedFlowRequest",
+    "originalFile": "src/modules/flow-data/flow-data.service.ts"
+  },
+  {
+    "file": "src/modules/flow-data/flow-data.validation.ts",
+    "from": "postEncryptionKeyBodySchema",
+    "to": "registerFlowEncryptionKeyBodySchema"
+  },
+  {
+    "file": "src/modules/flow-data/flow-data.validation.ts",
+    "from": "putFlowIdDataEndpointBodySchema",
+    "to": "configureFlowDataEndpointBodySchema"
+  },
+  {
+    "file": "src/modules/guide/guide.controller.ts",
+    "from": "get",
+    "to": "getWorkspaceGuide"
+  },
+  {
+    "file": "src/modules/guide/guide.service.ts",
+    "from": "getService",
+    "to": "getWorkspaceGuide"
+  },
+  {
+    "file": "src/modules/handoffs/handoffs.controller.ts",
+    "from": "get",
+    "to": "listHandoffs"
+  },
+  {
+    "file": "src/modules/handoffs/handoffs.service.ts",
+    "from": "getService",
+    "to": "listHandoffs"
+  },
+  {
+    "file": "src/modules/handoffs/handoffs.controller.ts",
+    "from": "postIdTransfer",
+    "to": "transferHandoff"
+  },
+  {
+    "file": "src/modules/handoffs/handoffs.service.ts",
+    "from": "postIdTransferService",
+    "to": "transferHandoff"
+  },
+  {
+    "file": "src/modules/handoffs/handoffs.controller.ts",
+    "from": "postIdResolve",
+    "to": "resolveHandoff"
+  },
+  {
+    "file": "src/modules/handoffs/handoffs.service.ts",
+    "from": "postIdResolveService",
+    "to": "resolveHandoff"
+  },
+  {
+    "file": "src/modules/handoffs/handoffs.validation.ts",
+    "from": "getQuerySchema",
+    "to": "listHandoffsQuerySchema"
+  },
+  {
+    "file": "src/modules/handoffs/handoffs.validation.ts",
+    "from": "postIdTransferBodySchema",
+    "to": "transferHandoffBodySchema"
+  },
+  {
+    "file": "src/modules/handoffs/handoffs.validation.ts",
+    "from": "postIdResolveBodySchema",
+    "to": "resolveHandoffBodySchema"
+  },
+  {
+    "file": "src/modules/health/health.controller.ts",
+    "from": "live",
+    "to": "liveness"
+  },
+  {
+    "file": "src/modules/health/health.controller.ts",
+    "from": "ready",
+    "to": "readiness"
+  },
+  {
+    "file": "src/modules/home/home.controller.ts",
+    "from": "getHome",
+    "to": "getPublicHome"
+  },
+  {
+    "file": "src/modules/home/home.service.ts",
+    "from": "getHomeService",
+    "to": "getPublicHome"
+  },
+  {
+    "file": "src/modules/home/home.controller.ts",
+    "from": "getPoliciesPolicy",
+    "to": "getPublicPolicy"
+  },
+  {
+    "file": "src/modules/home/home.service.ts",
+    "from": "getPoliciesPolicyService",
+    "to": "getPublicPolicy"
+  },
+  {
+    "file": "src/modules/home/home.validation.ts",
+    "from": "getPoliciesPolicyParamsSchema",
+    "to": "getPublicPolicyParamsSchema"
+  },
+  {
+    "file": "src/modules/integrations/integrations.controller.ts",
+    "from": "get",
+    "to": "listIntegrations"
+  },
+  {
+    "file": "src/modules/integrations/integrations.service.ts",
+    "from": "getService",
+    "to": "listIntegrations"
+  },
+  {
+    "file": "src/modules/integrations/integrations.controller.ts",
+    "from": "postMeta",
+    "to": "connectMetaIntegration"
+  },
+  {
+    "file": "src/modules/integrations/integrations.service.ts",
+    "from": "postMetaService",
+    "to": "connectMetaIntegration"
+  },
+  {
+    "file": "src/modules/integrations/integrations.controller.ts",
+    "from": "deleteId",
+    "to": "disconnectIntegration"
+  },
+  {
+    "file": "src/modules/integrations/integrations.service.ts",
+    "from": "deleteIdService",
+    "to": "disconnectIntegration"
+  },
+  {
+    "file": "src/modules/integrations/integrations.controller.ts",
+    "from": "postStore",
+    "to": "connectStoreIntegration"
+  },
+  {
+    "file": "src/modules/integrations/integrations.service.ts",
+    "from": "postStoreService",
+    "to": "connectStoreIntegration"
+  },
+  {
+    "file": "src/modules/integrations/integrations.controller.ts",
+    "from": "postTemplatesSync",
+    "to": "syncMessageTemplates"
+  },
+  {
+    "file": "src/modules/integrations/integrations.service.ts",
+    "from": "postTemplatesSyncService",
+    "to": "syncMessageTemplates"
+  },
+  {
+    "file": "src/modules/integrations/integrations.validation.ts",
+    "from": "postMetaBodySchema",
+    "to": "connectMetaIntegrationBodySchema"
+  },
+  {
+    "file": "src/modules/integrations/integrations.validation.ts",
+    "from": "postStoreBodySchema",
+    "to": "connectStoreIntegrationBodySchema"
+  },
+  {
+    "file": "src/modules/integrations/integrations.validation.ts",
+    "from": "postTemplatesSyncBodySchema",
+    "to": "syncMessageTemplatesBodySchema"
+  },
+  {
+    "file": "src/modules/jobs-admin/jobs-admin.controller.ts",
+    "from": "get",
+    "to": "listJobs"
+  },
+  {
+    "file": "src/modules/jobs-admin/jobs-admin.service.ts",
+    "from": "getService",
+    "to": "listJobs"
+  },
+  {
+    "file": "src/modules/jobs-admin/jobs-admin.controller.ts",
+    "from": "postIdRetry",
+    "to": "retryJob"
+  },
+  {
+    "file": "src/modules/jobs-admin/jobs-admin.service.ts",
+    "from": "postIdRetryService",
+    "to": "retryJob"
+  },
+  {
+    "file": "src/modules/jobs-admin/jobs-admin.validation.ts",
+    "from": "getQuerySchema",
+    "to": "listJobsQuerySchema"
+  },
+  {
+    "file": "src/modules/jobs-admin/jobs-admin.validation.ts",
+    "from": "postIdRetryBodySchema",
+    "to": "retryJobBodySchema"
+  },
+  {
+    "file": "src/modules/manual-billing/manual-billing.controller.ts",
+    "from": "manualReceipt",
+    "to": "downloadPaymentReceipt"
+  },
+  {
+    "file": "src/modules/manual-billing/manual-billing.controller.ts",
+    "from": "getManual",
+    "to": "listManualSubscriptions"
+  },
+  {
+    "file": "src/modules/manual-billing/services/manual-subscriptions.service.ts",
+    "from": "getManualService",
+    "to": "listManualSubscriptions",
+    "originalFile": "src/modules/manual-billing/manual-billing.service.ts"
+  },
+  {
+    "file": "src/modules/manual-billing/manual-billing.controller.ts",
+    "from": "postManualQuote",
+    "to": "quoteManualSubscription"
+  },
+  {
+    "file": "src/modules/manual-billing/services/manual-subscriptions.service.ts",
+    "from": "postManualQuoteService",
+    "to": "quoteManualSubscription",
+    "originalFile": "src/modules/manual-billing/manual-billing.service.ts"
+  },
+  {
+    "file": "src/modules/manual-billing/manual-billing.controller.ts",
+    "from": "getManualId",
+    "to": "getManualSubscription"
+  },
+  {
+    "file": "src/modules/manual-billing/services/manual-subscriptions.service.ts",
+    "from": "getManualIdService",
+    "to": "getManualSubscription",
+    "originalFile": "src/modules/manual-billing/manual-billing.service.ts"
+  },
+  {
+    "file": "src/modules/manual-billing/manual-billing.controller.ts",
+    "from": "postManualIdSubmit",
+    "to": "submitManualPayment"
+  },
+  {
+    "file": "src/modules/manual-billing/services/manual-subscriptions.service.ts",
+    "from": "postManualIdSubmitService",
+    "to": "submitManualPayment",
+    "originalFile": "src/modules/manual-billing/manual-billing.service.ts"
+  },
+  {
+    "file": "src/modules/manual-billing/manual-billing.controller.ts",
+    "from": "postManualIdCancel",
+    "to": "cancelManualPayment"
+  },
+  {
+    "file": "src/modules/manual-billing/services/manual-subscriptions.service.ts",
+    "from": "postManualIdCancelService",
+    "to": "cancelManualPayment",
+    "originalFile": "src/modules/manual-billing/manual-billing.service.ts"
+  },
+  {
+    "file": "src/modules/manual-billing/manual-billing.controller.ts",
+    "from": "getManualIdInvoice",
+    "to": "getManualInvoice"
+  },
+  {
+    "file": "src/modules/manual-billing/services/manual-invoices.service.ts",
+    "from": "getManualIdInvoiceService",
+    "to": "getManualInvoice",
+    "originalFile": "src/modules/manual-billing/manual-billing.service.ts"
+  },
+  {
+    "file": "src/modules/manual-billing/manual-billing.controller.ts",
+    "from": "getManualIdInvoicePdf",
+    "to": "downloadManualInvoice"
+  },
+  {
+    "file": "src/modules/manual-billing/manual-billing.validation.ts",
+    "from": "getManualQuerySchema",
+    "to": "listManualSubscriptionsQuerySchema"
+  },
+  {
+    "file": "src/modules/manual-billing/manual-billing.validation.ts",
+    "from": "postManualQuoteBodySchema",
+    "to": "quoteManualSubscriptionBodySchema"
+  },
+  {
+    "file": "src/modules/manual-billing/manual-billing.validation.ts",
+    "from": "postManualIdSubmitBodySchema",
+    "to": "submitManualPaymentBodySchema"
+  },
+  {
+    "file": "src/modules/manual-billing/manual-billing.validation.ts",
+    "from": "postManualIdCancelBodySchema",
+    "to": "cancelManualPaymentBodySchema"
+  },
+  {
+    "file": "src/modules/media/media.controller.ts",
+    "from": "post",
+    "to": "uploadMedia"
+  },
+  {
+    "file": "src/modules/media/media.service.ts",
+    "from": "postService",
+    "to": "uploadMedia"
+  },
+  {
+    "file": "src/modules/media/media.controller.ts",
+    "from": "getId",
+    "to": "downloadMedia"
+  },
+  {
+    "file": "src/modules/messaging/messaging.controller.ts",
+    "from": "postSend",
+    "to": "sendMessage"
+  },
+  {
+    "file": "src/modules/messaging/messaging.service.ts",
+    "from": "postSendService",
+    "to": "sendMessage"
+  },
+  {
+    "file": "src/modules/messaging/messaging.validation.ts",
+    "from": "postSendBodySchema",
+    "to": "sendMessageBodySchema"
+  },
+  {
+    "file": "src/modules/meta-flows/meta-flows.controller.ts",
+    "from": "get",
+    "to": "listMetaFlows"
+  },
+  {
+    "file": "src/modules/meta-flows/services/flow-management.service.ts",
+    "from": "getService",
+    "to": "listMetaFlows",
+    "originalFile": "src/modules/meta-flows/meta-flows.service.ts"
+  },
+  {
+    "file": "src/modules/meta-flows/meta-flows.controller.ts",
+    "from": "post",
+    "to": "createMetaFlow"
+  },
+  {
+    "file": "src/modules/meta-flows/services/flow-management.service.ts",
+    "from": "postService",
+    "to": "createMetaFlow",
+    "originalFile": "src/modules/meta-flows/meta-flows.service.ts"
+  },
+  {
+    "file": "src/modules/meta-flows/meta-flows.controller.ts",
+    "from": "getFlowId",
+    "to": "getMetaFlow"
+  },
+  {
+    "file": "src/modules/meta-flows/services/flow-management.service.ts",
+    "from": "getFlowIdService",
+    "to": "getMetaFlow",
+    "originalFile": "src/modules/meta-flows/meta-flows.service.ts"
+  },
+  {
+    "file": "src/modules/meta-flows/meta-flows.controller.ts",
+    "from": "putFlowId",
+    "to": "updateMetaFlow"
+  },
+  {
+    "file": "src/modules/meta-flows/services/flow-management.service.ts",
+    "from": "putFlowIdService",
+    "to": "updateMetaFlow",
+    "originalFile": "src/modules/meta-flows/meta-flows.service.ts"
+  },
+  {
+    "file": "src/modules/meta-flows/meta-flows.controller.ts",
+    "from": "putFlowIdJson",
+    "to": "updateMetaFlowDefinition"
+  },
+  {
+    "file": "src/modules/meta-flows/services/flow-definitions.service.ts",
+    "from": "putFlowIdJsonService",
+    "to": "updateMetaFlowDefinition",
+    "originalFile": "src/modules/meta-flows/meta-flows.service.ts"
+  },
+  {
+    "file": "src/modules/meta-flows/meta-flows.controller.ts",
+    "from": "postFlowIdAction",
+    "to": "changeMetaFlowState"
+  },
+  {
+    "file": "src/modules/meta-flows/services/flow-management.service.ts",
+    "from": "postFlowIdActionService",
+    "to": "changeMetaFlowState",
+    "originalFile": "src/modules/meta-flows/meta-flows.service.ts"
+  },
+  {
+    "file": "src/modules/meta-flows/meta-flows.controller.ts",
+    "from": "getFlowIdPreview",
+    "to": "previewMetaFlow"
+  },
+  {
+    "file": "src/modules/meta-flows/services/flow-definitions.service.ts",
+    "from": "getFlowIdPreviewService",
+    "to": "previewMetaFlow",
+    "originalFile": "src/modules/meta-flows/meta-flows.service.ts"
+  },
+  {
+    "file": "src/modules/meta-flows/meta-flows.controller.ts",
+    "from": "getFlowIdJson",
+    "to": "getMetaFlowDefinition"
+  },
+  {
+    "file": "src/modules/meta-flows/services/flow-definitions.service.ts",
+    "from": "getFlowIdJsonService",
+    "to": "getMetaFlowDefinition",
+    "originalFile": "src/modules/meta-flows/meta-flows.service.ts"
+  },
+  {
+    "file": "src/modules/meta-flows/meta-flows.validation.ts",
+    "from": "getQuerySchema",
+    "to": "listMetaFlowsQuerySchema"
+  },
+  {
+    "file": "src/modules/meta-flows/meta-flows.validation.ts",
+    "from": "postBodySchema",
+    "to": "createMetaFlowBodySchema"
+  },
+  {
+    "file": "src/modules/meta-flows/meta-flows.validation.ts",
+    "from": "putFlowIdBodySchema",
+    "to": "updateMetaFlowBodySchema"
+  },
+  {
+    "file": "src/modules/meta-flows/meta-flows.validation.ts",
+    "from": "putFlowIdJsonBodySchema",
+    "to": "updateMetaFlowDefinitionBodySchema"
+  },
+  {
+    "file": "src/modules/meta-flows/meta-flows.validation.ts",
+    "from": "postFlowIdActionBodySchema",
+    "to": "changeMetaFlowStateBodySchema"
+  },
+  {
+    "file": "src/modules/meta-signup/meta-signup.controller.ts",
+    "from": "postMetaSignupStart",
+    "to": "startMetaSignup"
+  },
+  {
+    "file": "src/modules/meta-signup/meta-signup.service.ts",
+    "from": "postMetaSignupStartService",
+    "to": "startMetaSignup"
+  },
+  {
+    "file": "src/modules/meta-signup/meta-signup.controller.ts",
+    "from": "postMetaSignupComplete",
+    "to": "completeMetaSignup"
+  },
+  {
+    "file": "src/modules/meta-signup/meta-signup.service.ts",
+    "from": "postMetaSignupCompleteService",
+    "to": "completeMetaSignup"
+  },
+  {
+    "file": "src/modules/meta-signup/meta-signup.validation.ts",
+    "from": "postMetaSignupStartBodySchema",
+    "to": "startMetaSignupBodySchema"
+  },
+  {
+    "file": "src/modules/meta-signup/meta-signup.validation.ts",
+    "from": "postMetaSignupCompleteBodySchema",
+    "to": "completeMetaSignupBodySchema"
+  },
+  {
+    "file": "src/modules/out-of-office/out-of-office.controller.ts",
+    "from": "get",
+    "to": "getAwaySettings"
+  },
+  {
+    "file": "src/modules/out-of-office/out-of-office.service.ts",
+    "from": "getService",
+    "to": "getAwaySettings"
+  },
+  {
+    "file": "src/modules/out-of-office/out-of-office.controller.ts",
+    "from": "post",
+    "to": "updateAwaySettings"
+  },
+  {
+    "file": "src/modules/out-of-office/out-of-office.service.ts",
+    "from": "postService",
+    "to": "updateAwaySettings"
+  },
+  {
+    "file": "src/modules/out-of-office/out-of-office.validation.ts",
+    "from": "getQuerySchema",
+    "to": "getAwaySettingsQuerySchema"
+  },
+  {
+    "file": "src/modules/out-of-office/out-of-office.validation.ts",
+    "from": "postBodySchema",
+    "to": "updateAwaySettingsBodySchema"
+  },
+  {
+    "file": "src/modules/resources/resources.controller.ts",
+    "from": "getResource",
+    "to": "listResourceRecords"
+  },
+  {
+    "file": "src/modules/resources/resources.service.ts",
+    "from": "getResourceService",
+    "to": "listResourceRecords"
+  },
+  {
+    "file": "src/modules/resources/resources.controller.ts",
+    "from": "getResourceId",
+    "to": "getResourceRecord"
+  },
+  {
+    "file": "src/modules/resources/resources.service.ts",
+    "from": "getResourceIdService",
+    "to": "getResourceRecord"
+  },
+  {
+    "file": "src/modules/resources/resources.controller.ts",
+    "from": "postResource2",
+    "to": "createResourceRecord"
+  },
+  {
+    "file": "src/modules/resources/resources.service.ts",
+    "from": "postResource2Service",
+    "to": "createResourceRecord"
+  },
+  {
+    "file": "src/modules/resources/resources.controller.ts",
+    "from": "patchResourceId2",
+    "to": "updateResourceRecord"
+  },
+  {
+    "file": "src/modules/resources/resources.service.ts",
+    "from": "patchResourceId2Service",
+    "to": "updateResourceRecord"
+  },
+  {
+    "file": "src/modules/resources/resources.validation.ts",
+    "from": "getResourceQuerySchema",
+    "to": "listResourceRecordsQuerySchema"
+  },
+  {
+    "file": "src/modules/sheets/sheets.controller.ts",
+    "from": "get",
+    "to": "listSheetIntegrations"
+  },
+  {
+    "file": "src/modules/sheets/services/sheet-integrations.service.ts",
+    "from": "getService",
+    "to": "listSheetIntegrations",
+    "originalFile": "src/modules/sheets/sheets.service.ts"
+  },
+  {
+    "file": "src/modules/sheets/sheets.controller.ts",
+    "from": "getTemplates",
+    "to": "listSheetTemplates"
+  },
+  {
+    "file": "src/modules/sheets/services/sheet-integrations.service.ts",
+    "from": "getTemplatesService",
+    "to": "listSheetTemplates",
+    "originalFile": "src/modules/sheets/sheets.service.ts"
+  },
+  {
+    "file": "src/modules/sheets/sheets.controller.ts",
+    "from": "post",
+    "to": "createSheetIntegration"
+  },
+  {
+    "file": "src/modules/sheets/services/sheet-integrations.service.ts",
+    "from": "postService",
+    "to": "createSheetIntegration",
+    "originalFile": "src/modules/sheets/sheets.service.ts"
+  },
+  {
+    "file": "src/modules/sheets/sheets.controller.ts",
+    "from": "getUid",
+    "to": "getSheetIntegration"
+  },
+  {
+    "file": "src/modules/sheets/services/sheet-integrations.service.ts",
+    "from": "getUidService",
+    "to": "getSheetIntegration",
+    "originalFile": "src/modules/sheets/sheets.service.ts"
+  },
+  {
+    "file": "src/modules/sheets/sheets.controller.ts",
+    "from": "getUidScript",
+    "to": "getSheetScript"
+  },
+  {
+    "file": "src/modules/sheets/services/sheet-integrations.service.ts",
+    "from": "getUidScriptService",
+    "to": "getSheetScript",
+    "originalFile": "src/modules/sheets/sheets.service.ts"
+  },
+  {
+    "file": "src/modules/sheets/sheets.controller.ts",
+    "from": "patchUidStatus",
+    "to": "updateSheetStatus"
+  },
+  {
+    "file": "src/modules/sheets/services/sheet-integrations.service.ts",
+    "from": "patchUidStatusService",
+    "to": "updateSheetStatus",
+    "originalFile": "src/modules/sheets/sheets.service.ts"
+  },
+  {
+    "file": "src/modules/sheets/sheets.controller.ts",
+    "from": "deleteUid",
+    "to": "deleteSheetIntegration"
+  },
+  {
+    "file": "src/modules/sheets/services/sheet-integrations.service.ts",
+    "from": "deleteUidService",
+    "to": "deleteSheetIntegration",
+    "originalFile": "src/modules/sheets/sheets.service.ts"
+  },
+  {
+    "file": "src/modules/sheets/sheets.controller.ts",
+    "from": "postUidRows",
+    "to": "ingestSheetRows"
+  },
+  {
+    "file": "src/modules/sheets/services/sheet-ingestion.service.ts",
+    "from": "postUidRowsService",
+    "to": "ingestSheetRows",
+    "originalFile": "src/modules/sheets/sheets.service.ts"
+  },
+  {
+    "file": "src/modules/sheets/sheets.validation.ts",
+    "from": "getQuerySchema",
+    "to": "listSheetIntegrationsQuerySchema"
+  },
+  {
+    "file": "src/modules/sheets/sheets.validation.ts",
+    "from": "postBodySchema",
+    "to": "createSheetIntegrationBodySchema"
+  },
+  {
+    "file": "src/modules/sheets/sheets.validation.ts",
+    "from": "patchUidStatusBodySchema",
+    "to": "updateSheetStatusBodySchema"
+  },
+  {
+    "file": "src/modules/sheets/sheets.validation.ts",
+    "from": "postUidRowsBodySchema",
+    "to": "ingestSheetRowsBodySchema"
+  },
+  {
+    "file": "src/modules/social-accounts/social-accounts.controller.ts",
+    "from": "postSocialConnect",
+    "to": "connectSocialAccount"
+  },
+  {
+    "file": "src/modules/social-accounts/social-accounts.service.ts",
+    "from": "postSocialConnectService",
+    "to": "connectSocialAccount"
+  },
+  {
+    "file": "src/modules/social-accounts/social-accounts.validation.ts",
+    "from": "postSocialConnectBodySchema",
+    "to": "connectSocialAccountBodySchema"
+  },
+  {
+    "file": "src/modules/store-notifications/store-notifications.controller.ts",
+    "from": "getStoresProviderIntegrationIdNotifications",
+    "to": "getStoreNotificationSettings"
+  },
+  {
+    "file": "src/modules/store-notifications/services/notification-settings.service.ts",
+    "from": "getStoresProviderIntegrationIdNotificationsService",
+    "to": "getStoreNotificationSettings",
+    "originalFile": "src/modules/store-notifications/store-notifications.service.ts"
+  },
+  {
+    "file": "src/modules/store-notifications/store-notifications.controller.ts",
+    "from": "putStoresProviderIntegrationIdNotifications",
+    "to": "updateStoreNotificationSettings"
+  },
+  {
+    "file": "src/modules/store-notifications/services/notification-settings.service.ts",
+    "from": "putStoresProviderIntegrationIdNotificationsService",
+    "to": "updateStoreNotificationSettings",
+    "originalFile": "src/modules/store-notifications/store-notifications.service.ts"
+  },
+  {
+    "file": "src/modules/store-notifications/store-notifications.validation.ts",
+    "from": "getStoresProviderIntegrationIdNotificationsParamsSchema",
+    "to": "getStoreNotificationSettingsParamsSchema"
+  },
+  {
+    "file": "src/modules/store-notifications/store-notifications.validation.ts",
+    "from": "putStoresProviderIntegrationIdNotificationsParamsSchema",
+    "to": "updateStoreNotificationSettingsParamsSchema"
+  },
+  {
+    "file": "src/modules/store-notifications/store-notifications.validation.ts",
+    "from": "putStoresProviderIntegrationIdNotificationsBodySchema",
+    "to": "updateStoreNotificationSettingsBodySchema"
+  },
+  {
+    "file": "src/modules/tally/tally.controller.ts",
+    "from": "getPing",
+    "to": "checkTallyConnection"
+  },
+  {
+    "file": "src/modules/tally/tally.service.ts",
+    "from": "getPingService",
+    "to": "checkTallyConnection"
+  },
+  {
+    "file": "src/modules/tally/tally.controller.ts",
+    "from": "postInvoices",
+    "to": "ingestTallyInvoice"
+  },
+  {
+    "file": "src/modules/tally/tally.service.ts",
+    "from": "postInvoicesService",
+    "to": "ingestTallyInvoice"
+  },
+  {
+    "file": "src/modules/tally/tally.controller.ts",
+    "from": "getInvoicesSourceId",
+    "to": "getTallyInvoiceStatus"
+  },
+  {
+    "file": "src/modules/tally/tally.service.ts",
+    "from": "getInvoicesSourceIdService",
+    "to": "getTallyInvoiceStatus"
+  },
+  {
+    "file": "src/modules/tally/tally.validation.ts",
+    "from": "postInvoicesBodySchema",
+    "to": "ingestTallyInvoiceBodySchema"
+  },
+  {
+    "file": "src/modules/tally/tally.validation.ts",
+    "from": "getInvoicesSourceIdParamsSchema",
+    "to": "getTallyInvoiceStatusParamsSchema"
+  },
+  {
+    "file": "src/modules/translations/translations.controller.ts",
+    "from": "get",
+    "to": "listPublicLanguages"
+  },
+  {
+    "file": "src/modules/translations/translations.service.ts",
+    "from": "getService",
+    "to": "listPublicLanguages"
+  },
+  {
+    "file": "src/modules/translations/translations.controller.ts",
+    "from": "getLocale",
+    "to": "getPublicLanguage"
+  },
+  {
+    "file": "src/modules/translations/translations.service.ts",
+    "from": "getLocaleService",
+    "to": "getPublicLanguage"
+  },
+  {
+    "file": "src/modules/translations/translations.controller.ts",
+    "from": "get2",
+    "to": "listAdminLanguages"
+  },
+  {
+    "file": "src/modules/translations/translations.service.ts",
+    "from": "get2Service",
+    "to": "listAdminLanguages"
+  },
+  {
+    "file": "src/modules/translations/translations.controller.ts",
+    "from": "post",
+    "to": "createLanguage"
+  },
+  {
+    "file": "src/modules/translations/translations.service.ts",
+    "from": "postService",
+    "to": "createLanguage"
+  },
+  {
+    "file": "src/modules/translations/translations.controller.ts",
+    "from": "patchLocale",
+    "to": "updateLanguage"
+  },
+  {
+    "file": "src/modules/translations/translations.service.ts",
+    "from": "patchLocaleService",
+    "to": "updateLanguage"
+  },
+  {
+    "file": "src/modules/translations/translations.controller.ts",
+    "from": "deleteLocale",
+    "to": "deleteLanguage"
+  },
+  {
+    "file": "src/modules/translations/translations.service.ts",
+    "from": "deleteLocaleService",
+    "to": "deleteLanguage"
+  },
+  {
+    "file": "src/modules/translations/translations.controller.ts",
+    "from": "getLocaleMessages",
+    "to": "getLanguageMessages"
+  },
+  {
+    "file": "src/modules/translations/translations.service.ts",
+    "from": "getLocaleMessagesService",
+    "to": "getLanguageMessages"
+  },
+  {
+    "file": "src/modules/translations/translations.controller.ts",
+    "from": "putLocaleMessages",
+    "to": "updateLanguageMessages"
+  },
+  {
+    "file": "src/modules/translations/translations.service.ts",
+    "from": "putLocaleMessagesService",
+    "to": "updateLanguageMessages"
+  },
+  {
+    "file": "src/modules/translations/translations.controller.ts",
+    "from": "postLocaleImportPo",
+    "to": "importLanguagePo"
+  },
+  {
+    "file": "src/modules/translations/translations.service.ts",
+    "from": "postLocaleImportPoService",
+    "to": "importLanguagePo"
+  },
+  {
+    "file": "src/modules/translations/translations.controller.ts",
+    "from": "getLocaleExportPo",
+    "to": "exportLanguagePo"
+  },
+  {
+    "file": "src/modules/translations/translations.service.ts",
+    "from": "getLocaleExportPoService",
+    "to": "exportLanguagePo"
+  },
+  {
+    "file": "src/modules/translations/translations.validation.ts",
+    "from": "postBodySchema",
+    "to": "createLanguageBodySchema"
+  },
+  {
+    "file": "src/modules/translations/translations.validation.ts",
+    "from": "patchLocaleBodySchema",
+    "to": "updateLanguageBodySchema"
+  },
+  {
+    "file": "src/modules/translations/translations.validation.ts",
+    "from": "deleteLocaleBodySchema",
+    "to": "deleteLanguageBodySchema"
+  },
+  {
+    "file": "src/modules/translations/translations.validation.ts",
+    "from": "putLocaleMessagesBodySchema",
+    "to": "updateLanguageMessagesBodySchema"
+  },
+  {
+    "file": "src/modules/translations/translations.validation.ts",
+    "from": "postLocaleImportPoBodySchema",
+    "to": "importLanguagePoBodySchema"
+  },
+  {
+    "file": "src/modules/vendors/vendors.controller.ts",
+    "from": "get",
+    "to": "listProjects"
+  },
+  {
+    "file": "src/modules/vendors/vendors.service.ts",
+    "from": "getService",
+    "to": "listProjects"
+  },
+  {
+    "file": "src/modules/vendors/vendors.controller.ts",
+    "from": "post",
+    "to": "createProject"
+  },
+  {
+    "file": "src/modules/vendors/vendors.service.ts",
+    "from": "postService",
+    "to": "createProject"
+  },
+  {
+    "file": "src/modules/vendors/vendors.controller.ts",
+    "from": "postIdSelect",
+    "to": "selectProject"
+  },
+  {
+    "file": "src/modules/vendors/vendors.service.ts",
+    "from": "postIdSelectService",
+    "to": "selectProject"
+  },
+  {
+    "file": "src/modules/vendors/vendors.controller.ts",
+    "from": "get2",
+    "to": "listTeamMembers"
+  },
+  {
+    "file": "src/modules/vendors/vendors.service.ts",
+    "from": "get2Service",
+    "to": "listTeamMembers"
+  },
+  {
+    "file": "src/modules/vendors/vendors.controller.ts",
+    "from": "post2",
+    "to": "inviteTeamMember"
+  },
+  {
+    "file": "src/modules/vendors/vendors.service.ts",
+    "from": "post2Service",
+    "to": "inviteTeamMember"
+  },
+  {
+    "file": "src/modules/vendors/vendors.controller.ts",
+    "from": "patchId",
+    "to": "updateTeamMember"
+  },
+  {
+    "file": "src/modules/vendors/vendors.service.ts",
+    "from": "patchIdService",
+    "to": "updateTeamMember"
+  },
+  {
+    "file": "src/modules/vendors/vendors.controller.ts",
+    "from": "postApiKeys",
+    "to": "createApiKey"
+  },
+  {
+    "file": "src/modules/vendors/vendors.service.ts",
+    "from": "postApiKeysService",
+    "to": "createApiKey"
+  },
+  {
+    "file": "src/modules/vendors/vendors.controller.ts",
+    "from": "deleteApiKeysId",
+    "to": "revokeApiKey"
+  },
+  {
+    "file": "src/modules/vendors/vendors.service.ts",
+    "from": "deleteApiKeysIdService",
+    "to": "revokeApiKey"
+  },
+  {
+    "file": "src/modules/vendors/vendors.validation.ts",
+    "from": "postBodySchema",
+    "to": "createProjectBodySchema"
+  },
+  {
+    "file": "src/modules/vendors/vendors.validation.ts",
+    "from": "postIdSelectParamsSchema",
+    "to": "selectProjectParamsSchema"
+  },
+  {
+    "file": "src/modules/vendors/vendors.validation.ts",
+    "from": "postBodySchema2",
+    "to": "inviteTeamMemberBodySchema"
+  },
+  {
+    "file": "src/modules/vendors/vendors.validation.ts",
+    "from": "patchIdParamsSchema",
+    "to": "updateTeamMemberParamsSchema"
+  },
+  {
+    "file": "src/modules/vendors/vendors.validation.ts",
+    "from": "patchIdBodySchema",
+    "to": "updateTeamMemberBodySchema"
+  },
+  {
+    "file": "src/modules/vendors/vendors.validation.ts",
+    "from": "postApiKeysBodySchema",
+    "to": "createApiKeyBodySchema"
+  },
+  {
+    "file": "src/modules/webhooks/webhooks.controller.ts",
+    "from": "getMeta",
+    "to": "verifyMetaWebhook"
+  },
+  {
+    "file": "src/modules/webhooks/webhooks.service.ts",
+    "from": "getMetaService",
+    "to": "verifyMetaWebhook"
+  },
+  {
+    "file": "src/modules/webhooks/webhooks.controller.ts",
+    "from": "postMeta",
+    "to": "handleMetaWebhook"
+  },
+  {
+    "file": "src/modules/webhooks/webhooks.service.ts",
+    "from": "postMetaService",
+    "to": "handleMetaWebhook"
+  },
+  {
+    "file": "src/modules/webhooks/webhooks.controller.ts",
+    "from": "postStoresProviderCredentialId",
+    "to": "handleStoreWebhook"
+  },
+  {
+    "file": "src/modules/webhooks/webhooks.service.ts",
+    "from": "postStoresProviderCredentialIdService",
+    "to": "handleStoreWebhook"
+  },
+  {
+    "file": "src/modules/webhooks/webhooks.controller.ts",
+    "from": "postPaymentsProvider",
+    "to": "handlePaymentWebhook"
+  },
+  {
+    "file": "src/modules/webhooks/webhooks.service.ts",
+    "from": "postPaymentsProviderService",
+    "to": "handlePaymentWebhook"
+  },
+  {
+    "file": "src/modules/billing/billing.middleware.ts",
+    "from": "useAuthenticateMiddleware",
+    "to": "requireSiteAdministrator"
+  },
+  {
+    "file": "src/modules/billing/billing.middleware.ts",
+    "from": "useValidateJoiObjectVendorIdIdSchemaParamsMiddleware",
+    "to": "requireExistingVendor"
+  },
+  {
+    "file": "src/modules/configuration/configuration.middleware.ts",
+    "from": "useAuthenticateMiddleware",
+    "to": "requireSiteAdministrator"
+  },
+  {
+    "file": "src/modules/translations/translations.middleware.ts",
+    "from": "useAuthenticateMiddleware",
+    "to": "requireSiteAdministrator"
+  },
+  {
+    "file": "src/modules/translations/translations.middleware.ts",
+    "from": "params",
+    "to": "validateLocaleParams"
+  },
+  {
+    "file": "src/modules/translations/translations.middleware.ts",
+    "from": "upload",
+    "to": "translationUpload"
+  },
+  {
+    "file": "src/modules/campaigns/campaigns.middleware.ts",
+    "from": "paramId",
+    "to": "validateCampaignId"
+  },
+  {
+    "file": "src/modules/campaigns/campaigns.middleware.ts",
+    "from": "useReqResNextIfCanReqVendorChatsViewAllThrowNewApiError403FORBIDDENCampaignsRequireAccessToAllCustomerChatsNextMiddleware",
+    "to": "requireFullContactVisibility"
+  },
+  {
+    "file": "src/modules/ai/ai.middleware.ts",
+    "from": "usePermitVendorAiManageMiddleware",
+    "to": "requireAiAllowance"
+  },
+  {
+    "file": "src/modules/bot-flows/bot-flows.middleware.ts",
+    "from": "paramId",
+    "to": "validateBotFlowId"
+  },
+  {
+    "file": "src/modules/bot-replies/bot-replies.middleware.ts",
+    "from": "paramId",
+    "to": "validateBotReplyId"
+  },
+  {
+    "file": "src/modules/appointments/appointments.middleware.ts",
+    "from": "paramId",
+    "to": "validateAppointmentId"
+  },
+  {
+    "file": "src/modules/comment-automations/comment-automations.middleware.ts",
+    "from": "usePermitVendorBotManageVendorIntegrationsManageMiddleware",
+    "to": "requireAutomationOwner"
+  },
+  {
+    "file": "src/modules/contact-fields/contact-fields.middleware.ts",
+    "from": "paramId",
+    "to": "validateContactFieldId"
+  },
+  {
+    "file": "src/modules/contact-workflows/contact-workflows.middleware.ts",
+    "from": "paramId",
+    "to": "validateContactId"
+  },
+  {
+    "file": "src/modules/contact-workflows/contact-workflows.middleware.ts",
+    "from": "paramId2",
+    "to": "validateGroupId"
+  },
+  {
+    "file": "src/modules/contact-workflows/contact-workflows.middleware.ts",
+    "from": "usePermitVendorGroupsManageMiddleware",
+    "to": "requireFullContactVisibility"
+  },
+  {
+    "file": "src/modules/contacts/contacts.middleware.ts",
+    "from": "paramId",
+    "to": "validateContactId"
+  },
+  {
+    "file": "src/modules/handoffs/handoffs.middleware.ts",
+    "from": "paramId",
+    "to": "validateHandoffId"
+  },
+  {
+    "file": "src/modules/media/media.middleware.ts",
+    "from": "upload",
+    "to": "mediaUpload"
+  },
+  {
+    "file": "src/modules/manual-billing/manual-billing.middleware.ts",
+    "from": "useManualMiddleware",
+    "to": "requireBusinessOwner"
+  },
+  {
+    "file": "src/modules/jobs-admin/jobs-admin.middleware.ts",
+    "from": "useAuthenticateMiddleware",
+    "to": "requireSiteAdministrator"
+  },
+  {
+    "file": "src/modules/jobs-admin/jobs-admin.middleware.ts",
+    "from": "usePermitVendorIntegrationsManageMiddleware",
+    "to": "requireJobOwner"
+  },
+  {
+    "file": "src/modules/resources/resources.middleware.ts",
+    "from": "useResourceMiddleware",
+    "to": "authorizeResourceAccess"
+  },
+  {
+    "file": "src/modules/resources/resources.middleware.ts",
+    "from": "postResource",
+    "to": "validateResourceCreation"
+  },
+  {
+    "file": "src/modules/resources/resources.middleware.ts",
+    "from": "patchResourceId",
+    "to": "validateResourceUpdate"
+  },
+  {
+    "file": "src/modules/content/content.middleware.ts",
+    "from": "superAdmin",
+    "to": "requireSiteAdministrator"
+  },
+  {
+    "file": "src/modules/content/content.middleware.ts",
+    "from": "postParams",
+    "to": "validateBlogPostParams"
+  },
+  {
+    "file": "src/modules/ads-manager/ads-manager.middleware.ts",
+    "from": "accountParams",
+    "to": "validateAdAccountParams"
+  },
+  {
+    "file": "src/modules/billing/billing.validation.ts",
+    "from": "useValidateJoiObjectVendorIdIdSchemaParamsParamsSchema",
+    "to": "vendorBillingParamsSchema"
+  },
+  {
+    "file": "src/modules/content/content.validation.ts",
+    "from": "postParamsSchema",
+    "to": "blogPostParamsSchema"
+  }
+]

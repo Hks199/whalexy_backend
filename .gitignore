@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+coverage/
+uploads/
+logs/
+*.log
+__pycache__/
+.local/
+
+.architecture-backup/

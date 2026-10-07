@@ -1,0 +1,383 @@
+{
+  "roles": {
+    "vendor_owner": {
+      "title": "Vendor",
+      "permissions": [
+        "*"
+      ]
+    },
+    "vendor_manager": {
+      "title": "Vendor Manager",
+      "permissions": [
+        "vendor.dashboard.view",
+        "vendor.contacts.view",
+        "vendor.contacts.view_phone",
+        "vendor.contacts.create",
+        "vendor.contacts.edit",
+        "vendor.groups.manage",
+        "vendor.chats.view_all",
+        "vendor.chats.reply",
+        "vendor.chats.assign",
+        "vendor.campaigns.view",
+        "vendor.campaigns.create",
+        "vendor.templates.view",
+        "vendor.reports.view",
+        "vendor.cx.view",
+        "vendor.team.view",
+        "vendor.team.create",
+        "vendor.team.edit",
+        "vendor.out_of_office.view",
+        "vendor.out_of_office.manage",
+        "ads.view",
+        "ads.create",
+        "ads.edit",
+        "ads.publish",
+        "ads.analytics",
+        "ads.reports",
+        "catalog.view",
+        "catalog.products.create",
+        "catalog.products.edit",
+        "catalog.products.delete",
+        "catalog.import",
+        "catalog.export",
+        "catalog.sync",
+        "catalog.taxonomies.manage",
+        "catalog.settings.manage"
+      ]
+    },
+    "vendor_agent": {
+      "title": "Vendor Agent",
+      "permissions": [
+        "vendor.dashboard.view",
+        "vendor.chats.view_assigned",
+        "vendor.chats.reply",
+        "vendor.contacts.view",
+        "vendor.templates.view",
+        "vendor.out_of_office.view",
+        "catalog.view",
+        "catalog.send"
+      ]
+    },
+    "sales_demo": {
+      "title": "Sales Demo",
+      "permissions": [
+        "vendor.dashboard.view",
+        "vendor.contacts.view",
+        "vendor.contacts.create",
+        "vendor.contacts.edit",
+        "vendor.contacts.view_phone",
+        "vendor.groups.manage",
+        "vendor.chats.view_all",
+        "vendor.chats.reply",
+        "vendor.chats.assign",
+        "vendor.campaigns.view",
+        "vendor.campaigns.create",
+        "vendor.campaigns.send",
+        "vendor.templates.view",
+        "vendor.templates.create",
+        "vendor.templates.edit",
+        "vendor.bot.manage",
+        "vendor.ai.manage",
+        "vendor.reports.view",
+        "vendor.cx.view",
+        "vendor.whatsapp_setup.manage",
+        "vendor.integrations.manage",
+        "vendor.settings.manage",
+        "catalog.view",
+        "catalog.products.create",
+        "catalog.products.edit",
+        "catalog.products.delete",
+        "catalog.send",
+        "ads.view",
+        "ads.create",
+        "ads.edit",
+        "ads.publish",
+        "ads.analytics",
+        "ads.reports"
+      ]
+    },
+    "marketing_manager": {
+      "title": "Marketing Manager",
+      "permissions": [
+        "vendor.dashboard.view",
+        "ads.view",
+        "ads.create",
+        "ads.edit",
+        "ads.delete",
+        "ads.publish",
+        "ads.analytics",
+        "ads.billing",
+        "ads.reports",
+        "catalog.view",
+        "catalog.products.create",
+        "catalog.products.edit",
+        "catalog.export",
+        "catalog.sync",
+        "catalog.taxonomies.manage"
+      ]
+    },
+    "ads_analyst": {
+      "title": "Analyst",
+      "permissions": [
+        "vendor.dashboard.view",
+        "ads.view",
+        "ads.analytics",
+        "ads.reports"
+      ]
+    },
+    "ads_viewer": {
+      "title": "Viewer",
+      "permissions": [
+        "vendor.dashboard.view",
+        "ads.view"
+      ]
+    }
+  },
+  "permissions": {
+    "vendor.dashboard.view": "View dashboard",
+    "vendor.contacts.view": "View contacts",
+    "vendor.contacts.view_phone": "View Customer Phone Numbers",
+    "vendor.contacts.create": "Create contacts",
+    "vendor.contacts.edit": "Edit contacts, tags and status",
+    "vendor.contacts.delete": "Delete contacts",
+    "vendor.groups.manage": "Manage contact groups",
+    "vendor.chats.view_all": "View all chats",
+    "vendor.chats.view_assigned": "View assigned chats",
+    "vendor.chats.reply": "Reply and add chat notes",
+    "vendor.calls.use": "Make and receive WhatsApp calls",
+    "vendor.chats.assign": "Assign chats",
+    "vendor.campaigns.view": "View campaigns",
+    "vendor.campaigns.create": "Create campaigns",
+    "vendor.campaigns.send": "Send and schedule campaigns",
+    "vendor.campaigns.delete": "Delete campaigns",
+    "vendor.templates.view": "View and use approved templates",
+    "vendor.templates.create": "Create templates",
+    "vendor.templates.edit": "Edit templates",
+    "vendor.templates.delete": "Delete templates",
+    "vendor.bot.manage": "Manage bots and flows",
+    "vendor.ai.manage": "Manage AI settings",
+    "vendor.reports.view": "View reports and analytics",
+    "vendor.cx.view": "View CX scores and agent CX analytics",
+    "vendor.team.view": "View team members",
+    "vendor.team.create": "Create team members",
+    "vendor.team.edit": "Edit team members",
+    "vendor.team.delete": "Delete team members",
+    "vendor.team.impersonate": "Login as a team member for support",
+    "vendor.billing.view": "View billing",
+    "vendor.subscription.manage": "Manage subscription",
+    "vendor.whatsapp_setup.manage": "Manage WhatsApp setup",
+    "vendor.integrations.manage": "Manage integrations",
+    "vendor.settings.manage": "Manage vendor settings",
+    "vendor.out_of_office.view": "View Out of Office status",
+    "vendor.out_of_office.manage": "Configure Out of Office",
+    "ads.view": "View Ads Manager",
+    "ads.create": "Create ad campaigns",
+    "ads.edit": "Edit ad campaigns, audiences and creatives",
+    "ads.delete": "Delete ad campaigns and assets",
+    "ads.publish": "Publish, pause and resume Meta campaigns",
+    "ads.analytics": "View advertising analytics",
+    "ads.billing": "View ad spend and billing",
+    "ads.reports": "Create and export advertising reports",
+    "catalog.view": "View catalogs and products",
+    "catalog.sync": "Sync connected catalogs from Meta",
+    "catalog.settings.manage": "Connect existing Meta catalogs",
+    "catalog.send": "Send catalog products in conversations"
+  },
+  "legacy_aliases": {
+    "administrative": [
+      "vendor.team.view",
+      "vendor.team.create",
+      "vendor.team.edit",
+      "vendor.reports.view",
+      "vendor.billing.view",
+      "vendor.whatsapp_setup.manage",
+      "vendor.settings.manage"
+    ],
+    "manage_contacts": [
+      "vendor.contacts.view",
+      "vendor.contacts.create",
+      "vendor.contacts.edit",
+      "vendor.groups.manage"
+    ],
+    "manage_campaigns": [
+      "vendor.campaigns.view",
+      "vendor.campaigns.create",
+      "vendor.campaigns.send"
+    ],
+    "messaging": [
+      "vendor.chats.view_all",
+      "vendor.chats.view_assigned",
+      "vendor.chats.reply"
+    ],
+    "manage_templates": [
+      "vendor.templates.view",
+      "vendor.templates.create",
+      "vendor.templates.edit"
+    ],
+    "assigned_chats_only": [
+      "vendor.chats.view_assigned"
+    ],
+    "manage_bot_replies": [
+      "vendor.bot.manage"
+    ],
+    "manage_whatsapp_orders": [
+      "vendor.integrations.manage"
+    ],
+    "manage_ads": [
+      "ads.view",
+      "ads.create",
+      "ads.edit",
+      "ads.publish"
+    ],
+    "manage_catalog": [
+      "catalog.view",
+      "catalog.sync",
+      "catalog.settings.manage",
+      "catalog.send"
+    ]
+  },
+  "route_permissions": {
+    "vendor.calls.settings*": "vendor.whatsapp_setup.manage",
+    "vendor.calls.*": "vendor.calls.use",
+    "vendor.console": null,
+    "vendor.read.stat_data_filter": "vendor.dashboard.view",
+    "vendor.disable.sound_message_sound_notification.write": "vendor.dashboard.view",
+    "vendor.whatsapp.health.status": "vendor.dashboard.view",
+    "vendor.whalexy_ai.chat": "vendor.dashboard.view",
+    "vendor.global_search": [
+      "vendor.dashboard.view",
+      "vendor.contacts.view",
+      "vendor.chats.view_all",
+      "vendor.chats.view_assigned"
+    ],
+    "vendor.appointments.*": "vendor.dashboard.view",
+    "vendor.cx.index": "vendor.cx.view",
+    "vendor.cx.agent": "vendor.cx.view",
+    "vendor.cx.show": "vendor.cx.view",
+    "vendor.cx.retry": "vendor.cx.view",
+    "vendor.conversation.resolve": "vendor.chats.reply",
+    "vendor.conversation.reopen": "vendor.chats.reply",
+    "vendor.ads.dashboard": "ads.view",
+    "vendor.ads.campaigns.index": "ads.view",
+    "vendor.ads.campaigns.create": "ads.create",
+    "vendor.ads.campaigns.store": "ads.create",
+    "vendor.ads.campaigns.action": [
+      "ads.edit",
+      "ads.delete",
+      "ads.publish"
+    ],
+    "vendor.ads.conversions.store": "ads.edit",
+    "vendor.ads.meta.*": "ads.edit",
+    "vendor.ads.creatives.assets.store": "ads.edit",
+    "vendor.ads.reports.download": "ads.reports",
+    "vendor.ads.page.store": [
+      "ads.create",
+      "ads.edit",
+      "ads.billing",
+      "ads.reports"
+    ],
+    "vendor.ads.page": "ads.view",
+    "vendor.catalog.overview": "catalog.view",
+    "vendor.catalog.products.index": "catalog.view",
+    "vendor.catalog.sync": "catalog.sync",
+    "vendor.catalog.settings": "catalog.settings.manage",
+    "vendor.catalog.meta.sync": "catalog.sync",
+    "vendor.catalog.meta.*": "catalog.settings.manage",
+    "vendor.catalog.disconnect": "catalog.settings.manage",
+    "vendor.catalog.select": "catalog.view",
+    "vendor.catalog.search": [
+      "catalog.view",
+      "catalog.send"
+    ],
+    "vendor.catalog.send": "catalog.send",
+    "vendor.user.read.*": "vendor.team.view",
+    "vendor.user.write.create": "vendor.team.create",
+    "vendor.user.write.update": "vendor.team.edit",
+    "vendor.user.write.login_as": "vendor.team.impersonate",
+    "vendor.user.write.logout_as": null,
+    "central.vendors.user.write.logout_as": null,
+    "vendor.chat.assign_user.process": "vendor.chats.assign",
+    "vendor.chat.update_notes.process": "vendor.chats.reply",
+    "vendor.chat.assign_labels.process": "vendor.contacts.edit",
+    "vendor.chat.label.*": "vendor.contacts.edit",
+    "vendor.chat.contact_labels.read": "vendor.contacts.view",
+    "vendor.chat_message.send.process": "vendor.chats.reply",
+    "vendor.chat_message_media.*": "vendor.chats.reply",
+    "vendor.chat_message.export": "vendor.chats.view_all",
+    "vendor.chat_message.delete.process": "vendor.chats.view_all",
+    "vendor.chat_message.*": [
+      "vendor.chats.view_all",
+      "vendor.chats.view_assigned"
+    ],
+    "vendor.contacts.data.read": [
+      "vendor.chats.view_all",
+      "vendor.chats.view_assigned"
+    ],
+    "vendor.template_message.*": [
+      "vendor.templates.view",
+      "vendor.chats.reply"
+    ],
+    "vendor.contact.group.*": "vendor.groups.manage",
+    "vendor.contacts.selected.write.assign_groups": "vendor.groups.manage",
+    "vendor.contacts.selected.write.delete": "vendor.contacts.delete",
+    "vendor.contacts.write.delete_all": "vendor.contacts.delete",
+    "vendor.contact.custom_field.*": "vendor.contacts.edit",
+    "vendor.contact.read.*": "vendor.contacts.view",
+    "vendor.contact.write.create*": "vendor.contacts.create",
+    "vendor.contact.write.update*": "vendor.contacts.edit",
+    "vendor.contact.write.delete*": "vendor.contacts.delete",
+    "vendor.contact.write.export": [
+      "vendor.contacts.view",
+      "vendor.reports.view"
+    ],
+    "vendor.contact.*": "vendor.contacts.view",
+    "vendor.campaign.read.*": "vendor.campaigns.view",
+    "vendor.campaign.new.view": "vendor.campaigns.create",
+    "vendor.campaign.schedule.process": "vendor.campaigns.send",
+    "vendor.campaign.requeue.*": "vendor.campaigns.send",
+    "vendor.campaign.write.delete": "vendor.campaigns.delete",
+    "vendor.campaign.write.*": "vendor.campaigns.create",
+    "vendor.campaign.*report*": "vendor.reports.view",
+    "vendor.campaign.*": "vendor.campaigns.view",
+    "vendor.whatsapp_service.templates.read.new_view": "vendor.templates.create",
+    "vendor.whatsapp_service.templates.read.update_view": "vendor.templates.edit",
+    "vendor.whatsapp_service.templates.read.*": "vendor.templates.view",
+    "vendor.whatsapp_service.templates.write.create": "vendor.templates.create",
+    "vendor.whatsapp_service.templates.write.generate_ai": "vendor.templates.create",
+    "vendor.whatsapp_service.templates.write.update": "vendor.templates.edit",
+    "vendor.whatsapp_service.templates.write.delete": "vendor.templates.delete",
+    "vendor.whatsapp_service.templates.write.sync": "vendor.templates.edit",
+    "vendor.request.template.view": "vendor.templates.view",
+    "vendor.bot_reply.*": "vendor.bot.manage",
+    "vendor.comment_to_dm.*": "vendor.bot.manage",
+    "vendor.meta_posts.*": "vendor.campaigns.send",
+    "whatsapp-flows.*": "vendor.bot.manage",
+    "whatsapp.flows.*": "vendor.bot.manage",
+    "vendor.conversion_studio.*": "vendor.ai.manage",
+    "vendor.media.upload": [
+      "vendor.chats.reply",
+      "vendor.templates.create"
+    ],
+    "subscription.read.*": "vendor.billing.view",
+    "subscription.write.*": "vendor.subscription.manage",
+    "vendor.subscription.*": "vendor.subscription.manage",
+    "vendor.settings.read": "vendor.settings.manage",
+    "vendor.settings.*": "vendor.settings.manage",
+    "vendor.out_of_office.read": "vendor.out_of_office.view",
+    "vendor.out_of_office.write": "vendor.out_of_office.manage",
+    "vendor.whatsapp.*": "vendor.whatsapp_setup.manage",
+    "vendor.integration.*": "vendor.integrations.manage",
+    "vendor.instagram.config.*": "vendor.integrations.manage",
+    "vendor.instagram.*": [
+      "vendor.chats.view_all",
+      "vendor.chats.view_assigned"
+    ],
+    "vendor.facebook.config*": "vendor.integrations.manage",
+    "vendor.facebook_chat.configuration": "vendor.integrations.manage",
+    "vendor.facebook*": [
+      "vendor.chats.view_all",
+      "vendor.chats.view_assigned"
+    ],
+    "google-sheet-script.*": "vendor.integrations.manage"
+  }
+}

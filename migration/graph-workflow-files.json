@@ -1,0 +1,39 @@
+[
+  {
+    "feature": "bot-flows",
+    "file": "src/modules/bot-flows/services/graph-schema.validation.ts",
+    "exports": [
+      "graphTypes",
+      "executableTypes",
+      "identifier",
+      "edge",
+      "text",
+      "choice",
+      "fieldName",
+      "questionRules",
+      "condition",
+      "payloads",
+      "graphSchema",
+      "graphChoices",
+      "validateGraph"
+    ]
+  },
+  {
+    "feature": "bot-flows",
+    "file": "src/modules/bot-flows/services/graph-types.types.ts",
+    "exports": [
+      "GraphNode",
+      "BotGraph",
+      "GraphState",
+      "GraphInput",
+      "GraphResult"
+    ]
+  },
+  {
+    "feature": "bot-flows",
+    "file": "src/modules/bot-flows/services/graph-execution.service.ts",
+    "exports": [
+      "advanceGraph"
+    ]
+  }
+]

@@ -1,0 +1,48 @@
+{
+  "source": "../whalexy/locale/pt_BR/LC_MESSAGES/messages.po",
+  "sourceSha256": "9bb3db36f632fc08d5b409c5b6a340a3f0bcf23f9d2e5e47317ef5423a6f495c",
+  "locale": "pt_BR",
+  "sourceEntries": 5723,
+  "validEntries": 5720,
+  "quarantinedEntries": 3,
+  "originalReadyForPublication": false,
+  "quarantined": [
+    {
+      "id": "Assign content for {{__messageParameter__}} variable",
+      "text": "Atribuir conteúdo para a variável {{ __messageParameter__ }}",
+      "context": "",
+      "reason": "TRANSLATION_PLACEHOLDERS"
+    },
+    {
+      "id": "Assign content for @{{__messageParameter__}} variable",
+      "text": "Atribuir conteúdo para a variável @{{ __messageParameter__ }}",
+      "context": "",
+      "reason": "TRANSLATION_PLACEHOLDERS"
+    },
+    {
+      "id": "Too many login attempts. Please try again in :seconds seconds.",
+      "text": "Muitas tentativas de login. Por favor, tente novamente em: segundos segundos.",
+      "context": "",
+      "reason": "TRANSLATION_PLACEHOLDERS"
+    }
+  ],
+  "corrections": [
+    {
+      "id": "Assign content for {{__messageParameter__}} variable",
+      "text": "Atribuir conteúdo para a variável {{__messageParameter__}}"
+    },
+    {
+      "id": "Assign content for @{{__messageParameter__}} variable",
+      "text": "Atribuir conteúdo para a variável @{{__messageParameter__}}"
+    },
+    {
+      "id": "Too many login attempts. Please try again in :seconds seconds.",
+      "text": "Muitas tentativas de login. Por favor, tente novamente em :seconds segundos."
+    }
+  ],
+  "convertedEntries": 5723,
+  "convertedReadyForPublication": true,
+  "preparedFile": "migration/translation-import/pt_BR.po",
+  "preparedSha256": "47ba94f97cb1f15c47c46eef7928502938415de138a99f3d837abdc26fff0e92",
+  "activated": false
+}

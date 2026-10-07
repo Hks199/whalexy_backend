@@ -1,0 +1,2672 @@
+// ============================================================
+// Auto-generated DBML from schema.prisma
+// PostgreSQL schema (with some SQLite legacy tables)
+// Generated for dbdiagram.io / tabular visualization
+// ============================================================
+
+Project Whalexy {
+  database_type: 'PostgreSQL'
+  Note: 'WhatsApp + Meta Ads + Catalog + Appointments platform'
+}
+
+// ------------------------------------------------------------
+// CORE TENANCY
+// ------------------------------------------------------------
+
+Table vendors {
+  id int [pk, increment, note: '_id']
+  uid varchar [unique, default: `uuid()`]
+  title varchar
+  status int [default: 1]
+  account_type varchar [default: 'customer']
+  is_demo boolean [default: false]
+  industry varchar
+  website_url varchar
+  business_description text
+  company_size varchar
+  target_audience varchar
+  primary_goal varchar
+  monthly_volume varchar
+  ecommerce_platform varchar
+  whatsapp_experience varchar
+  ban_reason varchar
+  type int
+  stripe_id varchar
+  pm_type varchar
+  pm_last_four varchar
+  trial_ends_at timestamp
+  logo_image varchar
+  slug varchar
+  domain varchar
+  favicon varchar
+  data jsonb
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+
+  Note: 'Primary tenant / organization'
+}
+
+Table users {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  name varchar
+  email varchar [unique]
+  password varchar
+  phone_number varchar
+  status int [default: 1]
+  vendor_id int
+  user_roles_id int
+  current_vendor_id int
+  active_session_id varchar
+  active_session_last_activity timestamp
+  email_verified_at timestamp
+  phone_verified_at timestamp
+  username varchar
+  remember_token varchar
+  first_name varchar
+  last_name varchar
+  timezone varchar
+  registered_via varchar
+  ban_reason varchar
+  countries_id int
+  two_factor_secret varchar
+  two_factor_recovery_codes text
+  profile_picture varchar
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+
+  Note: 'Platform users / agents'
+}
+
+Table user_roles {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  title varchar
+  status int
+  data jsonb
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table vendor_users {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  user_id int
+  vendor_id int
+  status int [default: 1]
+  data jsonb
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table vendor_settings {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  vendor_id int
+  name varchar
+  value text
+  data_type int
+  status int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+// ------------------------------------------------------------
+// CONTACTS & CONVERSATIONS
+// ------------------------------------------------------------
+
+Table contacts {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  vendor_id int
+  wa_id varchar
+  first_name varchar
+  last_name varchar
+  email varchar
+  status int [default: 1]
+  assigned_user_id int
+  country_id int
+  messaged_at timestamp
+  unread_messages_count int [default: 0]
+  disable_ai_bot int [default: 0]
+  conversation_status varchar [default: 'open']
+  conversation_resolved_at timestamp
+  conversation_resolved_by_user_id int
+  conversation_resolution_sequence int [default: 0]
+  whatsapp_opt_out int
+  language_code varchar
+  platform varchar
+  instagram_id varchar
+  instagram_username varchar
+  facebook_id varchar
+  wab_phone_number_id varchar
+  phone_verified_at timestamp
+  email_verified_at timestamp
+  data jsonb
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table contact_groups {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  vendor_id int
+  title varchar
+  status int [default: 1]
+  description text
+  wab_phone_number_id varchar
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table group_contacts {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  contact_id int
+  group_id int
+  status int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table labels {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  vendor_id int
+  title varchar
+  color varchar
+  text_color varchar
+  bg_color varchar
+  status int [default: 1]
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table contact_labels {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  contact_id int
+  labels_id int
+  status int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table contact_custom_fields {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  vendor_id int
+  input_name varchar
+  input_type varchar
+  name varchar
+  status int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table contact_custom_field_values {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  contact_id int
+  contact_custom_fields_id int
+  field_value text
+  status int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+// ------------------------------------------------------------
+// MESSAGING
+// ------------------------------------------------------------
+
+Table whatsapp_message_logs {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  vendor_id int
+  contact_id int
+  campaign_id int
+  whatsapp_message_id varchar
+  wab_phone_number_id varchar
+  contact_wa_id varchar
+  message text
+  status varchar
+  type varchar
+  is_incoming_message boolean
+  messaged_at timestamp
+  replied_to_whatsapp_message_logs_uid varchar
+  is_forwarded int
+  messaged_by_users_id int
+  data jsonb
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table whatsapp_message_queue {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  vendor_id int
+  contact_id int
+  campaign_id int
+  phone_with_country_code varchar
+  status int [default: 1]
+  retries int [default: 0]
+  scheduled_at timestamp
+  data jsonb
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table instagram_message_logs {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  vendor_id int
+  contact_id int
+  instagram_page_id varchar
+  contact_instagram_id varchar
+  message_id varchar
+  message text
+  status varchar
+  type varchar
+  is_incoming_message boolean [default: false]
+  message_type varchar [default: 'text']
+  messaged_at timestamp
+  delivered_at timestamp
+  read_at timestamp
+  replied_to_instagram_message_logs_uid varchar
+  is_forwarded boolean [default: false]
+  bot_reply boolean [default: false]
+  disable_ai_bot boolean [default: false]
+  data jsonb
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table campaigns {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  vendor_id int
+  template_id int
+  title varchar
+  status varchar
+  scheduled_at timestamp
+  user_id int
+  template_name varchar
+  template_language varchar
+  timezone varchar
+  data jsonb
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table whatsapp_templates {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  vendor_id int
+  template_name varchar
+  template_id varchar
+  language_code varchar
+  status varchar
+  category varchar
+  meta_template_id varchar
+  version int [default: 1]
+  quality_rating varchar [default: 'UNKNOWN']
+  compliance_score int
+  compliance_details jsonb
+  version_history jsonb
+  analytics_summary jsonb
+  preset_key varchar
+  data jsonb
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+// ------------------------------------------------------------
+// AI & CONVERSATION INTELLIGENCE
+// ------------------------------------------------------------
+
+Table ai_conversation_handoffs {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  vendor_id int
+  contact_id int
+  assigned_user_id int
+  accepted_by_users_id int
+  open_key varchar [unique]
+  status varchar [default: 'waiting']
+  reason varchar [default: 'human_handoff']
+  severity varchar [default: 'high']
+  requested_at timestamp
+  assigned_at timestamp
+  accepted_at timestamp
+  resolved_at timestamp
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table conversation_ai_analysis {
+  id int [pk, increment]
+  conversation_id int
+  vendor_id int
+  intent varchar
+  intent_confidence int
+  sentiment varchar
+  sentiment_confidence int
+  urgency varchar
+  risk_level varchar
+  lead_score int [default: 0]
+  lead_category varchar
+  ai_insight text
+  conversation_summary text
+  next_best_action text
+  suggested_replies jsonb
+  message_count int [default: 0]
+  last_analyzed_at timestamp
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table conversation_classifications {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  vendor_id int
+  contact_id int
+  intent varchar
+  sentiment varchar
+  urgency varchar
+  risk_level varchar
+  updated_by_users_id int
+  data jsonb
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table conversation_classification_tags {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  vendor_id int
+  type varchar
+  name varchar
+  color varchar [default: '#64748b']
+  icon varchar
+  category varchar
+  created_by_users_id int
+  data jsonb
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table conversation_classification_logs {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  vendor_id int
+  contact_id int
+  type varchar
+  old_value varchar
+  new_value varchar
+  changed_by_users_id int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table conversation_cx_scores {
+  id int [pk, increment]
+  conversation_id int
+  vendor_id int
+  agent_id int
+  resolution_sequence int [default: 1]
+  cx_score decimal
+  rating varchar
+  summary text
+  reason_json jsonb
+  recommended_action text
+  follow_up_required boolean [default: false]
+  status varchar [default: 'pending']
+  failure_message text
+  generated_at timestamp
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table ai_operation_traces {
+  id int [pk, increment]
+  trace_id varchar [unique, default: `uuid()`]
+  vendor_id int
+  operation varchar
+  provider varchar
+  model varchar
+  status varchar [default: 'started']
+  error_type varchar
+  http_status int
+  duration_ms int
+  prompt_tokens int [default: 0]
+  completion_tokens int [default: 0]
+  provider_request_id varchar
+  reference_id varchar
+  metadata jsonb
+  started_at timestamp
+  finished_at timestamp
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+// ------------------------------------------------------------
+// BOT FLOWS
+// ------------------------------------------------------------
+
+Table bot_flows {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  title varchar
+  start_trigger varchar
+  vendor_id int
+  status varchar [default: 'active']
+  data jsonb
+  whatsapp_flow_id varchar
+  whatsapp_sync_status varchar [default: 'pending']
+  whatsapp_sync_at timestamp
+  whatsapp_meta_data jsonb
+  trigger_type varchar [default: 'is']
+  channels jsonb
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table bot_replies {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  name varchar
+  vendor_id int
+  bot_flows_id int
+  reply_trigger varchar
+  reply_text text
+  trigger_type varchar
+  priority_index int
+  status int
+  data jsonb
+  bot_replies_id int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table bot_flow_message_receipts {
+  id int [pk, increment]
+  vendor_id int
+  channel varchar
+  external_message_id varchar
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table user_active_flows {
+  id int [pk, increment]
+  user_id int
+  flow_id int
+  phone_number varchar
+  activated_at timestamp
+  current_node_uid varchar
+  next_node_uid varchar
+  data jsonb
+  created_at timestamp
+  updated_at timestamp
+}
+
+// ------------------------------------------------------------
+// META ADS
+// ------------------------------------------------------------
+
+Table ad_accounts {
+  id int [pk, increment]
+  uuid varchar [unique, default: `uuid()`]
+  meta_account_id varchar
+  business_portfolio_id varchar
+  business_portfolio_name varchar
+  facebook_page_id varchar
+  facebook_page_name varchar
+  instagram_account_id varchar
+  instagram_username varchar
+  whatsapp_phone_number_id varchar
+  whatsapp_number varchar
+  name varchar
+  currency varchar [default: 'USD']
+  timezone varchar [default: 'UTC']
+  status varchar [default: 'pending']
+  connection_health varchar [default: 'unknown']
+  access_token text
+  token_expires_at timestamp
+  last_synced_at timestamp
+  auto_sync boolean [default: true]
+  meta jsonb
+  organization_id int
+  vendor_id int
+  created_by int
+  updated_by int
+  token_data_access_expires_at timestamp
+  last_sync_attempt_at timestamp
+  consecutive_sync_failures int [default: 0]
+  last_sync_error text
+  reconnect_required_at timestamp
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  deleted_at timestamp
+}
+
+Table ad_campaigns {
+  id int [pk, increment]
+  uuid varchar [unique, default: `uuid()`]
+  ad_account_id int
+  meta_campaign_id varchar
+  name varchar
+  objective varchar [default: 'messages']
+  goal varchar [default: 'whatsapp_messages']
+  special_ad_category varchar
+  status varchar [default: 'draft']
+  effective_status varchar [default: 'draft']
+  budget_type varchar [default: 'daily']
+  budget_amount decimal [default: 0]
+  bid_strategy varchar [default: 'lowest_cost']
+  starts_at timestamp
+  ends_at timestamp
+  timezone varchar [default: 'UTC']
+  notes text
+  configuration jsonb
+  published_at timestamp
+  last_synced_at timestamp
+  organization_id int
+  vendor_id int
+  created_by int
+  updated_by int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  deleted_at timestamp
+}
+
+Table ad_sets {
+  id int [pk, increment]
+  uuid varchar [unique, default: `uuid()`]
+  ad_campaign_id int
+  meta_ad_set_id varchar
+  name varchar
+  status varchar [default: 'draft']
+  daily_budget decimal
+  lifetime_budget decimal
+  audience_snapshot jsonb
+  placements jsonb
+  starts_at timestamp
+  ends_at timestamp
+  organization_id int
+  vendor_id int
+  created_by int
+  updated_by int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  deleted_at timestamp
+}
+
+Table ad_creatives {
+  id int [pk, increment]
+  uuid varchar [unique, default: `uuid()`]
+  meta_creative_id varchar
+  name varchar
+  format varchar [default: 'single_image']
+  headline varchar
+  primary_text text
+  description text
+  call_to_action varchar [default: 'SEND_WHATSAPP_MESSAGE']
+  landing_page varchar
+  whatsapp_number varchar
+  status varchar [default: 'draft']
+  meta jsonb
+  organization_id int
+  vendor_id int
+  created_by int
+  updated_by int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  deleted_at timestamp
+}
+
+Table ads {
+  id int [pk, increment]
+  uuid varchar [unique, default: `uuid()`]
+  ad_set_id int
+  ad_creative_id int
+  meta_ad_id varchar
+  name varchar
+  status varchar [default: 'draft']
+  tracking jsonb
+  organization_id int
+  vendor_id int
+  created_by int
+  updated_by int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  deleted_at timestamp
+}
+
+Table ad_labels {
+  id int [pk, increment]
+  name varchar
+  color varchar [default: '#0d9488']
+  organization_id int
+  vendor_id int
+  created_by int
+  updated_by int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  deleted_at timestamp
+}
+
+Table ad_campaign_label {
+  id int [pk, increment]
+  ad_campaign_id int
+  ad_label_id int
+  organization_id int
+  vendor_id int
+  created_by int
+  updated_by int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  deleted_at timestamp
+}
+
+Table ad_conversation_attributions {
+  id int [pk, increment]
+  contact_id int
+  ad_campaign_id int
+  ad_set_id int
+  ad_id int
+  ctwa_click_id varchar
+  source_id varchar
+  source_type varchar
+  placement varchar
+  source_url varchar
+  utm_parameters jsonb
+  conversation_started_at timestamp
+  assigned_user_id int
+  conversion_status varchar [default: 'conversation']
+  revenue decimal [default: 0]
+  referral jsonb
+  organization_id int
+  vendor_id int
+  created_by int
+  updated_by int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  deleted_at timestamp
+}
+
+Table creative_assets {
+  id int [pk, increment]
+  ad_creative_id int
+  type varchar
+  disk varchar [default: 'public']
+  path varchar
+  original_name varchar
+  mime_type varchar
+  size int
+  width int
+  height int
+  checksum varchar
+  tags jsonb
+  organization_id int
+  vendor_id int
+  created_by int
+  updated_by int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  deleted_at timestamp
+}
+
+Table audiences {
+  id int [pk, increment]
+  uuid varchar [unique, default: `uuid()`]
+  meta_audience_id varchar
+  name varchar
+  type varchar [default: 'saved']
+  status varchar [default: 'ready']
+  estimated_size_lower int
+  estimated_size_upper int
+  definition jsonb
+  organization_id int
+  vendor_id int
+  created_by int
+  updated_by int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  deleted_at timestamp
+}
+
+Table audience_rules {
+  id int [pk, increment]
+  audience_id int
+  field varchar
+  operator varchar [default: 'in']
+  value jsonb
+  exclude boolean [default: false]
+  organization_id int
+  vendor_id int
+  created_by int
+  updated_by int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  deleted_at timestamp
+}
+
+Table budgets {
+  id int [pk, increment]
+  ad_campaign_id int
+  type varchar [default: 'campaign']
+  amount decimal
+  spent decimal [default: 0]
+  alert_threshold decimal [default: 80]
+  period_start timestamp
+  period_end timestamp
+  hard_limit boolean [default: false]
+  organization_id int
+  vendor_id int
+  created_by int
+  updated_by int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  deleted_at timestamp
+}
+
+Table campaign_metrics {
+  id int [pk, increment]
+  ad_campaign_id int
+  period_start timestamp
+  period_end timestamp
+  spend decimal [default: 0]
+  reach int [default: 0]
+  impressions int [default: 0]
+  clicks int [default: 0]
+  conversations int [default: 0]
+  leads int [default: 0]
+  purchases int [default: 0]
+  revenue decimal [default: 0]
+  breakdown jsonb
+  organization_id int
+  vendor_id int
+  created_by int
+  updated_by int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  deleted_at timestamp
+}
+
+Table campaign_daily_metrics {
+  id int [pk, increment]
+  ad_campaign_id int
+  metric_date timestamp
+  spend decimal [default: 0]
+  reach int [default: 0]
+  impressions int [default: 0]
+  clicks int [default: 0]
+  conversations int [default: 0]
+  leads int [default: 0]
+  purchases int [default: 0]
+  revenue decimal [default: 0]
+  organization_id int
+  vendor_id int
+  created_by int
+  updated_by int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  deleted_at timestamp
+}
+
+Table campaign_logs {
+  id int [pk, increment]
+  ad_campaign_id int
+  action varchar
+  ip_address varchar
+  user_agent text
+  before jsonb
+  after jsonb
+  organization_id int
+  vendor_id int
+  created_by int
+  updated_by int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  deleted_at timestamp
+}
+
+Table campaign_templates {
+  id int [pk, increment]
+  uuid varchar [unique, default: `uuid()`]
+  name varchar
+  category varchar
+  description text
+  configuration jsonb
+  is_system boolean [default: false]
+  organization_id int
+  vendor_id int
+  created_by int
+  updated_by int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  deleted_at timestamp
+}
+
+Table conversions {
+  id int [pk, increment]
+  uuid varchar [unique, default: `uuid()`]
+  ad_campaign_id int
+  ad_id int
+  external_id varchar
+  type varchar
+  status varchar [default: 'confirmed']
+  value decimal [default: 0]
+  currency varchar [default: 'USD']
+  contact_wa_id varchar
+  occurred_at timestamp
+  attribution jsonb
+  meta jsonb
+  organization_id int
+  vendor_id int
+  created_by int
+  updated_by int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  deleted_at timestamp
+}
+
+Table conversion_events {
+  id int [pk, increment]
+  conversion_id int
+  event_name varchar
+  source varchar [default: 'manual']
+  payload jsonb
+  occurred_at timestamp
+  organization_id int
+  vendor_id int
+  created_by int
+  updated_by int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  deleted_at timestamp
+}
+
+Table ad_notifications {
+  id int [pk, increment]
+  type varchar
+  severity varchar [default: 'info']
+  title varchar
+  message text
+  notifiable_type varchar
+  notifiable_id int
+  read_at timestamp
+  data jsonb
+  organization_id int
+  vendor_id int
+  created_by int
+  updated_by int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  deleted_at timestamp
+}
+
+Table reports {
+  id int [pk, increment]
+  uuid varchar [unique, default: `uuid()`]
+  name varchar
+  type varchar
+  format varchar [default: 'pdf']
+  status varchar [default: 'pending']
+  filters jsonb
+  schedule varchar
+  file_path varchar
+  generated_at timestamp
+  organization_id int
+  vendor_id int
+  created_by int
+  updated_by int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  deleted_at timestamp
+}
+
+// ------------------------------------------------------------
+// CATALOG / PRODUCTS
+// ------------------------------------------------------------
+
+Table catalogs {
+  id int [pk, increment]
+  uuid varchar [unique, default: `uuid()`]
+  name varchar
+  slug varchar
+  description text
+  currency varchar [default: 'USD']
+  status varchar [default: 'draft']
+  is_default boolean [default: false]
+  meta_catalog_id varchar
+  sync_status varchar [default: 'not_connected']
+  last_synced_at timestamp
+  limits jsonb
+  vendor_id int
+  created_by int
+  updated_by int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  deleted_at timestamp
+}
+
+Table catalog_settings {
+  id int [pk, increment]
+  catalog_id int [unique]
+  currency varchar [default: 'USD']
+  default_tax_rate decimal [default: 0]
+  weight_unit varchar [default: 'kg']
+  dimension_unit varchar [default: 'cm']
+  default_shipping_cost decimal [default: 0]
+  storage_disk varchar [default: 'public']
+  image_quality int [default: 82]
+  max_image_size_kb int [default: 5120]
+  meta_auto_sync boolean [default: true]
+  auto_retry boolean [default: true]
+  max_sync_attempts int [default: 4]
+  notifications jsonb
+  vendor_id int
+  created_by int
+  updated_by int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  deleted_at timestamp
+}
+
+Table catalog_connections {
+  id int [pk, increment]
+  catalog_id int
+  provider varchar [default: 'meta']
+  business_id varchar
+  catalog_id_external varchar
+  whatsapp_business_account_id varchar
+  access_token text
+  token_expires_at timestamp
+  sync_status varchar [default: 'connected']
+  connection_health varchar [default: 'healthy']
+  last_synced_at timestamp
+  last_health_check_at timestamp
+  last_error text
+  meta jsonb
+  phone_number_id varchar
+  vendor_id int
+  created_by int
+  updated_by int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  deleted_at timestamp
+}
+
+Table categories {
+  id int [pk, increment]
+  uuid varchar [unique, default: `uuid()`]
+  catalog_id int
+  parent_id int
+  name varchar
+  slug varchar
+  icon varchar
+  image_url varchar
+  description text
+  sort_order int [default: 0]
+  status varchar [default: 'active']
+  meta_category_id varchar
+  sync_status varchar [default: 'pending']
+  last_synced_at timestamp
+  vendor_id int
+  created_by int
+  updated_by int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  deleted_at timestamp
+}
+
+Table brands {
+  id int [pk, increment]
+  uuid varchar [unique, default: `uuid()`]
+  catalog_id int
+  name varchar
+  slug varchar
+  logo_url varchar
+  website varchar
+  description text
+  status varchar [default: 'active']
+  meta_brand_id varchar
+  sync_status varchar [default: 'pending']
+  last_synced_at timestamp
+  vendor_id int
+  created_by int
+  updated_by int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  deleted_at timestamp
+}
+
+Table collections {
+  id int [pk, increment]
+  uuid varchar [unique, default: `uuid()`]
+  catalog_id int
+  name varchar
+  slug varchar
+  description text
+  image_url varchar
+  status varchar [default: 'active']
+  sort_order int [default: 0]
+  meta_product_set_id varchar
+  sync_status varchar [default: 'pending']
+  last_synced_at timestamp
+  vendor_id int
+  created_by int
+  updated_by int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  deleted_at timestamp
+}
+
+Table products {
+  id int [pk, increment]
+  uuid varchar [unique, default: `uuid()`]
+  catalog_id int
+  category_id int
+  brand_id int
+  name varchar
+  sku varchar
+  slug varchar
+  short_description text
+  description text
+  price decimal
+  sale_price decimal
+  currency varchar [default: 'USD']
+  tax_rate decimal [default: 0]
+  stock_quantity int [default: 0]
+  availability varchar [default: 'in_stock']
+  barcode varchar
+  weight decimal
+  length decimal
+  width decimal
+  height decimal
+  requires_shipping boolean [default: true]
+  shipping_cost decimal
+  delivery_time varchar
+  return_policy text
+  status varchar [default: 'draft']
+  visibility varchar [default: 'visible']
+  condition varchar [default: 'new']
+  meta_title varchar
+  meta_description text
+  custom_url varchar
+  meta_product_id varchar
+  sync_status varchar [default: 'pending']
+  last_synced_at timestamp
+  last_sync_error text
+  attributes jsonb
+  published_at timestamp
+  primary_image_url varchar
+  vendor_id int
+  created_by int
+  updated_by int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  deleted_at timestamp
+}
+
+Table product_variants {
+  id int [pk, increment]
+  uuid varchar [unique, default: `uuid()`]
+  product_id int
+  name varchar
+  sku varchar
+  price decimal
+  sale_price decimal
+  stock_quantity int [default: 0]
+  availability varchar [default: 'in_stock']
+  options jsonb
+  meta_product_id varchar
+  sync_status varchar [default: 'pending']
+  last_synced_at timestamp
+  last_sync_error text
+  vendor_id int
+  created_by int
+  updated_by int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  deleted_at timestamp
+}
+
+Table product_images {
+  id int [pk, increment]
+  product_id int
+  product_variant_id int
+  type varchar [default: 'image']
+  disk varchar [default: 'public']
+  path varchar
+  url varchar
+  thumbnail_url varchar
+  original_name varchar
+  mime_type varchar
+  size int [default: 0]
+  width int
+  height int
+  is_primary boolean [default: false]
+  sort_order int [default: 0]
+  checksum varchar
+  vendor_id int
+  created_by int
+  updated_by int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  deleted_at timestamp
+}
+
+Table product_tags {
+  id int [pk, increment]
+  product_id int
+  tag varchar
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table collection_products {
+  id int [pk, increment]
+  collection_id int
+  product_id int
+  sort_order int [default: 0]
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table catalog_imports {
+  id int [pk, increment]
+  uuid varchar [unique, default: `uuid()`]
+  catalog_id int
+  source varchar [default: 'upload']
+  format varchar
+  original_name varchar
+  disk varchar [default: 'local']
+  path varchar
+  status varchar [default: 'uploaded']
+  total_rows int [default: 0]
+  processed_rows int [default: 0]
+  imported_rows int [default: 0]
+  failed_rows int [default: 0]
+  error_file_path varchar
+  mapping jsonb
+  summary jsonb
+  started_at timestamp
+  completed_at timestamp
+  vendor_id int
+  created_by int
+  updated_by int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  deleted_at timestamp
+}
+
+Table catalog_exports {
+  id int [pk, increment]
+  uuid varchar [unique, default: `uuid()`]
+  catalog_id int
+  format varchar
+  status varchar [default: 'pending']
+  disk varchar [default: 'local']
+  path varchar
+  row_count int [default: 0]
+  filters jsonb
+  error text
+  expires_at timestamp
+  completed_at timestamp
+  vendor_id int
+  created_by int
+  updated_by int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  deleted_at timestamp
+}
+
+Table catalog_sync_logs {
+  id int [pk, increment]
+  catalog_id int
+  provider varchar [default: 'meta']
+  operation varchar
+  status varchar [default: 'pending']
+  attempt int [default: 0]
+  external_id varchar
+  error_code varchar
+  error_message text
+  request_payload jsonb
+  response_payload jsonb
+  started_at timestamp
+  completed_at timestamp
+  syncable_type varchar
+  syncable_id int
+  vendor_id int
+  created_by int
+  updated_by int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  deleted_at timestamp
+}
+
+Table catalog_activity_logs {
+  id int [pk, increment]
+  catalog_id int
+  event varchar
+  description text
+  properties jsonb
+  ip_address varchar
+  user_agent text
+  subject_type varchar
+  subject_id int
+  vendor_id int
+  created_by int
+  updated_by int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  deleted_at timestamp
+}
+
+// ------------------------------------------------------------
+// ECOMMERCE INTEGRATIONS
+// ------------------------------------------------------------
+
+Table shopify_integrations {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  vendor_id int
+  shop_domain varchar [unique]
+  access_token text
+  webhook_id varchar
+  is_active boolean [default: false]
+  notification_types varchar
+  webhook_url varchar
+  connected_at timestamp
+  last_sync_at timestamp
+  data jsonb
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table shopify_orders {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  shopify_integrations_id int
+  vendor_id int
+  contact_id int
+  shopify_order_id varchar
+  order_number varchar
+  name varchar
+  email varchar
+  phone varchar
+  currency varchar [default: 'USD']
+  financial_status varchar [default: 'pending']
+  fulfillment_status varchar [default: 'unfulfilled']
+  total_price decimal [default: 0]
+  subtotal_price decimal [default: 0]
+  total_tax decimal [default: 0]
+  total_discounts decimal [default: 0]
+  total_weight decimal [default: 0]
+  total_items int [default: 0]
+  tags varchar
+  note text
+  status varchar [default: 'open']
+  processed_at timestamp
+  cancelled_at timestamp
+  closed_at timestamp
+  created_at_shopify timestamp
+  updated_at_shopify timestamp
+  processed_at_shopify timestamp
+  cancelled_at_shopify timestamp
+  closed_at_shopify timestamp
+  data jsonb
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table shopify_order_notifications {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  shopify_orders_id int
+  vendor_id int
+  contact_id int
+  notification_type varchar
+  status varchar [default: 'pending']
+  message_id varchar
+  whatsapp_message_id varchar
+  sent_at timestamp
+  delivered_at timestamp
+  read_at timestamp
+  error_message text
+  data jsonb
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table woocommerce_integrations {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  vendor_id int
+  site_url varchar [unique]
+  consumer_key varchar
+  consumer_secret varchar
+  webhook_ids jsonb
+  is_active boolean [default: false]
+  notification_types varchar
+  webhook_url varchar
+  connected_at timestamp
+  disconnected_at timestamp
+  last_sync_at timestamp
+  settings jsonb
+  data jsonb
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table woocommerce_orders {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  woocommerce_integrations_id int
+  vendor_id int
+  contact_id int
+  woocommerce_order_id int
+  order_number varchar
+  status varchar [default: 'pending']
+  total decimal [default: 0]
+  currency varchar [default: 'USD']
+  payment_method varchar
+  payment_method_title varchar
+  shipping_method varchar
+  shipping_method_title varchar
+  total_tax decimal [default: 0]
+  total_shipping decimal [default: 0]
+  total_discount decimal [default: 0]
+  total_items int [default: 0]
+  customer_note text
+  order_notes text
+  date_created timestamp
+  date_modified timestamp
+  date_completed timestamp
+  date_paid timestamp
+  date_processing timestamp
+  date_on_hold timestamp
+  date_cancelled timestamp
+  date_refunded timestamp
+  customer_data jsonb
+  order_data jsonb
+  data jsonb
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table woocommerce_order_notifications {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  woocommerce_orders_id int
+  vendor_id int
+  contact_id int
+  template_id int
+  notification_type varchar
+  status varchar [default: 'pending']
+  message_id varchar
+  whatsapp_message_id varchar
+  variables jsonb
+  response jsonb
+  retry_count int [default: 0]
+  sent_at timestamp
+  delivered_at timestamp
+  read_at timestamp
+  error_message text
+  data jsonb
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table whatsapp_orders {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  order_id varchar [unique]
+  vendor_id int
+  contact_id int
+  customer_phone varchar
+  customer_name varchar
+  items jsonb
+  total_amount decimal
+  tax_amount decimal [default: 0]
+  shipping_amount decimal [default: 0]
+  discount_amount decimal [default: 0]
+  delivery_address text
+  status varchar [default: 'pending']
+  payment_id varchar
+  payment_status varchar
+  currency varchar [default: 'INR']
+  data jsonb
+  ordered_at timestamp
+  payment_completed_at timestamp
+  shipped_at timestamp
+  delivered_at timestamp
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table whatsapp_payments {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  payment_id varchar [unique]
+  vendor_id int
+  order_id varchar
+  amount decimal
+  currency varchar [default: 'INR']
+  status varchar [default: 'pending']
+  payment_method varchar
+  transaction_id varchar
+  payment_link_id varchar
+  payment_link_url varchar
+  gateway varchar [default: 'razorpay']
+  gateway_response jsonb
+  data jsonb
+  payment_initiated_at timestamp
+  payment_completed_at timestamp
+  payment_failed_at timestamp
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+// ------------------------------------------------------------
+// APPOINTMENTS (Whalexy)
+// ------------------------------------------------------------
+
+Table whalexy_appointment_services {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  vendor_id int
+  name varchar
+  description text
+  duration_minutes int
+  buffer_before_minutes int [default: 0]
+  buffer_after_minutes int [default: 0]
+  price decimal
+  currency varchar
+  timezone varchar [default: 'UTC']
+  status varchar [default: 'active']
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table whalexy_appointment_resources {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  vendor_id int
+  type varchar [default: 'staff']
+  name varchar
+  timezone varchar [default: 'UTC']
+  status varchar [default: 'active']
+  metadata jsonb
+  user_id int
+  auto_assign_chat boolean [default: true]
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table whalexy_appointment_service_resources {
+  id int [pk, increment]
+  vendor_id int
+  appointment_service_id int
+  appointment_resource_id int
+  capacity int [default: 1]
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table whalexy_appointment_schedules {
+  id int [pk, increment]
+  vendor_id int
+  appointment_resource_id int
+  weekday int
+  start_local_time varchar
+  end_local_time varchar
+  timezone varchar [default: 'UTC']
+  effective_from timestamp
+  effective_until timestamp
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table whalexy_appointment_schedule_exceptions {
+  id int [pk, increment]
+  vendor_id int
+  appointment_resource_id int
+  type varchar [default: 'unavailable']
+  starts_at_utc timestamp
+  ends_at_utc timestamp
+  reason text
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table whalexy_appointments {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  vendor_id int
+  contact_id int
+  appointment_service_id int
+  appointment_resource_id int
+  starts_at_utc timestamp
+  ends_at_utc timestamp
+  timezone varchar [default: 'UTC']
+  status varchar [default: 'confirmed']
+  source varchar [default: 'api']
+  customer_name varchar
+  customer_phone varchar
+  customer_email varchar
+  notes text
+  external_reference varchar
+  idempotency_key varchar
+  confirmed_at timestamp
+  cancelled_at timestamp
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table whalexy_appointment_holds {
+  id int [pk, increment]
+  token varchar [unique, default: `uuid()`]
+  vendor_id int
+  contact_id int
+  appointment_service_id int
+  appointment_resource_id int
+  starts_at_utc timestamp
+  ends_at_utc timestamp
+  expires_at timestamp
+  converted_at timestamp
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table whalexy_appointment_slot_claims {
+  id int [pk, increment]
+  vendor_id int
+  appointment_id int
+  appointment_resource_id int
+  slot_start_utc timestamp
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table whalexy_appointment_reminder_deliveries {
+  id int [pk, increment]
+  vendor_id int
+  appointment_id int
+  offset_minutes int
+  scheduled_for timestamp
+  status varchar [default: 'pending']
+  attempts int [default: 0]
+  sent_at timestamp
+  last_error text
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table whalexy_appointment_conversation_states {
+  id int [pk, increment]
+  vendor_id int
+  contact_id int
+  step varchar
+  context jsonb
+  last_message_wamid varchar
+  expires_at timestamp
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table whalexy_appointment_automation_settings {
+  id int [pk, increment]
+  vendor_id int [unique]
+  enabled boolean [default: false]
+  trigger_keywords jsonb
+  reminder_offsets_minutes jsonb
+  reminder_template_name varchar
+  reminder_template_language varchar [default: 'en_US']
+  confirmation_message text
+  reminder_message text
+  system_enabled boolean [default: true]
+  message_templates jsonb
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+// ------------------------------------------------------------
+// WHATSAPP ONBOARDING / CALLING / FLOWS
+// ------------------------------------------------------------
+
+Table whatsapp_onboarding_connections {
+  id int [pk, increment]
+  onboarding_id varchar [unique, default: `uuid()`]
+  vendor_id int
+  business_id varchar
+  waba_id varchar
+  phone_number_id varchar [unique]
+  display_phone_number varchar
+  verified_name varchar
+  status varchar [default: 'PENDING']
+  current_step varchar [default: 'RECEIVED']
+  phone_state varchar [default: 'NEW']
+  registration_status varchar [default: 'UNKNOWN']
+  webhook_status varchar [default: 'UNKNOWN']
+  token_type varchar
+  account_mode varchar
+  last_error jsonb
+  meta jsonb
+  last_synced_at timestamp
+  connected_at timestamp
+  connection_mode varchar [default: 'cloud_api']
+  contacts_sync_status varchar [default: 'NOT_REQUESTED']
+  history_sync_status varchar [default: 'NOT_REQUESTED']
+  contacts_sync_request_id varchar
+  history_sync_request_id varchar
+  history_sync_progress int [default: 0]
+  sync_requested_at timestamp
+  sync_completed_at timestamp
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table whatsapp_blue_tick_applications {
+  id int [pk, increment]
+  vendor_id int
+  waba_id varchar
+  phone_number_id varchar
+  legal_business_name varchar
+  website_url varchar
+  business_category varchar
+  news_urls jsonb
+  status varchar [default: 'DRAFT']
+  submitted_at timestamp
+  meta_checked_at timestamp
+  meta_snapshot jsonb
+  meta_note text
+  meta_case_id varchar
+  meta_submission_url varchar
+  reviewer_notes text
+  reviewed_by int
+  reviewed_at timestamp
+  meta_submitted_at timestamp
+  decided_at timestamp
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table whatsapp_calling_settings {
+  id int [pk, increment]
+  vendor_id int
+  phone_number_id varchar
+  enabled boolean [default: false]
+  outbound_enabled boolean [default: false]
+  recording_enabled boolean [default: false]
+  transcription_enabled boolean [default: false]
+  artifact_purpose varchar
+  announcement_language varchar [default: 'en_IN']
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table whatsapp_calls {
+  id varchar [pk, default: `uuid()`]
+  vendor_id int
+  phone_number_id varchar
+  meta_call_id varchar [unique]
+  request_id varchar
+  contact_uid varchar
+  peer varchar
+  direction varchar
+  status varchar
+  agent_id int
+  room_name varchar
+  session varchar
+  heartbeat_at timestamp
+  started_at timestamp
+  ended_at timestamp
+  duration int
+  recording_requested boolean [default: false]
+  transcription_requested boolean [default: false]
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table whatsapp_call_artifacts {
+  id varchar [pk, default: `uuid()`]
+  call_id varchar
+  vendor_id int
+  kind varchar
+  status varchar [default: 'pending']
+  meta_media_id varchar
+  sha256 varchar
+  mime_type varchar
+  disk varchar
+  path varchar
+  failure_reason text
+  available_at timestamp
+  retained_until timestamp
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table whatsapp_call_events {
+  id int [pk, increment]
+  call_id varchar
+  event_key varchar [unique]
+  event varchar
+  created_at timestamp
+}
+
+Table whatsapp_flow_launch_settings {
+  id int [pk, increment]
+  vendor_id int
+  flow_id varchar
+  launch_type varchar [default: 'template']
+  launch_reference varchar
+  trigger_keywords varchar
+  automation_enabled boolean [default: true]
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table whatsapp_flow_responses {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  vendor_id int
+  contact_id int
+  flow_id varchar
+  flow_name varchar
+  wamid varchar
+  response_data jsonb
+  submitted_at timestamp
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table native_meta_flows {
+  id varchar [pk]
+  vendor_id int
+  waba_id varchar
+  name varchar
+  status varchar
+  categories jsonb
+  flow_json jsonb
+  validation_errors jsonb
+  endpoint_uri varchar
+  revision int [default: 1]
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+// ------------------------------------------------------------
+// OUT OF OFFICE
+// ------------------------------------------------------------
+
+Table out_of_office_settings {
+  id int [pk, increment]
+  vendor_id int
+  whatsapp_phone_number_id varchar
+  enabled boolean [default: false]
+  message text
+  timezone varchar [default: 'UTC']
+  mode varchar [default: 'business_hours']
+  manual_until timestamp
+  manual_started_at timestamp
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table out_of_office_schedules {
+  id int [pk, increment]
+  out_of_office_settings_id int
+  day_of_week int
+  enabled boolean [default: true]
+  start_time varchar
+  end_time varchar
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table out_of_office_deliveries {
+  id int [pk, increment]
+  out_of_office_settings_id int
+  contact_id int
+  customer_identifier varchar
+  ooo_period_key varchar
+  inbound_message_id varchar
+  outbound_message_id varchar
+  status varchar [default: 'processing']
+  failure_reason text
+  sent_at timestamp
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+// ------------------------------------------------------------
+// COMMENT TO DM
+// ------------------------------------------------------------
+
+Table comment_to_dm_automations {
+  id int [pk, increment]
+  uuid varchar [unique, default: `uuid()`]
+  vendor_id int
+  created_by int
+  name varchar
+  platform varchar
+  status varchar [default: 'draft']
+  external_account_id varchar
+  content_scope varchar [default: 'all']
+  media_id varchar
+  media_label varchar
+  comment_match_type varchar [default: 'any']
+  match_operator varchar [default: 'contains']
+  keywords jsonb
+  dm_message text
+  public_reply_enabled boolean [default: false]
+  public_reply_message text
+  last_triggered_at timestamp
+  dm_attachment_type varchar
+  dm_attachment_url varchar
+  dm_attachment_path varchar
+  dm_attachment_name varchar
+  follow_gate_enabled boolean [default: false]
+  follow_gate_message text
+  follow_gate_retry_message text
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  deleted_at timestamp
+}
+
+Table comment_to_dm_executions {
+  id int [pk, increment]
+  automation_id int
+  vendor_id int
+  platform varchar
+  comment_id varchar
+  media_id varchar
+  commenter_id varchar
+  matched_at timestamp
+  dm_status varchar [default: 'pending']
+  public_reply_status varchar [default: 'skipped']
+  status varchar [default: 'pending']
+  error text
+  follow_gate_status varchar [default: 'disabled']
+  follow_gate_recipient_id varchar
+  follow_gate_checks int [default: 0]
+  follow_gate_checked_at timestamp
+  content_delivered_at timestamp
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+// ------------------------------------------------------------
+// SUBSCRIPTIONS & BILLING
+// ------------------------------------------------------------
+
+Table subscriptions {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  vendor_id int
+  type varchar
+  stripe_id varchar
+  stripe_status varchar
+  stripe_price varchar
+  quantity int
+  trial_ends_at timestamp
+  ends_at timestamp
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table subscription_items {
+  id int [pk, increment]
+  subscription_id int
+  stripe_id varchar
+  stripe_product varchar
+  stripe_price varchar
+  quantity int
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table subscription_addons {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  vendor_id int
+  addon_code varchar
+  status varchar [default: 'pending']
+  price int
+  currency varchar [default: 'INR']
+  source varchar [default: 'paid']
+  started_at timestamp
+  expires_at timestamp
+  payment_provider varchar
+  payment_reference varchar
+  provider_subscription_reference varchar
+  enabled_by int
+  enabled_at timestamp
+  disabled_at timestamp
+  data jsonb
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table manual_subscriptions {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  vendor_id int
+  status varchar
+  plan_id varchar
+  ends_at timestamp
+  remarks text
+  charges decimal
+  charges_frequency varchar
+  data jsonb
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table vendor_ai_usages {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  vendor_id int
+  feature varchar
+  provider varchar [default: 'groq']
+  model varchar
+  prompt_tokens int [default: 0]
+  completion_tokens int [default: 0]
+  total_tokens int [default: 0]
+  raw_cost decimal [default: 0]
+  billed_amount decimal [default: 0]
+  currency varchar [default: 'USD']
+  reference_id varchar
+  metadata jsonb
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table vendor_ai_monthly_invoices {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  vendor_id int
+  billing_period varchar
+  invoice_number varchar [unique]
+  total_calls int [default: 0]
+  total_tokens int [default: 0]
+  raw_cost decimal [default: 0]
+  total_amount decimal [default: 0]
+  currency varchar [default: 'USD']
+  status varchar [default: 'pending']
+  usage_breakdown jsonb
+  due_date timestamp
+  paid_at timestamp
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+// ------------------------------------------------------------
+// BLOG
+// ------------------------------------------------------------
+
+Table blog_categories {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  name varchar
+  slug varchar [unique]
+  description text
+  status boolean [default: true]
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table blog_tags {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  name varchar
+  slug varchar [unique]
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table blog_posts {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  author_id int
+  category_id int
+  locale varchar [default: 'en']
+  title varchar
+  slug varchar [unique]
+  excerpt text
+  content text
+  content_toc jsonb
+  featured_image varchar
+  status varchar [default: 'draft']
+  published_at timestamp
+  scheduled_at timestamp
+  reading_time int [default: 1]
+  views_count int [default: 0]
+  seo_title varchar
+  meta_description text
+  meta_keywords varchar
+  canonical_url varchar
+  og_title varchar
+  og_description text
+  og_image varchar
+  author_name varchar
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  deleted_at timestamp
+}
+
+Table blog_post_tag {
+  id int [pk, increment]
+  blog_post_id int
+  blog_tag_id int
+}
+
+// ------------------------------------------------------------
+// SYSTEM / AUTH / INFRA
+// ------------------------------------------------------------
+
+Table auth_sessions {
+  id varchar [pk, default: `uuid()`]
+  user_id int
+  token_hash varchar [unique]
+  family_id varchar
+  expires_at timestamp
+  revoked_at timestamp
+  created_at timestamp [default: `now()`]
+}
+
+Table verification_challenges {
+  id varchar [pk, default: `uuid()`]
+  user_id int
+  kind varchar
+  code_hash varchar
+  attempts int [default: 0]
+  expires_at timestamp
+  consumed_at timestamp
+  created_at timestamp [default: `now()`]
+}
+
+Table verifications {
+  id int [pk, increment]
+  user_id int
+  type varchar [default: 'email']
+  destination varchar
+  code_hash varchar
+  attempts int [default: 0]
+  expires_at timestamp
+  verified_at timestamp
+  last_sent_at timestamp
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table pending_registrations {
+  id int [pk, increment]
+  token varchar [unique]
+  email varchar
+  payload text
+  otp_hash varchar
+  attempts int [default: 0]
+  expires_at timestamp
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table outbox_jobs {
+  id varchar [pk, default: `uuid()`]
+  vendor_id int
+  kind varchar
+  payload jsonb
+  status varchar [default: 'pending']
+  attempts int [default: 0]
+  available_at timestamp [default: `now()`]
+  locked_at timestamp
+  last_error text
+  dedupe_key varchar [unique]
+  created_at timestamp [default: `now()`]
+}
+
+Table webhook_receipts {
+  id varchar [pk, default: `uuid()`]
+  provider varchar
+  event_key varchar [unique]
+  payload jsonb
+  processed_at timestamp
+  created_at timestamp [default: `now()`]
+}
+
+Table integration_credentials {
+  id varchar [pk, default: `uuid()`]
+  vendor_id int
+  provider varchar
+  external_id varchar
+  secret text
+  metadata jsonb
+  created_at timestamp [default: `now()`]
+  updated_at timestamp
+}
+
+Table audit_events {
+  id varchar [pk, default: `uuid()`]
+  vendor_id int
+  actor_id int
+  action varchar
+  resource varchar
+  resource_id varchar
+  metadata jsonb
+  created_at timestamp [default: `now()`]
+}
+
+Table api_keys {
+  id varchar [pk, default: `uuid()`]
+  vendor_id int
+  user_id int
+  key_hash varchar [unique]
+  permissions jsonb
+  expires_at timestamp
+  revoked_at timestamp
+  created_at timestamp [default: `now()`]
+}
+
+Table native_memberships {
+  id varchar [pk, default: `uuid()`]
+  vendor_id int
+  user_id int
+  role varchar
+  permissions jsonb
+  active boolean [default: true]
+}
+
+Table native_booking_claims {
+  id varchar [pk, default: `uuid()`]
+  vendor_id int
+  resource_id int
+  appointment_id int
+  slot timestamp
+}
+
+Table native_idempotency {
+  id varchar [pk, default: `uuid()`]
+  vendor_id int
+  key varchar
+  request_hash varchar
+  response jsonb
+  created_at timestamp [default: `now()`]
+}
+
+Table native_media {
+  id varchar [pk, default: `uuid()`]
+  vendor_id int
+  owner_id int
+  path varchar
+  mime_type varchar
+  size int
+  original_name varchar
+  created_at timestamp [default: `now()`]
+}
+
+Table native_channel_messages {
+  id varchar [pk, default: `uuid()`]
+  vendor_id int
+  contact_id int
+  provider varchar
+  external_account_id varchar
+  external_message_id varchar [unique]
+  text text
+  incoming boolean
+  status varchar
+  created_at timestamp [default: `now()`]
+}
+
+Table jobs {
+  id int [pk, increment]
+  queue varchar
+  payload text
+  attempts int
+  reserved_at int
+  available_at int
+  created_at int
+}
+
+Table failed_jobs {
+  id int [pk, increment]
+  uuid varchar [unique, default: `uuid()`]
+  connection varchar
+  queue varchar
+  payload text
+  exception text
+  failed_at timestamp
+}
+
+Table activity_logs {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  user_id int
+  vendor_id int
+  user_role_id int
+  activity jsonb
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table login_logs {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  user_id int
+  ip_address varchar
+  email varchar
+  role int
+  data jsonb
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table login_attempts {
+  id int [pk, increment]
+  ip_address varchar
+  attempts int
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table countries {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  name varchar
+  phone_code varchar
+  iso_code varchar
+  name_capitalized varchar
+  iso3_code varchar
+  iso_num_code int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table configurations {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  name varchar
+  value text
+  data_type int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table pages {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  title varchar
+  content text
+  status int
+  show_in_menu int
+  type int
+  vendor_id int
+  slug varchar
+  image_name varchar
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table google_sheet_automations {
+  id int [pk, increment]
+  uid varchar [unique, default: `uuid()`]
+  vendor_id int
+  title varchar
+  trigger_type varchar [default: 'new_row']
+  status int [default: 1]
+  config jsonb
+  generated_script text
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+// Legacy / SQLite snapshot tables
+Table message_labels {
+  id int [pk, increment]
+  uid varchar
+  status int
+  labels_id int
+  whatsapp_message_logs_id int
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table tickets {
+  id int [pk, increment]
+  uid varchar
+  status int
+  contacts_id int
+  vendor_id int
+  subject varchar
+  description text
+  priority varchar
+  vendor_users_id int
+  assigned_users_id int
+  data text
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table transactions {
+  id int [pk, increment]
+  uid varchar
+  status int
+  amount decimal
+  reference_id varchar
+  notes text
+  data text
+  vendor_id int
+  subscriptions_id int
+  type varchar
+  manual_subscriptions_id int
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table user_settings {
+  id int [pk, increment]
+  key_name varchar
+  value text
+  data_type int
+  user_id int
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table password_resets {
+  id int [pk, increment]
+  email varchar
+  token varchar
+  created_at timestamp
+}
+
+Table legacy_migrations {
+  id int [pk, increment]
+  migration varchar
+  batch int
+}
+
+// ------------------------------------------------------------
+// RELATIONSHIPS (Foreign Keys)
+// ------------------------------------------------------------
+
+// Core
+Ref: users.vendor_id > vendors.id
+Ref: users.user_roles_id > user_roles.id
+Ref: vendor_users.user_id > users.id
+Ref: vendor_users.vendor_id > vendors.id
+Ref: vendor_settings.vendor_id > vendors.id
+
+// Contacts
+Ref: contacts.vendor_id > vendors.id
+Ref: contacts.assigned_user_id > users.id
+Ref: contact_groups.vendor_id > vendors.id
+Ref: group_contacts.contact_id > contacts.id
+Ref: group_contacts.group_id > contact_groups.id
+Ref: labels.vendor_id > vendors.id
+Ref: contact_labels.contact_id > contacts.id
+Ref: contact_labels.labels_id > labels.id
+Ref: contact_custom_fields.vendor_id > vendors.id
+Ref: contact_custom_field_values.contact_id > contacts.id
+Ref: contact_custom_field_values.contact_custom_fields_id > contact_custom_fields.id
+
+// Messaging
+Ref: whatsapp_message_logs.vendor_id > vendors.id
+Ref: whatsapp_message_logs.contact_id > contacts.id
+Ref: whatsapp_message_logs.campaign_id > campaigns.id
+Ref: whatsapp_message_queue.vendor_id > vendors.id
+Ref: whatsapp_message_queue.contact_id > contacts.id
+Ref: whatsapp_message_queue.campaign_id > campaigns.id
+Ref: instagram_message_logs.vendor_id > vendors.id
+Ref: instagram_message_logs.contact_id > contacts.id
+Ref: campaigns.vendor_id > vendors.id
+Ref: campaigns.template_id > whatsapp_templates.id
+Ref: whatsapp_templates.vendor_id > vendors.id
+
+// AI
+Ref: ai_conversation_handoffs.vendor_id > vendors.id
+Ref: ai_conversation_handoffs.contact_id > contacts.id
+Ref: ai_conversation_handoffs.assigned_user_id > users.id
+Ref: ai_conversation_handoffs.accepted_by_users_id > users.id
+Ref: conversation_ai_analysis.vendor_id > vendors.id
+Ref: conversation_ai_analysis.conversation_id > contacts.id
+Ref: conversation_classifications.vendor_id > vendors.id
+Ref: conversation_classifications.contact_id > contacts.id
+Ref: conversation_classification_tags.vendor_id > vendors.id
+Ref: conversation_classification_logs.vendor_id > vendors.id
+Ref: conversation_classification_logs.contact_id > contacts.id
+Ref: conversation_cx_scores.vendor_id > vendors.id
+Ref: conversation_cx_scores.conversation_id > contacts.id
+Ref: conversation_cx_scores.agent_id > users.id
+
+// Bot
+Ref: bot_flows.vendor_id > vendors.id
+Ref: bot_replies.vendor_id > vendors.id
+
+// Ads hierarchy
+Ref: ad_accounts.organization_id > vendors.id
+Ref: ad_accounts.vendor_id > vendors.id
+Ref: ad_accounts.created_by > users.id
+Ref: ad_accounts.updated_by > users.id
+
+Ref: ad_campaigns.ad_account_id > ad_accounts.id
+Ref: ad_campaigns.organization_id > vendors.id
+Ref: ad_campaigns.vendor_id > vendors.id
+Ref: ad_campaigns.created_by > users.id
+Ref: ad_campaigns.updated_by > users.id
+
+Ref: ad_sets.ad_campaign_id > ad_campaigns.id
+Ref: ad_sets.organization_id > vendors.id
+Ref: ad_sets.vendor_id > vendors.id
+Ref: ad_sets.created_by > users.id
+Ref: ad_sets.updated_by > users.id
+
+Ref: ad_creatives.organization_id > vendors.id
+Ref: ad_creatives.vendor_id > vendors.id
+Ref: ad_creatives.created_by > users.id
+Ref: ad_creatives.updated_by > users.id
+
+Ref: ads.ad_set_id > ad_sets.id
+Ref: ads.ad_creative_id > ad_creatives.id
+Ref: ads.organization_id > vendors.id
+Ref: ads.vendor_id > vendors.id
+Ref: ads.created_by > users.id
+Ref: ads.updated_by > users.id
+
+Ref: ad_labels.organization_id > vendors.id
+Ref: ad_labels.vendor_id > vendors.id
+Ref: ad_campaign_label.ad_campaign_id > ad_campaigns.id
+Ref: ad_campaign_label.ad_label_id > ad_labels.id
+
+Ref: ad_conversation_attributions.ad_campaign_id > ad_campaigns.id
+Ref: ad_conversation_attributions.ad_set_id > ad_sets.id
+Ref: ad_conversation_attributions.ad_id > ads.id
+Ref: ad_conversation_attributions.organization_id > vendors.id
+Ref: ad_conversation_attributions.vendor_id > vendors.id
+
+Ref: creative_assets.ad_creative_id > ad_creatives.id
+Ref: creative_assets.organization_id > vendors.id
+Ref: creative_assets.vendor_id > vendors.id
+
+Ref: audiences.organization_id > vendors.id
+Ref: audiences.vendor_id > vendors.id
+Ref: audience_rules.audience_id > audiences.id
+Ref: audience_rules.organization_id > vendors.id
+Ref: audience_rules.vendor_id > vendors.id
+
+Ref: budgets.ad_campaign_id > ad_campaigns.id
+Ref: budgets.organization_id > vendors.id
+Ref: budgets.vendor_id > vendors.id
+
+Ref: campaign_metrics.ad_campaign_id > ad_campaigns.id
+Ref: campaign_metrics.organization_id > vendors.id
+Ref: campaign_metrics.vendor_id > vendors.id
+
+Ref: campaign_daily_metrics.ad_campaign_id > ad_campaigns.id
+Ref: campaign_daily_metrics.organization_id > vendors.id
+Ref: campaign_daily_metrics.vendor_id > vendors.id
+
+Ref: campaign_logs.ad_campaign_id > ad_campaigns.id
+Ref: campaign_logs.organization_id > vendors.id
+Ref: campaign_logs.vendor_id > vendors.id
+
+Ref: campaign_templates.organization_id > vendors.id
+Ref: campaign_templates.vendor_id > vendors.id
+
+Ref: conversions.ad_campaign_id > ad_campaigns.id
+Ref: conversions.ad_id > ads.id
+Ref: conversions.organization_id > vendors.id
+Ref: conversions.vendor_id > vendors.id
+
+Ref: conversion_events.conversion_id > conversions.id
+Ref: conversion_events.organization_id > vendors.id
+Ref: conversion_events.vendor_id > vendors.id
+
+Ref: ad_notifications.organization_id > vendors.id
+Ref: ad_notifications.vendor_id > vendors.id
+
+Ref: reports.organization_id > vendors.id
+Ref: reports.vendor_id > vendors.id
+
+// Catalog
+Ref: catalogs.vendor_id > vendors.id
+Ref: catalogs.created_by > users.id
+Ref: catalogs.updated_by > users.id
+
+Ref: catalog_settings.catalog_id > catalogs.id
+Ref: catalog_settings.vendor_id > vendors.id
+
+Ref: catalog_connections.catalog_id > catalogs.id
+Ref: catalog_connections.vendor_id > vendors.id
+
+Ref: categories.catalog_id > catalogs.id
+Ref: categories.parent_id > categories.id
+Ref: categories.vendor_id > vendors.id
+
+Ref: brands.catalog_id > catalogs.id
+Ref: brands.vendor_id > vendors.id
+
+Ref: collections.catalog_id > catalogs.id
+Ref: collections.vendor_id > vendors.id
+
+Ref: products.catalog_id > catalogs.id
+Ref: products.category_id > categories.id
+Ref: products.brand_id > brands.id
+Ref: products.vendor_id > vendors.id
+
+Ref: product_variants.product_id > products.id
+Ref: product_variants.vendor_id > vendors.id
+
+Ref: product_images.product_id > products.id
+Ref: product_images.vendor_id > vendors.id
+
+Ref: product_tags.product_id > products.id
+
+Ref: collection_products.collection_id > collections.id
+Ref: collection_products.product_id > products.id
+
+Ref: catalog_imports.catalog_id > catalogs.id
+Ref: catalog_imports.vendor_id > vendors.id
+
+Ref: catalog_exports.catalog_id > catalogs.id
+Ref: catalog_exports.vendor_id > vendors.id
+
+Ref: catalog_sync_logs.catalog_id > catalogs.id
+Ref: catalog_sync_logs.vendor_id > vendors.id
+
+Ref: catalog_activity_logs.catalog_id > catalogs.id
+Ref: catalog_activity_logs.vendor_id > vendors.id
+
+// Ecommerce
+Ref: shopify_integrations.vendor_id > vendors.id
+Ref: shopify_orders.shopify_integrations_id > shopify_integrations.id
+Ref: shopify_orders.vendor_id > vendors.id
+Ref: shopify_orders.contact_id > contacts.id
+Ref: shopify_order_notifications.shopify_orders_id > shopify_orders.id
+Ref: shopify_order_notifications.vendor_id > vendors.id
+Ref: shopify_order_notifications.contact_id > contacts.id
+
+Ref: woocommerce_integrations.vendor_id > vendors.id
+Ref: woocommerce_orders.woocommerce_integrations_id > woocommerce_integrations.id
+Ref: woocommerce_orders.vendor_id > vendors.id
+Ref: woocommerce_orders.contact_id > contacts.id
+Ref: woocommerce_order_notifications.woocommerce_orders_id > woocommerce_orders.id
+Ref: woocommerce_order_notifications.vendor_id > vendors.id
+Ref: woocommerce_order_notifications.contact_id > contacts.id
+Ref: woocommerce_order_notifications.template_id > whatsapp_templates.id
+
+Ref: whatsapp_orders.vendor_id > vendors.id
+Ref: whatsapp_orders.contact_id > contacts.id
+Ref: whatsapp_payments.vendor_id > vendors.id
+
+// Appointments
+Ref: whalexy_appointment_services.vendor_id > vendors.id
+Ref: whalexy_appointment_resources.vendor_id > vendors.id
+Ref: whalexy_appointment_service_resources.appointment_service_id > whalexy_appointment_services.id
+Ref: whalexy_appointment_service_resources.appointment_resource_id > whalexy_appointment_resources.id
+Ref: whalexy_appointment_schedules.appointment_resource_id > whalexy_appointment_resources.id
+Ref: whalexy_appointment_schedule_exceptions.appointment_resource_id > whalexy_appointment_resources.id
+Ref: whalexy_appointments.vendor_id > vendors.id
+Ref: whalexy_appointments.contact_id > contacts.id
+Ref: whalexy_appointments.appointment_service_id > whalexy_appointment_services.id
+Ref: whalexy_appointments.appointment_resource_id > whalexy_appointment_resources.id
+Ref: whalexy_appointment_holds.vendor_id > vendors.id
+Ref: whalexy_appointment_slot_claims.appointment_id > whalexy_appointments.id
+Ref: whalexy_appointment_reminder_deliveries.appointment_id > whalexy_appointments.id
+Ref: whalexy_appointment_conversation_states.vendor_id > vendors.id
+Ref: whalexy_appointment_conversation_states.contact_id > contacts.id
+Ref: whalexy_appointment_automation_settings.vendor_id > vendors.id
+
+// WhatsApp
+Ref: whatsapp_onboarding_connections.vendor_id > vendors.id
+Ref: whatsapp_blue_tick_applications.vendor_id > vendors.id
+Ref: whatsapp_calling_settings.vendor_id > vendors.id
+Ref: whatsapp_calls.vendor_id > vendors.id
+Ref: whatsapp_call_artifacts.vendor_id > vendors.id
+Ref: whatsapp_flow_launch_settings.vendor_id > vendors.id
+Ref: whatsapp_flow_responses.vendor_id > vendors.id
+Ref: native_meta_flows.vendor_id > vendors.id
+
+// OOO
+Ref: out_of_office_settings.vendor_id > vendors.id
+Ref: out_of_office_schedules.out_of_office_settings_id > out_of_office_settings.id
+Ref: out_of_office_deliveries.out_of_office_settings_id > out_of_office_settings.id
+
+// Comment to DM
+Ref: comment_to_dm_automations.vendor_id > vendors.id
+Ref: comment_to_dm_executions.automation_id > comment_to_dm_automations.id
+Ref: comment_to_dm_executions.vendor_id > vendors.id
+
+// Billing
+Ref: subscriptions.vendor_id > vendors.id
+Ref: subscription_items.subscription_id > subscriptions.id
+Ref: subscription_addons.vendor_id > vendors.id
+Ref: manual_subscriptions.vendor_id > vendors.id
+Ref: vendor_ai_usages.vendor_id > vendors.id
+Ref: vendor_ai_monthly_invoices.vendor_id > vendors.id
+
+// Blog
+Ref: blog_posts.author_id > users.id
+Ref: blog_posts.category_id > blog_categories.id
+Ref: blog_post_tag.blog_post_id > blog_posts.id
+Ref: blog_post_tag.blog_tag_id > blog_tags.id
+
+// System
+Ref: auth_sessions.user_id > users.id
+Ref: verification_challenges.user_id > users.id
+Ref: verifications.user_id > users.id
+Ref: outbox_jobs.vendor_id > vendors.id
+Ref: integration_credentials.vendor_id > vendors.id
+Ref: audit_events.vendor_id > vendors.id
+Ref: api_keys.vendor_id > vendors.id
+Ref: api_keys.user_id > users.id
+Ref: native_memberships.vendor_id > vendors.id
+Ref: native_memberships.user_id > users.id
+Ref: native_media.vendor_id > vendors.id
+Ref: native_channel_messages.vendor_id > vendors.id
+Ref: native_channel_messages.contact_id > contacts.id
+Ref: google_sheet_automations.vendor_id > vendors.id

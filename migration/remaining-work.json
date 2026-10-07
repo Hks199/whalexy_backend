@@ -1,0 +1,107 @@
+{
+  "remainingWorkAreas": 21,
+  "sourceModules": 33,
+  "partiallyImplementedModules": 32,
+  "modulesWithoutDedicatedPort": 1,
+  "genericDataOnlyModules": 0,
+  "partialLegacyUrlFieldAdapters": 150,
+  "originalApiFileDeclarations": 35,
+  "originalApiFilePartialAdapters": 35,
+  "originalApiFileWithoutRecordedAdapters": 0,
+  "contractsWithoutRecordedAdapter": 498,
+  "verifiedLegacyContracts": 0,
+  "pendingLegacyContracts": 648,
+  "unmetAcceptanceRequirements": [
+    "databaseCompatibilityVerified",
+    "originalFrontendCompatibilityVerified",
+    "providerContractsVerified",
+    "allDomainWorkflowsReviewed"
+  ],
+  "countMeaning": "Grouped audited work areas, not individual features. Partially implemented modules retain source behavior or verification gaps. Route declarations are counted separately. Missing adapter records can overlap implemented native capabilities and do not establish an absent-feature count.",
+  "areas": [
+    {
+      "area": "Auth",
+      "remaining": "Social login/OAuth, source pre-registration/session-based resend contracts, complete original mobile/secured-form/session policies, live email/SMS delivery, unsupported legacy hashes and verified credential/data import; native mobile login supports verified email/username/phone identifiers, and registration/logout/current-user adapters are implemented"
+    },
+    {
+      "area": "User / Vendor",
+      "remaining": "Central administration, support impersonation, original role/permission aliases, invitations, deletion and project migration"
+    },
+    {
+      "area": "Contact",
+      "remaining": "Original Excel import/export and legacy file/response contracts, subscription limit enforcement, complete legacy phone-scope reconciliation, original field-definition/deletion contracts and imported name/value/configuration reconciliation, original labels/settings/UI contracts and realtime group assignment; native guarded field-definition lifecycle, CSV country/group/custom-field columns, typed value edits and country references are implemented"
+    },
+    {
+      "area": "WhatsAppService",
+      "remaining": "Embedded signup client integration/coexistence and full recovery, template studio/analytics, private/provider-ID media adapters, standalone carousel adapters, legacy interactive input/response/UI adapters and live provider proof, original reaction UI/realtime/plan adapters and provider reconciliation, commerce, delivery health and reconnect behavior; native signup, standalone button/list/CTA/location-request and queued send/remove/customer reaction state adapters are implemented"
+    },
+    {
+      "area": "Campaign",
+      "remaining": "Advanced/named/carousel/Flow-button/private/provider-ID template adapters, original synchronous test-send/creation contracts, historical source-data migration, original URLs/response shapes, requeue/uncertain reconciliation, original reports and billing/plan enforcement"
+    },
+    {
+      "area": "BotReply",
+      "remaining": "Webhook actions, Meta Flow failure branches/keyword-only launch integration, catalog failure branches/social rendering, advanced/named/carousel/Flow-button template adapters and legacy template-handler equivalence, CTA dynamic destinations/header/footer/media mappings, private/provider-ID media adapters, question PCRE/manual connector/no-match scenarios and legacy configuration normalization, legacy canvas/reply export conversion, nonterminal assignment chains, cross-channel receipts, original configuration contracts and live delivery verification; native message/question/button/list/CTA/goto/custom-field/wait/terminal-assignment/public-link-media/session-node/template/catalog/Meta-Flow execution, typed owned question storage, ordered text/numeric conditions and restarts are implemented"
+    },
+    {
+      "area": "Flows",
+      "remaining": "Original builder normalization/UI contracts, template/campaign adapters, dynamic encrypted business actions, key import/rotation, keyword launching, analytics/response reporting/export and complete uncertain-effect reconciliation; native provider lifecycle, encrypted form routing/key registration and guarded published-flow messages with bound response tokens are implemented"
+    },
+    {
+      "area": "FacebookService / FacebookChatService / InstagramService / MetaChannel",
+      "remaining": "Social-channel OAuth/embedded signup/Instagram Login, remote webhook registration, conversation sync, full media/content management/publishing/receipts and complete account disconnect lifecycle; native verified Page-token setup and guarded signed comment/private/public/follow-gate workflows are implemented; browser signup endpoints currently support WhatsApp only"
+    },
+    {
+      "area": "CommentToDm",
+      "remaining": "Original URL/input/view/response/role contracts, content selection/sync, private/provider-ID and unsupported attachment adapters, live-comment broadcast verification, inbox/UI equivalence, provider receipt/reconciliation and live contracts; native keyword/scope matching, durable private/public replies, public attachments and recipient-bound Instagram follow checks/content/retry prompts are implemented"
+    },
+    {
+      "area": "Catalog",
+      "remaining": "Catalog OAuth/embedded onboarding, shared client catalogs, resumable snapshots beyond 5,000 products, additional provider price formats/currencies, source editor/taxonomy/image contracts, remote disconnect/link management and uncertain publication reconciliation; native verified connection, complete bounded mirror, draft/provider publishing and guarded catalog/product sends are implemented"
+    },
+    {
+      "area": "Integration",
+      "remaining": "Abandoned-checkout recovery, advanced/private/provider-ID notification templates, source settings translation, remote registration/OAuth, full topic coverage and live provider contracts; core signed order processors, native text/public-media/dynamic-URL/coupon notification configuration/delivery and number-scoped order/contact linking are implemented"
+    },
+    {
+      "area": "Appointment",
+      "remaining": "Original URL/response/view contracts, capacity pools, live reminder/provider contracts, complex template parameter mapping, full agent/resource linking and conversational automation"
+    },
+    {
+      "area": "AdsManager",
+      "remaining": "OAuth, remote campaign/ad-set/creative/ad publication, complete provider targeting/budget rules, remote ad/ad-set insights, creative asset sync, historical attribution reconciliation, scheduled/PDF/XLSX reports, large-account resumable pagination, original envelopes/notifications/contracts, live provider proof and complete uncertain-operation reconciliation; native local draft creation/duplication/archive/delete, five partial original API adapters, bounded ad/set metadata sync, signed referral capture and exact immutable attributed outcomes are implemented"
+    },
+    {
+      "area": "AIIntelligence / CXScore / ConversationClassification",
+      "remaining": "Source URL/response equivalence, detailed agent scoring analytics, remote handoff/AI automation integration, realtime notifications, external knowledge indexing/crawling contracts, pricing, monthly billing and live provider verification; native queued transcript analysis, validated scores/summaries, usage recording and classification presets/tags/history are implemented"
+    },
+    {
+      "area": "OutOfOffice",
+      "remaining": "Original frontend/view contracts, realtime schedule updates, live delivery verification and complete source behavior comparison"
+    },
+    {
+      "area": "Subscription",
+      "remaining": "Plan limits, complete add-on renewal/settlement, refunds, automatic bank/PayPal/Razorpay settlement, tax invoice details, original frontend/contracts and live provider verification; native manual quotes/receipt submission/review/carry-forward/payment invoices, Stripe checkout/portal/paginated invoices, authoritative subscription reconciliation, signed snapshots and central overrides are implemented"
+    },
+    {
+      "area": "TallyIntegration / Sheets",
+      "remaining": "Original Blade/URL/redirect/field/token contracts, legacy configuration activation, sheet-driven contact creation, named/advanced template adapters, private/base64 invoice PDF/provider media uploads, real Google trigger installation and live Tally/provider verification; native script generation/new-row/column rules/guarded template execution and Tally invoice/document sending/status are implemented"
+    },
+    {
+      "area": "Media",
+      "remaining": "Source storage compatibility, object storage, Meta upload/download and quotas/retention"
+    },
+    {
+      "area": "Blog / Page",
+      "remaining": "Original Blade/URL/response contracts, CMS image uploads and storage, legacy style/embed fidelity, source data import, vendor public-page domain routing and complete behavior comparison"
+    },
+    {
+      "area": "Home / Guide / Translation / Configuration / Dashboard / LiveChat",
+      "remaining": "Original public-site Blade/marketing/contact/reCAPTCHA/QR/preview/style contracts, remaining configuration drivers/plans/currency/licensing/localization settings, original analytics, authenticated realtime events, guide navigation/mail fallback and translation scanning/plural/context/Excel/auto-translation/frontend contracts; native typed site settings, public Home/menu/blog/policy data, race-safe registration controls, guide contact email, central language/catalog/RTL/PO workflows and corrected Portuguese import bundle are implemented"
+    },
+    {
+      "area": "WhatsApp Calling",
+      "remaining": "Full permission/signaling/claim/heartbeat/reconciliation protocol, recording/transcription consent/settings, artifact download/retention and live browser tests"
+    }
+  ]
+}

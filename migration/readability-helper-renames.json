@@ -1,0 +1,367 @@
+[
+  {
+    "file": "src/modules/ads-manager/services/ads-manager-support.service.ts",
+    "from": "owner",
+    "to": "requireAdAccountOwner"
+  },
+  {
+    "file": "src/modules/ads-manager/services/ads-manager-support.service.ts",
+    "from": "currentAccess",
+    "to": "getActiveAdAccountAccess"
+  },
+  {
+    "file": "src/modules/ads-manager/services/ads-manager-support.service.ts",
+    "from": "graph",
+    "to": "requestAdsGraphApi"
+  },
+  {
+    "file": "src/modules/ads-manager/services/ads-manager-support.service.ts",
+    "from": "pages",
+    "to": "fetchAdsGraphPages"
+  },
+  {
+    "file": "src/modules/ads-manager/services/ads-manager-support.service.ts",
+    "from": "connected",
+    "to": "getConnectedAdAccount"
+  },
+  {
+    "file": "src/modules/ads-manager/services/ads-manager-support.service.ts",
+    "from": "report",
+    "to": "buildAdReport"
+  },
+  {
+    "file": "src/modules/catalogs/services/catalogs-support.service.ts",
+    "from": "bad",
+    "to": "throwCatalogResponseError"
+  },
+  {
+    "file": "src/modules/catalogs/services/catalogs-support.service.ts",
+    "from": "owner",
+    "to": "requireCatalogOwner"
+  },
+  {
+    "file": "src/modules/catalogs/services/catalogs-support.service.ts",
+    "from": "graph",
+    "to": "requestCatalogGraphApi"
+  },
+  {
+    "file": "src/modules/catalogs/services/catalogs-support.service.ts",
+    "from": "pages",
+    "to": "fetchCatalogGraphPages"
+  },
+  {
+    "file": "src/modules/catalogs/services/catalogs-support.service.ts",
+    "from": "membership",
+    "to": "getCatalogMembership"
+  },
+  {
+    "file": "src/modules/catalogs/services/catalogs-support.service.ts",
+    "from": "connected",
+    "to": "getConnectedCatalog"
+  },
+  {
+    "file": "src/modules/catalogs/services/catalogs-support.service.ts",
+    "from": "fields",
+    "to": "catalogProviderFields"
+  },
+  {
+    "file": "src/modules/catalogs/services/catalogs-support.service.ts",
+    "from": "productData",
+    "to": "buildCatalogProductData"
+  },
+  {
+    "file": "src/modules/catalogs/services/catalogs-support.service.ts",
+    "from": "remoteProduct",
+    "to": "parseCatalogProduct"
+  },
+  {
+    "file": "src/modules/catalogs/services/catalogs-support.service.ts",
+    "from": "catalogPrice",
+    "to": "parseCatalogPrice"
+  },
+  {
+    "file": "src/modules/campaigns/services/campaigns-support.service.ts",
+    "from": "locked",
+    "to": "lockCampaign"
+  },
+  {
+    "file": "src/modules/campaigns/services/campaigns-support.service.ts",
+    "from": "checkOptions",
+    "to": "validateCampaignOptions"
+  },
+  {
+    "file": "src/modules/campaigns/services/campaigns-support.service.ts",
+    "from": "configuration",
+    "to": "parseCampaignConfiguration"
+  },
+  {
+    "file": "src/modules/campaigns/services/campaigns-support.service.ts",
+    "from": "active",
+    "to": "activeCampaignStatuses"
+  },
+  {
+    "file": "src/modules/campaigns/services/campaigns-support.service.ts",
+    "from": "terminal",
+    "to": "terminalCampaignStatuses"
+  },
+  {
+    "file": "src/modules/campaigns/services/campaigns-support.service.ts",
+    "from": "BATCH",
+    "to": "CAMPAIGN_BATCH_SIZE"
+  },
+  {
+    "file": "src/modules/campaigns/services/campaigns-support.service.ts",
+    "from": "Options",
+    "to": "CampaignOptions"
+  },
+  {
+    "file": "src/modules/comment-automations/services/comment-automations-support.service.ts",
+    "from": "signed",
+    "to": "requireSignedCommentReceipt"
+  },
+  {
+    "file": "src/modules/comment-automations/services/comment-automations-support.service.ts",
+    "from": "lock",
+    "to": "lockCommentAutomation"
+  },
+  {
+    "file": "src/modules/comment-automations/services/comment-automations-support.service.ts",
+    "from": "nativeConfig",
+    "to": "retainAutomationProof"
+  },
+  {
+    "file": "src/modules/comment-automations/services/comment-automations-support.service.ts",
+    "from": "content",
+    "to": "buildCommentReplyContent"
+  },
+  {
+    "file": "src/modules/comment-automations/services/comment-automations-support.service.ts",
+    "from": "effect",
+    "to": "recordCommentEffect"
+  },
+  {
+    "file": "src/modules/comment-automations/services/comment-automations-support.service.ts",
+    "from": "existingEffect",
+    "to": "getRecordedCommentEffect"
+  },
+  {
+    "file": "src/modules/comment-automations/services/comment-automations-support.service.ts",
+    "from": "rowData",
+    "to": "buildAutomationData"
+  },
+  {
+    "file": "src/modules/contact-workflows/services/contact-workflows-support.service.ts",
+    "from": "group",
+    "to": "getOwnedContactGroup"
+  },
+  {
+    "file": "src/modules/contact-workflows/services/contact-workflows-support.service.ts",
+    "from": "numericId",
+    "to": "parseContactIdentifier"
+  },
+  {
+    "file": "src/modules/contact-workflows/services/contact-workflows-support.service.ts",
+    "from": "serializable",
+    "to": "serializableTransactionOptions"
+  },
+  {
+    "file": "src/modules/appointments/services/appointments-support.service.ts",
+    "from": "localTime",
+    "to": "toLocalAppointmentTime"
+  },
+  {
+    "file": "src/modules/appointments/services/appointments-support.service.ts",
+    "from": "catalog",
+    "to": "getAppointmentResource"
+  },
+  {
+    "file": "src/modules/appointments/services/appointments-support.service.ts",
+    "from": "inWorkingHours",
+    "to": "isWithinWorkingHours"
+  },
+  {
+    "file": "src/modules/appointments/services/appointments-support.service.ts",
+    "from": "checkSlot",
+    "to": "validateAppointmentSlot"
+  },
+  {
+    "file": "src/modules/manual-billing/services/manual-billing-support.service.ts",
+    "from": "periods",
+    "to": "subscriptionPeriods"
+  },
+  {
+    "file": "src/modules/manual-billing/services/manual-billing-support.service.ts",
+    "from": "price",
+    "to": "getPlanPrice"
+  },
+  {
+    "file": "src/modules/manual-billing/services/manual-billing-support.service.ts",
+    "from": "json",
+    "to": "presentManualSubscription"
+  },
+  {
+    "file": "src/modules/manual-billing/services/manual-billing-support.service.ts",
+    "from": "vendorLock",
+    "to": "lockVendorBilling"
+  },
+  {
+    "file": "src/modules/manual-billing/services/manual-billing-support.service.ts",
+    "from": "stripeConflict",
+    "to": "assertNoStripeConflict"
+  },
+  {
+    "file": "src/modules/manual-billing/services/manual-billing-support.service.ts",
+    "from": "credit",
+    "to": "calculateSubscriptionCredit"
+  },
+  {
+    "file": "src/modules/manual-billing/services/manual-invoices.service.ts",
+    "from": "invoice",
+    "to": "buildManualInvoice"
+  },
+  {
+    "file": "src/modules/meta-flows/services/meta-flows-support.service.ts",
+    "from": "id",
+    "to": "requireMetaId"
+  },
+  {
+    "file": "src/modules/meta-flows/services/meta-flows-support.service.ts",
+    "from": "inputId",
+    "to": "validateMetaInputId"
+  },
+  {
+    "file": "src/modules/meta-flows/services/meta-flows-support.service.ts",
+    "from": "bad",
+    "to": "throwMetaFlowResponseError"
+  },
+  {
+    "file": "src/modules/meta-flows/services/meta-flows-support.service.ts",
+    "from": "details",
+    "to": "flowDetailFields"
+  },
+  {
+    "file": "src/modules/meta-flows/services/meta-flows-support.service.ts",
+    "from": "snapshot",
+    "to": "parseMetaFlowSnapshot"
+  },
+  {
+    "file": "src/modules/meta-flows/services/meta-flows-support.service.ts",
+    "from": "context",
+    "to": "getFlowAccountContext"
+  },
+  {
+    "file": "src/modules/meta-flows/services/meta-flows-support.service.ts",
+    "from": "cursor",
+    "to": "validateFlowCursor"
+  },
+  {
+    "file": "src/modules/meta-flows/services/meta-flows-support.service.ts",
+    "from": "owned",
+    "to": "getOwnedMetaFlow"
+  },
+  {
+    "file": "src/modules/billing/services/billing-support.service.ts",
+    "from": "supported",
+    "to": "supportedBillingProviders"
+  },
+  {
+    "file": "src/modules/billing/services/billing-support.service.ts",
+    "from": "statuses",
+    "to": "subscriptionStatusMap"
+  },
+  {
+    "file": "src/modules/billing/services/billing-support.service.ts",
+    "from": "invalid",
+    "to": "throwSubscriptionResponseError"
+  },
+  {
+    "file": "src/modules/billing/services/billing-support.service.ts",
+    "from": "epoch",
+    "to": "parseProviderTimestamp"
+  },
+  {
+    "file": "src/modules/billing/services/billing-support.service.ts",
+    "from": "stripeId",
+    "to": "parseStripeId"
+  },
+  {
+    "file": "src/modules/sheets/services/sheets-support.service.ts",
+    "from": "native",
+    "to": "readNativeSheetSettings"
+  },
+  {
+    "file": "src/modules/sheets/services/sheets-support.service.ts",
+    "from": "present",
+    "to": "presentSheetIntegration"
+  },
+  {
+    "file": "src/modules/sheets/services/sheets-support.service.ts",
+    "from": "lock",
+    "to": "lockSheetIntegration"
+  },
+  {
+    "file": "src/modules/sheets/services/sheets-support.service.ts",
+    "from": "configured",
+    "to": "getConfiguredSheetIntegration"
+  },
+  {
+    "file": "src/modules/sheets/services/sheets-support.service.ts",
+    "from": "source",
+    "to": "getSheetCredential"
+  },
+  {
+    "file": "src/modules/store-notifications/services/store-notifications-support.service.ts",
+    "from": "Setting",
+    "to": "StoreNotificationSettings"
+  },
+  {
+    "file": "src/modules/store-notifications/services/store-notifications-support.service.ts",
+    "from": "integration",
+    "to": "getStoreIntegration"
+  },
+  {
+    "file": "src/modules/flow-data/services/flow-data-support.service.ts",
+    "from": "invalidSession",
+    "to": "throwFlowSessionError"
+  },
+  {
+    "file": "src/modules/flow-data/services/flow-data-support.service.ts",
+    "from": "scalar",
+    "to": "isScalarFlowValue"
+  },
+  {
+    "file": "src/modules/flow-data/services/flow-data-support.service.ts",
+    "from": "canonical",
+    "to": "canonicalizeFlowData"
+  },
+  {
+    "file": "src/modules/flow-data/services/flow-data-support.service.ts",
+    "from": "endpoint",
+    "to": "getFlowEndpointUrl"
+  },
+  {
+    "file": "src/modules/flow-data/services/flow-data-support.service.ts",
+    "from": "configKey",
+    "to": "flowConfigReceiptKey"
+  },
+  {
+    "file": "src/modules/flow-data/services/flow-data-support.service.ts",
+    "from": "publicState",
+    "to": "presentFlowKeyState"
+  },
+  {
+    "file": "src/modules/flow-data/services/flow-data-support.service.ts",
+    "from": "owner",
+    "to": "requireFlowConfigurationOwner"
+  },
+  {
+    "file": "src/modules/flow-data/services/flow-data-support.service.ts",
+    "from": "keyPair",
+    "to": "generateFlowKeyPair"
+  },
+  {
+    "file": "src/modules/flow-data/services/flow-data-support.service.ts",
+    "from": "fingerprint",
+    "to": "publicKeyFingerprint"
+  }
+]

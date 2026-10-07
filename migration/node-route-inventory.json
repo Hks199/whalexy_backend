@@ -1,0 +1,1739 @@
+{
+  "registeredMethodPathPairs": 431,
+  "methods": {
+    "DELETE": 28,
+    "GET": 169,
+    "HEAD": 1,
+    "OPTIONS": 1,
+    "PATCH": 13,
+    "POST": 195,
+    "PUT": 24
+  },
+  "note": "Explicit method/path patterns, including expanded loops and mounted aliases. Middleware, automatic HEAD/OPTIONS handling and provider compatibility verification are excluded.",
+  "endpoints": [
+    {
+      "method": "DELETE",
+      "path": "/api"
+    },
+    {
+      "method": "GET",
+      "path": "/api"
+    },
+    {
+      "method": "HEAD",
+      "path": "/api"
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api"
+    },
+    {
+      "method": "POST",
+      "path": "/api"
+    },
+    {
+      "method": "PUT",
+      "path": "/api"
+    },
+    {
+      "method": "GET",
+      "path": "/api/:vendorUid/ads-manager/campaigns"
+    },
+    {
+      "method": "POST",
+      "path": "/api/:vendorUid/ads-manager/campaigns"
+    },
+    {
+      "method": "POST",
+      "path": "/api/:vendorUid/ads-manager/campaigns/:campaign/action"
+    },
+    {
+      "method": "POST",
+      "path": "/api/:vendorUid/ads-manager/conversions"
+    },
+    {
+      "method": "GET",
+      "path": "/api/:vendorUid/ads-manager/dashboard"
+    },
+    {
+      "method": "POST",
+      "path": "/api/:vendorUid/appointments"
+    },
+    {
+      "method": "GET",
+      "path": "/api/:vendorUid/appointments/:appointmentUid"
+    },
+    {
+      "method": "POST",
+      "path": "/api/:vendorUid/appointments/:appointmentUid/cancel"
+    },
+    {
+      "method": "GET",
+      "path": "/api/:vendorUid/appointments/availability"
+    },
+    {
+      "method": "POST",
+      "path": "/api/:vendorUid/appointments/holds"
+    },
+    {
+      "method": "GET",
+      "path": "/api/:vendorUid/appointments/resources"
+    },
+    {
+      "method": "POST",
+      "path": "/api/:vendorUid/appointments/resources"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/:vendorUid/appointments/resources/:resourceUid/schedule"
+    },
+    {
+      "method": "GET",
+      "path": "/api/:vendorUid/appointments/services"
+    },
+    {
+      "method": "POST",
+      "path": "/api/:vendorUid/appointments/services"
+    },
+    {
+      "method": "POST",
+      "path": "/api/:vendorUid/contact/create"
+    },
+    {
+      "method": "POST",
+      "path": "/api/:vendorUid/contact/send-media-message"
+    },
+    {
+      "method": "POST",
+      "path": "/api/:vendorUid/contact/send-message"
+    },
+    {
+      "method": "POST",
+      "path": "/api/:vendorUid/contact/send-template-message"
+    },
+    {
+      "method": "POST",
+      "path": "/api/:vendorUid/contact/update/:phoneNumber"
+    },
+    {
+      "method": "GET",
+      "path": "/api/:vendorUid/tally/ping"
+    },
+    {
+      "method": "POST",
+      "path": "/api/:vendorUid/tally/send-invoice"
+    },
+    {
+      "method": "POST",
+      "path": "/api/ai/analyze-conversation"
+    },
+    {
+      "method": "GET",
+      "path": "/api/ai/conversation-analysis/:conversationId"
+    },
+    {
+      "method": "GET",
+      "path": "/api/user"
+    },
+    {
+      "method": "POST",
+      "path": "/api/user/login-process"
+    },
+    {
+      "method": "POST",
+      "path": "/api/user/logout"
+    },
+    {
+      "method": "GET",
+      "path": "/api/user/prepare-sign-up"
+    },
+    {
+      "method": "POST",
+      "path": "/api/user/process-sign-up"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/configuration"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/configuration/general"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/admin/configuration/general"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/configuration/misc_settings"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/admin/configuration/misc_settings"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/configuration/user"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/admin/configuration/user"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/content/blog"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/admin/content/blog"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/content/blog-taxonomy/categories"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/admin/content/blog-taxonomy/categories"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/admin/content/blog-taxonomy/categories/:id"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/admin/content/blog-taxonomy/categories/:id"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/content/blog-taxonomy/tags"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/admin/content/blog-taxonomy/tags"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/admin/content/blog-taxonomy/tags/:id"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/admin/content/blog-taxonomy/tags/:id"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/admin/content/blog/:id"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/content/blog/:id"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/admin/content/blog/:id"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/admin/content/blog/:id/duplicate"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/admin/content/blog/:id/publish"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/admin/content/blog/:id/unpublish"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/content/pages"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/admin/content/pages"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/admin/content/pages/:id"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/admin/content/pages/:id"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/jobs"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/admin/jobs/:id/retry"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/translations"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/admin/translations"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/admin/translations/:locale"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/admin/translations/:locale"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/translations/:locale/export-po"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/admin/translations/:locale/import-po"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/translations/:locale/messages"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/admin/translations/:locale/messages"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/admin/vendors/:vendorId/billing/addons/ai-replies/override"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/admin/vendors/:vendorId/billing/addons/ai-replies/override"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/admin/vendors/:vendorId/billing/manual/:id/approve"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/vendors/:vendorId/billing/manual/:id/receipt"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/admin/vendors/:vendorId/billing/manual/:id/reject"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/forgot-password"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/login"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/logout"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/auth/me"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/phone/start"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/phone/verify"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/refresh"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/register"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/resend-verification"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/reset-password"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/verify-email"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/projects"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/projects"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/projects/:id/select"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/public/blog"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/public/blog/:slug"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/public/blog/categories"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/public/home"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/public/pages"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/public/pages/:slug"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/public/policies/:policy"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/public/translations"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/public/translations/:locale"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/vendor/knowledge/:documentId"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendor/knowledge/list"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendor/knowledge/upload"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendor/knowledge/website"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/ads-manager/accounts"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/vendors/:vendorId/ads-manager/accounts/:id"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/ads-manager/accounts/:id/structure/sync"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/ads-manager/accounts/:id/sync"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/ads-manager/accounts/connect"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/ads-manager/campaigns"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/ads-manager/campaigns/:id/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/ads-manager/contacts/:id/attributions"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/ads-manager/conversions"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/ads-manager/dashboard"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/ads-manager/reports/export.csv"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/ai/knowledge"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/vendors/:vendorId/ai/knowledge/:id"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/ai/reply"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/ai/support"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/appointments"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/appointments/:id"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/appointments/:id/cancel"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/appointments/:id/no-show"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/appointments/:id/reschedule"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/appointments/automation"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/vendors/:vendorId/appointments/automation"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/appointments/availability"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/appointments/holds"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/appointments/off-duty"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/appointments/off-duty"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/vendors/:vendorId/appointments/off-duty/:exceptionId"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/appointments/resources"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/appointments/resources"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/vendors/:vendorId/appointments/resources/:resourceUid"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/vendors/:vendorId/appointments/resources/:resourceUid"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/appointments/resources/:resourceUid/schedule"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/vendors/:vendorId/appointments/resources/:resourceUid/schedule"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/appointments/service-resources"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/appointments/services"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/appointments/services"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/vendors/:vendorId/appointments/services/:serviceUid"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/vendors/:vendorId/appointments/services/:serviceUid"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/billing"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/billing/checkout"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/billing/invoices"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/billing/manual"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/billing/manual/:id"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/billing/manual/:id/cancel"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/billing/manual/:id/invoice"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/billing/manual/:id/invoice.pdf"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/billing/manual/:id/submit"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/billing/manual/quote"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/billing/plans"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/billing/portal"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/bot-flows"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/bot-flows"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/vendors/:vendorId/bot-flows/:id"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/bot-flows/:id"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/vendors/:vendorId/bot-flows/:id"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/bot-flows/:id/clone"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/bot-flows/:id/export"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/bot-flows/:id/preview"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/bot-flows/import"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/bot-replies"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/bot-replies"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/vendors/:vendorId/bot-replies/:id"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/vendors/:vendorId/bot-replies/:id"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/vendors/:vendorId/bot-replies/settings/timing"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/campaigns"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/campaigns"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/vendors/:vendorId/campaigns/:id"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/campaigns/:id/archive"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/campaigns/:id/cancel"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/campaigns/:id/duplicate"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/campaigns/:id/pause"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/campaigns/:id/recipients"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/campaigns/:id/report"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/campaigns/:id/resume"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/campaigns/:id/status"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/campaigns/:id/test"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/campaigns/:id/unarchive"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/catalogs"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/vendors/:vendorId/catalogs/:catalogId/connection"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/catalogs/:catalogId/products"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/catalogs/:catalogId/products"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/vendors/:vendorId/catalogs/:catalogId/products/:productId"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/catalogs/:catalogId/products/:productId/publish"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/catalogs/:catalogId/sync"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/catalogs/connect"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/classifications/contacts/:id"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/vendors/:vendorId/classifications/contacts/:id"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/classifications/presets"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/classifications/tags"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/vendors/:vendorId/classifications/tags/:id"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/comment-automations"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/comment-automations"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/vendors/:vendorId/comment-automations/:id"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/comment-automations/:id"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/vendors/:vendorId/comment-automations/:id"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/comment-automations/executions"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/contacts"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/contacts"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/vendors/:vendorId/contacts/:id"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/contacts/:id"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/vendors/:vendorId/contacts/:id"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/contacts/:id/ai"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/contacts/:id/assign"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/contacts/:id/custom-values"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/vendors/:vendorId/contacts/:id/custom-values"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/contacts/:id/groups"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/vendors/:vendorId/contacts/:id/groups/:groupId"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/contacts/:id/labels"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/vendors/:vendorId/contacts/:id/labels"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/contacts/:id/marketing-consent"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/contacts/:id/messages"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/contacts/:id/notes"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/vendors/:vendorId/contacts/:id/notes"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/contacts/:id/resolve"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/contacts/export"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/contacts/import"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/custom-fields"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/custom-fields"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/vendors/:vendorId/custom-fields/:id"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/custom-fields/:id"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/vendors/:vendorId/custom-fields/:id"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/cx-scores"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/cx-scores/:id"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/cx-scores/:id/retry"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/dashboard"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/groups/:id/archive"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/groups/:id/assign"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/groups/:id/merge"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/guide"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/handoffs"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/handoffs/:id/resolve"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/handoffs/:id/transfer"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/handoffs/contacts/:contactId/accept"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/integrations"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/vendors/:vendorId/integrations/:id"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/integrations/meta"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/integrations/meta/signup/complete"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/integrations/meta/signup/start"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/integrations/social/connect"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/integrations/store"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/integrations/stores/:provider/:integrationId/notifications"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/vendors/:vendorId/integrations/stores/:provider/:integrationId/notifications"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/integrations/templates/sync"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/intelligence/analyze-conversation"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/intelligence/conversation-analysis/:conversationId"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/jobs"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/jobs/:id/retry"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/vendors/:vendorId/knowledge/:documentId"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/knowledge/list"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/knowledge/upload"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/knowledge/website"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/media"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/media/:id"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/messages/send"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/meta-flows/:phoneNumberId"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/meta-flows/:phoneNumberId"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/meta-flows/:phoneNumberId/:flowId"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/vendors/:vendorId/meta-flows/:phoneNumberId/:flowId"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/meta-flows/:phoneNumberId/:flowId/data-endpoint"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/vendors/:vendorId/meta-flows/:phoneNumberId/:flowId/data-endpoint"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/meta-flows/:phoneNumberId/:flowId/delete"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/meta-flows/:phoneNumberId/:flowId/deprecate"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/meta-flows/:phoneNumberId/:flowId/json"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/vendors/:vendorId/meta-flows/:phoneNumberId/:flowId/json"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/meta-flows/:phoneNumberId/:flowId/preview"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/meta-flows/:phoneNumberId/:flowId/publish"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/meta-flows/:phoneNumberId/encryption-key"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/meta-flows/:phoneNumberId/encryption-key"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/out-of-office"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/out-of-office"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/resources/:resource"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/resources/:resource"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/resources/:resource/:id"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/vendors/:vendorId/resources/:resource/:id"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/resources/custom-fields"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/resources/custom-fields"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/vendors/:vendorId/resources/custom-fields/:id"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/resources/custom-fields/:id"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/vendors/:vendorId/resources/custom-fields/:id"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/sheets"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/sheets"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/vendors/:vendorId/sheets/:uid"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/sheets/:uid"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/sheets/:uid/rows"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/sheets/:uid/script"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/vendors/:vendorId/sheets/:uid/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/sheets/templates"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/tally/invoices"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/tally/invoices/:sourceId"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/tally/ping"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vendors/:vendorId/team"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/team"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/vendors/:vendorId/team/:id"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vendors/:vendorId/team/api-keys"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/vendors/:vendorId/team/api-keys/:id"
+    },
+    {
+      "method": "GET",
+      "path": "/api/vendor/contact/contacts-data"
+    },
+    {
+      "method": "GET",
+      "path": "/api/vendor/contact/contacts-data/:contactUid"
+    },
+    {
+      "method": "GET",
+      "path": "/central-console/blogs"
+    },
+    {
+      "method": "POST",
+      "path": "/central-console/blogs"
+    },
+    {
+      "method": "DELETE",
+      "path": "/central-console/blogs/:blog"
+    },
+    {
+      "method": "PUT",
+      "path": "/central-console/blogs/:blog"
+    },
+    {
+      "method": "POST",
+      "path": "/central-console/blogs/:blog/duplicate"
+    },
+    {
+      "method": "GET",
+      "path": "/central-console/blogs/:blog/edit"
+    },
+    {
+      "method": "GET",
+      "path": "/central-console/blogs/:blog/preview"
+    },
+    {
+      "method": "POST",
+      "path": "/central-console/blogs/:blog/publish"
+    },
+    {
+      "method": "POST",
+      "path": "/central-console/blogs/:blog/unpublish"
+    },
+    {
+      "method": "GET",
+      "path": "/central-console/blogs/create"
+    },
+    {
+      "method": "GET",
+      "path": "/central-console/configuration/:pageType"
+    },
+    {
+      "method": "POST",
+      "path": "/central-console/configuration/:pageType/process-configuration-store"
+    },
+    {
+      "method": "GET",
+      "path": "/central-console/pages"
+    },
+    {
+      "method": "POST",
+      "path": "/central-console/pages/:pageIdOrUid/delete-process"
+    },
+    {
+      "method": "GET",
+      "path": "/central-console/pages/:pageIdOrUid/get-update-data"
+    },
+    {
+      "method": "POST",
+      "path": "/central-console/pages/add-process"
+    },
+    {
+      "method": "GET",
+      "path": "/central-console/pages/list-data"
+    },
+    {
+      "method": "POST",
+      "path": "/central-console/pages/update-process"
+    },
+    {
+      "method": "GET",
+      "path": "/central-console/translations"
+    },
+    {
+      "method": "POST",
+      "path": "/central-console/translations/:languageId/process-language-delete"
+    },
+    {
+      "method": "GET",
+      "path": "/central-console/translations/language/:languageId"
+    },
+    {
+      "method": "POST",
+      "path": "/central-console/translations/process-language-store"
+    },
+    {
+      "method": "POST",
+      "path": "/central-console/translations/process-language-update"
+    },
+    {
+      "method": "POST",
+      "path": "/central-console/translations/update"
+    },
+    {
+      "method": "GET",
+      "path": "/health/live"
+    },
+    {
+      "method": "GET",
+      "path": "/health/ready"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/bot-replies/:botReplyIdOrUid/delete-process"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/bot-replies/:botReplyIdOrUid/duplicate-process"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/bot-replies/:botReplyIdOrUid/get-update-data"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/bot-replies/add-process"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/bot-replies/bot-flows/:botFlowIdOrUid/clone-process"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/bot-replies/bot-flows/:botFlowIdOrUid/delete-process"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/bot-replies/bot-flows/:botFlowIdOrUid/export"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/bot-replies/bot-flows/:botFlowIdOrUid/get-update-data"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/bot-replies/bot-flows/list-data"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/bot-replies/bot-flows/update-process"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/bot-replies/list-data"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/bot-replies/update-process"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/contacts/:contactIdOrUid/:groupUid/remove-process"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/contacts/:contactIdOrUid/delete-process"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/contacts/:contactIdOrUid/get-update-data"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/contacts/:contactIdOrUid/toggle-ai-bot"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/contacts/add-process"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/contacts/assign-groups-selected-process"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/contacts/custom-fields/:contactCustomFieldIdOrUid/delete-process"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/contacts/custom-fields/:contactCustomFieldIdOrUid/get-update-data"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/contacts/custom-fields/add-process"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/contacts/custom-fields/list-data"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/contacts/custom-fields/update-process"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/contacts/delete-all-process"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/contacts/delete-all-process/:groupUid"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/contacts/delete-selected-process"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/contacts/groups/:contactGroupIdOrUid/archive-process"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/contacts/groups/:contactGroupIdOrUid/delete-process"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/contacts/groups/:contactGroupIdOrUid/get-update-data"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/contacts/groups/:contactGroupIdOrUid/unarchive-process"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/contacts/groups/:status/list-data"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/contacts/groups/add-process"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/contacts/groups/archive-selected-process"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/contacts/groups/assign-agent-process"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/contacts/groups/delete-selected-process"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/contacts/groups/list-data"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/contacts/groups/merge-process"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/contacts/groups/unarchive-selected-process"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/contacts/groups/update-process"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/contacts/list-data"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/contacts/list-data/:groupUid"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/contacts/update-process"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/conversations/:conversationId/handoff/accept"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/conversations/:conversationId/reopen"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/conversations/:conversationId/resolve"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/cx-analytics/conversations/:conversationId"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/cx-analytics/scores/:scoreId/retry"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/integration/shopify/notifications"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/integration/shopify/notifications/:notificationId/resend"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/integration/shopify/orders"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/integration/shopify/orders/:orderId"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/integration/shopify/statistics"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/integration/shopify/status"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/integration/shopify/update-notification-settings"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/integration/woocommerce/notifications"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/integration/woocommerce/notifications/:notificationId/resend"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/integration/woocommerce/orders"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/integration/woocommerce/orders/:orderId"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/integration/woocommerce/statistics"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/integration/woocommerce/status"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/integration/woocommerce/update-notification-settings"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/settings/out-of-office"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/settings/out-of-office"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/whatsapp-orders"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/whatsapp-orders/:orderUid"
+    },
+    {
+      "method": "PATCH",
+      "path": "/vendor-console/whatsapp-orders/:orderUid/status"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/whatsapp-orders/data"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/whatsapp-orders/export"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/whatsapp-orders/statistics"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/whatsapp/campaign/:campaignIdOrUid/archive-process"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/whatsapp/campaign/:campaignIdOrUid/delete-process"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/whatsapp/campaign/:campaignIdOrUid/duplicate"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/whatsapp/campaign/:campaignIdOrUid/unarchive-process"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/whatsapp/campaign/:status/list-data"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/whatsapp/campaign/executed/:campaignUid"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/whatsapp/campaign/queue/:campaignUid"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/whatsapp/campaign/status/:campaignUid/data"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/whatsapp/chat/classification/logs/:contactUid"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/whatsapp/chat/classification/tag/create"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/whatsapp/chat/classification/update"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/whatsapp/chat/unread-count"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/whatsapp/contact/chat-data/:contactUid"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/whatsapp/contact/chat-data/:contactUid/:way"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/whatsapp/contact/chat/assign-labels"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/whatsapp/contact/chat/assign-user"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/whatsapp/contact/chat/delete-label/:labelUid"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/whatsapp/contact/chat/edit-label"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/whatsapp/contact/chat/message/:messageUid/reaction"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/whatsapp/contact/chat/prepare-send-media"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/whatsapp/contact/chat/prepare-send-media/:mediaType"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/whatsapp/contact/chat/send"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/whatsapp/contact/chat/send-location"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/whatsapp/contact/chat/update-notes"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/whatsapp/contact/contacts-data"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/whatsapp/contact/contacts-data/:contactUid"
+    },
+    {
+      "method": "POST",
+      "path": "/vendor-console/whatsapp/contact/create-label"
+    },
+    {
+      "method": "GET",
+      "path": "/vendor-console/whatsapp/contact/labels/:contactUid"
+    },
+    {
+      "method": "POST",
+      "path": "/webhooks/flows/:credentialId"
+    },
+    {
+      "method": "GET",
+      "path": "/webhooks/meta"
+    },
+    {
+      "method": "POST",
+      "path": "/webhooks/meta"
+    },
+    {
+      "method": "POST",
+      "path": "/webhooks/payments/:provider"
+    },
+    {
+      "method": "POST",
+      "path": "/webhooks/stores/:provider/:credentialId"
+    }
+  ]
+}

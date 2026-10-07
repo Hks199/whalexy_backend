@@ -1,0 +1,50 @@
+{
+  "generatedAt": "2026-10-05T08:06:13.642Z",
+  "featureFolders": 44,
+  "sourceTypeScriptFiles": 294,
+  "compatibilityEntryPoints": 0,
+  "removedLegacyEntryFiles": 82,
+  "renamedOperationSymbols": 627,
+  "renamedDomainHelperSymbols": 73,
+  "splitLargeServices": 14,
+  "workflowFiles": 55,
+  "layerFiles": {
+    "routes": 41,
+    "controller": 42,
+    "service": 86,
+    "validation": 37,
+    "middleware": 19,
+    "constants": 2,
+    "types": 1
+  },
+  "featureReadingGuides": 44,
+  "guideDocumentsChecked": 48,
+  "brokenGuideLinks": 0,
+  "nativeRouteDeclarationComparison": {
+    "before": 225,
+    "after": 225,
+    "missing": [],
+    "added": [],
+    "limitation": "Static method/path expressions, including health and dynamic templates; not legacy contract verification."
+  },
+  "verification": {
+    "fullRegression": {
+      "passed": 685,
+      "files": 45,
+      "seconds": 505.65,
+      "evidence": "migration/test-results.json"
+    },
+    "architecture": true,
+    "formatting": true,
+    "typecheck": true,
+    "cleanBuild": true,
+    "prismaValidation": true,
+    "emptySchemaDrift": true,
+    "liveHttpStatus": 200,
+    "readyHttpStatus": 200,
+    "staleCompiledLegacyEntries": 0
+  },
+  "originalSourceFilesHashed": 767,
+  "originalSourceChanges": 0,
+  "fullLegacyConversion": false
+}

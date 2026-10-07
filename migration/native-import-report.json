@@ -1,0 +1,167 @@
+{
+  "sourceHash": "3a2d5a493570eafd5195addf59e498bca310f79a72c5d0b8878d480f84baa725",
+  "sourceRows": 1450,
+  "nativeRows": 1400,
+  "quarantinedRows": 50,
+  "policies": {
+    "plain-text-json-preserved": 256,
+    "legacy-flow-disabled-for-conversion": 5,
+    "null-bot-priority-zero": 5,
+    "legacy-campaign-paused-for-review": 10,
+    "null-status-remains-inactive": 40,
+    "user-name-from-legacy-fields": 17,
+    "message-time-from-created-at": 10
+  },
+  "tables": [
+    {
+      "model": "ActivityLogs",
+      "sourceRows": 278,
+      "nativeRows": 278
+    },
+    {
+      "model": "BotFlows",
+      "sourceRows": 5,
+      "nativeRows": 5
+    },
+    {
+      "model": "BotReplies",
+      "sourceRows": 5,
+      "nativeRows": 5
+    },
+    {
+      "model": "Configurations",
+      "sourceRows": 74,
+      "nativeRows": 74
+    },
+    {
+      "model": "ContactCustomFields",
+      "sourceRows": 2,
+      "nativeRows": 2
+    },
+    {
+      "model": "Countries",
+      "sourceRows": 252,
+      "nativeRows": 252
+    },
+    {
+      "model": "LoginLogs",
+      "sourceRows": 282,
+      "nativeRows": 282
+    },
+    {
+      "model": "ManualSubscriptions",
+      "sourceRows": 6,
+      "nativeRows": 6
+    },
+    {
+      "model": "LegacyMigrations",
+      "sourceRows": 84,
+      "nativeRows": 84
+    },
+    {
+      "model": "Pages",
+      "sourceRows": 2,
+      "nativeRows": 2
+    },
+    {
+      "model": "PasswordResets",
+      "sourceRows": 1,
+      "nativeRows": 1
+    },
+    {
+      "model": "SubscriptionAddons",
+      "sourceRows": 2,
+      "nativeRows": 2
+    },
+    {
+      "model": "UserRoles",
+      "sourceRows": 4,
+      "nativeRows": 4
+    },
+    {
+      "model": "Vendors",
+      "sourceRows": 15,
+      "nativeRows": 15
+    },
+    {
+      "model": "WhatsappCallingSettings",
+      "sourceRows": 1,
+      "nativeRows": 1
+    },
+    {
+      "model": "ContactGroups",
+      "sourceRows": 4,
+      "nativeRows": 4
+    },
+    {
+      "model": "Users",
+      "sourceRows": 17,
+      "nativeRows": 17
+    },
+    {
+      "model": "VendorSettings",
+      "sourceRows": 70,
+      "nativeRows": 39
+    },
+    {
+      "model": "WhatsappTemplates",
+      "sourceRows": 12,
+      "nativeRows": 12
+    },
+    {
+      "model": "Campaigns",
+      "sourceRows": 10,
+      "nativeRows": 5
+    },
+    {
+      "model": "Contacts",
+      "sourceRows": 39,
+      "nativeRows": 37
+    },
+    {
+      "model": "Conversions",
+      "sourceRows": 1,
+      "nativeRows": 1
+    },
+    {
+      "model": "ContactCustomFieldValues",
+      "sourceRows": 2,
+      "nativeRows": 2
+    },
+    {
+      "model": "ConversationCxScores",
+      "sourceRows": 2,
+      "nativeRows": 2
+    },
+    {
+      "model": "ConversionEvents",
+      "sourceRows": 1,
+      "nativeRows": 1
+    },
+    {
+      "model": "GroupContacts",
+      "sourceRows": 7,
+      "nativeRows": 7
+    },
+    {
+      "model": "WhatsappMessageLogs",
+      "sourceRows": 272,
+      "nativeRows": 260
+    }
+  ],
+  "quarantineReasons": {
+    "required-null:contactId": 10,
+    "missing-parent:refTemplateId": 5,
+    "missing-parent:refVendorId": 33,
+    "missing-parent:refCampaignId": 2
+  },
+  "applicationDatabaseChanged": false,
+  "validationDatabase": "whalexy_import_validation",
+  "membershipsImported": 15,
+  "providerCredentialsActivated": false,
+  "existingVerificationProofsPreserved": true,
+  "membershipsReadBackVerified": true,
+  "nativeReadBackVerified": true,
+  "nativeFieldReadBackVerified": true,
+  "quarantineHashVerified": true
+}
